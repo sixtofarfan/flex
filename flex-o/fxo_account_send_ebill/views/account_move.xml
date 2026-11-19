@@ -1,0 +1,22 @@
+<odoo>
+	<record id="account_move_massive_send_ebill" model="ir.actions.server">
+		<field name="name">Enviar CPE</field>
+		<field name="model_id" ref="account.model_account_move"/>
+		<field name="binding_model_id" ref="account.model_account_move"/>
+		<field name="state">code</field>
+		<field name="code">action = records.massive_send_ebill()</field>
+	</record>
+	<record id="view_invoice_filter_apportion" model="ir.ui.view">
+		<field name="name">account.invoice.filter.apportion</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_account_invoice_filter"/>
+		<field name="arch" type="xml">
+			<filter name="unpaid" position="after">
+				<separator/>
+				<filter name="cpe_sended" string="CPE Enviado" domain="[('hash_code', '!=', False)]"/>
+				<filter name="cpe_not_sended" string="CPE no Enviado" domain="[('hash_code', '=', False)]"/>
+			</filter>
+		</field>
+	</record>
+	
+</odoo>

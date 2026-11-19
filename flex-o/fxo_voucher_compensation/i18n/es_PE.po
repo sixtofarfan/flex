@@ -1,0 +1,213 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fxo_voucher_compensation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-22 01:35+0000\n"
+"PO-Revision-Date: 2021-07-22 01:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fxo_voucher_compensation
+#: model_terms:ir.ui.view,arch_db:fxo_voucher_compensation.voucher_compensation_form
+msgid "Are you sure you want to cancel this compensation?"
+msgstr "Esta seguro que desea cancelar esta compensación?"
+
+#. module: fxo_voucher_compensation
+#: model_terms:ir.ui.view,arch_db:fxo_voucher_compensation.voucher_compensation_form
+msgid "Are you sure you want to compensate selected vouchers?"
+msgstr "Esta seguro que desea compensar los comprobantes seleccionados?"
+
+#. module: fxo_voucher_compensation
+#: model_terms:ir.ui.view,arch_db:fxo_voucher_compensation.voucher_compensation_form
+msgid "Bills"
+msgstr "Facturas de Proveedor"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__bill_amount
+msgid "Bills amount"
+msgstr "Importe de Facturas de Proveedor"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_main_parameter__bridge_account_ids
+msgid "Bridge Accounts"
+msgstr "Cuentas Puente"
+
+#. module: fxo_voucher_compensation
+#: model_terms:ir.ui.view,arch_db:fxo_voucher_compensation.voucher_compensation_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__company_currency_id
+msgid "Company Currency"
+msgstr "Moneda de la Compañía"
+
+#. module: fxo_voucher_compensation
+#: model_terms:ir.ui.view,arch_db:fxo_voucher_compensation.voucher_compensation_form
+msgid "Compensate"
+msgstr "Compensar"
+
+#. module: fxo_voucher_compensation
+#: model_terms:ir.ui.view,arch_db:fxo_voucher_compensation.view_main_parameter_form_inherit_compensation
+msgid "Compensation"
+msgstr "Compensaciones"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__compensation_date
+msgid "Compensation Date"
+msgstr "Fecha de compensación"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__journal_id
+msgid "Compensation Journal"
+msgstr "Diario de compensación"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__compensation_move
+msgid "Compensation Move"
+msgstr "Asiento de compensación"
+
+#. module: fxo_voucher_compensation
+#: model:ir.actions.act_window,name:fxo_voucher_compensation.voucher_compensation_action_window
+#: model:ir.ui.menu,name:fxo_voucher_compensation.compensation_menu
+msgid "Compensations"
+msgstr "Compensaciones"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__currency_rate
+msgid "Currency Rate"
+msgstr "Tasa de Cambio"
+
+#. module: fxo_voucher_compensation
+#: code:addons/extra-addons/flex-e/fxo_voucher_compensation/models/voucher_compensation.py:0
+#: code:addons/fxo_voucher_compensation/models/voucher_compensation.py:0
+#, python-format
+msgid "Currency rate is 0"
+msgstr "La tasa no puede ser 0"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__custom_rate
+msgid "Custom rate"
+msgstr "Tasa personalizada"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__partner_id
+msgid "Customer / Vendor"
+msgstr "Cliente / Proveedor"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__bill_ids
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__invoice_ids
+msgid "Customer Invoices"
+msgstr "Facturas de Cliente"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields.selection,name:fxo_voucher_compensation.selection__voucher_compensation__state__done
+msgid "Done"
+msgstr "Hecho"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields.selection,name:fxo_voucher_compensation.selection__voucher_compensation__state__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__currency_id
+msgid "Foreign Currency"
+msgstr "Moneda Extranjera"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__id
+msgid "ID"
+msgstr ""
+
+#. module: fxo_voucher_compensation
+#: model_terms:ir.ui.view,arch_db:fxo_voucher_compensation.voucher_compensation_form
+msgid "Invoices"
+msgstr "Facturas de Cliente"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__invoice_amount
+msgid "Invoices amount"
+msgstr "Importe de Facturas de Cliente"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: fxo_voucher_compensation
+#: code:addons/extra-addons/flex-e/fxo_voucher_compensation/models/voucher_compensation.py:0
+#: code:addons/extra-addons/flex-e/fxo_voucher_compensation/models/voucher_compensation.py:0
+#: code:addons/extra-addons/flex-e/fxo_voucher_compensation/models/voucher_compensation.py:0
+#: code:addons/fxo_voucher_compensation/models/voucher_compensation.py:0
+#: code:addons/fxo_voucher_compensation/models/voucher_compensation.py:0
+#: code:addons/fxo_voucher_compensation/models/voucher_compensation.py:0
+#, python-format
+msgid "New"
+msgstr "Nuevo"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model.fields,field_description:fxo_voucher_compensation.field_voucher_compensation__state
+msgid "State"
+msgstr "Estado"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model,name:fxo_voucher_compensation.model_voucher_compensation
+msgid "Voucher Compensation"
+msgstr "Compensación de comprobantes"
+
+#. module: fxo_voucher_compensation
+#: code:addons/extra-addons/flex-e/fxo_voucher_compensation/models/voucher_compensation.py:0
+#: code:addons/fxo_voucher_compensation/models/voucher_compensation.py:0
+#, python-format
+msgid "Voucher Compensation %s"
+msgstr "Compensación de comprobantes %s"
+
+#. module: fxo_voucher_compensation
+#: model:ir.model,name:fxo_voucher_compensation.model_main_parameter
+msgid "main.parameter"
+msgstr ""

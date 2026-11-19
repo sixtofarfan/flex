@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="hr_family_bond_form" model="ir.ui.view">
+		<field name="name">hr.family.bond.form</field>
+		<field name="model">hr.family.bond</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<group>
+							<field name="code"/>
+							<field name="name"/>
+							<field name="percent"/>
+							<field name="company_id" invisible="1"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="hr_family_bond_tree" model="ir.ui.view">
+		<field name="name">hr.family.bond.tree</field>
+		<field name="model">hr.family.bond</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="code" optional="show"/>
+				<field name="name" optional="show"/>
+				<field name="percent" optional="show"/>
+				<field name="company_id"/>
+			</tree>
+		</field>
+	</record>
+	<record id="action_hr_family_bond" model="ir.actions.act_window">
+		<field name="name">Parentescos</field>
+		<field name="res_model">hr.family.bond</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Crea tu primera tabla de Parentescos aqui
+			</p>
+		</field>
+	</record>
+    <menuitem
+		id="menu_action_hr_family_bond"
+		action="action_hr_family_bond"
+		parent="menu_hr_tables_configuration"
+		sequence="6"
+		groups="hr_base_it.group_hr_tables_root"
+	/>
+</odoo>

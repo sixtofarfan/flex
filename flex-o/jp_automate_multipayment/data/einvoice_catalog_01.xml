@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <function model="einvoice.catalog.01" name="set_bbva_codes"/>
+        <function model="einvoice.catalog.01" name="set_bcp_codes"/>
+        <function model="einvoice.catalog.01" name="set_interbank_codes"/>
+    </data>
+</odoo>

@@ -1,0 +1,331 @@
+<odoo>
+    <data>
+    <!-- fxo.payment.request form view -->
+    <record id="model_name_view_form" model="ir.ui.view">
+        <field name="name">fxo.payment.request.view.form</field>
+        <field name="model">fxo.payment.request</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button name="set_confirm" type="object" string="Confirmar" class="oe_highlight" states="draft"/>
+                    <button name="set_done" type="object" string="Aprobar" states="confirm" class="oe_highlight" groups="fxo_payment_request.group_fxo_payment_approvement"/>
+                    <button name="set_draft" type="object" string="Borrador" class="oe_highlight" states="payed,done,confirm"/>
+                    <!--<button name="generate_payments" type="object" string="Generar Pago" class="oe_highlight" states="done"/>-->
+                    <!--<button name="get_payment_wizard" type="object" string="Registrar Pago" class="oe_highlight" states="done"/>-->
+                    <button name="get_invoices_gen_wizard" type="object" string="Generar Facturas" class="oe_highlight" states="payed"/>
+                    <!--<button name="get_moves_gen_wizard" type="object" string="Generar Asiento Libre Pagos" class="oe_highlight"
+                        attrs="{'invisible': [('residual', '&lt;=', 0), ('state', '!=', 'payed')]}"/>-->
+                    <!--<button name="get_confirm" type="object" string="Volver a Confirmado" class="oe_highlight"
+                        attrs="{'invisible': [('invoice_count', '&gt;', 0), ('payment_count', '&gt;', 0)]}"/>-->
+                    <button name="aditional_payment" type="object" string="Generar Pago Adicional" class="oe_highlight" states="payed" help="Boton para generar pago adicional para completar el saldo restante de la factura y que esta ya no quede en negativo"/>
+                    <button name="apply_payments_wizard" type="object" string="Aplicar Pagos" class="oe_highlight" states="payed" />
+                    <button name="generate_indepent_move" type="object" string="Generar Asiento" class="oe_highlight" states="done"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="get_request_invoices" class="oe_stat_button" icon="fa-list" type="object" attrs="{'invisible': [('invoice_count', '=', 0)]}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="invoice_count"/></span>
+                                <span class="o_stat_text">Facturas</span>
+                             </div>
+                        </button>
+                        <button name="get_request_payments" class="oe_stat_button" icon="fa-dollar" type="object" attrs="{'invisible': [('payment_count', '=', 0)]}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="payment_count"/></span>
+                                <span class="o_stat_text">Pagos</span>
+                             </div>
+                        </button>
+                        <button name="get_request_lines" class="oe_stat_button" icon="fa-list" type="object" attrs="{'invisible': [('move_line_count', '=', 0)]}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="move_line_count"/></span>
+                                <span class="o_stat_text">Apuntes</span>
+                             </div>
+                        </button>
+                        <button name="get_account_move" class="oe_stat_button" icon="fa-list" type="object">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="move_count"/></span>
+                                <span class="o_stat_text">Asiento Contable</span>
+                             </div>
+                        </button>
+
+                    </div>
+                    <h1 class="mt0">
+                        <field name="name" readonly="1"/>
+                    </h1>
+
+                    <group>
+                        <group>
+                            <field name="partner_id" required="1"/>
+                            <field name="journal_id" required="1"/>
+                            <field name="date_request"/>
+                            <field name="type_payment"/>
+                            <field name="catalog_payment_id"/>
+                            <field name="bank_id" domain="[('partner_id', '=', partner_id)]"/>
+                            <field name="p_detraction"/>
+                            <field name="supplier_observation"/>
+                            <field name="op_number"/>
+                            <field name="issue_date"/>
+                            <field name="payment_date"/>
+                            <field name="date_due"/>
+                            <field name="type_document_id"/>
+                        </group>
+                        <group>
+                            <field name="user_request"/>
+                            <field name="user_paymen"/>
+                            <field name="paid_to"/>
+                            <field name="observation"/>
+                            <field name="order_id" readonly="1"/>
+                            <field name="internal_ref"/>
+                            <field name="internal_ref_child"/>
+                            <field name="currency_id" required="1"/>
+                            <field name="company_id"/>
+                            <field name="communication"/>
+                            <field name="indepent_move_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Detalle Solicitud" name="line">
+                            <field name="line_id">
+                                <tree editable="bottom" string="Lineas">
+                                    <field name="name"/>
+                                    <field name="payment_request_id" invisible="1"/>
+                                    <field name="partner_id" required="1"/>
+                                    <field name="doc_number" domain="[('partner_id', '=', partner_id)]" required="1"/>
+                                    <field name="internal_ref"/>
+                                    <field name="internal_ref_child"/>
+                                    <field name="agent_id"/>
+                                    <field name="product_id" required="1"/>
+                                    <field name="currency_id" required="1"/>
+                                    <field name="amount" required="1"/>
+                                    <field name="amount_invoiced"/>
+                                    <field name="move_line_ids" widget="many2many_tags" optional="hide"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="request_total">
+                                <field name="amount_total"/>
+                                <field name="sustained"/>
+                                <field name="free"/>
+                                <field name="residual" class="oe_subtotal_footer_separator"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- fxo.payment.request tree view -->
+    <record id="fxo_payment_request_view_tree" model="ir.ui.view">
+        <field name="name">fxo.payment.request.view.tree</field>
+        <field name="model">fxo.payment.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="date_request"/>
+                <field name="user_request"/>
+                <field name="user_paymen"/>
+                <field name="order_id"/>
+                <field name="internal_ref"/>
+                <field name="internal_ref_child"/>
+                <field name="currency_id"/>
+                <field name="amount_total"/>
+                <field name="company_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- fxo.payment.request search view -->
+    <record id="fxo_payment_request_view_search" model="ir.ui.view">
+        <field name="name">fxo.payment.request.view.search</field>
+        <field name="model">fxo.payment.request</field>
+        <field name="arch" type="xml">
+            <search string="Search Description">
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="user_request"/>
+                <field name="user_paymen"/>
+                <field name="order_id"/>
+                <field name="internal_ref"/>
+                <field name="internal_ref_child"/>
+                <field name="amount_total"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_fxo_payment_request">
+        <field name="name">Solicitud de Pago</field>
+        <field name="res_model">fxo.payment.request</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('fxo_payment_request_view_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('model_name_view_form')})]"/>
+        <field name="search_view_id" ref="fxo_payment_request_view_search"/>
+        
+        <!-- <field name="context">{'search_default_my_factibility': 1}</field> -->
+    </record>   
+
+    <menuitem   name="Solicitud de pago"
+                action="action_fxo_payment_request" 
+				  id="menu_fxo_payment_request_account" 
+				  parent="account.menu_finance_payables"
+				  sequence="1"
+				  groups="fxo_payment_request.group_fxo_payment_request"
+                  />
+
+	<menuitem   name="Solicitud de pago"   
+                action="action_fxo_payment_request"
+				id="menu_fxo_payment_request_purchase"
+				parent="purchase.menu_procurement_management"
+        		sequence="14"
+				groups="fxo_payment_request.group_fxo_payment_request"/>
+
+    <record id="set_payment_done" model="ir.actions.server">
+        <field name="name">Aprobar</field>
+        <field name="model_id" ref="fxo_payment_request.model_fxo_payment_request"/>
+        <field name="binding_model_id" ref="fxo_payment_request.model_fxo_payment_request"/>
+        <field name="state">code</field>
+        <field name="code">action = records.set_done()</field>
+    </record>
+    <record id="set_payment_confirm" model="ir.actions.server">
+        <field name="name">Confirmar</field>
+        <field name="model_id" ref="fxo_payment_request.model_fxo_payment_request"/>
+        <field name="binding_model_id" ref="fxo_payment_request.model_fxo_payment_request"/>
+        <field name="state">code</field>
+        <field name="code">action = records.set_confirm()</field>
+    </record>
+    <record id="delete_sequence" model="ir.actions.server">
+        <field name="name">Borrar Secuencia</field>
+        <field name="model_id" ref="fxo_payment_request.model_fxo_payment_request"/>
+        <field name="binding_model_id" ref="fxo_payment_request.model_fxo_payment_request"/>
+        <field name="state">code</field>
+        <field name="code">action = records.delete_sequence()</field>
+    </record>
+    <record id="get_payment_wizard" model="ir.actions.server">
+        <field name="name">Registrar Pagos</field>
+        <field name="model_id" ref="fxo_payment_request.model_fxo_payment_request"/>
+        <field name="binding_model_id" ref="fxo_payment_request.model_fxo_payment_request"/>
+        <field name="state">code</field>
+        <field name="code">action = model.get_payment_wizard()</field>
+    </record>
+
+    <record id="get_op_number_wizard" model="ir.actions.server">
+        <field name="name">Actualizar Nro. Op. Caja</field>
+        <field name="model_id" ref="fxo_payment_request.model_account_payment"/>
+        <field name="binding_model_id" ref="fxo_payment_request.model_account_payment"/>
+        <field name="state">code</field>
+        <field name="code">action = records.get_op_number_wizard()</field>
+    </record>
+
+    <record model="ir.rule" id="fxo_payment_request_rule">
+        <field name="name">Sa multi-company</field>
+        <field name="model_id" ref="model_fxo_payment_request"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id', 'in', user.company_ids.ids)]</field>
+    </record>
+
+    <record id="account_payment_form_inherit" model="ir.ui.view">
+        <field name="name">account.payment.form.inherit</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <!--<field name="destination_account_id" position="attributes">
+                <attribute name="domain">[('currency_id', '=', currency_id)]</attribute>
+            </field>-->
+            <field name="payment_date" position="after">
+                <field name="request_id" readonly="0"/>
+                <field name="request_line_id" readonly="1"/>
+                <field name="product_id" readonly="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="account_payment_tree_inherit_request" model="ir.ui.view">
+        <field name="name">account.payment.tree.inherit.request</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree"/>
+        <field name="arch" type="xml">
+            <field name="journal_id" position="after">
+                <field name="product_id" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="account_payment_search_inherit_request" model="ir.ui.view">
+        <field name="name">account.payment.search.inherit.request</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_search"/>
+        <field name="arch" type="xml">
+            <field name="journal_id" position="after">
+                <field name="cash_nro_comp"/>
+                <field name="move_name"/>
+                <field name="journal_code"/>
+            </field>
+            <filter name="state" position="after">
+                <filter string="Nro Operacion" name="cash_nro_comp" domain="[]" context="{'group_by': 'cash_nro_comp'}"/>
+                <filter string="Nombre de Asiento" name="move_name" domain="[]" context="{'group_by': 'move_name'}"/>
+                <filter string="Codigo de Diario" name="journal_code" domain="[]" context="{'group_by': 'journal_code'}"/>
+            </filter>
+        </field>
+    </record>
+
+    <record id="view_move_form_inherit" model="ir.ui.view">
+        <field name="name">move.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <field name="invoice_payment_ref" position="after">
+                <field name="request_id"/>
+                <field name="request_filter"/>
+            </field>
+            <xpath expr="//notebook/page[@id='aml_tab']/field[@name='line_ids']/tree/field[@name='analytic_account_id']" position="after">
+                <field name="request_id"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="after">
+                <field name="request_id"/>
+                <field name="date_maturity" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_invoice_filter_request" model="ir.ui.view">
+        <field name="name">account.invoice.filter.request</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <filter name="unpaid" position="after">
+                <separator/>
+                <filter name="payments_to_apply" string="Pendientes de Aplicacion de Pago" domain="[
+                    ('request_id', '!=', False),
+                    ('amount_residual', '>', 0),
+                    ('invoice_outstanding_credits_debits_widget', '!=', False),
+                    ('state', '=', 'posted'),
+                ]"/>
+            </filter>
+        </field>
+    </record>
+    <record id="action_assign_payments" model="ir.actions.server">
+        <field name="name">Aplicar Pagos</field>
+        <field name="model_id" ref="fxo_payment_request.model_account_move"/>
+        <field name="binding_model_id" ref="fxo_payment_request.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">action = records.action_assign_payments()</field>
+    </record>
+
+        <record id="view_move_line_tree_form_inherit_request" model="ir.ui.view">
+            <field name="name">account.move.line.inherit.view.tree.request</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account_fields_it.view_move_line_tree_form_inherit"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="move_id" position="after">
+                    <field name="request_id" optional="hide" />
+                    <field name="matched_request_id" optional="show"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
+

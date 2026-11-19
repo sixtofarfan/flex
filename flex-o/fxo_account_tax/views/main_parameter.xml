@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="main_parameter_form_inherit_tax" model="ir.ui.view">
+		<field name="name">main.parameter.inherit.tax</field>
+		<field name="model">main.parameter</field>
+		<field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page name="tax" string="Impuestos">
+					<field name="tax_line_ids">
+						<tree editable="bottom">
+							<field name="tax_id" required="1"/>
+							<field name="journal_id" required="1"/>
+							<field name="type_document_id" required="1"/>
+						</tree>
+					</field>
+				</page>
+			</xpath>
+		</field>
+	</record>
+</odoo>

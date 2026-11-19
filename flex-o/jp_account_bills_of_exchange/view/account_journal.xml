@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_account_journal_form_inherited_boe">
+            <field name="name">account.journal.form.inherited.boe</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="bank_position" attrs="{'invisible':[('type','!=', 'boe')], 'required':[('type','=', 'boe')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='default_credit_account_id']" position="after">
+                    <field name="default_interest_account_id" attrs="{'invisible':[('type','!=', 'boe')]}"/>
+                </xpath>
+                <field name="bank_id" position="after">
+                    <field name="bank_partner_id" attrs="{'invisible': [('type','!=','bank')], 'required': [('type','=','bank')]}"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

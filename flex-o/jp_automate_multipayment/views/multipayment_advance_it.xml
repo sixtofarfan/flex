@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="multipayment_advance_it_form_view_inherit" model="ir.ui.view">
+		<field name="name">multipayment.advance.it.inherit</field>
+		<field name="model">multipayment.advance.it</field>
+		<field name="inherit_id" ref="account_multipayment_advance_it.multipayment_advance_it_form_view"/>
+		<field name="arch" type="xml">
+			<data>
+				<field name="is_detraction_payment" position="attributes">
+					<attribute name="invisible">0</attribute>
+				</field>
+				<button name="crear_asiento" position="attributes">
+					<attribute name="invisible">context.get('detraction') or context.get('advance')</attribute>
+				</button>
+				<button name="get_invoices_multipayment" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</button>
+				<field name="tc" position="after">
+					<field name="detraction_file" widget="file" attrs="{'invisible': [('is_detraction_payment', '=', False)]}"/>
+					<field name="attachment_sunat_file_fname" invisible="1"/>
+					<field name="sunat_file_import" filename="attachment_sunat_file_fname"
+						   widget="file" attrs="{'invisible': [('is_detraction_payment', '=', False)]}"/>
+				</field>
+				<!-- <field name="partner_cash_id" position="attributes">
+					<attribute name="attrs">{'required': [('is_detraction_payment', '=', True)]}</attribute>
+				</field> -->
+				<field name="nro_operation" position="replace"/>
+
+                <!-- Add your date and date_matiruty -->
+                <xpath expr="//notebook/page[@name='other_info']/group/group[@name='other_3']/field[@name='cash_flow_id']" position="after">
+                    <field name="date"/>
+                </xpath> 
+
+                <xpath expr="//field[@name='is_detraction_payment']" position="after">
+                	<field name="is_supplier_payment" invisible="1"/>
+                	<field name="is_advance_payment" invisible="1"/>
+                    <field name="format_bank" invisible="1"/>
+                    <field name="invoice_type" required="1"/>
+                    <field name="is_retention_payment" invisible="context.get('detraction') or context.get('advance')"/>
+                    <field name="payment_method_id" attrs="{'invisible': [('is_detraction_payment', '=', False)], 'required': [('is_detraction_payment', '=', True)]}"/>
+                    <field name="batch_payment_id" readonly="1"/>
+                    <field name="nro_operation" required="0" attrs="{'readonly':[('state','in',['done'])]}"/>
+		</xpath>
+                <xpath expr="//header" position="inside">
+                 	<button name="generate_detraction_lot" string="Generar Lote" type="object" class="oe_highlight" attrs="{'readonly': [('state', 'not in', 'draft')], 'invisible': [('is_detraction_payment', '=', False)]}"/>
+                    <button name="get_invoices" string="Select Invoices" type="object" class="oe_highlight" 
+                            attrs="{'invisible': [('state', 'in', ['done'])], 'readonly':[('state','not in','draft')]}" context="{'detraction': is_detraction_payment, 'invoice_type': invoice_type}"/>
+                    <button name="get_detractions" string="Select Detractions" type="object" class="oe_highlight" 
+                            attrs="{'invisible': ['|',('state', 'in', ['done']),('is_detraction_payment', '=', False)], 'readonly':[('state','not in','draft')]}" context="{'detraction': is_detraction_payment}"/>
+                    <button name="get_provisions_wizard" string="Select Provisions" type="object" class="oe_highlight" attrs="{'readonly': [('state', 'not in', 'draft')]}" invisible="not context.get('detraction')"/>
+                    <button name="get_advances_wizard" string="Select Advances" type="object" class="oe_highlight" attrs="{'readonly': [('state', 'not in', 'draft')]}" invisible="not context.get('advance')"/>
+                    <button name="get_txt" string="Txt Proveedores" type="object" class="oe_highlight" attrs="{'invisible': [('is_detraction_payment', '=', True)]}"/>
+                    <button name="get_advance_txt" string="Txt Anticipos" type="object" class="oe_highlight" invisible="not context.get('advance')"/>
+                    <button name="get_detractions_txt" string="Txt Detracciones" type="object" class="oe_highlight" invisible="not context.get('detraction')"/>
+                    <button name="set_detraction_txt_data" string="Importar Txt Detracciones" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('is_detraction_payment', '=', False), ('detraction_file', '=', False)]}"/>
+                    <button name="get_sunat_import" string="Importar Detracciones de Sunat" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('is_detraction_payment', '=', False), ('invoice_type', '!=', 'out_invoice')]}"/>
+				</xpath>
+				<xpath expr="//notebook/page[@id='invoice_tab']/field[@name='invoice_ids']/tree/field[@name='currency_id']" position="before">
+                    <field name="type_operation" optional='hide'/>
+                    <field name="type_good_service" optional='hide'/>
+                    <field name="partner_bank_acc_id" domain="[('partner_id', '=', partner_id)]"/>
+                    <field name="type_of_account"/>
+                    <field name="bank_curr_id"/>
+                    <field name="bank_id"/>
+				</xpath>
+				<xpath expr="//notebook/page[@id='invoice_tab']/field[@name='invoice_ids']/tree" position="attributes">
+					<attribute name="edit">0</attribute>
+					<attribute name="create">1</attribute>
+				</xpath>
+
+				<page id="invoice_tab" position="attributes">
+					<attribute name="invisible">context.get('detraction') or context.get('advance')</attribute>
+				</page>
+				<page id="invoice_tab" position="after">
+					<page id="provision_tab" string="Provisiones" invisible="not context.get('detraction')">
+						<field name="provision_ids">
+							<tree>
+								<field name="date"/>
+								<field name="move_id"/>
+								<field name="type_document_id"/>
+								<field name="nro_comp"/>
+								<field name="voucher_number"/>
+								<field name="date_detraccion"/>
+								<field name="account_id"/>
+								<field name="partner_id"/>
+								<field name="debit"/>
+								<field name="credit"/>
+								<field name="tc"/>
+							</tree>
+						</field>
+					</page>
+					<page id="advance_tab" string="Anticipos" invisible="not context.get('advance')">
+						<field name="advance_ids">
+							<tree editable="bottom" create="0">
+								<field name="payment_date"/>
+								<field name="name"/>
+								<field name="journal_id"/>
+								<field name="payment_method_id"/>
+								<field name="partner_id"/>
+								<field name="partner_bank_acc_id" domain="[('partner_id', '=', partner_id)]"/>
+								<field name="amount"/>
+								<field name="state"/>
+								<field name="company_id"/>
+							</tree>
+						</field>
+					</page>
+				</page>
+				<xpath expr="//notebook" position="inside">
+					<page id="config_bank" string="Configuracion de Banco">
+						<center><h1 attrs="{'invisible': [('format_bank', '!=', False)]}">ESTE BANCO NO TIENE UN FORMATO ESPECIFICADO</h1></center>
+						<group id="bbva" string="Datos BBVA" attrs="{'invisible': [('format_bank', '!=', 'bbva')]}">
+							<group>
+								<field name="process_type"/>
+								<field name="owner_validation"/>
+							</group>
+							<group>
+								<field name="process_hour" attrs="{'invisible':[('process_type', '!=', 'H')]}"/>
+								<field name="alert_indicator"/>
+							</group>
+						</group>
+						<group id="bcp" string="Datos BCP" attrs="{'invisible': [('format_bank', '!=', 'bcp')]}">
+							<group>
+								<field name="flag"/>
+							</group>
+							<group>
+								<field name="idc_flag"/>
+							</group>
+						</group>
+						<group id="interbank" string="Datos Interbank" attrs="{'invisible': [('format_bank', '!=', 'interbank')]}">
+							<group>
+								<field name="company_code"/>
+								<field name="service_code"/>
+							</group>
+							<group>
+								<field name="process_type_interbank"/>
+								<field name="person_type"/>
+							</group>
+						</group>
+					</page>
+				</xpath>
+			</data>
+		</field>
+	</record>
+	<record id="action_multipayment_advance_it_detraction" model="ir.actions.act_window">
+        <field name="name">Pagos Detracciones</field>
+        <field name="res_model">multipayment.advance.it</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'detraction': True, 'default_is_detraction_payment': True,}</field>
+        <field name="domain">[('is_detraction_payment', '=', True)]</field>
+    </record>
+    <record id="action_multipayment_advance_it_advance" model="ir.actions.act_window">
+        <field name="name">Pagos Anticipos</field>
+        <field name="res_model">multipayment.advance.it</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'advance': True, 'default_is_advance_payment': True,}</field>
+        <field name="domain">[('is_advance_payment', '=', True)]</field>
+    </record>
+    <record id="account_multipayment_advance_it.multipayment_advance_it_action" model="ir.actions.act_window">
+    	<field name="context">{'default_is_supplier_payment': True}</field>
+    	<!--<field name="domain">[('is_supplier_payment', '=', True)]</field>-->
+    </record>
+	<menuitem 
+		active="False"
+		id="menu_multipayment_advance_it_detraction"
+		action="action_multipayment_advance_it_detraction"
+		parent="account_base_it.menu_treasury"
+		sequence="8"
+		groups="account.group_account_manager"/>
+	<menuitem 
+		id="menu_multipayment_advance_it_advance"
+		action="action_multipayment_advance_it_advance"
+		parent="account_base_it.menu_treasury"
+		sequence="9"
+		groups="account.group_account_manager"/>
+	<menuitem 
+		action="account_multipayment_advance_it.multipayment_advance_it_action" 
+		id="menu_multipayment_advance_it_payables" 
+		parent="account.menu_finance_payables"
+		groups="account.group_account_manager"/>
+	<menuitem 
+		action="account_multipayment_advance_it.multipayment_advance_it_action" 
+		id="menu_multipayment_advance_it_receivables" 
+		parent="account.menu_finance_receivables"
+		groups="account.group_account_manager"/>
+</odoo>

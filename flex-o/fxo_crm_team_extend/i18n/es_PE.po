@@ -1,0 +1,144 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fxo_crm_team_extend
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-14 18:18+0000\n"
+"PO-Revision-Date: 2020-03-14 18:18+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_res_config_settings__default_team_router
+msgid "Config Rotate Team Sale"
+msgstr "Configurar Rotacion de Equipo de Venta"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_res_config_settings__default_debt_collector
+msgid "Config Rotate Team Debt Collector"
+msgstr "Configurar Rotacion de Equipo de Cobradores"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model,name:fxo_crm_team_extend.model_res_config_settings
+msgid "Config Settings"
+msgstr "Configuracion"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model,name:fxo_crm_team_extend.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_crm_team_router__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_crm_team_router__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_crm_team_router__days
+msgid "Days"
+msgstr "Dias"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_res_partner__debt_collector_id
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_res_users__debt_collector_id
+#: model:ir.model.fields.selection,name:fxo_crm_team_extend.selection__crm_team__type_team__debt_collector
+msgid "Debt Collector"
+msgstr "Cobrador"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields.selection,name:fxo_crm_team_extend.selection__res_config_settings__default_debt_collector__equitably
+msgid "Debt Collector Equipment Rotation Equitably"
+msgstr "Rotracion del Equipo de Cobradores Equitativa"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_crm_team_router__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: fxo_crm_team_extend
+#: model_terms:ir.ui.view,arch_db:fxo_crm_team_extend.res_config_settings_view_form_extend
+msgid "Equipment Rotation Debt Collector"
+msgstr "Rotracion del Equipo de Cobradores"
+
+#. module: fxo_crm_team_extend
+#: model_terms:ir.ui.view,arch_db:fxo_crm_team_extend.res_config_settings_view_form_extend
+msgid "Equipment Rotation Sale"
+msgstr "Rotracion del Equipo de Ventas"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_crm_team_router__id
+msgid "ID"
+msgstr ""
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_crm_team_router____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_crm_team_router__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_crm_team_router__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_crm_team__router
+#: model_terms:ir.ui.view,arch_db:fxo_crm_team_extend.crm_team_view_form_extend
+msgid "Rotate Team"
+msgstr "Rotacion de Equipo"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields.selection,name:fxo_crm_team_extend.selection__res_config_settings__default_debt_collector__randomly
+msgid "Rotating Debt Collector Equipment Randomly"
+msgstr "Rotracion del Equipo de Cobradores Equitativa"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields.selection,name:fxo_crm_team_extend.selection__res_config_settings__default_team_router__randomly
+msgid "Rotating Selling Equipment Randomly"
+msgstr "Rotracion del Equipo de Cobradores Aleatoria"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields.selection,name:fxo_crm_team_extend.selection__crm_team__type_team__sale
+msgid "Sale"
+msgstr "Ventas"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model,name:fxo_crm_team_extend.model_crm_team
+msgid "Sales Team"
+msgstr "Equipo de Ventas"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields.selection,name:fxo_crm_team_extend.selection__res_config_settings__default_team_router__equitably
+msgid "Selling Equipment Rotation Equitably"
+msgstr "Rotracion del Equipo de Ventas Equitativa"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_crm_team_router__name
+msgid "Team"
+msgstr "Equipo"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model.fields,field_description:fxo_crm_team_extend.field_crm_team__type_team
+msgid "Type"
+msgstr "Tipo"
+
+#. module: fxo_crm_team_extend
+#: model:ir.model,name:fxo_crm_team_extend.model_crm_team_router
+msgid "crm.team.router"
+msgstr ""

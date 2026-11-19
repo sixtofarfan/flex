@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="purchase_order_form_inherit_import" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit.import</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <button name="button_unlock" position="after">
+                <button name="get_wizard_import" string="Importar Lineas" type="object" class="oe_highlight"/>
+            </button>
+            <field name="company_id" position="after">
+                <field name="search_company"/>
+            </field> 
+        </field>
+    </record>
+</odoo>

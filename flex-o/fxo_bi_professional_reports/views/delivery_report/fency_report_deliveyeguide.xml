@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    <template id="report_eguide">
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="header">
+                <script type="text/javascript">
+                    setInterval(function(){
+                        var str = document.getElementById("xxx").innerHTML;
+                        var res = str.substr(3, 11);
+                        document.getElementById("fechaxxx").innerHTML = res;
+                        });
+
+                </script>
+                <table style="text-align: center;" width="97%">
+                    <tr>
+                        <td width="25%">
+                            <br/>
+                            <div class="col-sm-4">
+                                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 100px;"/>
+                            </div>
+                        </td>
+                        <td width="45%" align="center">
+                            <br/><br/>
+                            <div style="font-size: 10px; text-align: center;">
+                                <b><span style="font-size: 11px;" t-field="company.name"/></b>
+                                <br/>
+                                <span t-field="company.partner_id.street"/>
+                                <t t-if="company.phone">
+                                    <br/>
+                                    Teléfono: <span t-field="company.phone"/>  <span t-if="company.partner_id.mobile" style="padding-left:6px;"> Móvil: <span t-field="company.partner_id.mobile"/></span>
+                                </t>
+                                <t t-if="company.email">
+                                    <br/>
+                                    E-mail: <span t-field="company.email"/>
+                                </t>
+                                <br/>
+                                <br/>
+                                <t t-if="o.picking_type_id.warehouse_id.name">
+                                    <br/>
+                                    Sucursal: <span t-field="o.picking_type_id.warehouse_id.partner_id.street"/>
+                                </t>
+                                <t t-if="o.picking_type_id.warehouse_id.partner_id.street">
+                                    <br/>
+                                    Dirección: <span t-field="o.picking_type_id.warehouse_id.partner_id.street"/>
+                                </t>
+                            </div>
+
+                        </td>
+                        <td width="30%">
+                            <br/><br/>
+
+                                         <div style="border: 2px solid; border-color:#055C9D; border-radius: 1em; font-size: 16px; height:100%">
+
+                                <p>
+                                    <br/>
+                                    R.U.C:
+                                        <t t-if="company.partner_id.vat">
+                                        <span t-field="company.partner_id.vat"/>
+                                        </t>
+                                        <t t-if="not company.partner_id.vat">
+                                        <span style="font-size: 0px; color: white;" id="xxx" t-field="company.partner_id.vat"/>
+                                        <span id="fechaxxx" />
+                                        </t>
+                                    <t t-if="o.pe_is_eguide">
+                                                                         <div style="background: #055C9D; width:100%; height:45px;  color:#FFFFFF">
+                                    <span><b>GUÍA DE REMISIÓN ELECTRÓNICAAA</b></span><br/><br/>
+                                                                         </div>
+                                    <t t-if="o.pe_guide_number">
+                                    <span style="color: red;" t-field="o.pe_guide_number" />
+                                    </t>
+                                    <t t-if="o.pe_guide_number=='/'">
+                                    <span style="color: red;" t-field="o.name" />
+                                    </t>
+                                    </t>
+                                    <t t-if="not o.pe_is_eguide">
+                                                                            <div style="background: #055C9D; width:100%; height:45px;  color:#FFFFFF">
+                                    <span><b>GUÍA DE REMISIÓN TRANSPORTISTA</b></span><br/><br/>
+                                                                         </div>
+                                    <span style="color: red;" t-field="o.numberg"/>
+                                    </t>
+                                    <br/>
+                                </p>
+
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="footer">
+                <div class="row">
+                                          <div style="border: 1px solid #055C9D; width:  240mm; border-color:#055C9D; "/>
+                    <br/>
+                    <div class="text-center" style="width: 190mm; padding-left: 40mm; font-size: 11px;">
+                        <ul class="list-inline">
+                            <li t-if="company.phone"><i class="fa fa-phone"/> <span t-field="company.phone"/></li>
+                            <li t-if="company.email"><i class="fa fa-at"/> <span t-field="company.email"/></li>
+                            <li t-if="company.website"><i class="fa fa-globe"/> <span t-field="company.website"/></li>
+                            <li t-if="company.vat"><i class="fa fa-building-o"/><t t-esc="company.country_id.vat_label or 'TIN'"/>:
+                            <t  t-if="company.partner_id.doc_number" ><span t-field="company.partner_id.doc_number"/></t>
+                            <t t-if="not company.partner_id.doc_number"> <span t-field="company.vat"/> </t></li>
+                            <span t-field="company.report_header"/>
+                        </ul>
+                        <div class="text-muted">
+                            Pagina:
+                            <span class="page"/>
+                            /
+                            <span class="topage"/>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+ <t t-call="web.external_layout">
+    <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+    <div class="page">
+        <div class="oe_structure"/>
+
+            <br/>
+            <table width="100%" style="background: white;">
+                <tr>
+                    <td width="50%" style="background: white;border: 1px solid #055C9D;">
+                        <div  style="font:12px lucida-console,sans-serif !important;" >
+                            <b><span style="background-color:#FFF;">Datos de Inicio de Traslado:</span></b><br/>
+                                         <t>
+                                <span>Tipo de operación: <span t-att-style="fontsize" t-field="o.type_operation_sunat_id"/></span><br/>
+                            </t>
+
+                            <t>
+                                <span>Fecha de Emision: <span t-att-style="fontsize" t-field="o.scheduled_date"/></span><br/>
+                            </t>
+                            <t >
+                                <span>Fecha inicio de translado: <span t-att-style="fontsize" t-field="o.transfer_date"/></span><br/>
+                            </t>
+                            <t >
+                                <span>Modo de Transporte: <span t-att-style="fontsize" t-field="o.type_of_transport"/></span><br/>
+                            </t>
+                            <t >
+                                <span>Factura (origen):
+                                                                <span style="text-align:center;" t-att-style="fontsize" t-field="o.invoice_id"/>
+                                <t t-if="o.pe_invoice_name">
+                                    <span style="text-align:center;" t-att-style="fontsize" t-field="o.invoice_id"/>
+                                </t>
+                                </span><br/>
+                            </t>
+                            <t>
+                                <span>Orden (origen): <span t-att-style="fontsize" t-field="o.origin"/></span><br/>
+                            </t>
+                        </div>
+                    </td>
+                    <td  width="50%" style="background: white;border: 1px solid #055C9D;">
+                        <div style="font:12px lucida-console,sans-serif !important;" >
+                            <b><span style="">Datos del Cliente:</span></b><br/>
+                            <span t-field="o.partner_id" /><br/>
+                            <span>Dirección: <span  t-field="o.partner_id.street" /><br/></span>
+                                                           <t t-if="o.partner_id.vat">
+                                   RUC/DNI: <span t-field="o.partner_id.vat"/>
+                                </t>
+                                <t t-if="not o.partner_id.vat">
+                                    RUC/DNI: <span id="xxx" t-field="o.partner_id.vat"/>
+                                     <span id="fechaxxx" t-field="o.partner_id.vat"/>
+                                </t>
+
+                            <br/>
+                            <span >Telefono: <span  t-field="o.partner_id.phone" /></span>
+                            <span  style="padding-left:7px;">Celular: <span  t-field="o.partner_id.mobile" /><br/></span>
+                            <span>Correo: <span  t-field="o.partner_id.email" /></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <p/>
+
+            <table width="100%" style="background: white;">
+                <tr>
+                    <td style="background: white;border: 1px solid #055C9D;">
+                        <div class="col-xs-6" style="font:12px lucida-console,sans-serif !important;" >
+                            <b><span style="">DIRECCIÓN DE SALIDA: </span></b>
+                            <t t-if="o.starting_point">
+                                <span t-att-style="fontsize" t-field="o.starting_point"/><br/>
+                            </t>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background: white;border: 1px solid #055C9D;">
+                        <div class="col-xs-6" style="font:12px lucida-console,sans-serif !important;" >
+                            <b><span style="">DIRECCIÓN DE LLEGADA: </span></b>
+                            <t t-if="o.ending_point">
+                                <span t-att-style="fontsize" t-field="o.ending_point"/><br/>
+                            </t>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%" style="border: 1px solid #055C9D; background: white; font:13px lucida-console,sans-serif !important; table-layout:fixed;">
+                <tr style="color: #000000; ">
+                                    <th  width="150px" style="background: #055C9D;border: 1px solid #055C9D; text-align: center; color: #FFFFFF">CÓDIGO</th>
+                                    <th  style="background: #055C9D;border: 1px solid #055C9D;text-align: center;color: #FFFFFF">DESCRIPCION</th>
+                    <th  width="90px" style="background: #055C9D;border: 1px solid #055C9D; text-align: center; color: #FFFFFF">CANTIDAD</th>
+                    <th  width="90px" style="background: #055C9D; border: 1px solid #055C9D; text-align: center; color: #FFFFFF">UNIDADES</th>
+                </tr>
+                <tr t-foreach="o.move_lines" t-as="move">
+                                        <td style="background: white;">
+                        <t t-if="move.product_id.product_tmpl_id.barcode">
+                                                 <!-- <span t-field="l.product_id.product_tmpl_id.barcode"/>-->
+                            <span t-att-style="fontsize" t-field="move.product_id.product_tmpl_id.barcode"/>
+                        </t>
+                    </td>
+
+                    <td style="background: white;">
+                        <t t-if="move.description">
+                            <span t-att-style="fontsize" t-field="move.description"/>
+                        </t>
+                    </td>
+
+                    <td style="background: white;">
+                        <t t-if="move.quantity_done">
+                            <span t-att-style="fontsize" t-field="move.quantity_done"/>
+                        </t>
+                    </td>
+                    <td style="background: white;">
+                        <t t-if="move.product_uom">
+                            <span t-att-style="fontsize" t-field="move.product_uom"/>
+                        </t>
+                    </td>
+
+                </tr>
+            </table>
+            <p/>
+
+            <table width="100%" style="border: 1px solid white; background: white; font:12px lucida-console,sans-serif !important; table-layout:fixed;">
+                <tr style="border: 1px solid white;">
+                    <td style="background:white; border: 1px solid white;" >
+                        <div style="font:12px lucida-console,sans-serif !important; border: 1px solid white;" >
+                            <b><span style="">Datos del Transporte:</span></b><br/>
+                            <span>RUC: <span  t-field="o.carrier_id_it.vat" /><br/></span>
+                            <span>Transportista: <span  t-field="o.carrier_id_it" /><br/></span>
+                            <span>Vehiculo marca: <span  t-field="o.vehicle_id" /></span>
+                            <span>  Placa: <span  t-field="o.vehicle_id.licence_plate" /><br/></span>
+                            <span>N° Constancia inscripción: <span  t-field="o.vehicle_id.location" /><br/></span>
+                            <span>Conductor: <span  t-field="o.driver_id" /><br/></span>
+                            <span>Lic de conducir: <span  t-field="o.driver_id.number_driver_licence" /><br/></span>
+                            <span>Observaciones: <span  t-field="o.note" /><br/></span>
+                        </div>
+                    </td>
+                    <td style="background:white;border: 1px solid white;">
+                        <div style="font:12px lucida-console,sans-serif !important; text-align: center; border: 1px solid white;" t-if="o.pe_is_eguide and o.pe_guide_number!='/'" >
+                            <br/>
+                            <img t-if="o.sunat_pdf417_code" t-att-src="'data:image/png;base64,%s' % to_text(o.sunat_pdf417_code)" style="width: 315px;  height: 58px;" /><br/>
+                            <t  t-if="o.pe_is_eguide" style="font-size: 8px;" class="text-center" >
+                                Representacion impresa de:
+                                <span t-field="o.partner_id.vat"/>, consulte en
+                                <span t-field="o.company_id.website"/>.
+                            </t>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid white;">
+                    <td colspan="2"  style="background:white; border: 1px solid white;">
+                        <div style="border: 1px solid white; margin-top:-14px; font:12px lucida-console,sans-serif !important;" >
+                            <br/>
+                                <t t-if="o.pe_is_eguide" >
+                                    <t t-if="o.pe_digest">
+                                        <div style="">
+                                            <span><strong>Resumen: </strong></span><br/><span t-field="o.pe_digest"/>
+                                        </div>
+                                    </t>
+                                </t>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+      </t>
+
+    </template>
+

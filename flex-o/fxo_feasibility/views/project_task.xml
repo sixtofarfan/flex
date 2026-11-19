@@ -1,0 +1,58 @@
+<odoo>
+    <record id="view_task_search_form_feasibility" model="ir.ui.view">
+        <field name="name">project.task.search.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+            <search position="inside">
+                <filter string="Hoy" name="date_deadline_hoy_filter" domain="[
+                ('date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter name="date_deadline_week_filter" string="Esta Semana" domain="[
+                        ('date_deadline', '>=', (datetime.datetime.combine(context_today() + relativedelta(weeks=-1,days=1,weekday=0), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S')),
+                        ('date_deadline', '&lt;', (datetime.datetime.combine(context_today() + relativedelta(days=1,weekday=0), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+                <filter string="Últimas 2 Semanas" name="date_deadline_week_2_filter"
+                        domain="[('date_deadline', '&gt;=', (context_today() + relativedelta(weeks=-2)).strftime('%Y-%m-%d')),
+                        ('date_deadline', '&lt;=', (context_today().strftime('%Y-%m-%d')))]"/>
+                <filter string="Fecha límite" name="date_deadline" date="date_deadline"/>
+            </search>
+            <group position="inside">
+                <filter string="Fecha límite" name="groupby_date_deadline" domain="[]"
+                        context="{'group_by': 'date_deadline'}"/>
+            </group>
+        </field>
+    </record>
+
+
+    <record id="view_project_feasibility" model="ir.ui.view">
+        <field name="name">project.project.tree</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="type_id"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="view_project_task_feasibility" model="ir.ui.view">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project_category.project_task_form"/>
+        <field name="arch" type="xml">
+            <field name="type_id" position="replace">
+                <field name="type_id" string="Tipo de Proyecto" context="{'default_task_ok': True}"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_project_task_feasibility_tree" model="ir.ui.view">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="type_id" string="Tipo de Proyecto"/>
+            </field>
+        </field>
+    </record>
+</odoo>

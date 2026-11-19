@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+	<record model="ir.ui.view" id="view_move_form">
+		<field name="name">account.move.form.inherit.annul</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//button[@name='button_cancel']" position="after">
+				<button name="button_annul" class="btn btn-danger" type="object" confirm="Are you sure you want to annul this invoice in the Sunat?" string="Annul Invoice" attrs="{'invisible':['|', '|', '|', ('state', '!=', 'posted'), ('annul', '!=', False), ('invoice_sent', '=', True), ('type','in',('entry','bill')), ]}" groups="account.group_account_invoice" />
+				<button name="button_annul"                        type="object" confirm="Are you sure you want to annul this invoice in the Sunat?" string="Annul Invoice" attrs="{'invisible':['|', '|', '|', ('state', '!=', 'posted'), ('annul', '!=', False), ('invoice_sent', '=', False), ('type','in',('entry','bill')), ]}" groups="account.group_account_invoice" />
+			</xpath>
+			<xpath expr="//field[@name='currency_id']" position="after">
+				<field name="annul" invisible="1"/>
+				<!-- attrs="{'invisible':[('annul','=',False)]}" /> -->
+			</xpath>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="view_invoice_tree">
+		<field name="name">account.invoice.tree.inherit.annul</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_invoice_tree" />
+		<field name="arch" type="xml">
+			<xpath expr="//tree" position="attributes">
+				<attribute name="decoration-muted">state in ['cancel']</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="view_account_invoice_report_search">
+		<field name="name">account.invoice.report.search.inherit.annul</field>
+		<field name="model">account.invoice.report</field>
+		<field name="inherit_id" ref="account.view_account_invoice_report_search"/>
+		<field name="arch" type="xml">
+			<xpath expr="//filter[@name='current']" position="attributes">
+				<attribute name="domain">[('state','not in', ('draft','cancel'))]</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="view_account_invoice_filter_inherit">
+		<field name="name">account.invoice.filter.inherit.annul</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_account_invoice_filter"/>
+		<field name="arch" type="xml">
+			<filter name="due_date" position="after">
+				<filter name="annul" string="Annuled" domain="[('annul', '=', True)]"/>
+			</filter>
+		</field>
+	</record>
+
+</odoo>

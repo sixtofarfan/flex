@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+        <!-- Add you code here -->
+        <!-- order.scheduling.report form view -->
+        <record id="order_scheduling_report_view_form" model="ir.ui.view">
+            <field name="name">order.scheduling.report.view.form</field>
+            <field name="model">order.scheduling.report</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name"/>                          
+                        </group>
+                        <notebook>
+                            <page string="Detail" name="detail">
+                                <field name="line_id">
+                                    <tree string="Detail" editable="bottom">
+                                        <field name="name" />
+                                        <field name="category"/>
+                                        <field name="qty" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="report02" name="report02">
+                                <field name="note_ids">
+                                    <tree string="report02" editable="bottom">
+                                        <field name="name" />
+                                        <field name="category" />
+                                        <field name="subscription_id" />
+                                        <field name="note_order" />
+                                        <field name="report_id" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Report03" name="report03">
+                                <field name="product_id">
+                                    <tree string="report03" editable="bottom">
+                                        <field name="name" />
+                                        <field name="type_producto" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+        <record id="order_scheduling_report_view_tree" model="ir.ui.view">
+            <field name="name">order.scheduling.report.view.tree</field>
+            <field name="model">order.scheduling.report</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+         <record id="order_scheduling_report_type_action" model="ir.actions.act_window">
+            <field name="name">Report 1</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">order.scheduling.report</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action  -->
+        <menuitem id="order_scheduling_report_menu" name="Report 1" 
+                    parent="sale.sale_order_menu" 
+                    action="order_scheduling_report_type_action" 
+                    sequence="25"/>
+       
+    </data>
+</odoo>

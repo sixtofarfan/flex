@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+    <record id="view_f2_balance_search_view" model="ir.ui.view">
+        <field name="name">f2.balance.tree.search</field>
+        <field name="model">f2.balance</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <search>
+                <field name="mayor"/>
+                <field name="nomenclatura"/>
+                <group expand='0' string='Group by...'>
+                    <filter string='Mayor' name="mayor_id" context="{'group_by': 'mayor'}"/>
+                    <filter string='Nomenclatura' name="nomenclatura_id" context="{'group_by': 'nomenclatura'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_f2_balance_pivot" model="ir.ui.view">
+        <field name="name">f2.balance.pivot</field>
+        <field name="model">f2.balance</field>
+        <field name="arch" type="xml">
+            <pivot disable_linking="True">
+                <field name="saldo_deudor"  type="measure" string="Saldo deudor"/>
+                <field name="saldo_acreedor"  type="measure" string="Saldo acreedor"/>
+                <field name="mayor" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_f2_balance_graph" model="ir.ui.view">
+        <field name="name">f2.balance.graph</field>
+        <field name="model">f2.balance</field>
+        <field name="arch" type="xml">
+            <graph stacked="True">
+                <field name="saldo_deudor"  type="measure" string="Saldo deudor"/>
+                <field name="saldo_acreedor"  type="measure" string="Saldo acreedor"/>
+                <field name="mayor" type="row"/>
+            </graph>
+        </field>
+    </record>
+
+	</data>
+</odoo>

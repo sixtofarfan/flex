@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <template id="portal_my_purchase_orders_inherit" inherit_id="purchase.portal_my_purchase_orders">
+            <xpath expr="//tr[hasclass('active')]/th[2]" position="after">
+                <th>Project</th>
+                <th>Project State</th>
+            </xpath>            
+            <xpath expr="//tr[hasclass('active')]/th[6]" position="after">
+                <th>Order State</th>
+            </xpath>
+            <xpath expr="//tbody/t/tr/td[2]" position="after">
+                <td><span t-field="order.project_id"/></td>
+                <td><span t-field="order.project_status"/></td>
+            </xpath>        
+            <xpath expr="//tbody/t/tr/td[6]" position="after">
+                <td><span t-field="order.state"/></td>
+            </xpath>
+        </template>
+
+        <template id="portal_my_purchase_order_inherit" inherit_id="purchase.portal_my_purchase_order">
+            <xpath expr="//div[hasclass('container')]" position="after">
+                <div t-if="order.is_closed or order.task_state == 'done'">
+                    <!-- chatter -->
+                    <div id="purchase_order_communication" class="mt-4">
+                        <h2>History</h2>
+                        <t t-call="portal.message_thread">
+                            <t t-set="object" t-value="purchase_order"/>
+                        </t>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

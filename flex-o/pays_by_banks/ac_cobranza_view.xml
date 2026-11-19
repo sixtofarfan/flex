@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+        <record id="view_recaudacion_diaria_directa_recaudacion_form" model="ir.ui.view">
+            <field name="name">recaudacion.diaria.directa.recaudacion.form</field>
+            <field name="model">recaudacion.diaria.directa.recaudacion</field>
+            <field name="arch" type="xml">
+                <form string="Recaudacion Diaria">
+                            <group>
+                                        <field name="factura_id" readonly="1"/>
+                                        <field name="pago_id" readonly="1"/> 
+                            </group>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="view_recaudacion_diaria_directa_formasdf" model="ir.ui.view">
+            <field name="name">recaudacion.diaria.directa.form</field>
+            <field name="model">recaudacion.diaria.directa</field>
+            <field name="arch" type="xml">
+                <form string="Recaudacion Diaria">
+                    <header>
+                        <button name="recaudar" string="Procesar" states="draft" type="object"  class="oe_highlight"/>
+                        <button name="pagado" string="Registrar Pagos" states="process" type="object" class="oe_highlight" />
+                        <button name="borrador" string="Regresar Borrador" states="process" type="object" class="oe_highlight" />
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                    <div class="oe_title">                      
+                        <h1>
+                            <strong>Recaudación Diaria: </strong>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="banco" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="date" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="nombre_archivo" invisible="1"/>
+                            <field name="archivo" required="1" filename="nombre_archivo" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        </group>
+                        <group>
+                            <field name="cash_flow_id" required="0" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="catalog_payment_id" required="0" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="type_doc_cash_id" required="0" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="cash_nro_comp" required="0" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="payment_method_id" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Recaudado">
+                            <group>
+
+                                <field name="recaudacion_ids" nolabel="1" readonly="1">
+                                    <tree decoration-it="factura_id == False"
+                                        decoration-bf="pago_id == False"
+                                        decoration-info="pago_id"
+                                        editable="top" create="0" delete="0">
+                                        <field name="partner" readonly="1"/>
+                                        <field name="factura_name" readonly="1"/>
+                                        <field name="fecha" readonly="1"/>
+                                        <field name="moneda" readonly="1"/>                                        
+                                        <field name="monto" readonly="1"/>  
+                                        <field name="factura_id" invisible="1"/>  
+                                        <field name="pago_id" invisible="1"/>    
+                                        <field name="state" readonly="1"/>                                                                  
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_recaudacion_diaria_directa_tree" model="ir.ui.view">
+            <field name="name">recaudacion.diaria.directa.tree</field>
+            <field name="model">recaudacion.diaria.directa</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Recaudacion Diaria">
+                    <field name="name"/>
+                    <field name="banco"/>
+                    <field name="date" />
+                    <field name="state"  />                            
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="recaudacion_diaria_directa_action" model="ir.actions.act_window">
+            <field name="name">Recaudacion Diaria</field>
+            <field name="res_model">recaudacion.diaria.directa</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem name="Recaudacion Bancaria" id="proceso_menu_odoo_principal" parent="account.menu_finance_receivables"
+         sequence="1" />
+
+        <menuitem name="Recaudacion Bancaria" id="menu_recaudacion_diaria_directaodoo" action="recaudacion_diaria_directa_action" parent="proceso_menu_odoo_principal"  sequence="1" />
+
+
+
+
+        <record id="view_recaudacion_diaria_directa_tree_bancos" model="ir.ui.view">
+            <field name="name">banco.recaudacion.directa.tree</field>
+            <field name="model">banco.recaudacion.directa</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Bancos" editable="bottom">
+                    <field name="banco" required="1"/>
+                    <field name="diario" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="banco_recaudacion_action_odoo" model="ir.actions.act_window">
+            <field name="name">Bancos</field>
+            <field name="res_model">banco.recaudacion.directa</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+        <menuitem name="Bancos Odoo" id="menu_bancos_recaudacion_odoo" action="banco_recaudacion_action_odoo" parent="proceso_menu_odoo_principal"  sequence="1" />
+
+
+
+
+
+    </data>
+</odoo>

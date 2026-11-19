@@ -1,0 +1,28 @@
+
+<odoo>
+    <data>
+        <!-- project.task inherit form view -->
+        <record id="view_id" model="ir.ui.view">
+            <field name="name">project.task.inherit.view.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                   <field name="is_template"/>
+                </xpath>
+
+                <xpath expr="//page[@name='extra_info']" position="after">
+                    <page string="Parameters" name="parameters" attrs="{'invisible':[('is_template','=',False)]}">
+                        <group>
+                            <field name="is_move_stage_task"/>
+                            <field name="is_begin_end_task" widget="radio" />
+                            <field name="start_days"/>
+                            <field name="term_days"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,36 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* jp_account_invoice_detraction
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-16 14:42+0000\n"
+"PO-Revision-Date: 2019-10-16 14:42+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: jp_account_invoice_detraction
+#: model:ir.model.fields,field_description:jp_account_invoice_detraction.field_account_payment__detraction_amount
+msgid "Detraction amount"
+msgstr "Total detracción"
+
+#. module: jp_account_invoice_detraction
+#: model:ir.model.fields,field_description:jp_account_invoice_detraction.field_account_payment__is_detraction
+msgid "Is detraction?"
+msgstr "Es detracción?"
+
+#. module: jp_account_invoice_detraction
+#: model:ir.model,name:jp_account_invoice_detraction.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: jp_account_invoice_detraction
+#: model:ir.model.fields,field_description:jp_account_invoice_detraction.field_account_payment__detraction_percent
+msgid "Percentage"
+msgstr "Porcentaje"

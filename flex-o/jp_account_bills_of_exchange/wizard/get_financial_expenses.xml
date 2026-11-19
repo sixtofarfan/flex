@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_financial_expenses_wizard" model="ir.ui.view">
+            <field name="name">financial.expenses.wizard.form</field>
+            <field name="model">financial.expenses.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Financial Expenses Wizard">
+                    <group>
+                        <group>
+                            <field name="protest_journal_id" required="1"/>
+                            <field name="protest_date" required="1"/>
+                            <field name="different_journal" invisible="1"/>
+                            <field name="journal_id" attrs="{'invisible': [('different_journal','=',False)], 'required': [('different_journal','=',True)]}" domain="[('type','=','bank')]"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="bank_interests" invisible="context.get('disbursed')"/>
+                            <field name="financial_expenses" invisible="context.get('disbursed')"/>
+                        </group>
+                        <group>
+                            <field name="custom_exchange_rate"/>
+                            <field name="exchange_rate" force_save="1" attrs="{'readonly': [('custom_exchange_rate','=',False)]}"/>
+                            <!-- <field name="gloss"/> -->
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Protest" name="send_expenses" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <record id="crm_team_form_inherit" model="ir.ui.view">
+            <field name="name">crm.team.form.inherit</field>
+            <field name="model">crm.team</field>
+            <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='members']" position="after">
+                    <page string="Aprobadores Cliente Declarado" name="approval2_ids">
+                        <field name="approval2_ids"/>
+                    </page>
+                </xpath>
+            </field>    
+        </record>
+    </data>
+</odoo>

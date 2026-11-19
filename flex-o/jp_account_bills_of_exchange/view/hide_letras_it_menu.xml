@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- <menuitem id="menu_account_letras_payment_manual_receivables" name="Letras"
+                parent="account.menu_finance_receivables"
+                action="action_account_letras_payment_manual_receivables"
+                sequence="2"/>
+
+
+    <menuitem id="menu_account_letras_payment_manual_payables" name="Letras"
+                parent="account.menu_finance_payables"
+                action="action_account_letras_payment_manual_payables"
+                sequence="2"/>
+
+    <menuitem id="menu_account_letras_payment_receivables" name="Canje de Letras"
+                parent="account.menu_finance_receivables"
+                action="action_account_letras_payment_receivables"
+                sequence="3"/>
+
+    <menuitem id="menu_account_letras_payment_payables" name="Canje de Letras"
+                parent="account.menu_finance_payables"
+                action="action_account_letras_payment_payables"
+                sequence="3"/> -->
+
+    <data noupdate="1">
+
+        <delete model="ir.ui.menu" id="account_letras_it.menu_account_letras_payment_manual_receivables"/>
+        <delete model="ir.ui.menu" id="account_letras_it.menu_account_letras_payment_manual_payables"/>
+        <delete model="ir.ui.menu" id="account_letras_it.menu_account_letras_payment_receivables"/>
+        <delete model="ir.ui.menu" id="account_letras_it.menu_account_letras_payment_payables"/>
+
+    </data>
+
+</odoo>

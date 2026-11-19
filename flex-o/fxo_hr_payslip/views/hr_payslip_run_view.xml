@@ -1,0 +1,122 @@
+<odoo>    
+	<record id="hr_payslip_run_view_pivot" model="ir.ui.view">
+		<field name="name">hr.payslip.run.view.pivot</field>
+		<field name="model">hr.payslip.run.view</field>
+		<field name="arch" type="xml">
+			<pivot>
+				<field name="employee_id" type="row"/>
+				<field name="code" type="col"/>
+				<field name="total" type="measure"/>
+			</pivot>
+		</field>
+	</record>
+	<record id="hr_payslip_run_view_graph" model="ir.ui.view">
+		<field name="name">hr.payslip.run.view.graph</field>
+		<field name="model">hr.payslip.run.view</field>
+		<field name="arch" type="xml">
+			<graph>
+				<field name="employee_id" type="row"/>
+				<field name="code" type="row"/>
+				<field name="total"  type="measure" string="Monto"/>
+			</graph>
+		</field>
+	</record>
+	<record id="hr_payslip_run_view_tree" model="ir.ui.view">
+		<field name="name">hr.payslip.run.view.tree</field>
+		<field name="model">hr.payslip.run.view</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="employee_id"/>
+				<field name="identification_id"/>
+				<field name="date_start"/>
+				<field name="membership"/>
+				<field name="code"/>
+				<field name="department"/>
+				<field name="worker_type"/>
+				<field name="job"/>
+				<field name="analytic_account"/>
+				<field name="distribution"/>
+				<field name="membership"/>
+				<field name="social_insurance"/>
+				<field name="workday"/>
+				<field name="labor_regime"/>
+				<field name="payslip_run_id"/>
+				<field name="payslip_id"/>
+				<field name="total"/>
+				<field name="structure_id"/>
+				<field name="calendar_id"/>
+				<field name="template_id"/>
+				<field name="commision_type"/>
+				<field name="situation"/>
+				<field name="sctr"/>
+				<field name="company_id"/>
+			</tree>
+		</field>
+	</record>
+	<record id="hr_payslip_run_view_search" model="ir.ui.view">
+		<field name="name">hr.payslip.run.view.search</field>
+		<field name="model">hr.payslip.run.view</field>
+		<field name="arch" type="xml">
+			<search string="Asset Account">
+				<field name="employee_id"/>
+				<field name="identification_id"/>
+				<field name="date_start"/>
+				<field name="membership"/>
+				<field name="code"/>
+				<field name="department"/>
+				<field name="worker_type"/>
+				<field name="job"/>
+				<field name="analytic_account"/>
+				<field name="distribution"/>
+				<field name="membership"/>
+				<field name="social_insurance"/>
+				<field name="workday"/>
+				<field name="labor_regime"/>
+				<field name="payslip_run_id"/>
+				<field name="payslip_id"/>
+				<field name="structure_id"/>
+				<field name="calendar_id"/>
+				<field name="template_id"/>
+				<field name="commision_type"/>
+				<field name="situation"/>
+				<field name="sctr"/>
+				<field name="company_id"/>
+				<group expand="0" string="Group By...">
+					<filter string="Lote" name="payslip_run_id" domain="[]" context="{'group_by': 'payslip_run_id'}"/>
+					<filter string="Nomina" name="payslip_id" domain="[]" context="{'group_by': 'payslip_id'}"/>
+					<filter string="Regla Salarial" name="code" domain="[]" context="{'group_by': 'code'}"/>
+					<filter string="Empleado" name="employee_id" domain="[]" context="{'group_by': 'employee_id'}"/>
+					<filter string="Departamento" name="department" domain="[]" context="{'group_by': 'department'}"/>
+					<filter string="Tipo de Trabajador" name="worker_type" domain="[]" context="{'group_by': 'worker_type'}"/>
+					<filter string="Puesto de Trabajo" name="job" domain="[]" context="{'group_by': 'job'}"/>
+					<filter string="Cuenta Analitica" name="analytic_account" domain="[]" context="{'group_by': 'analytic_account'}"/>
+					<filter string="Afiliacion" name="membership" domain="[]" context="{'group_by': 'membership'}"/>
+					<filter string="Distribucion Analitica" name="distribution" domain="[]" context="{'group_by': 'distribution'}"/>
+					<filter string="Seguro Social" name="social_insurance" domain="[]" context="{'group_by': 'social_insurance'}"/>
+					<filter string="Jornada Laboral" name="workday" domain="[]" context="{'group_by': 'workday'}"/>
+					<filter string="Estructura Salarial" name="structure_id" domain="[]" context="{'group_by': 'structure_id'}"/>
+					<filter string="Planificacion de Trabajo" name="calendar_id" domain="[]" context="{'group_by': 'calendar_id'}"/>
+					<filter string="Plantilla de Contrato" name="template_id" domain="[]" context="{'group_by': 'template_id'}"/>
+					<filter string="Tipo de Comision" name="commision_type" domain="[]" context="{'group_by': 'commision_type'}"/>
+					<filter string="Situacion" name="situation" domain="[]" context="{'group_by': 'situation'}"/>
+					<filter string="SCTR" name="sctr" domain="[]" context="{'group_by': 'sctr'}"/>
+					<filter string="Compañia" name="company_id" domain="[]" context="{'group_by': 'company_id'}"/>
+				</group>
+			</search>
+		</field>
+	</record>
+	<record id="hr_payslip_run_view_action" model="ir.actions.server">
+		<field name="name">Analisis de Planillas</field>
+		<field name="model_id" ref="fxo_hr_payslip.model_hr_payslip_run_view"/>
+		<field name="binding_model_id" ref="fxo_hr_payslip.model_hr_payslip_run_view"/>
+		<field name="state">code</field>
+		<field name="code">action = model.get_payslip_run_view()</field>
+	</record>
+	<menuitem
+		action="fxo_hr_payslip.hr_payslip_run_view_action"
+		id="menu_hr_payslip_run_view"
+		parent="hr_payroll.menu_hr_payroll_report"
+		sequence="2"
+		groups="hr_payroll.group_hr_payroll_manager"
+	/>
+</odoo>

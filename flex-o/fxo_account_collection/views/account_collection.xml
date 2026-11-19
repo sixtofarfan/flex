@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="account_collection_form" model="ir.ui.view">
+		<field name="name">account.collection.form</field>
+		<field name="model">account.collection</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="get_collection_import" string="Importar Pagos" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('collection_type', '!=', 'charge'), ('state', '!=', 'draft')]}"/>
+					<button name="generate_xls_collection" string="Generar Excel" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('collection_type', '!=', 'shipping'), ('state', '!=', 'draft')]}"/>
+					<button name="set_draft" string="Volver a Borrador" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('state', '=', 'draft'), ('collection_type', '!=', 'shipping')]}"/>
+					<button name="set_draft" string="Volver a Borrador" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('state', '=', 'draft'), ('collection_type', '!=', 'charge')]}" confirm="¿Esta seguro que desea volver a Borrador?, este proceso cambiara a estado borrador todos los pagos y rompera conciliaciones en las facturas"/>
+					<button name="set_confirmed" string="Confirmar" type="object" class="oe_highlight" states="draft"/>
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+					<group>
+						<group>
+							<field name="journal_id"/>
+							<field name="type" invisible="1"/>
+							<field name="collection_type"/>
+						</group>
+						<group>
+							<field name="date"/>
+							<field name="output_name" invisible="1"/>
+							<field name="file" widget="file" filename="output_name"/>
+							<field name="company_id" groups="base.group_multi_company"/>
+						</group>
+					</group>
+					<notebook attrs="{'invisible': [('collection_type', '!=', 'charge')]}">
+						<page id="record_lines" string="Cobros">
+							<field name="record_ids">
+								<tree>
+									<field name="payment_id"/>
+									<field name="move_id"/>
+									<field name="partner_id"/>
+									<field name="ref"/>
+									<field name="amount"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="account_collection_tree" model="ir.ui.view">
+		<field name="name">account.collection.tree</field>
+		<field name="model">account.collection</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="type"/>
+				<field name="collection_type"/>
+				<field name="date"/>
+				<field name="company_id"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+	<record id="account_collection_search" model="ir.ui.view">
+		<field name="name">account.collection.search</field>
+        <field name="model">account.collection</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="collection_type"/>
+                <field name="date"/>
+                <field name="state"/>
+                <group expand="0" string="Group By">
+                    <filter name="date" string="Fecha" domain="[]" context="{'group_by':'date'}"/>
+                    <filter name="type" string="Banco" domain="[]" context="{'group_by':'type'}"/>
+                    <filter name="collection_type" string="Tipo de Proceso" domain="[]" context="{'group_by':'collection_type'}"/>
+                    <filter name="state" string="Estado" domain="[]" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+	<record id="action_account_collection" model="ir.actions.act_window">
+		<field name="name">Recaudacion Manual</field>
+		<field name="res_model">account.collection</field>
+		<field name="view_mode">tree,form</field>
+		<field name="search_view_id" ref="account_collection_search"/>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Crea tu primera tabla de Recaudacion Manual aqui
+			</p>
+		</field>
+	</record>
+	<menuitem
+		id="menu_account_collection"
+		action="action_account_collection"
+		parent="account_base_it.menu_treasury"
+		sequence="10"
+		groups="account.group_account_manager"
+	/>
+	<menuitem
+		id="menu_account_collection_invoice"
+		action="action_account_collection"
+		parent="account.menu_finance_receivables"
+		sequence="10"
+		groups="account.group_account_invoice"
+	/>
+</odoo>

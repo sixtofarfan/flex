@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_fxo_feasibility_update_pricelist_wzd" model="ir.ui.view">
+            <field name="name">fxo_feasibility.update_pricelist_wzd.form</field>
+            <field name="model">fxo_feasibility.update_pricelist_wzd</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="company_id" invisible="1"/>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="pricelist_id" attrs="{'invisible':[('type','=','add_pricelist_automatic')],
+                                                               'required':[('type','=','add_pricelist_manual')] }"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Actualizar Tarifa"
+                                confirm="¿Está seguro que desea actualizar la tarifa de los elementos seleccionados?"
+                                name="update_pricelist_wzd" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+<!--        <act_window id="view_fxo_feasibility_update_pricelist_action"-->
+<!--                    name="Actualizar Tarifa"-->
+<!--                    binding_model="sale.order.line.qty_street"-->
+<!--                    res_model="fxo_feasibility.update_pricelist_wzd"-->
+<!--                    view_mode="form"-->
+<!--                    target="new"-->
+<!--                    groups="group_add_pricelist"-->
+<!--        />-->
+
+
+        <record id="view_fxo_feasibility_update_pricelist_action_new" model="ir.actions.server">
+            <field name="name">Actualizar Tarifa</field>
+            <field name="model_id" ref="fxo_feasibility.model_sale_order_line_qty_street"/>
+            <field name="binding_model_id" ref="fxo_feasibility.model_sale_order_line_qty_street"/>
+            <field name="state">code</field>
+            <field name="code">action = records.get_update_pricelist_wizard()</field>
+        </record>
+
+    </data>
+</odoo>

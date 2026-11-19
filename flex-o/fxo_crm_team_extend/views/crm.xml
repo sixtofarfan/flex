@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- crm.team inherit form view -->
+        <record id="crm_team_view_form_extend" model="ir.ui.view">
+            <field name="name">crm.team.inherit.view.form</field>
+            <field name="model">crm.team</field>
+            <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="before">
+                    <field name="type_team" widget="radio"/>
+                </field>
+                <group name="right" position="inside">
+                    <field name="destination_sales_team" 
+                            widget="many2many_tags" 
+                            placeholder=" Equipo de ventas destino despues de venta finalizada a cliente"
+                            options="{'no_create_edit': True}" 
+                            help="Equipo de ventas destino despues de venta finalizada a cliente" />
+                    <field name="expiration_days" help="Dias de permanencia después de confirmar primera venta (pasado estos dias cambiará automáticamente a equipo destino)" />
+                    <field name="assign_method"  />
+                </group>
+            </field>
+        </record>
+    </data>
+</odoo>

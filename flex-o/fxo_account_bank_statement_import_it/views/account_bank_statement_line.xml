@@ -1,0 +1,14 @@
+<odoo>
+	<record id="account_bank_statement_form_inherit_order" model="ir.ui.view">
+		<field name="name">account.bank.statement.form.inherit.order</field>
+		<field name="model">account.bank.statement</field>
+		<field name="inherit_id" ref="account.view_bank_statement_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//page[@name='statement_line_ids']/field[@name='line_ids']/tree/field[@name='amount']" position="after">
+				<field name="order_id" optional="show"/>
+				<field name="internal_ref" optional="hide"/>
+				<field name="type" optional="show"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

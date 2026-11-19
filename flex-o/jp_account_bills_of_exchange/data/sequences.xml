@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    
+        <record forcecreate="True" id="exchange_rate" model="decimal.precision">
+            <field name="name">Exchange Rate</field>
+            <field name="digits">3</field>
+        </record>
+        
+        <!-- <record id="seq_bill_exchange" model="ir.sequence">
+            <field name="name">Letras de Cambio</field>
+            <field name="code">bill.exchange</field>
+            <field name="prefix">%(year)s%(month)s</field>
+            <field name="padding">6</field>
+            <field name="implementation">no_gap</field>
+        </record> -->
+
+        <record id="seq_bill_exchange_form" model="ir.sequence">
+            <field name="name">Formulario de Letras de Cambio</field>
+            <field name="code">account.bill.form</field>
+            <field name="prefix">FLC-</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_bill_exchange_import_form" model="ir.sequence">
+            <field name="name">Formulario de Importación de Letras de Cambio</field>
+            <field name="code">account.import.bill.form</field>
+            <field name="prefix">IL-</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_bill_exchange_advanced_form" model="ir.sequence">
+            <field name="name">Formulario de Anticipos de Letras de Cambio</field>
+            <field name="code">account.advanced.bill.form</field>
+            <field name="prefix">FAL-</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_bill_refinancing_form" model="ir.sequence">
+            <field name="name">Formulario de Refinanciamiento de Vencidos</field>
+            <field name="code">account.refinancing.form</field>
+            <field name="prefix">FRV-</field>
+            <field name="padding">6</field>
+        </record>
+        
+        <record id="seq_send_bank_form" model="ir.sequence">
+            <field name="name">Formulario de Envío al Banco</field>
+            <field name="code">account.send.bank</field>
+            <field name="prefix">FEB-</field>
+            <field name="padding">6</field>
+        </record>
+        
+        <record id="seq_renew_bill_form" model="ir.sequence">
+            <field name="name">Formulario de Renovación</field>
+            <field name="code">renew.bill.form</field>
+            <field name="prefix">FR-</field>
+            <field name="padding">6</field>
+        </record>
+        
+        <record id="seq_protest_payment" model="ir.sequence">
+            <field name="name">Pago de Protesto</field>
+            <field name="code">account.protest.payment</field>
+            <field name="prefix">PP-</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_pay_bill" model="ir.sequence">
+            <field name="name">Pago de Letra</field>
+            <field name="code">account.bill.payment</field>
+            <field name="prefix">PL-</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_protest_bill" model="ir.sequence">
+            <field name="name">Protesto de Letra</field>
+            <field name="code">account.protest.bill</field>
+            <field name="prefix">PRL-</field>
+            <field name="padding">6</field>
+        </record>
+        
+        <record id="seq_renew_bill" model="ir.sequence">
+            <field name="name">Renovar Letra</field>
+            <field name="code">account.renew.bill</field>
+            <field name="prefix">RL-</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_bank_disbursement" model="ir.sequence">
+            <field name="name">Desembolso Bancario</field>
+            <field name="code">account.bank.disbursement</field>
+            <field name="prefix">DB-</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_bill_partial_payment" model="ir.sequence">
+            <field name="name">Pago parcial de letras</field>
+            <field name="code">account.bill.partial.payment</field>
+            <field name="prefix">PPL-</field>
+            <field name="padding">6</field>
+        </record>
+        
+    </data>
+</odoo>

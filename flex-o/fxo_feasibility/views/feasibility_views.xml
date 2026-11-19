@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_sale_order_line_factibility_from" model="ir.ui.view">
+            <field name="name">sale.order.line.factibility.view.form</field>
+            <field name="model">sale.order.line.factibility</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button name="set_draft" states="open,close,cancel" type="object" string="Draft"/>
+                        <button name="set_open" states="draft" type="object" string="Open"/>
+                        <button name="set_done" states="open" type="object" string="Done"/>
+                        <button name="set_close" states="done" type="object" string="Close"/>
+                        <button name="set_cancel" states="open" type="object" string="Cancel"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,open,done,close,cancel"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="get_order_lines" class="oe_stat_button" icon="fa-list" type="object"
+                                    help="Lineas de Cotizacion" attrs="{'invisible': [('order_line_count', '=', 0)]}">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="order_line_count"/>
+                                    </span>
+                                    <span class="o_stat_text">Lineas de Cotizacion</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group string="Factibilidad">
+                            <group>
+                                <field name="factibility_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="origin_sale_order_id" readonly="1"/>
+                                <field name="company_id" force_save="1"/>
+                            </group>
+                            <group>
+                                <field name="expiration_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="factibility_type" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="product_id"/>
+                            </group>
+                        </group>
+
+                        <group string="Tecnico">
+                            <field name="user_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </group>
+
+                        <group string="Instalacion">
+
+                            <group>
+                                <field name="currency_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="install_cost" widget="monetary" options="{'currency_field': 'currency_id'}"
+                                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="footage" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                            <group>
+                                <label for="duration_type"/>
+                                <div class="o_row">
+                                    <field name="duration_type" required="1"
+                                           attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    <field name="install_duration" class="field_rule_type" required="1"
+                                           attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                </div>
+                                <field name="type_cable" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                        </group>
+                        <group string="Direccion">
+                            <group>
+                                <field name="country_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="province_id"
+                                       domain="[('state_id', '=', state_id),('province_id','=', False)]"
+                                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="type_via" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="property_type" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="number_via" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="floor" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="type_zone" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+
+
+                            </group>
+                            <group>
+                                <field name="state_id"
+                                       domain="[('country_id','=',country_id),('state_id', '=', False),('province_id','=', False)]"
+                                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="district_id"
+                                       domain="[('country_id','=',country_id),('state_id', '=', state_id),('province_id','=', province_id)]"
+                                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="name_via" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="number_new" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="property_name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="local" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="apple" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+
+                                <field name="name_zone" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="partner_latitude"/>
+                                <field name="partner_longitude"/>
+                            </group>
+                            <field name="street" invisible="0" readonly="1"/>
+                            <field name="comment" placeholder="Notas / Comentarios"/>
+                        </group>
+                        <group string="Geolocalizacion">
+                            <group>
+                                <field name="spliter_1_latitude" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="spliter_1_longitude" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="spliter_1_kmz" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="spliter_2_latitude" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="spliter_2_longitude" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="spliter_2_kmz" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- sale.order.line.factibility tree view -->
+        <record id="view_sale_order_line_factibility_tree" model="ir.ui.view">
+            <field name="name">sale.order.line.factibility.view.tree</field>
+            <field name="model">sale.order.line.factibility</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <field name="factibility_date"/>
+                    <field name="expiration_date"/>
+                    <field name="street"/>
+                    <field name="province_id" optional="hide"/>
+                    <field name="state_id" optional="hide"/>
+                    <field name="district_id" optional="hide"/>
+                    <field name="type_via" optional="hide"/>
+                    <field name="name_via" optional="hide"/>
+                    <field name="user_id"/>
+                    <field name="install_cost"/>
+                    <field name="origin_sale_order_id"/>
+                    <field name="company_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- sale.order.line.factibility search view -->
+        <record id="sale_order_line_factibility_search" model="ir.ui.view">
+            <field name="name">sale.order.line.factibility.view.search</field>
+            <field name="model">sale.order.line.factibility</field>
+            <field name="arch" type="xml">
+                <search string="Search Description">
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <field name="factibility_date"/>
+                    <field name="expiration_date"/>
+                    <field name="province_id"/>
+                    <field name="state_id"/>
+                    <field name="district_id"/>
+                    <field name="type_via"/>
+                    <field name="name_via"/>
+                    <field name="user_id"/>
+                    <field name="install_cost"/>
+                    <field name="origin_sale_order_id"/>
+                    <filter string="Mis Factibilidad" name="my_factibility" domain="[('user_id', '=', uid)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="State" name="state_group" domain="[]" context="{'group_by': 'state_id'}"/>
+                        <filter name="province_group" string="Province" domain="[]"
+                                context="{'group_by': 'province_id'}"/>
+                        <filter string="District" name="district_group" domain="[]"
+                                context="{'group_by': 'district_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

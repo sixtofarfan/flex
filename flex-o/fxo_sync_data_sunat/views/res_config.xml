@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.sync</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="60"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_deposit_product_id']" position="after">
+                    <div class="row">
+                        <div class="col-xs-12 o_setting_box" title="Cliente anonimo para la sincronizacion de datos desde instancia Oracle.">
+                            <label string='Cliente anonimo.'  for="cliente_anonimo"/>
+                            <div class="text-muted">
+                                Cliente Anonimo
+                            </div>
+                            <div class="text-muted">
+                                <field name="anonymous_id" class="o_light_label" domain="[('company_id', '=', company_id)]"/>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='default_invoice_policy']" position="after">
+                    <div class="row">
+                        <div class="col-xs-12 o_setting_box" title="Producto y Servicios tipo varios para la sincronizacion de datos desde instancia Oracle.">
+                            <div class="content-group">
+                                <label string="Producto varios" for="default_producto_varios_id"/>
+                                <div class="text-muted">
+                                    Producto varios
+                                </div>
+                                <div class="text-muted">
+                                    <field name="product_varios_id" class="o_light_label" domain="[('type', '=', 'product'), ('company_id', '=', company_id)]"/>
+                                </div>
+
+                                <label string="Servicio varios" for="default_servicio_varios_id"/>
+                                <div class="text-muted">
+                                    Servicio varios
+                                </div>
+                                <div class="text-muted">
+                                    <field name="service_varios_id" class="o_light_label" domain="[('type', '=', 'service'), ('company_id', '=', company_id)]"/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,5 @@
+<odoo>
+	<record id="group_update_amount_residual_signed" model="res.groups">
+		<field name="name">Consistencia de Saldo de Facturas</field>
+	</record>
+</odoo>

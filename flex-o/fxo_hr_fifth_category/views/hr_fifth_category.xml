@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="hr_fifth_category_line_form_inherit" model="ir.ui.view">
+		<field name="name">hr.fifth.category.line.form.inherit</field>
+		<field name="model">hr.fifth.category.line</field>
+        <field name="inherit_id" ref="hr_fifth_category.hr_fifth_category_line_form"/>
+		<field name="arch" type="xml">
+            <field name="past_rem" position="after">
+                <field name="custom_past_rem"/>
+            </field>
+            <field name="ext_rem" position="after">
+                <field name="custom_ext_rem"/>
+            </field>
+		</field>
+	</record>
+</odoo>

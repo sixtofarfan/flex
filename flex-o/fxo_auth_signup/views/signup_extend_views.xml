@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="portal_my_details_fields_extend" inherit_id="portal.portal_my_details" name="My Detail Extend">
+   
+            <xpath expr="//input[@name='email']" position="replace">
+                <input type="email"  readonly="true" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email" />
+            </xpath>
+             
+            <xpath expr="//div[2]" position="before">
+                <div t-attf-class="form-group #{error.get('apaterno') and 'o_has_error' or ''} col-xl-6">
+                    <label class="col-form-label" for="apaterno">Apellido paterno</label>
+                    <input type="text" name="apaterno" t-attf-class="form-control #{error.get('apaterno') and 'is-invalid' or ''}" t-att-value="apaterno or partner.apaterno" />
+                </div>
+                <div t-attf-class="form-group #{error.get('amaterno') and 'o_has_error' or ''} col-xl-6">
+                    <label class="col-form-label" for="amaterno">Apellido materno</label>
+                    <input type="text" name="amaterno" t-attf-class="form-control #{error.get('amaterno') and 'is-invalid' or ''}" t-att-value="amaterno or partner.amaterno" />
+                </div>
+                <div t-attf-class="form-group #{error.get('birthday') and 'o_has_error' or ''} col-xl-6">
+                    <label class="col-form-label" for="birthday">Fecha de Nacimiento</label>
+                    <input type="date" name="birthday" t-attf-class="form-control #{error.get('birthday') and 'is-invalid' or ''}" t-att-value="birthday or partner.birthday" />
+                </div>
+
+                <div t-attf-class="form-group #{error.get('talla') and 'o_has_error' or ''} col-xl-6">
+                    <label class="col-form-label" for="talla">Talla</label>
+                    <input type="text" name="talla" t-attf-class="form-control #{error.get('talla') and 'is-invalid' or ''}" t-att-value="talla or partner.talla" />
+                </div>
+
+                <div t-attf-class="form-group #{error.get('peso') and 'o_has_error' or ''} col-xl-6">
+                    <label class="col-form-label" for="peso">Peso</label>
+                    <input type="text" name="peso" t-attf-class="form-control #{error.get('peso') and 'is-invalid' or ''}" t-att-value="peso or partner.peso" />
+                </div>
+
+                <div t-attf-class="form-group #{error.get('birthday') and 'o_has_error' or ''} col-xl-6" >
+                    <label for="sex" class="control-label">Sexo</label>
+                    <br/>
+                    
+                    <input type="radio" name="sex" t-att-value="1"  required="required"  t-att-checked="true if int(partner.sex) == 1 else false "/> Masculino
+                    <input type="radio" name="sex" t-att-value="2"  required="required"  t-att-checked="true if int(partner.sex) == 2 else false " /> Femenino
+                </div>
+                
+            </xpath>
+            <xpath expr="//div[16]" position="replace">
+                <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-xl-6 field-country">
+                    <label class="col-form-label" for="country_id">País</label>
+                    <select name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
+                        <option value="">Seleccionar...</option>
+                        <t t-foreach="countries or []" t-as="country">
+                            <option t-att-value="country.id" t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
+                                <t t-esc="country.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </xpath>
+            <xpath expr="//div[17]" position="replace">
+                <div t-attf-class="form-group #{error.get('state_id') and 'o_has_error' or ''} col-xl-6 field-state">
+                    <label class="col-form-label label-optional" for="state_id">Departamento</label>
+                    <select name="state_id" t-attf-class="form-control #{error.get('state_id') and 'is-invalid' or ''}">
+                        <option value="">Seleccionar...</option>
+                        <t t-foreach="states or []" t-as="state">
+                            <option t-att-value="state.id"  t-att-data-country_id="state.country_id.id" t-att-selected="state.id == partner.state_id.id">
+                                <t t-esc="state.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </xpath>
+            <xpath expr="//div[17]" position="after">
+                <div t-attf-class="form-group #{error.get('province_id') and 'o_has_error' or ''} col-xl-6 field-province">
+                    <label class="col-form-label label-optional1" for="province_id">Provincia</label>
+                    <select name="province_id" t-attf-class="form-control #{error.get('province_id') and 'is-invalid' or ''}">
+                        <option value="">Seleccionar...</option>
+                        <t t-foreach="provinces or []" t-as="province">
+                            <option t-att-value="province.id"  t-att-data-state_id="province.state_id.id" t-att-selected="province.id == partner.province_id.id">
+                                <t t-esc="province.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div t-attf-class="form-group #{error.get('district_id') and 'o_has_error' or ''} col-xl-6 field-district-id">
+                    <label class="col-form-label label-optional2" for="district_id">Distrito</label>
+                    <select name="district_id" t-attf-class="form-control #{error.get('district_id') and 'is-invalid' or ''}">
+                        <option value="">Seleccionar...</option>
+                        <t t-foreach="districts or []" t-as="district">
+                            <option t-att-value="district.id"  t-att-data-province_id="district.province_id.id" t-att-selected="district.id == partner.district_id.id">
+                                <t t-esc="district.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </xpath>
+            <xpath expr="//div[10]" position="replace">
+                <div invisible="1"/>
+            </xpath>
+            <xpath expr="//div[11]" position="replace">
+                <div invisible="1"/>
+            </xpath>
+            <xpath expr="//div[14]" position="replace">
+                <div invisible="1"/>
+            </xpath>
+            <xpath expr="//div[15]" position="replace">
+                <div invisible="1"/>
+            </xpath>
+        </template>
+
+        <template id="auth_signup_fields_extend" inherit_id="auth_signup.fields" name="Signup Fields Extend">
+            <xpath expr="//div[hasclass('field-name')]" position="after">
+                
+                <div class="col-xl-12 ">
+                    <p class="text-right" style="color:red">Campos Obligatorios (*).</p>
+                </div>
+                <div class="form-group field-login col-xl-6">
+                    <label class="col-form-label" for="login">Correo electrónico <b style="color:red">(*)</b></label>
+                    <input type="text" name="login" t-att-value="login" id="login" class="form-control" autofocus="autofocus"
+                        autocapitalize="off" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Debe ingresar un correo valido ejemplo: none@none.com" t-att-readonly="'readonly' if only_passwords else None"/>
+                </div>
+                <div class="form-group field-apaterno col-xl-6">
+                    <label class="col-form-label" for="apaterno">Apellido Paterno <b style="color:red">(*)</b></label>
+                    <input type="text" name="apaterno" t-att-value="apaterno" id="apaterno" class="form-control" placeholder="ej. Perez"
+                        required="required" t-att-readonly="'readonly' if only_passwords else None"
+                        t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                </div>
+                <div class="form-group field-amaterno col-xl-6">
+                    <label class="col-form-label" for="amaterno">Apellido Materno <b style="color:red">(*)</b></label>
+                    <input type="text" name="amaterno" t-att-value="amaterno" id="amaterno" class="form-control" placeholder="ej. Sanchez"
+                        required="required" t-att-readonly="'readonly' if only_passwords else None"
+                        t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                </div>
+                <div class="form-group field-name col-xl-6">
+                    <label class="col-form-label" for="name">Nombres<b style="color:red">(*)</b></label>
+                    <input type="text" name="name" t-att-value="name" id="name" class="form-control" placeholder="ej. Andres Martín"
+                        required="required" t-att-readonly="'readonly' if only_passwords else None"
+                        t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                </div>
+                <div class="form-group field-name col-xl-6">
+                    <label class="col-form-label" for="talla">Talla<b style="color:red">(*)</b>
+                    </label>
+                    <input type="text" name="talla" t-att-value="talla" id="talla" class="form-control" placeholder="ej. Andres Martín" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                </div>
+                <div class="form-group field-name col-xl-6">
+                    <label class="col-form-label" for="peso">Peso<b style="color:red">(*)</b>
+                    </label>
+                    <input type="text" name="peso" t-att-value="peso" id="peso" class="form-control" placeholder="ej. Andres Martín" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                </div>
+                <div class="form-group field-country col-xl-6">
+                    <label for="country_id" class="control-label">País <b style="color:red">(*)</b></label>
+                    <select name="country_id" id="country_id" class="form-control" required="required" t-att-readonly="'readonly' if only_passwords else None"
+                        t-att-autofocus="'autofocus' if login and not only_passwords else None">
+                        <option value="">Seleccionar</option>
+                        <t t-foreach="countries or []" t-as="country">
+                            <option t-att-value="country.id" t-att-selected="country.id == 173">
+                                <t t-esc="country.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                
+                <div class="form-group field-state col-xl-6">
+                    <label for="state_id" class="control-label">Departamento <b style="color:red">(*)</b></label>
+                    <select name="state_id" id="state_id" class="form-control" t-att-value="state_id" required="required" t-att-readonly="'readonly' if only_passwords else None"
+                        t-att-autofocus="'autofocus' if login and not only_passwords else None">
+                        <option value="">Seleccionar</option>
+                        <t t-foreach="states or []" t-as="state">
+                            <option t-att-value="state.id" t-att-data-country_id="state.country_id.id"  t-att-selected="state.id== 1201">
+                                <t t-esc="state.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div class="form-group field-province col-xl-6">
+                    <label for="province_id" class="control-label">Provincia<b style="color:red">(*)</b></label>
+                    <select name="province_id" id="province_id" class="form-control" t-att-value="province_id" required="required" t-att-readonly="'readonly' if only_passwords else None"
+                        t-att-autofocus="'autofocus' if login and not only_passwords else None">
+                        <option value="">Seleccionar</option>
+                        <t t-foreach="provinces or []" t-as="province">
+                            <option t-att-value="province.id" t-att-data-state_id="province.state_id.id" t-att-selected="province.id== 128">
+                                <t t-esc="province.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div class="form-group field-district-id col-xl-6">
+                    <label for="district_id" class="control-label">Distrito <b style="color:red">(*)</b></label>
+                    <select name="district_id" id="district_id" class="form-control" t-att-value="district_id" required="required" t-att-readonly="'readonly' if only_passwords else None"
+                        t-att-autofocus="'autofocus' if login and not only_passwords else None">
+                        <option value="">Seleccionar</option>
+                        <t t-foreach="districts or []" t-as="district">
+                            <option t-att-value="district.id" t-att-data-province_id="district.province_id.id" t-att-selected="district.id== 1281">
+                                <t t-esc="district.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div class="form-group field-birthday col-xl-6">
+                    <label for="birthday" class="control-label">Fecha de nacimiento <b style="color:red">(*)</b></label>
+                    <input type="date" name="birthday" t-att-value="birthday" id="birthday" class="form-control" required="required" t-att-readonly="'readonly' if only_passwords else None"
+                    t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                </div>
+                <div class="form-group field-sex col-xl-6">
+                    <label for="sex" class="control-label">Sexo <b style="color:red">(*)</b> </label><br/>
+                     <input type="radio" name="sex" t-att-value="1"  required="required" t-att-readonly="'readonly' if only_passwords else None"
+                    t-att-autofocus="'autofocus' if login and not only_passwords else None" />Masculino
+                     <input type="radio" name="sex" t-att-value="2"  required="required" t-att-readonly="'readonly' if only_passwords else None"
+                    t-att-autofocus="'autofocus' if login and not only_passwords else None" />Femenino
+
+                </div>
+                <div class="form-group field-street_name col-xl-6">
+                    <label for="street" class="control-label">Calle <b style="color:red">(*)</b> </label>
+                    <input type="text" name="street" t-att-value="street" id="street" class="form-control" required="required" t-att-readonly="'readonly' if only_passwords else None"
+                    t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                </div>
+                <div class="form-group field-street col-xl-6">
+                    <label for="street2" class="control-label">Calle 2</label>
+                    <input type="text" name="street2" t-att-value="street2" id="street2" class="form-control" t-att-readonly="'readonly' if only_passwords else None"
+                    t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                </div>
+                <div class="form-group field-password1 col-xl-6">
+                    <label class="control-label" for="password">Contraseña <b style="color:red">(*)</b></label>
+                    <input type="password" name="password" id="password" class="form-control"
+                        required="required"  minlength="5"  title="La Contraseña debe de ser mayor a 5 caracteres"  t-att-autofocus="'autofocus' if only_passwords else None"/>
+                </div>
+                <div class="form-group field-confirm-password1 col-xl-6">
+                    <label class="control-label" for="confirm-password">Confirmar Contraseña <b style="color:red">(*)</b></label>
+                    <input type="password" minlength="5" title="La Contraseña debe de ser mayor a 5 caracteres"   name="confirm_password" id="confirm-password" class="form-control" required="required"/>
+                </div>
+                
+                
+            </xpath>
+            <xpath expr="//div[hasclass('field-login')]" position="replace">
+                <div class="form-group field-login" invisible="1"/>
+            </xpath>
+            <xpath expr="//div[hasclass('field-name')]" position="replace">
+                <div class="form-group field-name" invisible="1"/>
+            </xpath>
+            <xpath expr="//div[hasclass('field-password')]" position="replace">
+                <div class="form-group field-password" invisible="1"/>
+            </xpath>
+            <xpath expr="//div[hasclass('field-confirm_password')]" position="replace">
+                <div class="form-group field-confirm_password" invisible="1"/>
+            </xpath>
+        </template>
+
+        <template id="auth_signup_signup_extend" inherit_id="auth_signup.signup" name="Signup Signup Extend">
+            <xpath expr="//t[@t-call='web.login_layout']" position="replace">
+                <!-- <t t-call="web.basic_layout"> -->
+                <t t-call="web.login_layout">
+                    <div class="row justify-content-md-center">
+                        <div class="col col-lg-10">
+                            <h3>Mis Datos</h3>
+                            <form role="form" method="post" t-if="not message">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="row ">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                        
+                                            <t t-call="auth_signup.fields">
+                                                <t t-set="only_passwords" t-value="bool(token and not invalid_token)"/>
+                                            </t>
+
+                                            <p class="alert alert-danger col-xl-12" t-if="error" role="alert">
+                                                <t t-esc="error"/>
+                                            </p>
+                                            <input type="hidden" name="redirect" t-att-value="redirect"/>
+                                            <input type="hidden" name="token" t-att-value="token"/>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="text-center oe_login_buttons pt-3">
+                                            <button type="submit" class="btn btn-primary btn-lg" id="regit" disabled="false" > Registrarme</button><br/>
+                                            <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-lg" role="button">¿Ya tengo una cuenta?</a>
+                                            <div class="o_login_auth"/>
+                                        </div>
+                                    </div>   
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+        </template>
+        <template id="portal_layout_extend" inherit_id="portal.portal_layout" name="Portal my details Extend">
+            <xpath expr="//div[@t-field='user_id.partner_id']" position="after">
+                <div>
+                    N° de registro de usuario<div t-field="user_id.partner_id.nro_registro"/>
+                </div>
+            </xpath> 
+        </template>
+        
+        <template id="loginRedirectNew" inherit_id="web.login" >
+            <xpath expr="//input[@name='redirect']" position="replace">
+            <!-- <input type="hidden" name="redirect" t-att-value="redirect"/> -->
+            <input type="hidden" name="redirect" value="/"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+        <!-- Add action entry in the Action Menu for check -->
+        <!-- <act_window id="act_window_pay_bill_form"
+            name="Pay Bills"
+            binding_model="account.bill"
+            res_model="pay.bill.wizard"
+            binding_views="list"
+            view_mode="form"
+            target="new"
+            view_id="view_pay_bill_wizard"
+            context="{'massive':  True}"
+        /> -->
+
+        <!-- Add action entry in the Action Menu for batch reserve -->
+		<record id="server_action_assign_pickings" model="ir.actions.server">
+			<field name="name">Reserve</field>
+			<field name="model_id" ref="stock.model_stock_picking"/>
+			<field name="binding_model_id" ref="stock.model_stock_picking"/>
+			<field name="state">code</field>
+			<field name="code">
+				if records:
+					action = records.button_confirm_mass()
+			</field>
+		</record>
+
+        <!-- Add action entry in the Action Menu for batch validate -->
+		<record id="server_action_validate_pickings" model="ir.actions.server">
+			<field name="name">Validate</field>
+			<field name="model_id" ref="stock.model_stock_picking"/>
+			<field name="binding_model_id" ref="stock.model_stock_picking"/>
+			<field name="state">code</field>
+			<field name="code">
+				if records:
+					action = records.button_validate_mass()
+			</field>
+		</record>
+
+		<record id="stock_picking_unreserve_action" model="ir.actions.server">
+		<field name="name">Unreserve</field>
+		<field name="model_id" ref="stock.model_stock_picking"/>
+		<field name="binding_model_id" ref="stock.model_stock_picking"/>
+		<field name="binding_view_types">list</field>
+		<field name="state">code</field>
+		<field name="code">action = model.do_unreserve_mass()</field>
+		</record>
+
+	</data>
+</odoo>

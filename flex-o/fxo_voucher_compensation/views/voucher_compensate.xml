@@ -1,0 +1,76 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="voucher_compensation_list">
+      <field name="name">voucher.compensation.list</field>
+      <field name="model">voucher.compensation</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="journal_id"/>
+          <field name="partner_id"/>
+          <field name="compensation_date"/>
+          <field name="invoice_amount"/>
+          <field name="bill_amount"/>
+          <field name="company_id" groups="base.group_multi_company"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="voucher_compensation_form">
+      <field name="name">voucher.compensation.form</field>
+      <field name="model">voucher.compensation</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+              <button string="Compensate" type="object" name="compensate_vouchers" confirm="Are you sure you want to compensate selected vouchers?" class="oe_highlight" attrs="{'invisible':[('state','=','done')]}"/>
+              <button string="Cancel" type="object" name="cancel" confirm="Are you sure you want to cancel this compensation?" attrs="{'invisible':[('state','=','draft')]}" groups="account.group_account_user"/>
+              <field name="state" widget="statusbar"/>
+          </header>
+          <sheet>
+            <h1 class="mt0">
+                <field name="name" readonly="1" class="oe_inline"/>
+            </h1>
+            <group>
+              <group>
+                <field name="journal_id" required="1" attrs="{'readonly': [('state','=','done')]}"/>
+                <field name="partner_id" required="1" attrs="{'readonly': [('state','=','done')]}"/>
+                <field name="compensation_date" required="1" attrs="{'readonly': [('state','=','done')]}"/>
+                <field name="currency_id" groups="base.group_multi_currency" domain="[('id', '!=', company_currency_id)]" attrs="{'readonly': [('state','=','done')]}"/>
+                <field name="company_id" invisible="1"/>
+                <field name="company_currency_id" invisible="1"/>
+              </group>
+              <group>
+                <field name="custom_rate" groups="base.group_multi_currency" attrs="{'invisible': [('currency_id','=', False)],'readonly': [('state','=','done')]}"/>
+                <field name="currency_rate" groups="base.group_multi_currency" force_save="1" attrs="{'invisible': [('currency_id','=', False)], 'readonly': [('custom_rate','=', False)]}"/>
+                <field name="invoice_amount" readonly="1" force_save="1"/>
+                <field name="bill_amount" readonly="1" force_save="1"/>
+                <field name="compensation_move" readonly="1"/>
+              </group>
+            </group>
+            <notebook>
+                <page string="Invoices">
+                  <field name="invoice_ids" widget="many2many" domain="[('partner_id','=', partner_id),('amount_residual_signed','>', 0),('type','in',['out_invoice','in_refund','out_receipt']),('state','=','posted'),('currency_id','in',[currency_id,company_currency_id])]" attrs="{'readonly': [('state','=','done')]}"/>
+                </page>
+                <page string="Bills">
+                  <field name="bill_ids" widget="many2many" domain="[('partner_id','=', partner_id),('amount_residual_signed','&lt;', 0),('type','in',['in_invoice','out_refund','in_receipt']),('state','=','posted'),('currency_id','in',[currency_id,company_currency_id])]" attrs="{'readonly': [('state','=','done')]}"/>
+                </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="voucher_compensation_action_window" model="ir.actions.act_window">
+      <field name="name">Compensations</field>
+      <field name="res_model">voucher.compensation</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Compensations" id="compensation_menu" parent="account_base_it.menu_treasury"
+            action="voucher_compensation_action_window" sequence="10"/>
+
+  </data>
+</odoo>

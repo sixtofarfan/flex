@@ -1,0 +1,9 @@
+<odoo>
+	<record id="action_remove_move_reconcile" model="ir.actions.server">
+		<field name="name">Romper Conciliacion</field>
+		<field name="model_id" ref="account.model_account_move"/>
+		<field name="binding_model_id" ref="account.model_account_move"/>
+		<field name="state">code</field>
+		<field name="code">action = records.action_remove_move_reconcile()</field>
+	</record>
+</odoo>

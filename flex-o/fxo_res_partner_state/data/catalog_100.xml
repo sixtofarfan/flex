@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+
+        <record model='catalog.100'>
+            <field name='name'>Activo</field>
+            <field name='code'>01</field>
+        </record>
+        
+        <record model='catalog.100'>
+            <field name='name'>Baja</field>
+            <field name='code'>02</field>
+        </record> 
+        <record model='catalog.100'>
+            <field name='name'>Baja Administrativa</field>
+            <field name='code'>03</field>
+        </record> 
+        <record model='catalog.100'>
+            <field name='name'>Instalacion</field>
+            <field name='code'>04</field>
+        </record>
+        <record model='catalog.100'>
+            <field name='name'>Suspension</field>
+            <field name='code'>05</field>
+        </record>  
+    </data>
+</odoo>

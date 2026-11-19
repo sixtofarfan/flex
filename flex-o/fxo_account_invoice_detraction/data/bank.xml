@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="national_bank_for_detractions" model="res.bank">
+            <field name="name">Banco de la Nación</field>
+        </record>
+       
+        <record id="seq_detraction_sequence" model="ir.sequence">
+            <field name="name">Detractions sequence</field>
+            <field name="implementation">no_gap</field>
+            <field name="prefix">DET-</field>
+            <field name="padding">7</field>
+            <field name="use_date_range">False</field>
+        </record>
+
+        <record id="bank_account" model="res.partner.bank">
+            <field name="acc_number">000000000</field>
+            <field name="type_of_account">2</field>
+            <field name="bank_id" ref="national_bank_for_detractions"/>
+            <field name="partner_id" ref="base.main_partner"/>
+        </record>
+
+        <record id="detraction_journal" model="account.journal">
+            <field name="name">Detractions</field>
+            <field name="type">bank</field>
+            <field name="bank_account_id" ref="bank_account"/>
+            <field name="bank_id" ref="national_bank_for_detractions"/>
+            <field name="code">DET</field>
+            <field name="sequence_id" ref="seq_detraction_sequence"/>
+        </record> 
+
+    </data>
+</odoo>

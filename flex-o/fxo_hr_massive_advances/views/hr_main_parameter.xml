@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="hr_main_parameter_form_inherit" model="ir.ui.view">
+		<field name="name">hr.main.parameter.form.inherit</field>
+		<field name="model">hr.main.parameter</field>
+		<field name="inherit_id" ref="hr_base_it.hr_main_parameter_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page name="massive_advance" string="Adelantos Quincenales">
+					<group>
+						<group>
+							<field name="massive_advance_rule"/>
+							<field name="massive_advance_percent"/>
+						</group>
+						<group>
+							<field name="massive_advance_type"/>
+						</group>
+					</group>
+				</page>
+			</xpath>
+		</field>
+	</record>
+</odoo>

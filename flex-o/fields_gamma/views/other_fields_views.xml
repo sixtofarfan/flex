@@ -1,0 +1,120 @@
+<odoo>
+    <data>
+        <record id="other_fields_gamma" model="ir.ui.view">
+            <field name="name">other.fields</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='other_information']" position="after">
+                    <page id="other_fields" string="Other fields">
+                        <group string="Fields">
+                            <group>
+                                <field name="type_service"/>
+                                <field name="internal_ref"/>
+                                <field name="internal_ref_child"/>
+                                <field name="internal_ref_grandchild"/>
+                                <field name="internal_ref_great_grandson"/>
+                                <field name="shipper_name"/>
+                                <field name="consignne_name"/>
+                                <field name="via"/>
+                                <field name="salesman_name"/>
+                                <field name="tracing_name"/>
+                                <field name="operations_name"/>
+                                <field name="flight_number"/>
+                                <field name="flight_date"/>
+                                <field name="finishing_date"/>
+                                <field name="origin_country"/>
+                                <field name="origin_port"/>
+                                <field name="destination_country"/>
+                                <field name="destination_city"/>
+                                <field name="foreign_agent_name"/>
+                                <field name="naviera_name"/>
+                                <field name="cda_number"/>
+                                <field name="date_order"/>
+                                <field name="year_dam_number"/>
+                                
+                                <field name="total_volumen"/>
+                                <field name="total_wieght"/>
+                            </group>
+                            <group>
+                                <field name="delivery_master_number"/>
+                                <field name="delivery_child_number"/>
+                                <field name="delivery_grandchild_number"/>
+                                <field name="delivery_great_grandson_number"/>
+                                <field name="regime_name"/>
+                                <field name="dispach_type"/>
+                                <field name="sada_type"/>
+                                <field name="name_booking"/>
+                                <field name="load_type"/>
+                                <field name="rights_payments"/>
+                                <field name="amount_untaxed1"/>
+                                <field name="freight_value"/>
+                                <field name="safe_value"/>
+                                <field name="cif_value"/>
+                                <field name="ady_total"/>
+                                <field name="amount_tax1"/>
+                                <field name="ipm_total"/>
+                                <field name="perception_total"/>
+                                <field name="terminal_name"/>
+                                <field name="numbering_date"/>
+                                <field name="freight_condition"/>
+                                <field name="note"/>
+                                <field name="quotation"/>
+
+                                <field name="client_order_ref"/>
+
+                                <field name="cda_number_perception"/>
+                                <field name="date_invoicing"/>
+                                <field name="date_verify"/>
+                                <field name="date_done"/>
+                                <field name="situation_payment"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sot_sale_order_type_form_view" model="ir.ui.view">
+            <field name="name">sale.order.type.inherit.view.form</field>
+            <field name="model">sale.order.type</field>
+            <field name="inherit_id" ref="sale_order_type.sot_sale_order_type_form_view"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                 <field name="warehouse_id" position="after">
+                    <field name="code"/>
+                 </field>
+            </field>
+        </record>
+
+        <record id="view_payment_term_form" model="ir.ui.view">
+            <field name="name">account.payment.term.inherit.view.form</field>
+            <field name="model">account.payment.term</field>
+            <field name="inherit_id" ref="account.view_payment_term_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                 <field name="company_id" position="after">
+                    <field name="code"/>
+                 </field>
+            </field>
+        </record>
+
+
+        <!-- res.partner inherit form view -->
+        <record id="view_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.inherit.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="user_id" position="after">
+                    <field name="invoice_expo_user_id"/>
+                 </field>
+            </field>
+        </record>
+
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_conformity_manager,project.conformity.manager,model_project_conformity,,1,1,1,1
+access_project_plane_manager,project.plane.manager,model_project_plane,,1,1,1,1
+access_wk_location_team,wk.location.team,model_wk_location_team,project.group_project_user,1,1,1,1

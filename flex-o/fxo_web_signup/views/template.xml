@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+        
+        <!-- Add you code here -->
+        <template id="assets_custom_frontend" inherit_id="web.assets_frontend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/fxo_web_signup/static/src/css/from.scss"/>
+            </xpath>
+        </template>
+        <template id="assets_frontend" inherit_id="web.assets_frontend" name=" signup extend views" priority="15">
+            <xpath expr="//script[last()]" position="after">
+                <script type="text/javascript" src="/fxo_web_signup/static/src/js/auth_signup.js"></script>
+             </xpath>
+        </template>
+
+    </data>
+</odoo>

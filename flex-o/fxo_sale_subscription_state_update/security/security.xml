@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="group_sale_subscription_line_state" model="res.groups">
+		<field name="name">Actualizar Estados de Servicios</field>
+		<field name="category_id" ref="sale_subscription.module_category_subscription_management"/>
+	</record>
+	<record id="group_finish_line" model="res.groups">
+		<field name="name">Actualizar Termino de Servicios</field>
+		<field name="category_id" ref="sale_subscription.module_category_subscription_management"/>
+	</record>
+	<record id="group_suspend_line" model="res.groups">
+		<field name="name">Actualizar Suspender Servicios</field>
+		<field name="category_id" ref="sale_subscription.module_category_subscription_management"/>
+	</record>
+	<record id="group_cancel_line" model="res.groups">
+		<field name="name">Actualizar Dar de Baja Servicios</field>
+		<field name="category_id" ref="sale_subscription.module_category_subscription_management"/>
+	</record>
+</odoo>

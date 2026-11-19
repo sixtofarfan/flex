@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <!-- sale.order.bom form view -->
+        <record id="sale_order_bom_view_form" model="ir.ui.view">
+            <field name="name">sale.order.bom.view.form</field>
+            <field name="model">sale.order.bom</field>
+            <field name="arch" type="xml">
+                <form string="">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,process,done"/>
+                </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Line" name="line">
+                                <field name="sale_bom_line_id">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="qty"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="picking_id" name="picking_id" invisible="1">
+                                <field name="picking_id"/>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- model.name tree view -->
+        <record id="sale_order_bom_view_tree" model="ir.ui.view">
+            <field name="name">sale.order.bom.view.tree</field>
+            <field name="model">sale.order.bom</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="picking_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sale_order_bom_action" model="ir.actions.act_window">
+            <field name="name">Order BOM</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.bom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem   id="sale_order_bom_menu" 
+                    name="Order BOM" 
+                    parent="stock.menu_stock_warehouse_mgmt" 
+                    action="sale_order_bom_action" 
+                    sequence="27"/>
+
+    </data>
+</odoo>

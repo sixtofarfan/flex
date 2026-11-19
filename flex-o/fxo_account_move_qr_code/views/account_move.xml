@@ -1,0 +1,53 @@
+<odoo>
+	<record id="view_move_form_inherit_qr" model="ir.ui.view">
+		<field name="name">move.form.inherit.qr</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form"/>
+		<field name="arch" type="xml">
+            <button name="action_post" position="after">
+                <button name="compute_get_qr_code" string="Test QR" type="object"/>
+            </button>
+			<xpath expr="//sheet/div[2]" position="replace">
+                <div>
+                    <group>
+                        <group>
+                            <div>
+                                <!-- Invoice draft header -->
+                                <span class="o_form_label">
+                                    <field name="type" attrs="{'invisible': ['|', ('type', '=', 'entry'), ('state', '=', 'draft')]}" readonly="1" nolabel="1" />
+                                </span>
+                                <h1>
+                                    <span attrs="{'invisible': ['|', '|', ('type', '!=', 'out_invoice'), ('state', '!=', 'draft'), ('name', '!=', '/')]}">Draft Invoice</span>
+                                    <span attrs="{'invisible': ['|', '|', ('type', '!=', 'out_refund'), ('state', '!=', 'draft'), ('name', '!=', '/')]}">Draft Credit Note</span>
+                                    <span attrs="{'invisible': ['|', '|', ('type', '!=', 'in_invoice'), ('state', '!=', 'draft'), ('name', '!=', '/')]}">Draft Bill</span>
+                                    <span attrs="{'invisible': ['|', '|', ('type', '!=', 'in_refund'), ('state', '!=', 'draft'), ('name', '!=', '/')]}">Draft Refund</span>
+                                    <span attrs="{'invisible': ['|', '|', ('type', '!=', 'out_receipt'), ('state', '!=', 'draft'), ('name', '!=', '/')]}">Draft Sales Receipt</span>
+                                    <span attrs="{'invisible': ['|', '|', ('type', '!=', 'in_receipt'), ('state', '!=', 'draft'), ('name', '!=', '/')]}">Draft Purchase Receipt</span>
+                                </h1>
+
+                                <!-- Select next number header (only invoices) -->
+                                <span class="o_form_label" attrs="{'invisible': [('invoice_sequence_number_next_prefix', '=', False)]}">First Number:</span>
+
+                                <!-- Number -->
+                                <h1 class="mt0">
+                                    <field name="name" readonly="True" attrs="{'invisible':[('name', '=', '/')]}" />
+                                </h1>
+
+                                <!-- Select next number header (only invoices) -->
+                                <div attrs="{'invisible': [('invoice_sequence_number_next_prefix', '=', False)]}">
+                                    <field name="invoice_sequence_number_next_prefix" class="oe_inline" />
+                                    <field name="invoice_sequence_number_next" class="oe_inline" />
+                                </div>
+                            </div>
+                        </group>
+                        <group>
+                            <div>
+                                <field name="sunat_qr_code" class="o_field_image oe_avatar" widget="image" width="75" height="75" attrs="{'invisible': [('state', 'in', ['draft','cancel'])]}" />
+                            </div>
+                        </group>
+                    </group>
+                </div>
+            </xpath>
+		</field>
+	</record>
+</odoo>

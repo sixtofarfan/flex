@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data noupdate="0">
+		<record id="fxo_import_initial_bills_xls" model="ir.attachment">
+            <field name="name">fxo_import_bills.xlsx</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="fxo_account_bills_of_exchange_extend/static/template/fxo_import_bills.xlsx"/>
+        </record>
+    </data>
+</odoo>

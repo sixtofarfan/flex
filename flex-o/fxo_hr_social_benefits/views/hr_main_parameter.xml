@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="hr_main_parameter_form_inherit_template" model="ir.ui.view">
+		<field name="name">hr.main.parameter.form.inherit.template</field>
+		<field name="model">hr.main.parameter</field>
+		<field name="inherit_id" ref="hr_base_it.hr_main_parameter_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page name="templates" string="Plantillas">
+					<group>
+						<group>
+							<field name="cts_release_template_id"/>
+							<field name="work_voucher_template_id"/>
+						</group>
+					</group>
+				</page>
+			</xpath>
+			<field name="truncated_cts_input_id" position="after">
+				<field name="liquidation_wd_rules_ids" widget="many2many_tags"/>
+			</field>
+		</field>
+	</record>
+</odoo>

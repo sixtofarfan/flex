@@ -1,0 +1,665 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* gt_cheque_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-21 02:26+0000\n"
+"PO-Revision-Date: 2021-05-20 22:39-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es_PE\n"
+"X-Generator: Poedit 2.4.3\n"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.res_config_settings_view_form_inherited_view_form
+msgid "<span class=\"o_form_label\">Account Cheque Configuration</span>"
+msgstr "<span class=“o_form_label”>Cheques: Configuracion de Cuenta</span>"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.res_config_settings_view_form_inherited_view_form
+msgid "<span class=\"o_form_label\">Incoming Account</span>"
+msgstr "<span class=“o_form_label”>Cuenta Entrante</span>"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.res_config_settings_view_form_inherited_view_form
+msgid "<span class=\"o_form_label\">Outgoing Account</span>"
+msgstr "<span class=“o_form_label”>Cuenta saliente</span>"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "<strong>End Date </strong>:"
+msgstr "<strong>Fecha Fin </strong>:"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "<strong>Start Date </strong>:"
+msgstr "<strong>Fecha Inicio </strong>:"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__amount
+msgid "Amount"
+msgstr "Monto"
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_ir_attachment
+msgid "Attachment"
+msgstr "Adjunto"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_account_payment__attachment_count
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__attachment_count
+msgid "Attachment Count"
+msgstr "Total adjunto"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__cheq_attachment_ids
+msgid "Attachment Line"
+msgstr "Linea adjunto"
+
+#. module: gt_cheque_management
+#: model:ir.actions.act_window,name:gt_cheque_management.action_attachment_view
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_view_form
+msgid "Attachments"
+msgstr "Adjuntos"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_wizard__bank_acc
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "Bank Account"
+msgstr "Cuenta Banco"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_account_payment__cheque_out_attach_line
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__bank_account
+msgid "Bank account"
+msgstr "Cuenta Banco"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__bounced
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__account_payment__state_new__bounce
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_manage__state__bounce
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_report_wizard__state__bounce
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_view_form
+msgid "Bounced"
+msgstr "Rebotado"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__account_payment__state_new__cancel
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque1_report_wizard_form_view
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_view_form
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_outgoing_wizard_view
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_transfer_wizard_view
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_wizard_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_manage__state__cancel
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_report_wizard__state__cancel
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: gt_cheque_management
+#: model:ir.actions.act_window,name:gt_cheque_management.action_cheque_outgoing_wizard_view
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_view_form
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_outgoing_wizard_view
+msgid "Cashed"
+msgstr "Cobrado"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__cashed_date
+msgid "Cashed Date"
+msgstr "Fecha cobrada"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__cheq_type
+msgid "Cheq Type"
+msgstr "Tipo de Cheque"
+
+#. module: gt_cheque_management
+#: model:ir.actions.act_window,name:gt_cheque_management.action_cheque_wizard
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__account_payment_method__payment_type__cheque
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_transfer_wizard_view
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_wizard_view
+msgid "Cheque"
+msgstr "Cheque"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__cheque_out_id
+msgid "Cheque Attach"
+msgstr "Cheque adjunto"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "Cheque Cashed/Bounced Date"
+msgstr "Fecha Cheque Cobrado/Rebotado"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_account_payment__cheque_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__cheque_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_wizard__cheque_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_wizard__cheque_date
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "Cheque Date"
+msgstr "Fecha de Cheque"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "Cheque Given Date"
+msgstr "Fecha a Verificada"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__cheque_receive_date
+msgid "Cheque Given/Receive Date"
+msgstr "Fecha Verificar/Recibida"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_account_move_line__cheque_id
+#: model:ir.model.fields,field_description:gt_cheque_management.field_ir_attachment__cheque_id
+#: model:ir.model.fields,field_description:gt_cheque_management.field_mrp_document__cheque_id
+msgid "Cheque Id"
+msgstr "Id Cheque"
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_cheque_manage
+msgid "Cheque Manage"
+msgstr "Gestión de Cheque"
+
+#. module: gt_cheque_management
+#: model:ir.ui.menu,name:gt_cheque_management.main_menu_incoming_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.res_config_settings_view_form_inherited_view_form
+msgid "Cheque Management"
+msgstr "Gestión de Cheque"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_account_payment__cheque_no
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__cheque_no
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "Cheque Number"
+msgstr "Cheque Nro."
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_cheque_outgoing_attach
+msgid "Cheque Outgoing Attach"
+msgstr "Cheque adjunto saliente"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_account_payment__cheque_receive_date
+msgid "Cheque Receive Date"
+msgstr "Fecha recibida"
+
+#. module: gt_cheque_management
+#: model:ir.actions.report,name:gt_cheque_management.action_cheque_manage_report_document
+#: model:ir.ui.menu,name:gt_cheque_management.cheque_report_id
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque1_report_wizard_form_view
+msgid "Cheque Report"
+msgstr "Impresion de Cheque"
+
+#. module: gt_cheque_management
+#: model:ir.actions.act_window,name:gt_cheque_management.action_cheque_report_wizard
+msgid "Cheque Report Wizard"
+msgstr "Asistente Informe Cheque"
+
+#. module: gt_cheque_management
+#: model:ir.actions.act_window,name:gt_cheque_management.action_cheque_transfer_wizard
+msgid "Cheque Transfer Wizard"
+msgstr "Asistente transferencia Cheque"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__company_id
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__partner_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__company_currency_id
+msgid "Company Currency"
+msgstr "Moneda de Compañía"
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de Configuración"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_transfer_wizard__contact
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__create_uid
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__create_uid
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__created_by
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_wizard__create_uid
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_report_wizard__create_uid
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_transfer_wizard__create_uid
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__create_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__create_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__created_on
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_wizard__create_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_report_wizard__create_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_transfer_wizard__create_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_wizard__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__credit
+msgid "Credit"
+msgstr "Crédito"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_account_payment__credit_account_id
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "Credit Account"
+msgstr "Cuenta Crédito"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__credit_account
+#: model:ir.model.fields,field_description:gt_cheque_management.field_res_config_settings__credit_out_account
+msgid "Credit account"
+msgstr "Cuenta Crédito"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__debit
+msgid "Debit"
+msgstr "Debe"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_account_payment__debit_account_id
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "Debit Account"
+msgstr "Cuenta Débito"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__debit_account
+#: model:ir.model.fields,field_description:gt_cheque_management.field_res_config_settings__debit_inc_account
+msgid "Debit account"
+msgstr "Cuenta Débito"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_view_form
+msgid "Deposit"
+msgstr "Depositar"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_res_config_settings__deposite_account
+msgid "Deposite account"
+msgstr "Cuenta de depósito"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_manage__state__deposit
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_report_wizard__state__deposit
+msgid "Deposited"
+msgstr "Depositado"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_account_payment__description
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__description
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_view_form
+msgid "Description"
+msgstr "Descripción"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__display_name
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__display_name
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_wizard__display_name
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_report_wizard__display_name
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_transfer_wizard__display_name
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_wizard__display_name
+#: model:ir.model.fields,field_description:gt_cheque_management.field_incoming_cheque_report_saleproforma__display_name
+#: model:ir.model.fields,field_description:gt_cheque_management.field_outgoing_cheque_report_saleproforma__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__account_payment__state_new__done
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_manage__state__done
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_report_wizard__state__done
+msgid "Done"
+msgstr "Terminado"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__account_payment__state_new__draft
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_manage__state__draft
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_report_wizard__state__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_report_wizard__date_to
+msgid "End Date"
+msgstr "Fecha fin"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__filename
+msgid "File Name"
+msgstr "Nombre de archivo"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__id
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__id
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_wizard__id
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_report_wizard__id
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_transfer_wizard__id
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_wizard__id
+#: model:ir.model.fields,field_description:gt_cheque_management.field_incoming_cheque_report_saleproforma__id
+#: model:ir.model.fields,field_description:gt_cheque_management.field_outgoing_cheque_report_saleproforma__id
+msgid "ID"
+msgstr "ID"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__account_payment_method__payment_type__inbound
+msgid "Inbound"
+msgstr "Entrante"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_manage__cheq_type__incoming
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_report_wizard__cheq_type__incoming
+msgid "Incoming"
+msgstr "Entrante"
+
+#. module: gt_cheque_management
+#: model:ir.actions.act_window,name:gt_cheque_management.action_cheque_manage
+#: model:ir.ui.menu,name:gt_cheque_management.menu_incoming_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_view_form
+msgid "Incoming Cheque"
+msgstr "Cheque Entrante"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "Incoming Cheque Report"
+msgstr "Informe de cheque entrante"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_tree_views
+msgid "Incoming Cheques"
+msgstr "Cheques entrantes"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__journal_id
+msgid "Journal"
+msgstr "Diario"
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: gt_cheque_management
+#: code:addons/gt_cheque_management/models/cheque_manage.py:0
+#: code:addons/gt_cheque_management/models/cheque_outgoing_manage.py:0
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__journal_item_count
+#, python-format
+msgid "Journal Items"
+msgstr "Apuntes contables"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage____last_update
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach____last_update
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_wizard____last_update
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_report_wizard____last_update
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_transfer_wizard____last_update
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_wizard____last_update
+#: model:ir.model.fields,field_description:gt_cheque_management.field_incoming_cheque_report_saleproforma____last_update
+#: model:ir.model.fields,field_description:gt_cheque_management.field_outgoing_cheque_report_saleproforma____last_update
+msgid "Last Modified on"
+msgstr "Fecha de modificación"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__write_uid
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__write_uid
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_wizard__write_uid
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_report_wizard__write_uid
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_transfer_wizard__write_uid
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Ultima fecha de modificación"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__write_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__write_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_wizard__write_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_report_wizard__write_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_transfer_wizard__write_date
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_wizard__write_date
+msgid "Last Updated on"
+msgstr "Ultima fecha de modificación"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__move_line_ids
+msgid "Move Line"
+msgstr "Lineas"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__name
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: gt_cheque_management
+#: code:addons/gt_cheque_management/models/cheque_outgoing_manage.py:0
+#, python-format
+msgid "Only a draft payment can be posted."
+msgstr "Solo un pago en borrador puede ser publicado."
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__account_payment_method__payment_type__outbound
+msgid "Outbound"
+msgstr "Saliente"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_manage__cheq_type__outgoing
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_report_wizard__cheq_type__outgoing
+msgid "Outgoing"
+msgstr "Saliente"
+
+#. module: gt_cheque_management
+#: model:ir.actions.act_window,name:gt_cheque_management.action_cheque_manage_outgoing
+#: model:ir.ui.menu,name:gt_cheque_management.menu_outgoing_cheque_management
+msgid "Outgoing Cheque"
+msgstr "Cheque saliente"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "Outgoing Cheque Report"
+msgstr "Reporte de cheque saliente"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_outgoing_tree_views
+msgid "Outgoing Cheques"
+msgstr "Cheques salientes"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__payer
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "Payee"
+msgstr "Tenedor"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_view_form
+msgid "Payment Matching"
+msgstr "Match Pagos"
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_account_payment_method
+msgid "Payment Methods"
+msgstr "Métodos de pago"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_account_payment_method__payment_type
+msgid "Payment Type"
+msgstr "Tipo de pago"
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque1_report_wizard_form_view
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__account_payment__state_new__register
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_manage__state__register
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_report_wizard__state__register
+msgid "Registered"
+msgstr "Registrado"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_report_wizard__cheq_type
+msgid "Report Type"
+msgstr "Tipo de reporte"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__resource_model
+msgid "Resouce Model"
+msgstr "Modelo recurso"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__resource_field
+msgid "Resource Field"
+msgstr "Campo recurso"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_outgoing_attach__resource_id
+msgid "Resource ID"
+msgstr "Id recurso"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__account_payment__state_new__return
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_manage__state__return
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_report_wizard__state__return
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_view_form
+msgid "Returned"
+msgstr "Devuelto"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__return_date
+msgid "Returned Date"
+msgstr "Fecha devolución"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__seq_no
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_res_config_settings__journal_id
+msgid "Specific Journal"
+msgstr "Diario especifico"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_report_wizard__date_from
+msgid "Start Date"
+msgstr "Fecha inicio"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_account_payment__state_new
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_manage__state
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_report_wizard__state
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_report_document
+msgid "Status"
+msgstr "Estado"
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_manage_view_form
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_outgoing_wizard_view
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_transfer_wizard_view
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_wizard_view
+msgid "Submit"
+msgstr "Enviar"
+
+#. module: gt_cheque_management
+#: model:ir.model.constraint,message:gt_cheque_management.constraint_cheque_manage_cheque_no_company_uniq
+msgid "The Cheque Number of must be unique per company !"
+msgstr "¡El número de cheque debe ser único por empresa!"
+
+#. module: gt_cheque_management
+#: code:addons/gt_cheque_management/models/cheque_manage.py:0
+#: code:addons/gt_cheque_management/models/cheque_outgoing_manage.py:0
+#, python-format
+msgid "The payment cannot be processed because the invoice is not open!"
+msgstr "¡No se puede procesar el pago porque la factura no está abierta!"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_manage__state__transfer
+#: model:ir.model.fields.selection,name:gt_cheque_management.selection__cheque_report_wizard__state__transfer
+msgid "Transfered"
+msgstr "Transferido"
+
+#. module: gt_cheque_management
+#: model:ir.model.fields,field_description:gt_cheque_management.field_cheque_transfer_wizard__transfer_date
+msgid "Transfered Date"
+msgstr "Fecha transferido"
+
+#. module: gt_cheque_management
+#: code:addons/gt_cheque_management/models/cheque_manage.py:0
+#, python-format
+msgid "You cannot cancel a record that is not posted yet!"
+msgstr "No puede cancelar un registro que aún no está publicado!"
+
+#. module: gt_cheque_management
+#: code:addons/gt_cheque_management/models/cheque_manage.py:0
+#, python-format
+msgid "You cannot delete a record that is already posted!"
+msgstr "No puede eliminar un registro que ya está publicado!"
+
+#. module: gt_cheque_management
+#: code:addons/gt_cheque_management/models/cheque_manage.py:0
+#: code:addons/gt_cheque_management/models/cheque_outgoing_manage.py:0
+#, python-format
+msgid "You have to define a sequence for %s in your company."
+msgstr "Debes definir una secuencia para %s en tu empresa."
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_cheque_outgoing_wizard
+msgid "cheque.outgoing.wizard"
+msgstr ""
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_cheque_report_wizard
+msgid "cheque.report.wizard"
+msgstr ""
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_cheque_transfer_wizard
+msgid "cheque.transfer.wizard"
+msgstr ""
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_cheque_wizard
+msgid "cheque.wizard"
+msgstr ""
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_incoming_cheque_report_saleproforma
+msgid "incoming.cheque.report_saleproforma"
+msgstr ""
+
+#. module: gt_cheque_management
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque1_report_wizard_form_view
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_outgoing_wizard_view
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_transfer_wizard_view
+#: model_terms:ir.ui.view,arch_db:gt_cheque_management.cheque_wizard_view
+msgid "or"
+msgstr "O"
+
+#. module: gt_cheque_management
+#: model:ir.model,name:gt_cheque_management.model_outgoing_cheque_report_saleproforma
+msgid "outgoing.cheque.report_saleproforma"
+msgstr ""

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Urbanización</field>
+            <field name='code'>01</field>
+        </record>
+        
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Pueblo Joven</field>
+            <field name='code'>02</field>
+        </record> 
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Unidad Vecinal</field>
+            <field name='code'>03</field>
+        </record> 
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Conjunto Habitacional</field>
+            <field name='code'>04</field>
+        </record>
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Asentamiento Humano</field>
+            <field name='code'>05</field>
+        </record>  
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Cooperativa</field>
+            <field name='code'>06</field>
+        </record>
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Residencial</field>
+            <field name='code'>07</field>
+        </record> 
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Zona Industrial</field>
+            <field name='code'>08</field>
+        </record> 
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Grupo</field>
+            <field name='code'>09</field>
+        </record>  
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Caserío</field>
+            <field name='code'>10</field>
+        </record>        
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Fundo</field>
+            <field name='code'>11</field>
+        </record> 
+        <record model='einvoice.catalog.03'>
+            <field name='name'>Otros</field>
+            <field name='code'>12</field>
+        </record>  
+    </data>
+</odoo>

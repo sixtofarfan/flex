@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="sale_subscription_lien_view_form_extend" model="ir.ui.view">
+            <field name="name">sale.subscription.inherit.view.form</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+            <field name="arch" type="xml">
+                <field name="recurring_invoice_line_ids" position="attributes">
+                    <attribute name="widget">section_and_note_one2many</attribute>
+                </field>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='product_id']"
+                       position="before">
+                    <control>
+                        <create name="add_product_control" string="Add a product"/>
+                        <create name="add_section_control" string="Add a section"
+                                context="{'default_display_type': 'line_section'}"/>
+                        <create name="add_note_control" string="Add a note"
+                                context="{'default_display_type': 'line_note'}"/>
+                    </control>
+                    <field name="sequence" widget="handle"/>
+                    <field name="display_type" invisible="1"/>
+                    <field name="sequence2"/>
+
+                </xpath>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='product_id']"
+                       position="attributes">
+                    <attribute name="attrs">{'required':[('display_type', '=', False)]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='uom_id']"
+                       position="attributes">
+                    <attribute name="attrs">{'required':[('display_type', '=', False)]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='product_uom_category_id']"
+                       position="attributes">
+                    <attribute name="attrs">{'required':[('display_type', '=', False)]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='price_unit']"
+                       position="attributes">
+                    <attribute name="attrs">{'required':[('display_type', '=', False)]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='price_subtotal']"
+                       position="after">
+                    <field name="upgrade_date"/>
+                    <field name="partner_street_destination_header" optional="show"/>
+                    <field name="type_conection" optional="show"/>
+                    <field name="type_conection_relation" optional="show"/>
+                    <field name="transport_physic_relation" optional="show"/>
+                    <field name="customer_lead" optional="show"/>
+                    <field name="type_item" optional="show"/>
+                    <field name="item_origin" optional="show"/>
+                    <field name="way_to_pay_id" optional="show"/>
+                    <field name="type_cut" optional="show"/>
+                    <field name="service_id" optional="show"/>
+                </xpath>
+                <page id="lines" position="after">
+                    <page name="saleorderline" string="Lineas de Pedido">
+                        <field name="sale_order_line_detalle">
+                            <tree>
+                                <field name="service_id"/>
+                                <field name="order_id"/>
+                                <field name="order_partner_id"/>
+                                <field name="name"/>
+                                <field name="salesman_id"/>
+                                <field name="product_uom_qty"/>
+                                <field name="qty_delivered"/>
+                                <field name="qty_invoiced"/>
+                                <field name="qty_to_invoice"/>
+                                <field name="product_uom"/>
+                                <field name="route_id"/>
+                                <field name="price_subtotal"/>
+                            </tree>
+                        </field>
+                    </page>
+                </page>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/form/group[last()]" position="after">
+                    <notebook>
+                        <page string="Lines Order Update" id="order_lines">
+                            <field name="sale_update_id" readonly="1" domain="[('state','in','sale,done')]">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="name"/>
+                                    <field name="product_uom_qty"/>
+                                    <field name="date_update_from"/>
+                                    <field name="date_update_to"/>
+                                    <field name="price_unit"/>
+                                    <field name="price_subtotal"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="UDTR">
+                        <field name="historial_udt_ids">
+                            <tree create="false" delete="false" edit="false">
+                                <field name="subscription_id" invisible="1"/>
+                                <field name="sale_id" optional="show"/>
+                                <field name="subscription_update_line_id"/>
+                                <field name="product_id" optional="hide"/>
+                                <field name="name"/>
+                                <field name="quantity"/>
+                                <field name="uom_id"/>
+                                <field name="price_unit"/>
+                                <field name="price_subtotal"/>
+                                <field name="type" string="Tipo"/>
+                                <field name="is_renovation" optional="hide"/>
+                                <field name="upgrade_date" optional="show"/>
+                                <field name="stop_date"/>
+                                <field name="upgrade_temp_finish_date" optional="hide"/>
+                                <field name="service_id"/>
+                                <field name="state"/>
+                                <field name="renovation_type" optional="hide"/>
+                                <field name="invoice_status" optional="hide"/>
+                                <field name="from_address" optional="hide"/>
+                                <field name="current_address" optional="hide"/>
+                                <field name="invoice_id" optional="hide"/>
+                                <field name="user_id" optional="hide"/>
+                                <field name="date_confirm" optional="hide"/>
+                                <field name="user_approved_id" optional="hide"/>
+                                <field name="date_approved" optional="hide"/>
+                                <field name="user_finish_id" optional="hide"/>
+                                <field name="date_finish" optional="hide"/>
+                                <field name="quantity_prev" optional="hide"/>
+                                <field name="price_unit_prev" optional="hide"/>
+                                <field name="price_subtotal_prev" optional="hide"/>
+                            </tree>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="subscription_id" invisible="1"/>
+                                            <field name="sale_id"/>
+                                            <field name="subscription_update_line_id"/>
+                                            <field name="product_id"/>
+                                            <field name="name"/>
+                                            <field name="quantity"
+                                                   attrs="{'invisible':[('type','not in',['down_same','down_reduction','down_add','up_same','up_reduction','up_add'])]}"/>
+                                            <field name="uom_id"/>
+                                            <field name="price_unit"
+                                                   attrs="{'invisible':[('type','not in',['down_same','down_reduction','down_add','up_same','up_reduction','up_add'])]}"/>
+                                            <field name="price_subtotal"
+                                                   attrs="{'invisible':[('type','not in',['down_same','down_reduction','down_add','up_same','up_reduction','up_add'])]}"/>
+
+                                            <field name="user_id"/>
+                                            <field name="date_confirm"/>
+                                            <field name="user_finish_id"/>
+                                            <field name="date_finish"/>
+                                        </group>
+                                        <group>
+                                            <field name="type"/>
+                                            <field name="upgrade_date"/>
+                                            <field name="stop_date"/>
+                                            <field name="service_id"/>
+                                            <field name="state"/>
+                                            <field name="invoice_status"
+                                                   attrs="{'invisible':[('type','not in',['up_same','up_reduction','up_add'])]}"/>
+                                            <field name="from_address"
+                                                   attrs="{'invisible':[('type','not in',['migration'])]}"/>
+                                            <field name="current_address"
+                                                   attrs="{'invisible':[('type','not in',['migration'])]}"/>
+                                            <field name="invoice_id"
+                                                   attrs="{'invisible':[('invoice_status','not in',['invoiced'])]}"/>
+                                            <field name="user_approved_id"/>
+                                            <field name="date_approved"/>
+                                            <field name="is_renovation"/>
+                                            <field name="renovation_type"/>
+                                            <field name="upgrade_temp_finish_date"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="sale_subscription_line_tree" model="ir.ui.view">
+            <field name="name">sale.subscription.line.tree</field>
+            <field name="model">sale.subscription.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" optional="show"/>
+                    <field name="service_id" optional="show"/>
+                    <field name="partner_street_destination" optional="show"/>
+                    <field name="partner_street_destination_header" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="sale_subscription_stage_id_view_stage_form_fea" model="ir.ui.view">
+            <field name="name">sale_subscription_stage_id.stage.form.fea</field>
+            <field name="model">sale.subscription.stage</field>
+            <field name="inherit_id" ref="fxo_sale_subscription_type.sale_subscription_stage_id_view_stage_form"/>
+            <field name="arch" type="xml">
+                <field name="code" position="after">
+                    <field name="type_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="sale_subscription_stage_id_view_stage_tree_fea" model="ir.ui.view">
+            <field name="name">sale_subscription_stage_id.stage.tree.fea</field>
+            <field name="model">sale.subscription.stage</field>
+            <field name="inherit_id" ref="fxo_sale_subscription_type.sale_subscription_stage_id_view_stage_tree"/>
+            <field name="arch" type="xml">
+                <field name="code" position="after">
+                    <field name="type_id"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Settings -->
+        <record id="view_sale_main_parameter_form_inherit" model="ir.ui.view">
+            <field name="name">sale.main.parameter.form.inherit</field>
+            <field name="model">sale.main.parameter</field>
+            <field name="inherit_id" ref="sale_parameter.view_sale_main_parameter_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Control de Linea de Credito">
+                        <group>
+                            <group colspan="2">
+                                <field name="include_not_invoiced"/>
+                                <field name="force_limit_fresh_orders"/>
+                                <field name="limit_currency_id"/>
+                                <field name="invoice_tolerance_due"/>
+                                <field name="invoice_amount_due"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

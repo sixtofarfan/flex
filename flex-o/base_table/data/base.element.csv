@@ -1,0 +1,11 @@
+id,table_id:id,name,description,element_char,element_float,element_percent,start_date,end_date
+mortgage_loan_id,bank_operations,mortgage_loan,Préstamo hipotecario,Préstamo hipotecario,,,,
+lyrics_borrowed_id,bank_operations,lyrics_borrowed,Letras protestadas,Letras protestadas,,,,
+returned_checks_id,bank_operations,returned_checks,Cheques devueltos,Cheques devueltos,,,,
+others_id,bank_operations,others,Otros,Otros,,,,
+status_partner_01,status_partner,01,activo,Activo,,,,
+status_partner_02,status_partner,02,baja,baja,,,,
+status_partner_03,status_partner,03,baja_adm,Baja Administrativa,,,,
+status_partner_04,status_partner,04,install,Instalacion,,,,
+status_partner_05,status_partner,05,suspend,Suspendido,,,,
+

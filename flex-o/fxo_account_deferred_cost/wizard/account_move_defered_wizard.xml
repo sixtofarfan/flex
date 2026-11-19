@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_account_move_difered_wizard_form_tax">
+			<field name="name">account.move.difered.wizard.form.tax</field>
+			<field name="model">account.move.difered.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<group>
+							<field name="date" required="1"/>
+						</group>
+					</group>
+					<footer>
+						<button string="Generar Asientos" name="get_difered_moves_tax" type="object" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_account_move_difered_wizard_form_tax_confirmation">
+			<field name="name">account.move.difered.wizard.form.tax.confirmation</field>
+			<field name="model">account.move.difered.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<h3>¿Esta seguro que desea cambiar la cuenta de los Impuestos actuales por las cuentas diferidas configuradas?</h3>
+					</group>
+					<footer>
+						<button string="Diferir Impuestos" name="set_difered_tax_account" type="object" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_account_move_difered_wizard_form_derive">
+			<field name="name">account.move.difered.wizard.form.derive</field>
+			<field name="model">account.move.difered.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<group>
+							<field name="after_date" required="1"/>
+						</group>
+						<group>
+							<field name="journal_id" required="1"/>
+						</group>
+					</group>
+					<footer>
+						<button string="Generar Asientos" name="get_difered_moves_derive" type="object" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

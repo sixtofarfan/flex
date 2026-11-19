@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <template id="fxo_ecommerce_extend.total" inherit_id="website_sale.total" name="Total extend">
+            <xpath expr="//tr[@id='order_total_untaxed']" position="replace">
+            </xpath>
+            <xpath expr="//tr[@id='order_total_taxes']" position="replace">
+            </xpath>
+        </template>        
+    </data>
+</odoo>

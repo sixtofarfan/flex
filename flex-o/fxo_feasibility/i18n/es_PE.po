@@ -1,0 +1,1724 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fxo_feasibility
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-28 04:43+0000\n"
+"PO-Revision-Date: 2021-11-27 23:50-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es_PE\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__sequence2
+msgid "# Item"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "<span class=\"o_stat_text\">Lineas de Cotizacion</span>"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__04
+msgid "Abril"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__active_sequence
+msgid "Active Sequence"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_subscription_lien_view_form_extend
+msgid "Add a note"
+msgstr "Agregar nota"
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_subscription_lien_view_form_extend
+msgid "Add a product"
+msgstr "Agregar un producto"
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_subscription_lien_view_form_extend
+msgid "Add a section"
+msgstr "Agregar una sección"
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.res_partner_view_map_extend
+msgid "Address"
+msgstr "Dirección"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__addresses_id
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend_boton
+msgid "Addresses"
+msgstr "Direcciones"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__type_cable__aereo
+msgid "Aereo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__08
+msgid "Agosto"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_form_inherit_permission
+msgid "Aprobación Cotizacion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_form_inherit_permission
+msgid "Aprobación Proyecto"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__grace_period_time__años
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_term_time__años
+msgid "Años"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__state__cancel
+msgid "Baja"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "COSTOS"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__sale_order_head_id
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_item__cabecera
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__type_item__cabecera
+msgid "Cabecera"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "Calcular"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend2
+msgid "Calculo Automatico"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__type_cable__canalizado
+msgid "Canalizado"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_auto_sale_line
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__product_uom_qty
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__product_uom_qty1
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__quantity
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__fxo_cost_qty
+msgid "Cantidad"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__subscription_qty
+msgid "Cantidad de Subscripcion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__property_type__casa
+msgid "Casa"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__product_uom_category_id
+msgid "Category"
+msgstr "Categoría"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order__check_complete_confirm
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order__check_temporary_factibility
+msgid "Check"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__commissions
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "Comisiones"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_cut__cute
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__type_cut__cute
+msgid "Con Corte"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend2
+msgid "Condiciones Generales"
+msgstr ""
+
+#. module: fxo_feasibility
+#: code:addons/fxo_feasibility/models/sale_order_line.py:0
+#, python-format
+msgid "Configurar en Parametro de factibilidad Porcentaje margen de utilidad"
+msgstr ""
+
+#. module: fxo_feasibility
+#: code:addons/fxo_feasibility/models/sale_order_line.py:0
+#, python-format
+msgid ""
+"Configurar en Parametro de factibilidad pestaña Egreso Producto Costo "
+"Instalacion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: code:addons/fxo_feasibility/models/sale_order_line.py:0
+#, python-format
+msgid ""
+"Configurar en Parametro de factibilidad pestaña Ingreso Producto Renta "
+"Mensual"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__contact_ids
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_auto_sale_line
+msgid "Contactos"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,help:fxo_feasibility.field_sale_subscription_line__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
+msgstr ""
+"La conversión entre las unidades de medidas sólo pueden ocurrir si "
+"pertenecen a la misma categoría. La conversión se basará en los ratios "
+"establecidos."
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__fxo_cost_price
+msgid "Costo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "Costo Instalacion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__install_cost_pen
+msgid "Costo Soles"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__fxo_cost_total
+msgid "Costo Total"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo_linea__price_unit
+msgid "Costo Unitario"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__install_cost
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__install_cost_def
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__install_cost_temp
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__install_cost
+msgid "Costo de Instalacion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__create_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__create_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__create_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__create_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__create_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo__create_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo_linea__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__create_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__create_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__create_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__create_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__create_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo__create_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo_linea__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_stock_move__fxo_analytic_account_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_stock_picking__fxo_analytic_account_id
+msgid "Cuenta Analitica"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__currency_pedido_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__order_line_currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__factibility_date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__duration_type__days
+msgid "Days"
+msgstr "Días"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,help:fxo_feasibility.field_sale_order_line_detail__product_uom_id
+msgid "Default unit of measure used for all stock operations."
+msgstr ""
+"Unidad de medida por defecto utilizada para todas las operaciones de stock"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__factibility_type__definitive
+msgid "Definitivo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__state_id
+msgid "Departamento"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo__lineas
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_tarifa_costo
+msgid "Detalle"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__order_line_id
+msgid "Detalle de Venta"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__grace_period_time__dias
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_term_time__dias
+msgid "Dias"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__12
+msgid "Diciembre"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__street
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "Direccion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__partner_street_destination_header
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__partner_street_destination_header
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__partner_street_destination_header
+msgid "Direccion Cabecera"
+msgstr "Dirección Cabecera"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__partner_street_destination
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__partner_street_destination
+msgid "Direccion Destino"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__partner_street_destination_replace
+msgid "Direccion Destino Nuevo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__display_name
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__display_name
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__display_name
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__display_name
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__display_name
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo__display_name
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo_linea__display_name
+msgid "Display Name"
+msgstr "Nombre a Mostrar"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__display_type
+msgid "Display Type"
+msgstr "Tipo de pantalla"
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_factibility_search
+msgid "District"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__district_id
+msgid "Distrito"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__state__done
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "Done"
+msgstr "Hecho"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__up_down_type__down_add
+msgid "Downgrade Mbps Renta"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__up_down_type__down_reduction
+msgid "Downgrade Reduccion de Tarifa"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__up_down_type__down_same
+msgid "Downgrade Solo Mbps"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__state__draft
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__install_duration
+msgid "Duración de Instalación"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "EGRESO"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__property_type__edificio
+msgid "Edificio"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__product_template__edit_price_unit__edit
+msgid "Edit"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_product__edit_price_unit
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_template__edit_price_unit
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__edit_price_unit
+msgid "Edit Price Unit "
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.product_template_form_view_extend
+msgid "Edit Price Unit Sale Order"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__egreso
+msgid "Egreso"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__egreso_comision_importe
+msgid "Egreso Comision Importe"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__egreso_instalacion_importe
+msgid "Egreso Instalacion Importe"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__egreso_principal_importe
+msgid "Egreso Principal Importe"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__01
+msgid "Enero"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__detail_ids
+msgid "Equipos"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_product__is_nubyx
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_template__is_nubyx
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__is_nubyx
+msgid "Es Nubyx"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__state
+msgid "Estado"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__economic_id
+msgid "Estudio Economico"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.actions.act_window,name:fxo_feasibility.sale_order_line_qty_street_action
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "Estudio Económico"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__expiration_date
+msgid "Expiration Date"
+msgstr "Fecha de caducidad"
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "Factibilidad"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.actions.act_window,name:fxo_feasibility.action_sale_order_line_factibility_old
+#: model:ir.actions.server,name:fxo_feasibility.action_sale_order_line_factibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__factibility_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__factibility_id
+#: model:ir.ui.menu,name:fxo_feasibility.sale_order_line_factibility_menu
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend_boton
+msgid "Factibility"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_sale_order_line_factibility
+msgid "Factibility Order Lines"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_sale_order_line_qty_street
+msgid "Factibility street Lines"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend_boton
+msgid "Falta Factibilidad o estado Borrador"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__02
+msgid "Febrero"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__upgrade_date
+msgid "Fecha Upgrade"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__product_template__transport_physic__fibra_optica
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__transport_physic_relation__fibra_optica
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__transport_physic_relation__fibra_optica
+msgid "Fibra Optica"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order__finish_facibility
+msgid "Finish Facilities"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__net_flow
+msgid "Flujo Neto"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__net_flow_total
+msgid "Flujo Neto Total"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "Flujo de Caja"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__way_to_pay_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__way_to_pay_id
+msgid "Forma de Pago"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_term__forzoso
+msgid "Forzoso"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__fxo_cost_moneda
+msgid "Fxo Cost Moneda"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "General"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_auto_sale_line
+msgid "Generar Detalle"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend_boton
+msgid "Generar Factibilidades Faltantes"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend_boton
+msgid "Generar Lineas Con Contactos"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_auto_sale_line
+msgid "Generar Lineas de Cotización por cada Contacto"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "Geolocalizacion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_factibility_search
+msgid "Group By"
+msgstr "Agrupado por"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order__install_type
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__install_type
+msgid "Has Address"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__compute_have_factibility
+msgid "Have Factibility"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo__id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo_linea__id
+msgid "ID"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__service_id_2
+msgid "ID Servicio"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "IMPORTE"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "INGRESO"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__item_origin
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__item_origin
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__item_origin
+msgid "IT/Referencia"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__service_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__service_id
+msgid "Id Servicio"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__precio_instalacion
+msgid "Importe"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_term__indeterminado
+msgid "Indeterminado"
+msgstr ""
+
+#. module: fxo_feasibility
+#: code:addons/fxo_feasibility/models/sale_order_line.py:0
+#, python-format
+msgid "Indique la direccion en este item"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__ingreso
+msgid "Ingreso"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "Instalacion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.product_template_form_view_extend
+msgid "Installation"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_category__1
+msgid "Internet"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__is_migration
+msgid "Is migration"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__sale_update_id
+msgid "Item Order Line"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__07
+msgid "Julio"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__06
+msgid "Junio"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__number_via__km
+msgid "KM"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__spliter_1_kmz
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__spliter_2_kmz
+msgid "KMZ"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line____last_update
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow____last_update
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail____last_update
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility____last_update
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street____last_update
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo____last_update
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo_linea____last_update
+msgid "Last Modified on"
+msgstr "Ultima Modificación en"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__write_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__write_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__write_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__write_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__write_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo__write_uid
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo_linea__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__write_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__write_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__write_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__write_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__write_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo__write_date
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo_linea__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__spliter_1_longitude
+msgid "Latitud de Spliter 1"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__spliter_2_longitude
+msgid "Latitud de Spliter 2"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_cut__free
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__type_cut__free
+msgid "Libre"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__order_line_ids
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "Lineas de Cotizacion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_subscription_lien_view_form_extend
+msgid "Lineas de Pedido"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription__sale_order_line_detalle
+msgid "Lineas del Pedido"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_subscription_lien_view_form_extend
+msgid "Lines Order Update"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__local
+msgid "Local / Apartamento"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__spliter_1_latitude
+msgid "Longitud de Spliter 1"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__spliter_2_latitude
+msgid "Longitud de Spliter 2"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__lot
+msgid "Lote"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "MONEDA"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__number_via__mz
+msgid "MZ"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__apple
+msgid "Manzana"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.actions.act_window,name:fxo_feasibility.res_partner_view_map_extend_action
+msgid "Map Partner"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend_boton
+msgid "Mapa"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__porc_utilidad
+msgid "Margen Operativo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__porc_utilidad_instalacion
+msgid "Margen Operativo con Pago Unico"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__03
+msgid "Marzo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__05
+msgid "Mayo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__transport_physic_relation
+msgid "Medio Fisico"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_product__transport_physic
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_template__transport_physic
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__transport_physic_relation
+msgid "Medio Transporte Fisico"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__grace_period_time__meses
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_term_time__meses
+msgid "Meses"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__footage
+msgid "Metraje"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_factibility_search
+msgid "Mis Factibilidad"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__currency_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__currency_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo__currency_id
+msgid "Moneda"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_product__fxo_cost_price_currency
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_template__fxo_cost_price_currency
+msgid "Moneda de Costo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__product_currency_id
+msgid "Moneda del Producto"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__month
+msgid "Month"
+msgstr "Mes"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__duration_type__months
+msgid "Months"
+msgstr "Meses"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__number_via__nro
+msgid "NRO"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__name
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.res_partner_view_map_extend
+msgid "Name"
+msgstr "Nombre"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_product__bool_qty_street
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_template__bool_qty_street
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__bool_qty_street
+msgid "Necesita Direccion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_product__bool_is_study_economic
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_template__bool_is_study_economic
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__bool_is_study_economic
+msgid "Necesita Estudio Economico"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_product__bool_is_factibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_template__bool_is_factibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__bool_is_factibility
+msgid "Necesita Factibilidad"
+msgstr ""
+
+#. module: fxo_feasibility
+#: code:addons/fxo_feasibility/models/feasibility.py:0
+#, python-format
+msgid ""
+"No puede haber dos factibilidad  en estado Abierto en la misma direccion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__name_via
+msgid "Nombre Via"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__property_name
+msgid "Nombre de Inmueble"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__name_zone
+msgid "Nombre de Zona"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__product_template__edit_price_unit__none
+msgid "None"
+msgstr "Ninguno"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__display_type__line_note
+msgid "Note"
+msgstr "Nota"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__11
+msgid "Noviembre"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__nro_quotes
+msgid "Nro. Cuotas"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__type_term_qty
+msgid "Nro. Plazo Forzoso"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__subscription_qty_total
+msgid "Nueva Cantidad de Subscripcion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__subscription_price_unit_total
+msgid "Nuevo Precio Unitario Subscripcion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__subscription_price_subtotal_total
+msgid "Nuevo Subtotal de Subscripcion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__number
+msgid "Number"
+msgstr "Número"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__number_new
+msgid "Numero"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__10
+msgid "Octubre"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__install_rate
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__way_to_pay
+msgid "Old Field"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__state__open
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "Open"
+msgstr "Abierto"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__order_id
+msgid "Order"
+msgstr "Pedido"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__line
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__name
+msgid "Order Line"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__order_line_count
+msgid "Order Line Count"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__property_type__otro
+msgid "Otro"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_category__4
+msgid "Otros"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "PLAZO"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__country_id
+msgid "Pais"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.module.category,description:fxo_feasibility.factibility_module_category
+#: model:ir.module.category,name:fxo_feasibility.factibility_module_category
+msgid "Para Factibilidad de Ventas"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__partner_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__order_partner_street_id
+msgid "Partner"
+msgstr "Socio"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__partner_order_id
+msgid "Partner Order"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__pay_back
+msgid "Pay Back / ROI"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__state__pending
+msgid "Pendiente"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__period
+msgid "Period"
+msgstr "Período"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__grace_period
+msgid "Periodo Gracia"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__grace_period_time
+msgid "Periodo Gracia Tiempo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__partner_contact_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__partner_order_id
+msgid "Persona Contacto"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__cash_flow_period_ids
+msgid "Períodos"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__floor
+msgid "Piso"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__egreso_comision_plazo
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__egreso_instalacion_plazo
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__egreso_principal_plazo
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__ingreso_principal_plazo
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__precio_instalacion_plazo
+msgid "Plazo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__recurring_interval
+msgid "Plazo de Contrato"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__customer_lead
+msgid "Plazo de entrega"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,help:fxo_feasibility.field_sale_order_line__type_conection
+msgid "Por ejemplo OverBooking"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,help:fxo_feasibility.field_sale_order_line__type_conection_relation
+msgid "Por ejemplo: (1:1)"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_product__porcent_aprove
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_template__porcent_aprove
+msgid "Porcentaje por Defecto Estudio Economico"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__type_cable__postes
+msgid "Postes"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__product_price_unit
+msgid "Precio Unitario"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__price_unit
+msgid "Precio Unitario MN"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__subscription_price_unit
+msgid "Precio Unitario de Subscripcion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_product__fxo_cost_price
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_template__fxo_cost_price
+msgid "Precio de Costo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "Precio de Instalacion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__price_unit1
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__price_unit1_invisible
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__price_unit_invisible
+msgid "Precio unidad"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__product_costo_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de Producto"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_auto_sale_line__product_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_product__product_rel_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_product_template__product_rel_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__product_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo_linea__product_id
+msgid "Producto"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "Producto Seleccionado"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__product_extra
+msgid "Productos Extra"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_factibility_search
+msgid "Province"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__province_id
+msgid "Provincia"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__qty_street_id
+msgid "Qty Street"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__qty_streets
+msgid "Qty Streets"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,help:fxo_feasibility.field_sale_order_line__subscription_qty
+msgid "Quantity that will be invoiced."
+msgstr "Cantidad que se facturará."
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__property_type__quinta
+msgid "Quinta"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__roi
+msgid "ROI"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__product_template__transport_physic__radioenlace
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__transport_physic_relation__radioenlace
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__transport_physic_relation__radioenlace
+msgid "Radioenlace"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_category__2
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_item__direccion
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__type_item__direccion
+msgid "Remoto"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "Renta Mensual"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__property_type__residencia
+msgid "Residencia"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__origin_sale_order_id
+msgid "Sale Order Origen"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_sale_order
+msgid "Sales Order"
+msgstr "# Pedido"
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de Pedido de Venta"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__product_template__transport_physic__satelital
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__transport_physic_relation__satelital
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__transport_physic_relation__satelital
+msgid "Satelital"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_factibility_search
+msgid "Search Description"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__display_type__line_section
+msgid "Section"
+msgstr "Sección"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__sequence
+msgid "Secuencia"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend_boton
+msgid "Send PRO-FORMA Invoice"
+msgstr "Enviar Factura PRO-FORMA"
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend_boton
+msgid "Send by Email"
+msgstr "Enviar por Email"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_cash_flow__month__09
+msgid "Septiembre"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_cut__notcute
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_subscription_line__type_cut__notcute
+msgid "Sin Corte"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__state
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_factibility_search
+msgid "State"
+msgstr "Estado"
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de Stock"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__price_subtotal1
+msgid "SubTotal"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_sale_subscription
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__fxo_subscription_id
+msgid "Subscription"
+msgstr "Suscripción"
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_sale_subscription_line
+msgid "Subscription Line"
+msgstr "Línea de suscripción"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__ingreso_principal_importe
+msgid "Subtotal"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__subscription_price_subtotal
+msgid "Subtotal de Suscripcion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__tir
+msgid "TIR"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "TOTAL"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__tarifa_id
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo_linea__tarifa_id
+msgid "Tarifa"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_tarifa_costo__name
+msgid "Tarifa Costo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.actions.act_window,name:fxo_feasibility.tarifa_costo_action
+#: model:ir.ui.menu,name:fxo_feasibility.tarifa_costo_menu
+msgid "Tarifa para Costos"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,help:fxo_feasibility.field_sale_subscription_line__display_type
+msgid "Technical field for UX purpose."
+msgstr "Campo técnico para propósitos de usabilidad"
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_sale_order_line_factibility_from
+msgid "Tecnico"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__user_id
+msgid "Tecnico de Instalacion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend2
+msgid "Telefonia"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__type_category__3
+msgid "Telefonia IP"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__factibility_type__temporary
+msgid "Temporal"
+msgstr ""
+
+#. module: fxo_feasibility
+#: code:addons/fxo_feasibility/models/sale_order_line.py:0
+#, python-format
+msgid "The product :  must be approved Feasibility study or Economic study "
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__type_term_time
+msgid "Tiempo Plazo Forzoso"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__duration_type
+msgid "Tiempo de  (Dias/Mes/Años) "
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.view_order_form_extend_boton
+msgid "Tiene Factibilidad"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__number_via
+msgid "Tipo Numero Via"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__type_category
+msgid "Tipo Separacion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__type_cable
+msgid "Tipo de Cablea"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__tc
+msgid "Tipo de Cambio"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__type_conection
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__type_conection
+msgid "Tipo de Conexion"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__type_conection_relation
+msgid "Tipo de Conexion Relacional"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__factibility_type
+msgid "Tipo de Factibilidad"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__property_type
+msgid "Tipo de Inmueble"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__type_item
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__type_item
+msgid "Tipo de Item"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__type_term
+msgid "Tipo de Plazo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__up_down_type
+msgid "Tipo de Upgrade o Downgrade"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__type_via
+msgid "Tipo de Via"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_factibility__type_zone
+msgid "Tipo de Zona"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__type_conection_relation
+msgid "Tipo de conexion relacional"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__type_cut
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__type_cut
+msgid "Tipo de corte"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__egreso_comision_total
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__egreso_instalacion_total
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__egreso_principal_total
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__ingreso_principal_total
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__precio_instalacion_total
+msgid "Total"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "Total  Egresos"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__total_egreso
+msgid "Total Egreso"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__total_ingreso
+msgid "Total Ingreso"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__total_ingreso_2
+msgid "Total Ingreso con Pago Unico"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "Total Ingresos"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__total
+msgid "Total MN"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__type_rel
+msgid "Type"
+msgstr "Tipo"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__fxo_cost_unidad
+msgid "UM"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line__product_uom1
+msgid "Unidad"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_detail__product_uom_id
+msgid "Unidad de Medida"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__price_unit
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_subscription_line__uom_id
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__up_down_type__up_add
+msgid "Upgrade Mbps y Renta"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__up_down_type__up_reduction
+msgid "Upgrade Reduccion de Tarifa"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line__up_down_type__up_same
+msgid "Upgrade Solo Mbps"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:res.groups,name:fxo_feasibility.group_factibility_administrator
+msgid "Usuario: Administrador"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:res.groups,name:fxo_feasibility.group_factibility_user
+msgid "Usuario: Solo Ver sus Propios Factibilidades"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:res.groups,name:fxo_feasibility.group_factibility_manager
+msgid "Usuario: Ver Factibilidades de Todos"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_qty_street__utilidad_bruta
+msgid "Utilidad Bruta"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields,field_description:fxo_feasibility.field_sale_order_line_cash_flow__year
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__duration_type__year
+msgid "Year"
+msgstr "Año"
+
+#. module: fxo_feasibility
+#: code:addons/fxo_feasibility/models/feasibility.py:0
+#, python-format
+msgid "You cannot delete a document that is in %s state."
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_auto_sale_line
+msgid "auto.sale.line"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__state__cancel
+msgid "cancel"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model.fields.selection,name:fxo_feasibility.selection__sale_order_line_factibility__state__close
+msgid "close"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_sale_main_parameter
+msgid "sale.main.parameter"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_sale_order_line_cash_flow
+msgid "sale.order.line.cash_flow"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_sale_order_line_detail
+msgid "sale.order.line.detail"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_tarifa_costo
+msgid "tarifa.costo"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model:ir.model,name:fxo_feasibility.model_tarifa_costo_linea
+msgid "tarifa.costo.linea"
+msgstr ""
+
+#. module: fxo_feasibility
+#: model_terms:ir.ui.view,arch_db:fxo_feasibility.sale_order_line_qty_street_view_form
+msgid "total"
+msgstr ""

@@ -1,0 +1,39 @@
+<odoo>
+	<record model="ir.ui.view" id="hr_vacation_control_form_view_inherit">
+		<field name="name">hr_vacation_control_form_view_inherit</field>
+		<field name="model">hr.vacation.control</field>
+		<field name="inherit_id" ref="hr_vacations.hr_vacation_control_form_view"/>
+		<field name="arch" type="xml">
+			<field name="vacation_line_ids" position="attributes">
+				<attribute name="readonly">0</attribute>
+			</field>
+			<field name="fiscal_year_id" position="attributes">
+				<attribute name="readonly">1</attribute>
+			</field>
+			<field name="identification_id" position="attributes">
+				<attribute name="readonly">1</attribute>
+			</field>
+			<field name="employee_id" position="attributes">
+				<attribute name="readonly">1</attribute>
+			</field>
+			<field name="payroll_period" position="attributes">
+				<attribute name="readonly">1</attribute>
+			</field>
+			<field name="accrued_period" position="attributes">
+				<attribute name="readonly">1</attribute>
+			</field>
+			<field name="vacation_balance" position="attributes">
+				<attribute name="readonly">1</attribute>
+			</field>
+			<field name="expended_days" position="attributes">
+				<attribute name="readonly">1</attribute>
+			</field>
+			<field name="total" position="attributes">
+				<attribute name="readonly">1</attribute>
+			</field>
+			<field name="vacation_balance" position="before">
+				<field name="stored_days"/>
+			</field>
+		</field>
+	</record>
+</odoo>

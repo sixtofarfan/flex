@@ -1,0 +1,9 @@
+<odoo>
+	<record model="ir.actions.server" id="action_change_date_due">
+		<field name="name">Actualizar Date Due</field>
+		<field name="model_id" ref="account.model_account_move"/>
+		<field name="binding_model_id" ref="account.model_account_move" />
+		<field name="state">code</field>
+		<field name="code">action = records.change_date_due()</field>
+	</record>
+</odoo>

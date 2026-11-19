@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="account_invoice_confirm_view" model="ir.ui.view">
+            <field name="name">stock.picking.router.wizard.form</field>
+            <field name="model">stock.picking.router.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Generate Router">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="date_to"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Generate" name="set_router_line" type="object" default_focus="1" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_stock_picking_router_link" model="ir.actions.act_window">
+            <field name="name">Generate Router</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.picking.router.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="fxo_order_router_picking.model_stock_picking_router" />
+            <field name="binding_view_types">list</field>
+        </record>
+    </data>
+</odoo>

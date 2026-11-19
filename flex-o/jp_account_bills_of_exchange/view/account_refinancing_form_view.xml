@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_account_refinancing_form_form" model="ir.ui.view">
+        <field name="name">account.refinancing.form.form</field>
+        <field name="model">account.refinancing.form</field>
+        <field name="arch" type="xml">
+            <form string="Refinancing Forms" attrs="{'readonly':[('state','!=','draft')]}">
+                <header>
+                    <button string="Process" type="object" name="process" class="oe_highlight" attrs="{'invisible':[('state','!=','draft')]}"/>
+                    <button string="Cancel" type="object" name="cancel" confirm="Are you sure you want to unreconcile the conciliation and delete the accounting entries?" attrs="{'invisible':[('state','=','draft')]}"/>
+                    <button string="Reconcile" type="object" name="reconcile" confirm="Are you sure you want to reconcile the document?" class="oe_highlight" attrs="{'invisible':[('state','in',['draft', 'done'])]}"/>
+                    <button name="action_form_send_to_bank" id="account_bill_form_send_button"
+                            type="object" class="oe_highlight"
+                            attrs="{'invisible': ['|','|',('send_form_ids','!=',[]),('state', '!=', 'done'),('type_form','=', '1')]}"
+                            string="Send Form"/>
+                    <field name="state" widget="statusbar" readonly="1"/>
+                </header>
+                <sheet string="Refinancing Forms">
+                    <div name="button_box" class="oe_button_box">
+                        <button name="open_send_bank_view" class="oe_stat_button" icon="fa-bars" type="object" attrs="{'invisible': [('send_form_ids', '=', [])]}" string="Send forms">
+                        </button>
+                        <field name="send_form_ids" invisible="1"/>
+                    </div>
+                    <h1 class="mt0">
+                        <field name="name" readonly="1" class="oe_inline"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="journal_id" force_save="1" required="1" attrs="{'readonly':['|','|',('state','not in','draft'),('invoice_ids','!=',[]),('overdue_bill_ids','!=',[])]}"/>
+                            <field name="partner_id" force_save="1" required="1" attrs="{'readonly':['|','|',('state','not in','draft'),('invoice_ids','!=',[]),('overdue_bill_ids','!=',[])]}"/>
+                            <!-- <field name="currency_id" groups="base.group_multi_currency" force_save="1" required="1" attrs="{'readonly':['|',('state','not in','draft'),('invoice_ids','!=',[])]}"/> -->
+                            <field name="currency_id" groups="base.group_multi_currency" force_save="1" required="1" readonly="1"/>
+                            <field name="type_form" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="company_currency_id" invisible="1"/>
+                            <field name="exchange_date" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                            <field name="refinancing_rate" required="1"/>
+                            <field name="custom_exchange_rate" groups="base.group_multi_currency" force_save="1" attrs="{'readonly':['|',('state','not in','draft'),('invoice_ids','!=',[])],'invisible':[('currency_id','=','company_currency_id')]}"/>
+                            <field name="exchange_rate" groups="base.group_multi_currency" force_save="1" required="1"  attrs="{'readonly':['|','|',('state','not in','draft'),('custom_exchange_rate','=',False),('invoice_ids','!=',[])]}"/>
+                        </group>
+                        <group>
+                            <field name="reference" attrs="{'readonly':[('state','not in','draft')]}"/>
+                            <field name="gloss"/>
+                            <field name="apply_retention" attrs="{'readonly':[('state','not in','draft')]}"/>
+                            <field name="retention_percentage" attrs="{'readonly':[('apply_retention','=',False)],'readonly':[('state','not in','draft')]}"/>
+                            <field name="total_retention" force_save="1" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Invoices">
+                            <field name="invoice_ids" required="1" attrs="{'readonly':[('state','not in','draft')]}" domain="[('state','=','posted'),('partner_id','=', partner_id),('currency_id','=',currency_id),('type','in',[context.get('type')]),('amount_residual','>', 0),('bill_form_id','=',False)]">
+                                <tree>
+                                    <field name="partner_id" invisible="1"/>
+                                    <field name="name" readonly="1"/>
+                                    <field name="type" required="0" readonly="1"/>
+                                    <field name="currency_id" groups="base.group_multi_currency" required="0" readonly="1"/>
+                                    <field name="amount_total" required="1" readonly="0" sum="Total"/>
+                                    <field name="amount_residual" required="1" readonly="0"/>
+                                    <field name="amount_residual_signed" string="Amount Residual Signed" groups="base.group_multi_currency" sum="Total" required="1" readonly="0"/>
+                                    <field name="exchange_amount" required="1" readonly="0"/>
+                                    <field name="exchange_amount_signed"  groups="base.group_multi_currency" sum="Total" required="1" readonly="0"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Overdue Bills" attrs="{'readonly':[('state','not in','draft')]}">
+                            <!-- <group>
+                                <group>
+                                    <field name="bills_qty" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="days_due_first" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="range_bill" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                </group>
+                                <group>
+                                    <field name="guarantee_id" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="acceptor_id" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <button string="Update Bills" type="object" name="update_bills"  class="oe_highlight" attrs="{'invisible':[('state','not in','draft')]}"/>
+                            </group> -->
+                            <field name="overdue_bill_ids" attrs="{'readonly':[('state','not in','draft','disbursed')]}" domain="[('state_of_bill','not in',['draft','refinanced','paid']),('responsable_id','=', partner_id),('bill_currency_id','=',currency_id)]">
+                                <tree>
+                                    <field name="bill_date_issue"/>
+                                    <field name="bill_date_due"/>
+                                    <field name="bill_number"/>
+                                    <field name="guarantee_id"/>
+                                    <field name="acceptor_id" required="1"/>
+                                    <field name="account_id" readonly="1" force_save="1"/>
+                                    <!-- <field name="account_id" readonly="1" /> -->
+                                    <!-- <field name="bill_date_due" required="1"/> -->
+                                    <!-- <field name="porcentaje" readonly="1"/> -->
+
+                                    <field name="bill_currency_id" groups="base.group_multi_currency" required="1"/>
+                                    <field name="bill_amount_total" groups="base.group_multi_currency" required="1" sum="Total"/>
+                                    <field name="exchange_rate" groups="base.group_multi_currency" required="1"/>
+                                    <field name="bill_amount_total_signed" required="1" sum="Total"/>
+                                    <!-- <field name="monto_total" required="1" sum="Total " readonly="1"/> -->
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Bills" attrs="{'readonly':[('state','not in','draft')]}">
+                            <group>
+                                <group>
+                                    <field name="bills_qty" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="days_due_first" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="range_bill" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                </group>
+                                <group>
+                                    <field name="guarantee_id" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="acceptor_id" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="add_dn" invisible="1"/>
+                                </group>
+                            </group>
+                            <header>
+                                <button string="Create Bills" type="object" name="create_bills" class="oe_highlight" attrs="{'invisible':['|',('state','not in','draft'),('interest_lp_ids','!=', [])]}"/>
+                                <button string="Create Bills" type="object" name="create_bills" attrs="{'invisible':['|',('state','not in','draft'),('interest_lp_ids','=', [])]}"/>
+                                <button string="Update Bills" type="object" name="update_bills" attrs="{'invisible':[('state','not in','draft')]}"/>
+                                <button string="Add Debit Notes Bill" type="object" name="add_dn_bill" attrs="{'invisible':['|','|',('state','not in','draft'),('add_dn','=', True),('invoice_ids','=',[])]}"/>
+                                <button string="Delete Debit Notes Bill" type="object" name="del_dn_bill" attrs="{'invisible':['|','|',('state','not in','draft'),('add_dn','=', False),('invoice_ids','=',[])]}"/>
+                                <!-- <button string="Calculate Interest" type="object" name="calculate_interest" class="oe_highlight" attrs="{'invisible':['|',('state','not in','draft'),('interest_lp_ids','!=', [])]}"/>
+                                <button string="Calculate Interest" type="object" name="calculate_interest" attrs="{'invisible':['|',('state','not in','draft'),('interest_lp_ids','=', [])]}"/> -->
+                                <!-- <button string="Clear Interest" type="object" name="clear_interest" attrs="{'invisible':[('state','not in','draft')]}"/> -->
+                            </header>
+                            <field name="bill_ids" attrs="{'readonly':[('state','not in','draft')]}">
+                                <tree editable="bottom" create="1" delete="1">
+                                    <field name="bill_date_issue" required="1"/>
+                                    <field name="bill_date_due" required="1"/>
+                                    <field name="bill_number"/>
+                                    <field name="guarantee_id"/>
+                                    <field name="acceptor_id" required="1"/>
+                                    <field name="account_id" force_save="1"/>
+                                    <!-- <field name="account_id" readonly="1" /> -->
+                                    <!-- <field name="bill_date_due" required="1"/> -->
+                                    <!-- <field name="porcentaje" readonly="1"/> -->
+
+                                    <field name="bill_currency_id" groups="base.group_multi_currency" required="1"/>
+                                    <field name="bill_amount_total" groups="base.group_multi_currency" required="1" sum="Total"/>
+                                    <field name="exchange_rate" groups="base.group_multi_currency" required="1"/>
+                                    <field name="bill_amount_total_signed" required="1" sum="Total "/>
+                                    <!-- <field name="monto_total" required="1" sum="Total " readonly="1"/> -->
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Interest for Late Payment">
+                            <group>
+                                <group>
+                                    <button string="Create Debit Note" type="object" name="debit_note_wizard_lp" class="oe_highlight" attrs="{'invisible':['|',('state','not in','draft'),('debit_note_lp_id','!=',False)]}"/>
+                                </group>
+                                <group>
+                                    <field name='debit_note_lp_id' readonly="1" attrs="{'invisible':[('debit_note_lp_id','=',False)]}"/>
+                                </group>
+                            </group>
+                            <field name="interest_lp_ids" readonly="1">
+                                <tree>
+                                    <field name="document_type"/>
+                                    <field name="document_type_sunat"/>
+                                    <field name="amount"/>
+                                    <field name="original_due_date"/>
+                                    <field name="new_due_date"/>
+                                    <field name="days"/>
+                                    <field name="refinancing_rate"/>
+                                    <field name="currency_id" groups="base.group_multi_currency"/>
+                                    <field name="interest" sum="Total"/>
+                                    <!-- <field name="document_state"/> -->
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Interest on Refinancing">
+                            <group>
+                                <group>
+                                    <button string="Create Debit Note" type="object" name="debit_note_wizard_or"  class="oe_highlight" attrs="{'invisible':['|',('state','not in','draft'),('debit_note_or_id','!=',False)]}"/>
+                                </group>
+                                <group>
+                                    <field name='debit_note_or_id' readonly="1" attrs="{'invisible':[('debit_note_or_id','=',False)]}"/>
+                                </group>
+                            </group>
+                            <field name="interest_or_ids" readonly="1">
+                                <tree>
+                                    <field name="document_type"/>
+                                    <field name="document_type_sunat"/>
+                                    <field name="amount"/>
+                                    <field name="original_due_date"/>
+                                    <field name="new_due_date"/>
+                                    <field name="days"/>
+                                    <field name="refinancing_rate"> %</field>
+                                    <field name="currency_id" groups="base.group_multi_currency"/>
+                                    <field name="interest" sum="Total"/>
+                                    <!-- <field name="document_state"/> -->
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Journal Items" attrs="{'readonly':[('state','not in','draft')],'invisible':[('state','in','draft')]}">
+                            <group>
+                                <group>
+                                    <field name="account_move" invisible="1" readonly="1"/>
+                                </group>
+                                <field name="account_move_line_ids">
+                                    <tree>
+                                        <field name="date"/>
+                                        <field name="move_id"/>
+                                        <field name="account_id"/>
+                                        <field name="name"/>
+                                        <field name="full_reconcile_id"/>
+                                        <field name="debit" sum="Total"/>
+                                        <field name="credit" sum="Total"/>
+                                        <field name="amount_currency"/>
+                                        <field name="exchange_rate"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>  
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_account_refinancing_form_tree" model="ir.ui.view">
+        <field name="name">account.refinancing.form.tree</field>
+        <field name="model">account.refinancing.form</field>
+        <field name="arch" type="xml">
+            <tree string="Refinancing Forms">
+                <field name="name"/>
+                <field name="exchange_date"/>
+                <field name="partner_id"/>
+                <field name="currency_id"/>
+                <field name="exchange_rate"/>
+                <field name="reference"/>
+                <field name="gloss"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_account_customer_refinancing_forms" model="ir.actions.act_window">
+        <field name="name">Refinancing Forms</field>
+        <field name="res_model">account.refinancing.form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_account_refinancing_form_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_refinancing_form_form')})]"/>
+        <field name="view_mode">tree,form</field>
+        <!-- <field name="domain">[('invoice_ids.type','=','out_invoice')]</field> -->
+        <field name="context">{'type': 'out_invoice'}</field>
+    </record>
+
+    <!-- <record id="action_account_supplier_bill_forms" model="ir.actions.act_window">
+        <field name="name">Bill of Exchange Forms</field>
+        <field name="res_model">account.bill.form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_account_bill_form_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_bill_form_form')})]"/>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('invoice_ids.type','=','in_invoice')]</field>
+        <field name="context">{'type': 'in_invoice'}</field>
+    </record> -->
+
+    <!-- <menuitem id="menu_bills_customer_title" 
+                name="Bills of exchange" 
+                parent="account.menu_finance_receivables" 
+                sequence="200" 
+                groups="group_module_account_bill_manager"/>
+
+    <menuitem id="menu_bills_supplier_title" 
+                name="Bills of exchange" 
+                parent="account.menu_finance_payables" 
+                sequence="200" 
+                groups="group_module_account_bill_manager"/> -->
+
+    <menuitem id="menu_account_customer_refinancing_forms" name="Refinancing Forms"
+              parent="menu_bills_customer_title"
+              action="action_account_customer_refinancing_forms" sequence="220"/>
+<!-- 
+    <menuitem id="menu_account_supplier_bill_tree" name="Refinancing Forms"
+              parent="menu_bills_supplier_title"
+              action="action_account_supplier_bill_forms" sequence="220"/> -->
+
+    <!-- <menuitem id="menu_view_resource_calendar_leaves_tree"
+        parent="menu_bills_customer_title"
+        action="resource.action_resource_calendar_leave_tree"/> -->
+
+        <!-- Wizard para solicitar gastos administrativos -->
+        <record id="view_admin_interest_wizard" model="ir.ui.view">
+            <field name="name">admin.interest.form</field>
+            <field name="model">admin.interest</field>
+            <field name="arch" type="xml">
+                <form string="Interest Administartive Wizard">
+                    <group>
+                        <field name="interest_administrative" required="1"/>
+                    </group>
+                    <footer>
+                        <button string="Create Debit Note" name="create_debit_note_data" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+</odoo>

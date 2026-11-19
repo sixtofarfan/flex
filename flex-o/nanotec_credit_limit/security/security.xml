@@ -1,0 +1,14 @@
+<odoo>
+	<record id="modifica_precios_especiales" model="res.groups">
+        <field name="name">Aprobar pedidos retenidos</field>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+	<record model="ir.rule" id="res_partner_credit_detail_not_shared_multi_company_rule">
+		<field name="name">Non Shared Records: Gratification</field>
+		<field name="model_id" ref="nanotec_credit_limit.model_res_partner_credit_detail"/>
+		<field name="global" eval="True"/>
+		<field name="domain_force">
+			[('company_id', 'in', company_ids)]
+		</field>
+	</record>
+</odoo>

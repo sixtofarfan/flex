@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_concilation_line,concilation.line,model_concilation_line,account_base_it.group_account_tables_user,1,1,1,1
+access_concilation_concept,concilation.concept,model_concilation_concept,account_base_it.group_account_tables_user,1,1,1,1

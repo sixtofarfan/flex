@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_collection,account.collection,model_account_collection,account.group_account_user,1,1,1,1
+access_account_collection_record,account.collection.record,model_account_collection_record,account.group_account_user,1,1,1,1
+access_account_collection_invoice,account.collection.invoice,model_account_collection,account.group_account_invoice,1,1,1,1
+access_account_collection_record_invoice,account.collection.record.invoice,model_account_collection_record,account.group_account_invoice,1,1,1,1

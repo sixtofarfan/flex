@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="ir_attachment_tree_inherit" model="ir.ui.view">
+        <field name="name">ir.attachment.tree.inherit</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_tree"/>
+        <field name="arch" type="xml">
+            <field name="type" position="after">
+                <field name="datas" widget="binary"/>
+            </field>
+        </field>
+    </record>
+</odoo>

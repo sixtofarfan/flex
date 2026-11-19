@@ -1,0 +1,140 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* jp_erase_db
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-26 07:31+0000\n"
+"PO-Revision-Date: 2020-08-26 07:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: jp_erase_db
+#: code:addons/extra-addons/jp/jp_erase_db/models/models.py:0
+#: code:addons/jp_erase_db/models/models.py:0
+#, python-format
+msgid "All data have been erased!"
+msgstr "La data ha sido borrada!"
+
+#. module: jp_erase_db
+#: model_terms:ir.ui.view,arch_db:jp_erase_db.view_erase_wizard_form
+msgid ""
+"Are you sure you want to erase all the data from the database? This is your "
+"last chance, after that you won't be able to restore your data !!!"
+msgstr 
+"Esta seguro que desea borrar toda la data de la base de datos? Esta es su "
+"última oportunidad, despues de esto ya no podrá restaurar la data !!!"
+
+#. module: jp_erase_db
+#: model_terms:ir.ui.view,arch_db:jp_erase_db.view_erase_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: jp_erase_db
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_db__create_uid
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: jp_erase_db
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_db__create_date
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: jp_erase_db
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_db__data
+msgid "Data"
+msgstr ""
+
+#. module: jp_erase_db
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_db__display_name
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: jp_erase_db
+#: code:addons/extra-addons/jp/jp_erase_db/models/models.py:0
+#: code:addons/extra-addons/jp/jp_erase_db/models/models.py:0
+#: code:addons/jp_erase_db/models/models.py:0
+#: code:addons/jp_erase_db/models/models.py:0
+#: model:ir.ui.menu,name:jp_erase_db.menu_item_erase_data
+#: model_terms:ir.ui.view,arch_db:jp_erase_db.view_erase_wizard_form
+#, python-format
+msgid "Erase Data"
+msgstr "Borrar Data"
+
+#. module: jp_erase_db
+#: model:ir.actions.server,name:jp_erase_db.erase_db_action_server
+msgid "Erase Data Server Action"
+msgstr "Acción de Servidor Borrar Data"
+
+#. module: jp_erase_db
+#: model_terms:ir.ui.view,arch_db:jp_erase_db.view_erase_wizard_form
+msgid "Erase Data Wizard"
+msgstr "Asistente para Borrar Data"
+
+#. module: jp_erase_db
+#: model:ir.model,name:jp_erase_db.model_erase_db
+msgid "Erase Database"
+msgstr "Borrar Base de Datos"
+
+#. module: jp_erase_db
+#: model:ir.model,name:jp_erase_db.model_erase_wizard
+msgid "Erase Wizard"
+msgstr "Asistente para Borrar"
+
+#. module: jp_erase_db
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_wizard__erase_master_data
+msgid "Erase master data"
+msgstr "Borrar datos maestros"
+
+#. module: jp_erase_db
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_db__id
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: jp_erase_db
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_db____last_update
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: jp_erase_db
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_db__write_uid
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: jp_erase_db
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_db__write_date
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: jp_erase_db
+#: model:ir.model.fields,help:jp_erase_db.field_erase_wizard__erase_master_data
+msgid ""
+"Master data is very usefull information like partners and products. If you "
+"also want to delete these data please thick this checkbox."
+msgstr 
+"Datos maestros es información muy útil como socios y productos. Si desea "
+"borrar también esta data por favor marque esta casilla."
+
+#. module: jp_erase_db
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_db__name
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_wizard__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: jp_erase_db
+#: model:ir.model.fields,field_description:jp_erase_db.field_erase_wizard__reset_sequences
+msgid "Reset sequences"
+msgstr "Resetear Secuencias"

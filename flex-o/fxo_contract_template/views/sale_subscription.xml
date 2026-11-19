@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="sale_subscription_view_form_inherit">
+			<field name="name">sale.subscription.form.inherit</field>
+			<field name="model">sale.subscription</field>
+			<field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//header" position="inside">
+					<button name="get_template" string="Formato de Contrato" type="object" class="oe_highlight"/>
+				</xpath>
+				<field name="company_id" position="after">
+					<field name="instalation_days"/>
+				</field>
+				<field name="code" position="after">
+					<field name="child_protection_filter"/>
+				</field>
+			</field>
+		</record>
+	</data>
+</odoo>

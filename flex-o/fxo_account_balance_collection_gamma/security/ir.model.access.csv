@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_balance_period_book_gamma_group_user,account.balance.period.book.gamma.group.user,fxo_account_balance_collection_gamma.model_account_balance_period_book_gamma,account_base_it.group_account_tables_user,1,1,1,1
+maturity_analysis_dollars_book_group_user,maturity.analysis.dollars.book.group.user,fxo_account_balance_collection_gamma.model_maturity_analysis_dollars_book,account_base_it.group_account_tables_user,1,1,1,1

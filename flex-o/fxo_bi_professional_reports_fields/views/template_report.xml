@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <report 
+            id="report_invoice_template_contemporary"
+            string="Contemporary"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="fxo_bi_professional_reports_fields.report_invoice_template_custom" 
+            name="fxo_bi_professional_reports_fields.report_invoice_template_custom"
+            menu="False"
+            />
+            
+        <report 
+            id="report_invoice_template_elegant"
+            string="Elegant"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="fxo_bi_professional_reports_fields.report_invoice_template_custom_elegant" 
+            name="fxo_bi_professional_reports_fields.report_invoice_template_custom_elegant"
+            menu="False"
+            />
+            
+        <report 
+            id="report_invoice_template_creative"
+            string="Creative"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="fxo_bi_professional_reports_fields.report_invoice_template_custom_creative" 
+            name="fxo_bi_professional_reports_fields.report_invoice_template_custom_creative"
+            menu="False"
+            />
+           
+        <report 
+            id="report_invoice_template_professional"
+            string="Professional"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="fxo_bi_professional_reports_fields.report_invoice_template_custom_professional" 
+            name="fxo_bi_professional_reports_fields.report_invoice_template_custom_professional"
+            menu="False"
+            />
+           
+        <report 
+            id="report_invoice_template_advanced"
+            string="Advanced"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="fxo_bi_professional_reports_fields.report_invoice_template_custom_advanced" 
+            name="fxo_bi_professional_reports_fields.report_invoice_template_custom_advanced"
+            menu="False"
+            />
+           
+        <report 
+            id="report_invoice_template_exclusive"
+            string="Exclusive"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="fxo_bi_professional_reports_fields.report_invoice_template_custom_exclusive" 
+            name="fxo_bi_professional_reports_fields.report_invoice_template_custom_exclusive"
+            menu="False"
+            />
+
+         <report 
+            id="report_invoice_template_incredible"
+            string="Incredible"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="fxo_bi_professional_reports_fields.report_invoice_template_custom_incredible" 
+            name="fxo_bi_professional_reports_fields.report_invoice_template_custom_incredible"
+            menu="False"
+            />
+           
+        <report 
+            id="report_invoice_template_innovative"
+            string="Innovative"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="fxo_bi_professional_reports_fields.report_invoice_template_custom_innovative" 
+            name="fxo_bi_professional_reports_fields.report_invoice_template_custom_innovative"
+            menu="False"
+            />
+           
+    </data>
+</odoo>

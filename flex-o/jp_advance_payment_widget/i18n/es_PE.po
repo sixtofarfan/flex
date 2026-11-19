@@ -1,0 +1,165 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* jp_advance_payment_widget
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 02:25+0000\n"
+"PO-Revision-Date: 2021-03-02 02:25+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: jp_advance_payment_widget
+#. openerp-web
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/static/src/js/account_payment_field.js:0
+#: code:addons/jp_advance_payment_widget/static/src/js/account_payment_field.js:0
+#: model:ir.model,name:jp_advance_payment_widget.model_account_account
+#, python-format
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: jp_advance_payment_widget
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/models/account_move.py:0
+#: code:addons/jp_advance_payment_widget/models/account_move.py:0
+#, python-format
+msgid "Advance payment aplication"
+msgstr "Aplicación de anticipo"
+
+#. module: jp_advance_payment_widget
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/models/account_move.py:0
+#: code:addons/jp_advance_payment_widget/models/account_move.py:0
+#, python-format
+msgid "Advance payment aplication on"
+msgstr "Aplicación de anticipo a"
+
+#. module: jp_advance_payment_widget
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/models/account_move.py:0
+#: code:addons/jp_advance_payment_widget/models/account_move.py:0
+#, python-format
+msgid "Advance payment aplication on %s"
+msgstr "Aplicación de anticipo a %s"
+
+#. module: jp_advance_payment_widget
+#. openerp-web
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/static/src/xml/account_payment.xml:0
+#: code:addons/jp_advance_payment_widget/static/src/xml/account_payment.xml:0
+#, python-format
+msgid "Apply"
+msgstr "Aplicar"
+
+#. module: jp_advance_payment_widget
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/models/account_move.py:0
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/models/account_move.py:0
+#: code:addons/jp_advance_payment_widget/models/account_move.py:0
+#: code:addons/jp_advance_payment_widget/models/account_move.py:0
+#, python-format
+msgid "Currency exchange rate difference"
+msgstr "Diferencia en tasa de cambio de divisa"
+
+#. module: jp_advance_payment_widget
+#. openerp-web
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/static/src/xml/account_payment.xml:0
+#: code:addons/jp_advance_payment_widget/static/src/xml/account_payment.xml:0
+#, python-format
+msgid "Currency rate:"
+msgstr "Tasa de cambio:"
+
+#. module: jp_advance_payment_widget
+#: model:ir.model.fields,field_description:jp_advance_payment_widget.field_account_payment__custom_rate
+msgid "Custom rate"
+msgstr "Tasa personalizada"
+
+#. module: jp_advance_payment_widget
+#. openerp-web
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/static/src/xml/account_payment.xml:0
+#: code:addons/jp_advance_payment_widget/static/src/xml/account_payment.xml:0
+#, python-format
+msgid "Date:"
+msgstr "Fecha:"
+
+#. module: jp_advance_payment_widget
+#: model:ir.model.fields,field_description:jp_advance_payment_widget.field_account_move__custom_journal_id
+msgid "Diario para Aplicacion Anticipo"
+msgstr ""
+
+#. module: jp_advance_payment_widget
+#: model:ir.model.fields,help:jp_advance_payment_widget.field_account_move__custom_journal_id
+msgid ""
+"En la aplicacion de anticipo por defecto va el mismo diario, este dato "
+"permite cambiar lo aplicado en otro diario"
+msgstr ""
+
+#. module: jp_advance_payment_widget
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/models/account_move.py:0
+#: code:addons/jp_advance_payment_widget/models/account_move.py:0
+#, python-format
+msgid "Invoice %s"
+msgstr "Factura %s"
+
+#. module: jp_advance_payment_widget
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/models/account_move.py:0
+#: code:addons/jp_advance_payment_widget/models/account_move.py:0
+#, python-format
+msgid "Invoice payment %s"
+msgstr "Pago de factura %s"
+
+#. module: jp_advance_payment_widget
+#: model:ir.model,name:jp_advance_payment_widget.model_account_move
+msgid "Journal Entries"
+msgstr "Asientos contables"
+
+#. module: jp_advance_payment_widget
+#: model:ir.model,name:jp_advance_payment_widget.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: jp_advance_payment_widget
+#: model:ir.model.fields,field_description:jp_advance_payment_widget.field_account_account__main_parameter_id_client
+#: model:ir.model.fields,field_description:jp_advance_payment_widget.field_account_account__main_parameter_id_supplier
+msgid "Main Parameters"
+msgstr "Parametros Principales"
+
+#. module: jp_advance_payment_widget
+#: model_terms:ir.ui.view,arch_db:jp_advance_payment_widget.view_main_parameter_form_inherit_advance
+msgid "Other accounts to apply"
+msgstr "Otras cuentas por aplicar"
+
+#. module: jp_advance_payment_widget
+#: model:ir.model.fields,field_description:jp_advance_payment_widget.field_main_parameter__other_accounts_client
+msgid "Other accounts to apply Customer"
+msgstr "Otras cuentas por aplicar Clientes"
+
+#. module: jp_advance_payment_widget
+#: model:ir.model.fields,field_description:jp_advance_payment_widget.field_main_parameter__other_accounts_supplier
+msgid "Other accounts to apply Suppliers"
+msgstr "Otras cuentas por aplicar Proveedores"
+
+#. module: jp_advance_payment_widget
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/models/account_move.py:0
+#: code:addons/jp_advance_payment_widget/models/account_move.py:0
+#, python-format
+msgid "Outstanding credits"
+msgstr "Créditos pendientes"
+
+#. module: jp_advance_payment_widget
+#: code:addons/extra-addons/jp/jp_advance_payment_widget/models/account_move.py:0
+#: code:addons/jp_advance_payment_widget/models/account_move.py:0
+#, python-format
+msgid "Outstanding debits"
+msgstr "Débitos pendientes"
+
+#. module: jp_advance_payment_widget
+#: model:ir.model,name:jp_advance_payment_widget.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: jp_advance_payment_widget
+#: model:ir.model,name:jp_advance_payment_widget.model_main_parameter
+msgid "main.parameter"
+msgstr ""

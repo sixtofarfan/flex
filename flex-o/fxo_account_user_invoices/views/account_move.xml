@@ -1,0 +1,23 @@
+<odoo>
+	<record id="action_account_get_move_users" model="ir.actions.server">
+		<field name="name">Mis Documentos</field>
+		<field name="model_id" ref="account.model_account_move"/>
+		<field name="binding_model_id" ref="account.model_account_move"/>
+		<field name="state">code</field>
+		<field name="code">
+			action = model.action_get_moves()
+		</field>
+	</record>
+	<menuitem
+		name="Mis Documentos"
+		id="menu_finance_users_root"
+		groups="fxo_account_user_invoices.my_documents_group"
+		web_icon="account,static/description/icon.png"
+		sequence="40"/>
+	<menuitem
+		id="menu_finance_users"
+		action="action_account_get_move_users"
+		parent="menu_finance_users_root"
+		groups="fxo_account_user_invoices.my_documents_group"
+		sequence="1"/>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_payment_op_wizard_form">
+			<field name="name">payment.op.wizard.form</field>
+			<field name="model">payment.op.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<field name="cash_number_op" required="1"/>
+					</group>
+					<footer>
+						<button string="Actualizar Pagos" name="set_op_number" type="object" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

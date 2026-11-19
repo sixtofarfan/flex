@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_detraction_import,account.detraction.import,model_account_detraction_import,account.group_account_manager,1,1,1,1
+access_account_detraction_import_line,account.detraction.import.line,model_account_detraction_import_line,account.group_account_manager,1,1,1,1

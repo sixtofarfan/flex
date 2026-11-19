@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <!-- stock.picking.router form view -->
+        <record id="stock_picking_router_view_form" model="ir.ui.view">
+            <field name="name">stock.picking.router.view.form</field>
+            <field name="model">stock.picking.router</field>
+            <field name="arch" type="xml">
+                <form string="">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,process,done"/>
+                </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                       <!--  <notebook>
+                            <page string="Drive" name="drive">
+                                <field name="driver_id">
+                                    <tree editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="name" invisible="1"/>
+                                        <field name="driver_id" required="1" />
+                                        <field name="qty" required="1" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook> -->
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- model.name tree view -->
+        <record id="stock_picking_router_view_tree" model="ir.ui.view">
+            <field name="name">stock.picking.router.view.tree</field>
+            <field name="model">stock.picking.router</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="stock_picking_router_action" model="ir.actions.act_window">
+            <field name="name">Router</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.picking.router</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="stock_picking_router_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.router.inherit.view.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="origin" position="after">
+                    <field name="router" />
+                </field>
+            </field>
+        </record>
+
+        <!-- stock.picking.router.line form view -->
+        <record id="stock_picking_router_line_view_form" model="ir.ui.view">
+            <field name="name">stock.picking.router.line.view.form</field>
+            <field name="model">stock.picking.router.line</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button name="set_state_confirm" states="draft" type="object" string="Confirm"/>
+                        <button name="set_state_router_draft" states="confirm" type="object" string="Set Draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,not deliver,delivered"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here -->
+                            <field name="name" />
+                            <field name="drivers_id" widget="many2many_tags" readonly="1"/>
+                            <!-- <field name="router_id" /> -->
+                        </group>
+                        
+                        <notebook>
+                            <page string="Order" name="orde">
+                                <field name="orders_id" attrs="{'readonly': [('state', 'in', ('confirm','not deliver'))]}" >
+                                    <tree editable="bottom">
+                                        <field name="name" readonly="1"/>
+                                        <field name="partner_id" readonly="1"/>
+                                        <field name="product_id" readonly="1"/>
+                                        <field name="category" readonly="1"/>
+                                        <field name="router" readonly="1"/>
+                                        <field name="router_partner"/>
+                                        <field name="state_router"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- stock.picking.router.line tree view -->
+        <record id="stock_picking_router_line_view_tree" model="ir.ui.view">
+            <field name="name">stock.picking.router.line.view.tree</field>
+            <field name="model">stock.picking.router.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                   <!--  <field name="router_id"/> -->
+                    <field name="state"/>
+                    <field name="orders_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="stock_picking_router_line_action" model="ir.actions.act_window">
+            <field name="name">Router Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.picking.router.line</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem   id="stock_picking_router_menu" 
+                    name="Router" 
+                    parent="stock.menu_stock_warehouse_mgmt" 
+                    action="stock_picking_router_action" 
+                    sequence="20"/>
+
+        <menuitem   id="stock_picking_router_line_menu" 
+                    name="Router Day" 
+                    parent="stock.menu_stock_warehouse_mgmt" 
+                    action="stock_picking_router_line_action" 
+                    sequence="25"/>
+
+        <template id="portal_my_home_router" name="Portal My Home : router entries" inherit_id="portal.portal_my_home" priority="100">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <t t-if="stock_picking_router_count" t-call="portal.portal_docs_entry">
+                    <t t-set="title">Router</t>
+                    <t t-set="url" t-value="'/my/router'"/>
+                    <t t-set="count" t-value="stock_picking_router_count"/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="portal_router" name="Rourter">
+            <t t-call="portal.portal_layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">Order </t>
+                </t>
+                <t  t-call="portal.portal_table">
+                    <thead>
+                        <tr>
+                            <th class="text-right">Date</th>
+                            <th/>
+                            <th class="text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="objects" t-as="object">
+                        <tr>
+                            <td class="text-right">
+                                <a t-attf-href="/my/router/#{object.id}">
+                                    <span t-field="object.name"/>
+                                </a>
+                            </td>
+                            <td/>
+                            <td class="text-center">
+                                <span class="badge badge-pill badge-info" t-field="object.state"/>
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <template id="portal_router_detally" name="Rourter Detally">
+            <t t-call="portal.portal_layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+                <h1>Router</h1>
+                <t t-call="portal.portal_table">
+                    <thead>
+                        <tr>
+                            <th class="text-right">Order</th>
+                            <th class="w-100">Name</th>
+                            <th class="w-100">Address</th>
+                            <th class="w-100">Plan</th>
+                            <th/>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="orders_id" t-as="l">
+                        <tr>
+                            <td><a t-attf-href="/my/orders/#{l.id}"><span t-field="l.name"/></a></td>
+                            <td><a t-attf-href="/my/orders/#{l.id}"><span t-field="l.partner_id.name"/></a></td>
+                            <td><a t-attf-href="/my/orders/#{l.id}"><span t-field="l.partner_shipping_id.street"/></a></td>
+                            <td><a t-attf-href="/my/orders/#{l.id}"><span t-field="l.category.name"/></a></td>
+                            <td/>
+                            <td class="text-center">
+                                <t t-if="l.state_router == 'confirm' ">
+                                    <span class=" badge-pill badge-info" t-field="l.state_router"/>
+                                </t>
+                                <t t-if="l.state_router == 'not deliver' ">
+                                    <span class=" badge-pill badge-danger" t-field="l.state_router"/>
+                                </t>
+                                <t t-if="l.state_router == 'delivered' ">
+                                    <span class=" badge-pill badge-primary" t-field="l.state_router"/>
+                                </t>
+                            </td>
+                            <td class="text-center">
+                                <t t-if="l.state_router == 'confirm' ">
+                                    <a t-attf-href="/my/router/#{router}/#{l.id}/not deliver" class="badge-pill badge-danger" style="color:#FFFFFF"> Not Deliver</a> -
+                                    <a t-attf-href="/my/router/#{router}/#{l.id}/delivered" class="badge-pill badge-primary" style="color:#FFFFFF">Deliver</a> 
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="stock_picking_router_drive_form" model="ir.ui.view">
+            <field name="name">stock.picking.router.drive.view.form</field>
+            <field name="model">stock.picking.router.drive</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="driver_id" widget="many2many_tags"/>
+                            <field name="qty"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="stock_picking_router_drive_tree" model="ir.ui.view">
+            <field name="name">stock.picking.router.drive.view.tree</field>
+            <field name="model">stock.picking.router.drive</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="driver_id"/>
+                    <field name="qty"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="stock_picking_router_drive_action" model="ir.actions.act_window">
+            <field name="name">Router Config</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.picking.router.drive</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="stock_picking_router_drive_menu" name="Router Config" parent="stock.menu_stock_config_settings" action="stock_picking_router_drive_action" sequence="25"/>
+
+    </data>
+</odoo>

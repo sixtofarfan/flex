@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+    <record id="view_f2_register_search_view" model="ir.ui.view">
+        <field name="name">f2.register.tree.search</field>
+        <field name="model">f2.register</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Bills">
+                <field name="cuenta"/>
+                <field name="mayor"/>
+                <field name="nomenclatura"/>
+                <!-- <group expand='0' string='Filters'>
+                    <filter name="unpaid" string="Bills Unpaid" domain="[('state_of_bill','in',['portfolio','collection','discount','guarantee','pending','disbursed','protested'])]"/>
+                    <separator/>
+                    <filter name="to_accept" string="Bills to accept" domain="[('state_of_bill','=','to_accept')]"/>
+                    <filter name="disbursed" string="Bills Disbursed" domain="[('state_of_bill','=','disbursed')]"/>
+                    <filter name="collection" string="Bills in Collection" domain="[('state_of_bill','=','collection')]"/>
+                    <filter name="discount" string="Bills in Discount" domain="[('state_of_bill','=','discount')]"/>
+                    <filter name="guarantee" string="Bills in Guarantee" domain="[('state_of_bill','=','guarantee')]"/>
+                    <filter name="pending" string="Bills pending renew" domain="[('state_of_bill','=','pending')]"/>
+                    <filter name="torenew" string="Bills to renew" domain="[('state_of_bill','=','to_renew')]"/>
+                    <filter name="renewed" string="Renewed Bills" domain="[('state_of_bill','=','renewed')]"/>
+                    <filter name="protested" string="Protested Bills" domain="[('state_of_bill','=','protested')]"/>
+                    <filter name="refinanced" string="Refinanced Bills" domain="[('state_of_bill','=','refinanced')]"/>
+                    <filter name="paid" string="Paid Bills" domain="[('state_of_bill','=','paid')]"/>
+                </group> -->
+                <group expand='0' string='Group by...'>
+                    <filter string='Account' name="account_id" domain="[]" context="{'group_by': 'cuenta'}"/>
+                    <filter string='Mayor' name="mayor_id" context="{'group_by': 'mayor'}"/>
+                    <filter string='Nomenclatura' name="nomenclatura_id" context="{'group_by': 'nomenclatura'}"/>
+                    <!-- <filter string='Form' name="bill_form_id" context="{'group_by': 'bill_form_id'}"/>
+                    <filter string='State' name="state_of_bill" context="{'group_by': 'state_of_bill'}"/>
+                    <filter string='Acceptor' name="acceptor_id" domain="[]" context="{'group_by': 'acceptor_id'}"/>
+                    <filter string='Company' name="company" domain="[]" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/> -->
+               </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_f2_register_pivot" model="ir.ui.view">
+        <field name="name">f2.register.pivot</field>
+        <field name="model">f2.register</field>
+        <field name="arch" type="xml">
+            <pivot string="Hoja F2 Analysis" disable_linking="True">
+                <!-- <field name="saldo_deudor" type="col"/>
+                <field name="saldo_acreedor" type="col"/> -->
+                <field name="saldo_deudor"  type="measure" string="Saldo deudor"/>
+                <field name="saldo_acreedor"  type="measure" string="Saldo acreedor"/>
+                <field name="cuenta" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_f2_register_graph" model="ir.ui.view">
+        <field name="name">f2.register.graph</field>
+        <field name="model">f2.register</field>
+        <field name="arch" type="xml">
+            <graph string="Hoja F2 Analysis" stacked="True">
+                <!-- <field name="saldo_deudor" type="col"/>
+                <field name="saldo_acreedor" type="col"/> -->
+                <field name="saldo_deudor"  type="measure" string="Saldo deudor"/>
+                <field name="saldo_acreedor"  type="measure" string="Saldo acreedor"/>
+                <field name="cuenta" type="row"/>
+            </graph>
+        </field>
+    </record>
+
+	</data>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="generate_massive_advance_hr_payslip_run" model="ir.actions.server">
+			<field name="name">Adelantos Quincenales</field>
+			<field name="model_id" ref="hr_payroll.model_hr_payslip_run"/>
+			<field name="binding_model_id" ref="hr_payroll.model_hr_payslip_run"/>
+			<field name="state">code</field>
+			<field name="code">action = records.generate_massive_advance()</field>
+		</record>
+	</data>
+</odoo>

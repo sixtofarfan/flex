@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <template id="fxo_web_signup.address" inherit_id="website_sale.address" name="Sign in Login extend">
+            <xpath expr="//form[@action='/shop/address']" position="replace">
+                <form action="/shop/address" method="post" class="oe_addres_form" >
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <div t-attf-class="form-group #{error.get('name_p') and 'o_has_error' or ''}  row" >
+                                <label for="name_p" class="col-sm-2 col-form-label" >Nombre </label>
+                                <div class="col-sm-10">
+                                    <input type="text"  name="name_p" t-attf-class="form-control #{error.get('name_p') and 'is-invalid' or ''}" t-att-value="'name_p' in checkout and checkout['name_p']"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100"/>
+                        <div class="col-lg-12 col-sm-12">
+                            <div t-attf-class="form-group #{error.get('last_name') and 'o_has_error' or ''}  row" >
+                                <label for="last_name" class="col-sm-2 col-form-label" >Apellido Paterno </label>
+                                <div class="col-sm-10">
+                                    <input type="text"  name="last_name" t-attf-class="form-control #{error.get('last_name') and 'is-invalid' or ''}" t-att-value="'last_name' in checkout and checkout['last_name']"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100"/>
+                        <div class="col-lg-12 col-sm-12">
+                            <div t-attf-class="form-group #{error.get('m_last_name') and 'o_has_error' or ''}  row" >
+                                <label for="m_last_name" class="col-sm-2 col-form-label" >Apellido Materno </label>
+                                <div class="col-sm-10">
+                                    <input type="text"  name="m_last_name" t-attf-class="form-control #{error.get('m_last_name') and 'is-invalid' or ''}" t-att-value="'m_last_name' in checkout and checkout['m_last_name']"/>
+                                </div>
+                            </div>
+                        </div>
+                        <t t-if="mode[1] == 'billing'">
+                        <div class="col-lg-12 col-sm-12">
+                            <div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''} row" >
+                                <label class="col-sm-2 col-form-label" for="email">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="'email' in checkout and checkout['email']"/>
+                                </div>
+                            </div>
+                         </div>
+                        </t>
+                        <div class="col-lg-12 col-sm-12">
+                            <div t-attf-class="form-group #{error.get('phone') and 'o_has_error' or ''} row" id="div_phone">
+                                <label class="col-sm-2 col-form-label" for="phone">Celular de contacto</label>
+                                <div class="col-sm-10">
+                                    <input type="tel" name="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="'phone' in checkout and checkout['phone']"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100"/>
+                        <div class="col-lg-12 col-sm-12">
+                            <div t-attf-class="form-group #{error.get('street') and 'o_has_error' or ''} row div_street">
+                                <label  class="col-sm-2 col-form-label"  for="street" >Dirección </label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="'street' in checkout and checkout['street']"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-sm-12">
+                            <div t-attf-class="form-group #{error.get('street2') and 'o_has_error' or ''} row div_street2">
+                                <label class="col-sm-2 col-form-label"  for="street2">Referencia</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="street2" t-attf-class="form-control #{error.get('street2') and 'is-invalid' or ''}" t-att-value="'street2' in checkout and checkout['street2']"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-100"/>
+                        <div class="col-lg-12 col-sm-12 d-none">
+                            <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} row field-country">
+                                <label class="col-sm-2 col-form-label" for="country_id">Pais</label>
+                                <div class="col-sm-10">
+                                    <select id="country_id" name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
+                                        <option value="">Pais...</option>
+                                        <t t-foreach="countries" t-as="c">
+                                            <option t-att-value="c.id" t-att-selected="c.id == 173">
+                                                <t t-esc="c.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-sm-12">
+                            <div t-attf-class="form-group #{error.get('state_id') and 'o_has_error' or ''} row field-state" >
+                                <label class="col-sm-2 col-form-label" for="state_id">Departamento</label>
+                                <div class="col-sm-10">
+                                    <select name="state_id" t-attf-class="form-control #{error.get('state_id') and 'is-invalid' or ''}" data-init="1" id='state_id'>
+                                        <option value="">Seleccionar</option>
+                                        <t t-foreach="states or []" t-as="state">
+                                            <option t-att-value="state.id" t-att-data-country_id="state.country_id.id"  t-att-selected="website_sale_order.partner_id.state_id.id == state.id">
+                                                <t t-esc="state.name" />
+                                            </option>
+                                        </t>          
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-lg-12 col-sm-12">
+                            <div t-attf-class="form-group #{error.get('province_id') and 'o_has_error' or ''} row field-province" >
+                                <label class="col-sm-2 col-form-label" for="province_id">Provincia</label>
+                                <div class="col-sm-10">
+                                    <select name="province_id" t-attf-class="form-control #{error.get('province_id') and 'is-invalid' or ''}" data-init="1"  id='province_id' >
+                                        <option value="">Seleccionar</option>
+                                        <t t-foreach="provinces or []" t-as="province">
+                                            <option t-att-value="province.id" t-att-data-state_id="province.state_id.id" t-att-selected="website_sale_order.partner_id.province_id.id == province.id">
+                                                <t t-esc="province.name" />
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-lg-12 col-sm-12">
+                            <div t-attf-class="form-group #{error.get('district_id') and 'o_has_error' or ''} row field-district-id" >
+                                <label class="col-sm-2 col-form-label" for="district_id">Distrito</label>
+                                <div class="col-sm-10">
+                                    <select name="district_id" t-attf-class="form-control #{error.get('district_id') and 'is-invalid' or ''}" data-init="1" id='district_id'>
+                                        <option value="">Seleccionar</option>
+                                        <t t-foreach="districts or []" t-as="district">
+                                            <option t-att-value="district.id" t-att-data-province_id="district.province_id.id" t-att-selected="website_sale_order.partner_id.district_id.id == district.id">
+                                                <t t-esc="district.name" />
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100"/>
+                        <t t-if="mode == ('new', 'billing') and not only_services">
+                            <div class="col-lg-12">
+                                <div class="checkbox">
+                                    <label>
+                                    <input type="checkbox" id="shipping_use_same" class="mr8" name="use_same" value="1" checked="checked"/>Enviar a la misma dirección
+                                    <span class="ship_to_other text-muted" style="display: none">&amp;nbsp;(<i>Tu dirección de envío será solicitada más tarde) </i></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input type="hidden" name="submitted" value="1"/>
+                    <input type="hidden" name="partner_id" t-att-value="partner_id or '0'"/>
+                    <input type="hidden" name="callback" t-att-value="callback"/>
+                    <!-- Example -->
+                    <input type="hidden" name="field_required" t-att-value="'phone,name'"/>
+
+                    <div class="d-flex justify-content-between">
+                        <a role="button" t-att-href="mode == ('new', 'billing') and '/shop/cart' or '/shop/checkout'" class="btn btn-secondary mb32">
+                            <i class="fa fa-chevron-left"/>
+                            <span>Atras</span>
+                        </a>
+                        <a role="button" href="#" class="btn btn-primary mb32 a-submit a-submit-disable a-submit-loading">
+                            <span>Siguiente</span>
+                            <i class="fa fa-chevron-right"/>
+                        </a>
+                    </div>
+                </form>
+            </xpath>
+        </template>
+
+         <template id="fxo_web_signup.address_kanban" inherit_id="website_sale.address_kanban" name="Kanban address extend">
+            <xpath expr="//div[@class='card-body']/t[1]" position="replace">
+                <t t-esc="contact" t-options="dict(widget='contact', fields=['name'], no_marker=True)"/>
+                <br/>
+                <t t-esc="contact.street" />
+                <br/>
+                <t t-esc="contact.state_id.name" />
+                <br/>
+                <t t-esc="contact.province_id.name" />
+                <br/>
+                <t t-esc="contact.district_id.name" />
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

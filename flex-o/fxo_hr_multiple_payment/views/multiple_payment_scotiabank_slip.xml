@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_multiple_payment_scotiabank_slip_form" model="ir.ui.view">
+		<field name="name">multiple.payment.scotiabank.slip.form</field>
+		<field name="model">multiple.payment.scotiabank.slip</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="get_moves" string="Obtener Haberes" context="{'bank_type': 'scotiabank_slip'}" type="object" class="oe_highlight" states="draft"/>
+					<button name="turn_draft" string="Volver a Borrador" type="object" class="oe_highlight" states="txt"/>
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<group>
+						<group>
+							<field name="charge_account_id"/>
+							<field name="charge_currency_id" required="1"/>
+						</group>
+						<group>
+							<field name="institution_code"/>
+						</group>
+					</group>
+					<field name="line_ids">
+						<tree editable="bottom" create="0">
+							<field name="move_id"/>
+							<field name="institution_code"/>
+							<field name="bank_code"/>
+							<field name="employee_code"/>
+							<field name="employee_name"/>
+							<field name="situtation"/>
+							<field name="ref_code"/>
+							<field name="discount"/>
+							<field name="amount1"/>
+							<field name="amount2"/>
+							<field name="amount3"/>
+							<field name="amount4"/>
+							<field name="amount5"/>
+							<field name="amount6"/>
+							<field name="account"/>
+							<field name="charge_mode"/>
+							<field name="emp_doc"/>
+						</tree>
+					</field>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="view_multiple_payment_scotiabank_slip_tree" model="ir.ui.view">
+		<field name="name">multiple.payment.scotiabank.slip.tree</field>
+		<field name="model">multiple.payment.scotiabank.slip</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="id"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+	<record id="action_multiple_payment_scotiabank_slip" model="ir.actions.act_window">
+		<field name="name">Pagos Masivos Scotiabank Haberes</field>
+		<field name="res_model">multiple.payment.scotiabank.slip</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+		  <p class="o_view_nocontent_smiling_face">
+			Crea tu primera tabla de Pagos Masivos Scotiabank Haberes aqui
+		  </p>
+		</field>
+	</record>
+	<record id="get_scotiabank_slip_txt" model="ir.actions.server">
+		<field name="name">Generar txt</field>
+		<field name="model_id" ref="fxo_hr_multiple_payment.model_multiple_payment_scotiabank_slip"/>
+		<field name="binding_model_id" ref="fxo_hr_multiple_payment.model_multiple_payment_scotiabank_slip"/>
+		<field name="state">code</field>
+		<field name="code">action = records.get_scotiabank_slip_txt()</field>
+	</record>
+</odoo>

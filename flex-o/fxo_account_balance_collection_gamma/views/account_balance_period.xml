@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_account_balance_period_book_tree_gamma" model="ir.ui.view">
+		<field name="name">account.balance.period.book.gamma.tree</field>
+		<field name="model">account.balance.period.book.gamma</field>
+		<field name="arch" type="xml">
+			<tree string="Saldo por Periodo Gamma" create="false">
+				<field name="partner"/>
+				<field name="fecha_doc"/>
+				<field name="fecha_ven"/>
+				<field name="order_name"/>
+				<field name="td_sunat"/>
+				<field name="nro_comprobante"/>
+				<field name="moneda"/>
+				<field name="importe_total" sum="Total USD"/>
+				<field name="importe_total_pen" sum="Total Soles"/>
+				<field name="saldo_mn" sum="Saldo S/"/>
+				<field name="saldo_me" sum="Saldo USD"/>
+				<field name="plazo"/>
+				<field name="ref_hija"/>
+				<field name="hbl"/>
+				<field name="foreign_agent_name"/>
+				<field name="consignne_name"/>
+				<field name="client_order_ref"/>
+				<field name="corporate_reference"/>
+				<field name="shipping_documents"/>
+				<field name="homeless"/>
+				<field name="partner_cobrar"/>
+				<field name="estado"/>
+				<button name="edit_linea_it" icon="fa-building-o" string="Ver Detalle" type="object"/>
+			</tree>
+		</field>
+	</record>
+	<record id="search_account_balance_period_book_tree_gamma" model="ir.ui.view">
+		<field name="name">account.balance.period.book.gamma.search</field>
+		<field name="model">account.balance.period.book.gamma</field>
+		<field name="arch" type="xml">
+			<search>
+				<filter string="No Domiciliado" name="homeless" domain="[('homeless', '=', True)]"/>
+				<field name="partner"/>
+				<field name="fecha_doc"/>
+				<field name="fecha_ven"/>
+				<field name="order_name"/>
+				<field name="td_sunat"/>
+				<field name="nro_comprobante"/>
+				<field name="saldo_mn"/>
+				<field name="saldo_me"/>
+				<field name="moneda"/>
+				<field name="plazo"/>
+				<field name="ref_hija"/>
+				<field name="order_ref"/>
+				<field name="hbl"/>
+				<field name="estado"/>
+				<field name="partner_cobrar"/>
+				<group expand="0" string="Group By">
+					<filter name="partner" context="{'group_by': 'partner'}" string="Partner"/>
+					<filter name="fecha_doc" context="{'group_by': 'fecha_doc'}" string="Fecha Emision"/>
+					<filter name="fecha_ven" context="{'group_by': 'fecha_ven'}" string="Fecha Vencimiento"/>
+					<filter name="order_name" context="{'group_by': 'order_name'}" string="Numero de Operacion"/>
+					<filter name="td_sunat" context="{'group_by': 'td_sunat'}" string="TD Sunat"/>
+					<filter name="nro_comprobante" context="{'group_by': 'nro_comprobante'}" string="Nro. Comprobante"/>
+					<filter name="moneda" context="{'group_by': 'moneda'}" string="Moneda"/>
+					<filter name="plazo" context="{'group_by': 'plazo'}" string="Plazo"/>
+					<filter name="ref_hija" context="{'group_by': 'ref_hija'}" string="Referencia Hija"/>
+					<filter name="order_ref" context="{'group_by': 'order_ref'}" string="Referencia"/>
+					<filter name="hbl" context="{'group_by': 'hbl'}" string="HBL"/>
+					<filter name="homeless" context="{'group_by': 'homeless'}" string="No Domiciliado"/>
+					<filter name="estado" context="{'group_by': 'estado'}" string="Estado"/>
+				</group>
+			</search>
+		</field>
+	</record>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_main_parameter_form_inherit_concilation" model="ir.ui.view">
+		<field name="name">main.parameter.form.inherit.concilation</field>
+		<field name="model">main.parameter</field>
+		<field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page name="conciliation" string="Conciliacion">
+					<group>
+						<field name="advance_concile_code"/>
+					</group>
+					<field name="concilation_line_ids">
+						<tree editable="bottom">
+							<field name="name"/>
+							<field name="code"/>
+							<field name="concept_ids" widget="many2many_tags"/>
+							<field name="currency_id"/>
+							<field name="is_advance"/>
+							<field name="partner_bank"/>
+							<field name="account_id" required="1"/>
+						</tree>
+					</field>
+				</page>
+			</xpath>
+		</field>
+	</record>
+</odoo>

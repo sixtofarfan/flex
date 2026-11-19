@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- <record id="view_currency_form_inherit" model="ir.ui.view">
+		<field name="name">res.currency.inherit</field>
+		<field name="model">res.currency</field>
+		<field name="inherit_id" ref="base.view_currency_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='rate_ids']/tree/field[@name='rate']" position="after">
+				<field name="sale_type" optional="show"/>
+				<field name="purchase_type" optional="show"/>
+			</xpath>
+		</field>
+	</record> -->
+	<template id="assets_backend" name="systray_new_icon" inherit_id="web.assets_backend">
+		<xpath expr=".">
+			<script type="text/javascript" src="/fx_currency_rate_live/static/src/js/systray_custom.js"/>
+		</xpath>
+	</template>
+</odoo>

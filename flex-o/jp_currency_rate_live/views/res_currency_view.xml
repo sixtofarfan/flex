@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_currency_rate_tree" model="ir.ui.view">
+            <field name="name">res.currency.rate.tree.inherit.l10n.pe.currency.rate</field>
+            <field name="model">res.currency.rate</field>
+            <field name="inherit_id" ref="base.view_currency_rate_tree"/>
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='name']" position="after">
+               		<field name="sell_rate"/>
+               		<field name="buy_rate"/>
+               </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

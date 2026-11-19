@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="hr_contract_form_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.form.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <field name="department_id" position="after">
+                    <field name="template_id"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_hr_job_comment_form" model="ir.ui.view">
+            <field name="name">hr.job.comment.form.inherit.1</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr.view_hr_job_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="department_id" position="after">
+                        <field name="description_contract"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+        <record id="hr_contract_template_view" model="ir.ui.view">
+            <field name="name">hr.contract.template.form</field>
+            <field name="model">hr.contract.template</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                        </group>
+                        <group>
+                            <field name="code" required="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" required="1" widget="html" options="{'style-inline': true}"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="send_contract_email" model="ir.actions.server">
+            <field name="name">Enviar Contratos por Correo</field>
+            <field name="model_id" ref="hr_contract.model_hr_contract"/>
+            <field name="binding_model_id" ref="hr_contract.model_hr_contract"/>
+            <field name="state">code</field>
+            <field name="code">action = records.send_contract_email()</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_invoice_payment_wizard_form">
+			<field name="name">invoice.payment.wizard.form</field>
+			<field name="model">invoice.payment.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<field name="journal_id" required="1"/>
+						<field name="type_document_id" required="1"/>
+					</group>
+					<field name="line_ids" required="1"/>
+					<footer>
+						<button string="Generar Factura" name="generate_invoices" type="object" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_apply_payment_wizard_form">
+			<field name="name">apply.payment.wizard.form</field>
+			<field name="model">apply.payment.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<field name="name" required="1"/>
+					</group>
+					<footer>
+						<button string="Aplicar" name="apply_payment" type="object" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

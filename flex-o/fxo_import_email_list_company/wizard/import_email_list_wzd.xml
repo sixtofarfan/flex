@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="import_email_list_wzd_form" model="ir.ui.view">
+            <field name="name">import.email.list.wzd.form</field>
+            <field name="model">import.email.list.wzd</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4" colspan="4">
+                        <field name="company_id"/>
+                        <field name="vat"/>
+                    </group>
+                    <group colspan="6" col="6">
+                        <field name="to_budget"/>
+                        <field name="to_contract"/>
+                        <field name="to_invoice"/>
+                    </group>
+                    <group col="4" colspan="4">
+                        <field name="to_category"/>
+                        <field name="to_state"/>
+                    </group>
+                    <footer>
+                        <div>
+                            <button name="import_list" string="Importar" type="object" class="oe_highlight"/>
+                            o
+                            <button special="cancel" string="Cerrar" class="oe_link"/>
+                        </div>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_import_email_list_wzd_form" model="ir.actions.act_window">
+            <field name="name">Crear Lista de Correo Por Compañia</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">import.email.list.wzd</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="import_email_list_wzd_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+                action="action_import_email_list_wzd_form"
+                sequence="25"
+                id="menu_import_email_list_wzd_form"
+                parent="mass_mailing.mass_mailing_mailing_list_menu"/>
+
+
+    </data>
+</openerp>

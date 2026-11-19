@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_erase_db,erase.db,jp_erase_db.model_erase_db,base.group_system,1,1,1,1

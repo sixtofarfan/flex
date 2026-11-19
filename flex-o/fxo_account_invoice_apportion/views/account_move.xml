@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_move_form_inherit_apportion" model="ir.ui.view">
+            <field name="name">account.move.form.apportion</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page name="proration" string="Prorrateo" attrs="{'invisible': [('type', '=', 'entry')]}">
+                        <field name="apportion_line_ids">
+                            <tree editable="bottom">
+                                <field name="proration_total"/>
+                                <field name="proration_order_id"/>
+                                <field name="proration_internal_ref"/>
+                                <field name="proration_type"/>
+                                <field name="proration_product_id"/>
+                                <field name="proration_tax_ids" widget="many2many_tags"/>
+                            </tree>
+                        </field>
+                        <button name="get_proration_lines" string="Actualizar" type="object" class="oe_highlight" confirm="Este proceso agregara apuntes contables a la factura y eliminara sus lineas actuales dependiendo de la cantidad de Cotizaciones con la misma referencia, ¿Esta seguro que desea realizar esta accion?" states="draft"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_account_bill_form_form_advanced" model="ir.ui.view">
+        <field name="name">account.bill.form.form.advanced</field>
+        <field name="model">account.advanced.bill.form</field>
+        <field name="arch" type="xml">
+            <form string="Advanced Bill of Exchange Forms" attrs="{'readonly':[('state','!=','draft')]}">
+                <header>
+                    <button string="Download Template" name="download_template" icon="fa-download" state='draft' type="object" class="btn-primary oe_inline"/>
+                    <button string="Process" type="object" name="process" class="oe_highlight" attrs="{'invisible':[('state','!=','draft')]}"/>
+                    <button string="Import Lines" type="object" name="import_lines" class="oe_highlight" attrs="{'invisible':[('state','!=','draft')]}"/>
+                    <button string="Clear Lines" type="object" name="clear_lines" attrs="{'invisible':['|',('state','!=','draft'),('bill_ids','=', [])]}"/>
+                    <button string="Cancel" type="object" name="cancel" confirm="Are you sure you want to unreconcile the conciliation and delete the accounting entries?" attrs="{'invisible':[('state','=','draft')]}"/>
+                    <field name="state" widget="statusbar" readonly="1"/>
+                </header>
+                <sheet string="Advanced Bill of Exchange Forms">
+                    <h1 class="mt0">
+                        <field name="name" readonly="1" class="oe_inline"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="journal_id" required="1" force_save="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                            <field name="bridge_account_id" required="1" force_save="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                            <!-- <field name="currency_id" groups="base.group_multi_currency" force_save="1" required="1" attrs="{'readonly':['|',('state','not in','draft')]}"/> -->
+                            <field name="currency_id" groups="base.group_multi_currency" force_save="1" required="1" readonly="1"/>
+                            <field name="type_form" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="company_currency_id" invisible="1"/>
+                            <!-- <field name="custom_exchange_rate" invisible="1"/> -->
+                            <field name="exchange_date" required="1" attrs="{'readonly':[('state','not in','draft'),('custom_exchange_rate','=',False)]}"/>
+                            <field name="bill_form_id" readonly="1" attrs="{'invisible':[('bill_form_id','=',False)]}"/>
+                            <!-- <field name="send_form_id" readonly="1" attrs="{'invisible':[('send_form_id','=',False)]}"/> -->
+                            <field name="import_number" attrs="{'readonly':[('state','not in','draft')]}"/>
+                        </group>
+                        <group>
+                            <!-- <field name="bank_position" required="1" attrs="{'readonly':[('state','not in','draft')]}"/> -->
+                            <field name="advanced_amount" attrs="{'readonly':[('state','not in','draft')]}" required="1"/>
+                            <field name="partner_id" attrs="{'readonly':[('state','not in','draft')]}" required="1"/>
+                            <!-- <field name="bank_position" force_save="1" attrs="{'required':[('portfolio','=', False),('protest_bills','=', False)]}" readonly="1"/> -->
+                            <field name="gloss"/>
+                            <field name="apply_retention" attrs="{'readonly':[('state','not in','draft')]}"/>
+                            <field name="retention_percentage" attrs="{'readonly':[('apply_retention','=',False)],'readonly':[('state','not in','draft')]}"/>
+                            <field name="total_retention" force_save="1" readonly="1"/>
+                            <field name="custom_exchange_rate" groups="base.group_multi_currency" force_save="1" attrs="{'readonly':[('state','not in','draft')],'invisible':[('currency_id','=','company_currency_id')]}"/>
+                            <field name="exchange_rate" groups="base.group_multi_currency" force_save="1" required="1"  attrs="{'readonly':[('custom_exchange_rate','=',False)],'invisible':[('currency_id','=','company_currency_id')]}"/>
+                            <!-- <field name="portfolio" attrs="{'readonly':['|',('state','not in','draft'),('protest_bills','=',True)]}"/>
+                            <field name="protest_bills" attrs="{'readonly':['|',('state','not in','draft'),('portfolio','=',True)]}"/>
+                            <field name="state_of_bill" force_save="1" attrs="{'readonly':['|','|',('state','not in','draft'),('portfolio','=',True),('protest_bills','=',True)]}"/> -->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Bills">
+                            <group>
+                                <group>
+                                    <field name="bills_qty" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="days_due_first" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="range_bill" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                </group>
+                                <group>
+                                    <field name="guarantee_id" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="acceptor_id" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <button string="Update Bills" type="object" name="update_bills"  class="oe_highlight" attrs="{'invisible':[('state','not in','draft')]}"/>
+                            </group>
+                            <field name="bill_ids" attrs="{'readonly':[('state','not in','draft')]}">
+                                <tree editable="bottom">
+                                    <field name="bill_date_issue" required="1"/>
+                                    <field name="bill_date_due" required="1"/>
+                                    <field name="bill_number"/>
+                                    <field name="guarantee_id"/>
+                                    <field name="responsable_id" required="1"/>
+                                    <field name="acceptor_id" required="1"/>
+                                    <field name="creditor_id" required="1" invisible="context.get('type_import') == '1'"/>
+                                    <field name="account_id" readonly="1" force_save="1"/>
+                                    <field name="bill_currency_id" groups="base.group_multi_currency" required="1"/>
+                                    <field name="bill_amount_total" groups="base.group_multi_currency" required="1" sum="Total"/>
+                                    <field name="exchange_rate" groups="base.group_multi_currency" required="1"/>
+                                    <field name="bill_amount_total_signed" required="1" sum="Total "/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>  
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_account_bill_form_tree_advanced" model="ir.ui.view">
+        <field name="name">account.advanced.bill.form.tree.advanced</field>
+        <field name="model">account.advanced.bill.form</field>
+        <field name="arch" type="xml">
+            <tree string="Bill Forms">
+                <field name="name"/>
+                <field name="import_number"/>
+                <field name="journal_id"/>
+                <field name="bridge_account_id"/>
+                <!-- <field name="partner_id"/> -->
+                <field name="currency_id"/>
+                <field name="exchange_date"/>
+                <!-- <field name="exchange_rate"/> -->
+                <!-- <field name="reference"/> -->
+                <field name="bill_ids"/>
+                <field name="gloss"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="account_advanced_bill_form_search_view" model="ir.ui.view">
+        <field name="name">account.advanced.bill.form.search</field>
+        <field name="model">account.advanced.bill.form</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Bill Forms">
+                <field name="import_number"/>
+                <field name="name" string="Form"/>
+                <field name="partner_id"/>
+                <group expand='0' string='Filters'>
+                    <filter name='state_done' string="Done bill forms" domain="[('state','=','done')]"/>
+                    <filter name='state_draft' string="Draft bill forms" domain="[('state','=','draft')]"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_account_customer_bill_forms_advanced" model="ir.actions.act_window">
+        <field name="name">Advanced Bill of Exchange Forms</field>
+        <field name="res_model">account.advanced.bill.form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_account_bill_form_tree_advanced')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_bill_form_form_advanced')})]"/>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('type_form','=', '3')]</field>
+        <field name="context">{'type_import': '1'}</field>
+    </record>
+
+    <record id="action_account_supplier_bill_forms_advanced" model="ir.actions.act_window">
+        <field name="name">Advanced Bill of Exchange Forms</field>
+        <field name="res_model">account.advanced.bill.form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_account_bill_form_tree_advanced')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_bill_form_form_advanced')})]"/>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('type_form','=', '4')]</field>
+        <field name="context">{'type_import': '2'}</field>
+    </record>
+
+    <menuitem id="menu_account_customer_bill_forms_advanced" name="Advanced Bill of Exchange Forms"
+              parent="menu_bills_customer_title"
+              action="action_account_customer_bill_forms_advanced"
+              groups="group_module_account_bill_manager" sequence="260"/>
+
+    <menuitem id="menu_account_supplier_bill_forms_advanced" name="Advanced Bill of Exchange Forms"
+              parent="menu_bills_supplier_title"
+              action="action_account_supplier_bill_forms_advanced"
+              groups="group_module_account_bill_manager" sequence="260"/>
+</odoo>

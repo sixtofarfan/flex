@@ -1,0 +1,38 @@
+<odoo>
+    <record id="xpath_res_partner_form" model="ir.ui.view">
+        <field name="name">xpath.res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="before">
+                <newline/>
+                <field name="name_p" attrs="{'invisible': [('company_type','=','company')], 'required': [('company_type', '=', 'person')]}"/>
+                <field name="last_name" attrs="{'invisible': [('company_type','=','company')], 'required': [('company_type', '=', 'person')]}"/>
+                <field name="m_last_name" attrs="{'invisible': [('company_type','=','company')], 'required': [('company_type', '=', 'person')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='function']" position="before">
+                <field name="partner_shipping_id" domain="[('type', '=', 'delivery')]" options="{'no_create': True, 'no_quick_create':True,'no_create_edit':True, 'no_open': True}"/>
+            </xpath>
+            <!-- Se oculta los campos de nombre y apellidos -->
+            <xpath expr="//page[@name='sales_purchases']//field[@name='name_p']" position="attributes">
+                <attribute name="invisible">True</attribute>
+			</xpath>
+            <xpath expr="//page[@name='sales_purchases']//field[@name='last_name']" position="attributes">
+                <attribute name="invisible">True</attribute>
+			</xpath>
+            <xpath expr="//page[@name='sales_purchases']//field[@name='m_last_name']" position="attributes">
+                <attribute name="invisible">True</attribute>
+			</xpath>
+            <xpath expr="//page[@name='sales_purchases']//field[@name='user_id']" position="attributes">
+                <attribute name="options">{'no_open': True, 'no_create': True, 'no_create_edit': True}</attribute>
+			</xpath>
+            <xpath expr="//page[@name='sales_purchases']//field[@name='collection_id']" position="attributes">
+                <attribute name="options">{'no_open': True, 'no_create': True, 'no_create_edit': True}</attribute>
+			</xpath>
+            <xpath expr="//page[@name='sales_purchases']//field[@name='user2_id']" position="attributes">
+                <attribute name="options">{'no_open': True, 'no_create': True, 'no_create_edit': True}</attribute>
+			</xpath>
+        </field>
+    </record>
+     
+</odoo>

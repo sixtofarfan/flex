@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+
+        <record id="view_sale_order_approve_filter" model="ir.ui.view">
+            <field name="name">Sale Order Approve</field>
+            <field name="model">sale.order.approval</field>
+            <field name="arch" type="xml">
+                <search string="Sale Order Approve">
+                    <field name="name" string="Sale Order Approve"/>
+                    <field name="approval_id"/>
+                    <field name="partner_id"/>
+                    <filter string="Retenido y rechazado" icon="terp-personal" name="draft_state" domain="[('state','in', ['detained','refused'])]" help="To be processed"/>
+                </search>
+             </field>
+        </record>
+
+        <record id="hr_sale_order_approve_tree_view" model="ir.ui.view">
+            <field name="name">sale.order.approval.tree</field>
+            <field name="model">sale.order.approval</field>
+            <field name="arch" type="xml">
+                <tree string="Sale Order Approve">
+                    <field name="partner_id"/>
+                    <field name="approval_id"/>
+                    <field name="reason"/>
+                    <field name="state"/>
+                    <field name="user_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_sale_order_approve_form_view" model="ir.ui.view">
+            <field name="name">sale.order.approval.form</field>
+            <field name="model">sale.order.approval</field>
+            <field name="arch" type="xml">
+                <form string="Sale Order Approve" version="7.0">
+                    <header>
+                        <button name="approve_line" type="object" states="detained" string="Aprobar" class="oe_highlight" groups="nanotec_credit_limit.modifica_precios_especiales"/>
+                        <button name="deny_line" type="object" states="detained" string="Rechazar" class="oe_highlight" groups="nanotec_credit_limit.modifica_precios_especiales"/>
+                        <button name="cancel_line" type="object" states="refused, approved" string="Cancelar" class="oe_highlight" groups="nanotec_credit_limit.modifica_precios_especiales"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="date"/>
+                                <field name="approval_id"/>
+                            </group>
+                            <group>
+                                <field name="reason"/>
+                                <field name="user_id"/>
+                            </group>
+                        </group>
+                        <separator string="Notes"/>
+                        <field name="notes" nolabel="1"/>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_hr_sale_order_approve" model="ir.actions.act_window">
+            <field name="name">Sale Order Approve</field>
+            <field name="res_model">sale.order.approval</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_draft_state': 1}</field>
+            <field name="search_view_id" ref="view_sale_order_approve_filter"/>
+        </record>
+        <!-- Debo colocarlo en groups -->
+        <!-- debo agregar el grupo al que pertenece el usuarios al sistema de permisos -->
+        <menuitem id="menu_sale_order_approve" groups="nanotec_credit_limit.modifica_precios_especiales" name="Aprobaciones de Ventas" parent="sale.sale_menu_root" sequence="4"/>
+
+        <menuitem id="menu_hr_sale_order_approve"
+            action="open_hr_sale_order_approve"
+            parent="menu_sale_order_approve"
+            sequence="150"/>
+
+    </data>
+</openerp>

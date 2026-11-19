@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_move_form_inherit_difered" model="ir.ui.view">
+		<field name="name">move.form.inherit.difered</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form"/>
+		<field name="arch" type="xml">
+			<field name="invoice_cash_rounding_id" position="after">
+				<field name="is_difered_cost" 
+					attrs="{'invisible': [('type', 'not in', ['in_invoice', 'in_refund'])]}"/>
+				<field name="difering_cost"
+					attrs="{'invisible': [('type', 'not in', ['in_invoice', 'in_refund'])]}"/>
+				<field name="difered_move_id" readonly="1"
+					attrs="{'invisible': [('type', 'not in', ['in_invoice', 'in_refund'])]}"/>
+				<field name="difered_move_tax_id" readonly="1"
+					attrs="{'invisible': [('type', 'not in', ['in_invoice', 'in_refund'])]}"/>
+				<field name="return_move_id" readonly="1"
+					attrs="{'invisible': [('type', 'not in', ['in_invoice', 'in_refund', 'out_invoice', 'out_refund'])]}"/>
+				<field name="provision_move_id" readonly="1"
+					attrs="{'invisible': [('type', 'not in', ['in_invoice', 'in_refund', 'out_invoice', 'out_refund'])]}"/>
+			</field>
+			<xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="after">
+				<field name="move_is_difered_cost" invisible="1"/>
+				<field name="move_type" invisible="1"/>
+				<field name="difered_account_id"
+					attrs="{'invisible': [('move_type', 'not in', ['in_invoice', 'in_refund'])]}" optional="hide"/>
+				<field name="storable_account_tax" invisible="1"/>
+			</xpath>
+			<xpath expr="//field[@name='line_ids']/tree/field[@name='account_id']" position="after">
+				<field name="difered_account_id" invisible="1"/>
+				<field name="storable_account_tax" optional="hide"/>
+			</xpath>
+		</field>
+	</record>
+	<record id="view_account_invoice_filter_inherit" model="ir.ui.view">
+		<field name="name">account.invoice.select.inherit</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_account_invoice_filter"/>
+		<field name="arch" type="xml">
+			<filter name="unpaid" position="after">
+				<filter string="Gastos Diferidos" name="difered" domain="[('is_difered_cost', '=', True), ('difered_move_id', '=', False)]"/>
+				<filter string="Impuestos Diferidos" name="difered_tax" domain="[('voucher_number', '!=', False), ('difered_move_tax_id', '=', False)]"/>
+				<filter string="Detracciones no Provisionadas" name="unprov_detractions" domain="[('linked_to_detractions', '=', True), ('move_detraccion_id', '=', False)]"/>
+				<filter string="Detracciones no Pagadas" name="unpaid_detractions" domain="[('linked_to_detractions', '=', True), ('voucher_number', '=', False)]"/>
+			</filter>
+		</field>
+	</record>
+	<!--Deprecated
+	<record model="ir.actions.server" id="action_get_difered_wizard">
+		<field name="name">Generar Asientos de Provision</field>
+		<field name="model_id" ref="account.model_account_move"/>
+		<field name="binding_model_id" ref="account.model_account_move" />
+		<field name="state">code</field>
+		<field name="code">action = records.get_difered_wizard()</field>
+	</record>-->
+	<record model="ir.actions.server" id="action_get_difered_wizard_tax">
+		<field name="name">Diferir Impuestos</field>
+		<field name="model_id" ref="account.model_account_move"/>
+		<field name="binding_model_id" ref="account.model_account_move" />
+		<field name="state">code</field>
+		<field name="code">action = records.get_difered_wizard_tax_confirmation()</field>
+	</record>
+	<record model="ir.actions.server" id="action_get_difered_wizard_tax_move">
+		<field name="name">Generar Asientos de Impuestos</field>
+		<field name="model_id" ref="account.model_account_move"/>
+		<field name="binding_model_id" ref="account.model_account_move" />
+		<field name="state">code</field>
+		<field name="code">action = records.get_difered_wizard_tax()</field>
+	</record>
+	<record model="ir.actions.server" id="action_get_difered_wizard_derive">
+		<field name="name">Diferir Gastos o Ingresos</field>
+		<field name="model_id" ref="account.model_account_move"/>
+		<field name="binding_model_id" ref="account.model_account_move" />
+		<field name="state">code</field>
+		<field name="code">action = records.get_difered_wizard_derive()</field>
+	</record>
+</odoo>

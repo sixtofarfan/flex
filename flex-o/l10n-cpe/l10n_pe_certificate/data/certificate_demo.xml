@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="cert_prueba" model="pe.certificate">
+            <field name="name">Prueba</field>
+            <field name="key">-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEApaIWuTix/8cHf5VBf4xGKdaq6G/vzuI7/Kbsk6KfhCB7nJr/
+3b4c9wixa2Ny1AYDf9sPIU8aUYxgqrH7ufNpiyJjMLOP2IDySQ7O8/jot+4qjWlZ
+2WXMfzhkk+D5UtizKVm++sRRrzUb4lxN8ZUkqd47A6qCMJyHxscVb6k6XVK5ZMo7
+5LKzsWStykELOgkhvpJMOItlZPy8MszFOshH8UO/9fPTejs6W6brROy3XQWHT6oe
+tKRgCsucLutuGsyuZgp+yJYY1WKYZDcsnw/GEh/vqwl52DVLzVfVRezlw0ZvxxtP
+4CiqTbcQaWX2Mbwq0JBfn1X51wBfUoDsilJQxwIDAQABAoIBACCy0R2bzbgbCKXt
+R1Lw1GEqGe9tOcBz9Te5lHbI4gjpiL2v89dI0tsKAkybA25MCaDSFDiVLzLuLZ9F
+J9bb8Pggv8g7iqhJPIujusN7XiYBhLEKHUzHxglPjruK7G2ojiYZq5RB8YZPS8Py
+SQjqUqSeVLQykyUZocxiPR8gH3+QpcG12mSM5JWnWunnTvqJBkf40DtDxW/lGpDE
+OfCBag8qBBz7Uu5Vb3zX4HLkFa1McNV7R9E9kHgWvQJ7hDunVfcaqxYEktqLQXCi
+Qr+Dp/lKIL0KXnzcMQ878nLxlzSXc3V6guvYT3n782tAX8S8z/t9pfMFitrKHn8j
+GxULS/ECgYEA2/1u21hA77UJivl4Vtx7Oph7kquyf3GLZZ2LbLRzcrnTsFRt+jKK
+lv6xWNbJgLAM89jsje0r65RiCDowZEaqkO7USVG34LGfV6ljjbwV05way+20/53g
+vRR1UuHult5Y7Xfc9z/Ss7ycJ6txPcgUt2Qvs4vB0W/3Q6ddKUUlbSMCgYEAwL7c
+gMDaiIkov3YoGTORIby5DPghbBx4NwGNRekoqGh3togWnBs96yTHFlpC3GvKltRA
+A1+QKkT2HunWaLPPdDOlwym07VLulgM2VC01PPV72+4uYK3AmCbrGl/MPrSEPi93
+e3GdaA6uxFmuYNq+RTw5YwzmoZHLi8tmXEIAgg0CgYAJYc6XhjUGxBbLGYabVb3f
+qt8iSzZKnyINzGFE2pFN5ET18TPbhspIVEZl/osLdPaoc6jrCKFl46cmqKylqine
+EoF1Own3iDu+dlfrlIjtxGuUJOgiOq56AeRbC42sW4E5Z3JCDTPEPJgATRyAQQc5
+Jwmtw5kZgIfwF7QubWeCNwKBgQCULuh1sE8So2iJcjy3y1Zr+pzGZMnFRUoC+BV1
+xyC0AMTwt0WytJrw+jB5deFrdw+kz/962HCMnsId2Cc4De2TZ9Wr6pen0ZeOC2As
+bSk9+XlFB6PuPgcQsvMTLs1m8/+rk3CnnhynEIq6eDxBSEr6DagNB7EUTHORwUmr
+6i5bzQKBgQCNgdS81rSsbDWACVP9n9yomuOsbB/C6ELinofZd1/HyTxhpsDA2anT
+n7sFBRd3rFFsBjxosJcRzDujwHJYSd6/5U7OxOpDVGPiS5zt+4WKlIo5G4D6fwtk
+e+DGLFA/xP3sGoMYqRToVPAVqEH1TkdRHQ548P35BSXPv+SdJ129cw==
+-----END RSA PRIVATE KEY-----</field>
+            <field name="crt">-----BEGIN CERTIFICATE-----
+MIICxjCCAa6gAwIBAgIJALXFAuBixzEPMA0GCSqGSIb3DQEBBQUAMBUxEzARBgNV
+BAMTCnB2b2Rvby5jb20wHhcNMjAwNzIwMjAxODE4WhcNMzAwNzE4MjAxODE4WjAV
+MRMwEQYDVQQDEwpwdm9kb28uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+CgKCAQEApaIWuTix/8cHf5VBf4xGKdaq6G/vzuI7/Kbsk6KfhCB7nJr/3b4c9wix
+a2Ny1AYDf9sPIU8aUYxgqrH7ufNpiyJjMLOP2IDySQ7O8/jot+4qjWlZ2WXMfzhk
+k+D5UtizKVm++sRRrzUb4lxN8ZUkqd47A6qCMJyHxscVb6k6XVK5ZMo75LKzsWSt
+ykELOgkhvpJMOItlZPy8MszFOshH8UO/9fPTejs6W6brROy3XQWHT6oetKRgCsuc
+LutuGsyuZgp+yJYY1WKYZDcsnw/GEh/vqwl52DVLzVfVRezlw0ZvxxtP4CiqTbcQ
+aWX2Mbwq0JBfn1X51wBfUoDsilJQxwIDAQABoxkwFzAVBgNVHREEDjAMggpwdm9k
+b28uY29tMA0GCSqGSIb3DQEBBQUAA4IBAQBpD3lyeWpbPIOgBo8e9lfsjjD/2MRD
+l+FYG3jhCnQbKuiU41X+jenzocHCjyj5M4JZRTCMdjiEt/Gcmx2qeGeGGu0WLBz6
+lU3E4Png9enoj5Y7LU/G8ZcNV0OxiznQIgKQORDm5ktI2tCYI/5Yj+HhisagUaUx
+UJIsfMFOoMoQ2G19/KiRIYdl+P5kD1gVmvr3ytjsyvP5HzLGHHaIaXZis1gdLTAJ
+L0OHHl8udiOfsie1EGx+AemzNmyk6TwrdUL/Vyc6tS+7YsvZ2QVYm0t0IL+BwRy7
+9l9buXFx72okFVt1HONBqMin4nBaq7P555Fgpfcfrya9Zd7EnrpwJ/ww
+-----END CERTIFICATE-----</field>
+            <field eval="str(datetime.now())" name="start_date"/>
+            <field eval="str(datetime.now().year+1)+'-'+str(datetime.now().month)+'-'+str(datetime.now().day)" name="end_date"/>
+            <field name="state">done</field>
+        </record>
+
+    </data>
+</odoo>

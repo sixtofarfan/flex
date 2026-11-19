@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<menuitem id="menu_finance_sunat_ib"
+                name="Inventarios y Balances"
+				parent="account_sunat_rep_it.menu_finance_sunat_ple" 
+				sequence="1"/>
+
+		<menuitem action="account_sunat_ib31_rep_action" 
+				id="menu_finance_sunat_ib31" 
+				parent="menu_finance_sunat_ib" 
+				sequence="1"/>
+
+	</data>
+</odoo>

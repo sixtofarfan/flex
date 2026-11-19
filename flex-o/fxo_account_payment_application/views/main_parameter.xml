@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_main_parameter_form_inherit_client_journal" model="ir.ui.view">
+		<field name="name">main.parameter.form.inherit.client.journal</field>
+		<field name="model">main.parameter</field>
+		<field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+		<field name="arch" type="xml">
+            <field name="custom_journal_id" position="after">
+                <field name="custom_client_journal"/>
+            </field>
+        </field>
+    </record>
+</odoo>

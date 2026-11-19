@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="PaymentCurrencyRatePopOver">
+        <div class="js_payment_rate_div">
+            <table>
+                <tr>
+                    <td style="padding-right:20px;"><strong style="white-space: nowrap;">Date: </strong></td>
+                    <td style="text-align:right;">
+                        <input type="date" name="date-field" id="payment_date" class="form-control advantage_input" 
+                                required="required" t-att-value="date" min="1000-01-01" max="9999-12-31" t-att-date="date"/>
+                        </td>
+                </tr>
+                <tr>
+                    <td style="padding-right:20px;"><strong style="white-space: nowrap;">Currency rate: </strong></td>
+                    <td style="text-align:right;">
+                        <input type="number" name="currency-field" id="currency_rate" class="o_website_form_input"
+                               data-type="number" t-att-value="rate" placeholder="" t-att-rate="rate"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <button class="btn btn-xs btn-primary js_payment_rate pull-right" t-att-id="id" style="margin-top:5px; margin-bottom:5px;">Apply</button>
+    </t>
+
+</templates>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+        <record id="venta_filtrado_acceso_usuario" model="res.groups">
+            <field name="name">Venta Filtrado Acceso: Usuario</field>
+        </record>
+
+
+        <record id="venta_filtrado_acceso_administrator" model="res.groups">
+            <field name="name">Venta Filtrado Acceso: Administrador</field>
+        </record>
+
+
+
+
+    <record id="action_contacts_menu_filters" model="ir.actions.server">
+        <field name="name">Contactos</field>
+        <field name="model_id" ref="model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">action = model.get_contacts()</field>
+    </record>
+
+  
+        <record model="ir.rule" id="filter_user_element_act">
+          <field name="name">Filter Venta Usuario Final</field>
+          <field name="model_id" ref="model_res_partner"/>
+          <field name="global" eval="True"/>
+          <field name="domain_force"> ['|','&amp;' ('user_ids', 'in', user.id),('parent_id.user_ids', 'in', user.id), ('admin_filter', '=', True)]</field>
+        </record>
+  </data>
+</odoo>

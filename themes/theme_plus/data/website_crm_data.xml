@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="theme_plus.model_website_contact_info" model="ir.model">
+            <field name="website_form_default_field_id" ref="theme_plus.field_website_contact_info__question" />
+            <field name="website_form_access">True</field>
+            <field name="website_form_label">Create a Contact Info</field>
+        </record>
+        <function model="ir.model.fields" name="formbuilder_whitelist">
+            <value>website.contact.info</value>
+            <value eval="[
+                'name',
+                'email',
+                'subject',
+                'question',
+            ]"/>
+        </function>
+    </data>
+    <data noupdate="1">
+        <record id="action_open_website1" model="ir.actions.act_url">
+            <field name="name">Website Contact Form</field>
+            <field name="target">self</field>
+            <field name="url">/</field>
+        </record>
+
+        <record id="base.open_menu" model="ir.actions.todo">
+            <field name="action_id" ref="action_open_website1"/>
+            <field name="state">open</field>
+        </record>
+    </data>
+    
+    <data>
+        <record id="theme_plus.model_website_meeting_info" model="ir.model">
+            <field name="website_form_default_field_id" ref="theme_plus.field_website_contact_info__question" />
+            <field name="website_form_access">True</field>
+            <field name="website_form_label">Create a Meeting Info</field>
+        </record>
+        <function model="ir.model.fields" name="formbuilder_whitelist">
+            <value>website.meeting.info</value>
+            <value eval="[
+                'name',
+                'email',
+                'question',
+                'meeting_datetime',
+                'mtime',
+                'phone',
+            ]"/>
+        </function>
+    </data>
+    
+    <data noupdate="1">
+        <record id="action_open_website2" model="ir.actions.act_url">
+            <field name="name">Website Meeting Form</field>
+            <field name="target">self</field>
+            <field name="url">/</field>
+        </record>
+
+        <record id="base.open_menu" model="ir.actions.todo">
+            <field name="action_id" ref="action_open_website2"/>
+            <field name="state">open</field>
+        </record>
+    </data>
+</odoo>

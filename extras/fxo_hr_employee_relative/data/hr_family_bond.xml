@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<record model='hr.family.bond' id="family_bond_02">
+			<field name='code'>02</field>
+			<field name='description'>CÓNYUGE</field>
+			<field name='name'>CÓNYUGE</field>
+		</record>
+        <record model='hr.family.bond' id="family_bond_03">
+			<field name='code'>03</field>
+			<field name='description'>CONCUBINA(O)</field>
+			<field name='name'>CONCUBINA(O)</field>
+		</record>
+        <record model='hr.family.bond' id="family_bond_04">
+			<field name='code'>04</field>
+			<field name='description'>GESTANTE</field>
+			<field name='name'>GESTANTE</field>
+		</record>
+        <record model='hr.family.bond' id="family_bond_05">
+			<field name='code'>05</field>
+			<field name='description'>HIJO MENOR DE EDAD</field>
+			<field name='name'>HIJO MENOR DE EDAD</field>
+		</record>
+        <record model='hr.family.bond' id="family_bond_06">
+			<field name='code'>06</field>
+			<field name='description'>HIJO MAYOR EDAD INCAP PERM</field>
+			<field name='name'>HIJO MAYOR DE EDAD INCAPACITADO PERMANENTE</field>
+		</record>
+    </data>
+</odoo>

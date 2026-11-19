@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_credit_policies" name="Políticas de Crédito" parent="sale.sale_menu_root" sequence="4"/>
+
+        <record model="ir.ui.view" id="res_partner_credit_detail_tree">
+            <field name="name">res.partner.credit.detail.tree</field>
+            <field name="model">res.partner.credit.detail</field>
+            <field name="arch" type="xml">
+                <tree string="Lista Solicitudes de Crédito">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="process_type"/>
+                    <field name="process_date"/>
+                    <field name="currency_id"/>
+                    <field name="amount_application"/>
+                    <field name="amount_debit"/>
+                    <field name="amount_credit"/>
+                    <field name="state"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="res_partner_credit_detail_form">
+            <field name="name">res_partner_credit_detail.form</field>
+            <field name="model">res.partner.credit.detail</field>
+            <field name="arch" type="xml">
+                <form string="Formulario Solicitudes de Crédito">
+                    <header>
+                        <!--<button name="fsend_mail" string="Enviar por correo electrónico" states="confirmed"/>
+                        <button name="fprint" string="Imprimir" states="confirmed"/>-->
+                        <button name="credit_confirm" type="object" string="Confirmar" states="draft"/>
+                        <button name="credit_draft" type="object" string="Convertir a borrador" states="cancel"/>
+                        <button name="credit_cancel" type="object" string="Cancelar" states="approve"/>
+                        <button name="credit_approve" type="object" string="Aprobar" states='confirmed' class="oe_highlight"/>
+                        <button name="credit_rejected" type="object" string="Rechazar" states='confirmed' class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    
+                    <sheet>
+                        <h1 string="Solicitud">
+                            <field name="name" readonly="1"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="process_date"/>
+                                <field name="approvement_date"/>
+                                <field name="date_validity"/>
+                                <field name="process_type"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="amount_application" attrs="{'invisible':[('process_type','not in',['opening_request', 'extension_request'])]}" widget='monetary'/>
+                                <field name="amount_debit" attrs="{'invisible':[('process_type','not in',['opening_request', 'extension_request'])]}" widget='monetary'/>
+                                <field name="amount_credit" invisible='1'/>
+                            </group>
+                            <group>
+                                <field name="currency_id"/>
+                            </group>
+                        </group>
+                        <field name="note" placeholder="Nota de solicitud"/>
+                        <field name="notes_approval" placeholder="Nota de aprobación o rechazo"/>
+                        <notebook>
+                            <page string="Referencias bancarias">
+                                <field name="credit_detail_bank_ids">
+                                    <tree>
+                                        <field name="bank_id"/>
+                                        <field name="street"/>
+                                        <field name="operation_type"/>
+                                        <field name="amount_operation"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="bank_id"/>
+                                                <field name="street"/>
+                                                <field name="operation_type"/>
+                                                <field name="amount_operation"/>
+                                                <field name="operating_balance"/>
+                                            </group>
+                                            <group>
+                                                <field name="credit_limit"/>
+                                                <field name="start_date"/>
+                                                <field name="phone_contac"/>
+                                                <field name="notes"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Referencias comerciales">
+                                <field name="credit_detail_commercial_ids">
+                                    <tree>
+                                        <field name="partner_id"/>
+                                        <field name="street"/>
+                                        <field name="credit_limit"/>
+                                        <field name="credit_balance"/>
+                                        <field name="start_date"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="partner_id"/>
+                                                <field name="street"/>
+                                                <field name="credit_limit"/>
+                                            </group>
+                                            <group>
+                                                <field name="credit_balance"/>
+                                                <field name="start_date"/>
+                                                <field name="phone_contac"/>
+                                                <field name="notes"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Referencias finacieras">
+                                <field name="credit_detail_finantial_ids">
+                                    <tree>
+                                        <field name="amount_total_assets"/>
+                                        <field name="amount_total_liabilities"/>
+                                        <field name="amount_entry"/>
+                                        <field name="status_failure"/>
+                                        <field name="start_date"/>
+                                        <field name="phone_contac"/>
+                                        <field name="notes"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="amount_total_assets"/>
+                                                <field name="amount_total_liabilities"/>
+                                                <field name="amount_entry"/>
+                                                <field name="status_failure"/>
+                                            </group>
+                                            <group>
+                                                <field name="start_date"/>
+                                                <field name="phone_contac"/>
+                                                <field name="notes"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="res_partner_credit_detail_view_search" model="ir.ui.view">
+            <field name="name">res.partner.credit.detail.view.search</field>
+            <field name="model">res.partner.credit.detail</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <group expand="0" string="Group By">
+                        <filter name="process_type" context="{'group_by': 'process_type'}" string='Tipo de Proceso'/>
+                        <filter name="currency_id" context="{'group_by': 'currency_id'}" string='Moneda'/>
+                        <filter name="state" context="{'group_by': 'state'}" string='Estado'/>
+                        <filter name="company_id" context="{'group_by': 'company_id'}" string='Compañia'/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="res_partner_credit_detail_action">
+            <field name="name">Solicitudes de Crédito</field>
+            <field name="res_model">res.partner.credit.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_credit_application" parent="menu_credit_policies" action="res_partner_credit_detail_action"/>
+
+
+        <record model="ir.ui.view" id="res_user_credit_limit_tree">
+            <field name="name">res.user.credit.limit.tree</field>
+            <field name="model">res.user.credit.limit</field>
+            <field name="arch" type="xml">
+                <tree string="Gestor financiero">
+                    <field name="user_id"/>
+                    <field name="credit_max_approved"/>
+                    <field name="currency_id"/>
+                    <field name="order_over_rate"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="res_user_credit_limit_form">
+            <field name="name">res.user.credit.limit.form</field>
+            <field name="model">res.user.credit.limit</field>
+            <field name="arch" type="xml">
+                <form string="Formulario Aprob. gestor financiero">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="user_id"/>
+                                <field name="credit_max_approved" widget='monetary'/>
+                            </group>
+                            <group>
+                                <field name="order_over_rate"/>
+                                <field name="currency_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="res_user_credit_limit_action">
+            <field name="name">Usuarios Autorizados Límite de Créditos</field>
+            <field name="res_model">res.user.credit.limit</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="user_autho_menu" parent="menu_credit_policies"
+            action="res_user_credit_limit_action"/>
+
+    </data>
+</odoo>

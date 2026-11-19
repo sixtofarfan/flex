@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="hr_payslip_run_form_inherit_fixed" model="ir.ui.view">
+		<field name="name">hr.payslip.run.form.inherit.fixed</field>
+		<field name="model">hr.payslip.run</field>
+		<field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//header" position="inside">
+				<button name="import_fixed_inputs_by_lot" string="Importar Conceptos Fijos" type="object" class="oe_highlight"/>
+				<button name="update_wage" string="Actualizar Salarios" type="object" class="oe_highlight"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

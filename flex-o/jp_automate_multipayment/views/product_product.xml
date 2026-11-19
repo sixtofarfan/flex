@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="product_normal_form_view_inherit">
+            <field name="name">product.normal.form.view.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <group name="accounting" position="after">
+                    <group name="detraction" string="Detracciones">
+                        <field name="detraction_bool" invisible="1"/>
+                        <field name="type_operation" attrs="{'required': [('detraction_bool', '=', True)]}"/>
+                        <field name="type_good_service" attrs="{'required': [('detraction_bool', '=', True)]}"/>
+                    </group>
+                </group>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_template_only_form_view_inherit">
+            <field name="name">product.template.only.form.view.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <group name="accounting" position="after">
+                    <group name="detraction" string="Detracciones">
+                        <field name="detraction_bool" invisible="1"/>
+                        <field name="type_operation" attrs="{'required': [('detraction_bool', '=', True)]}"/>
+                        <field name="type_good_service" attrs="{'required': [('detraction_bool', '=', True)]}"/>
+                    </group>
+                </group>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_move_payment_wizard_form">
+			<field name="name">move.payment.wizard.form</field>
+			<field name="model">move.payment.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<group>
+							<field name="request_id" required="1"/>
+							<field name="amount_nc" required="1"/>
+							<field name="amount_fc" required="1"/>
+							<field name="currency_rate" required="1"/>
+							<field name="partner_id" required="1"/>
+						</group>
+						<group>
+							<field name="type_document_id" required="1"/>
+							<field name="number" required="1"/>
+							<field name="account_id" required="1"/>
+							<field name="currency_id" required="1"/>
+						</group>
+					</group>
+					<footer>
+						<button string="Generar Asiento" name="generate_move" type="object" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

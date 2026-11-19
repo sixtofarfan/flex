@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_sale_subscription_stage_id_suspend" model="ir.sequence">
+            <field name="name">Secuencia de Solicitud de Suspensión</field>
+            <field name="code">sale_subscription_state_suspend</field>
+            <field name="prefix">SSS-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_sale_subscription_stage_id_reactivation" model="ir.sequence">
+            <field name="name">Secuencia de Solicitud de Reactivación</field>
+            <field name="code">sale_subscription_state_reactivated</field>
+            <field name="prefix">SSR-</field>
+            <field name="padding">5</field>
+        </record>
+    </data>
+</odoo>

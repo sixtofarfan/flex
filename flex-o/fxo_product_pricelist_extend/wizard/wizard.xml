@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <!-- product.pricelist.wizard form view -->
+        <record id="product_pricelist_wizard_view_form" model="ir.ui.view">
+            <field name="name">product.pricelist.wizard.view.form</field>
+            <field name="model">product.pricelist.wizard</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="pricelist_province_id" readonly="1"/>
+                            <field name="def_state_id" invisible="1"/>
+                            <field name="state_id" domain="[('id', 'in', def_state_id)]" options='{"no_open": True, "no_create": True}'/>
+                            <field name="province_ids" options='{"no_open": True, "no_create": True}' domain="[('state_id', '=', state_id),('province_id','=', False)]"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Add Province"   name="add_province_ids" type="object" default_focus="1" class="btn-primary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+         <record id="action_view_product_pricelist_wizard" model="ir.actions.act_window">
+            <field name="name">Add Province</field>
+            <field name="res_model">product.pricelist.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="product_pricelist_wizard_view_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <record id="product_pricelist_wizard_district_view_form" model="ir.ui.view">
+            <field name="name">product.pricelist.wizard.district.view.form</field>
+            <field name="model">product.pricelist.wizard.district</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="def_province_id"  invisible="1"/>
+                            <field name="province_id" domain="[('id', 'in', def_province_id)]" options='{"no_open": True, "no_create": True}'/>
+                            <field name="pricelist_province_id" readonly="1"/>
+                            <field name="district_ids" options='{"no_open": True, "no_create": True}' domain="[('province_id','=', province_id)]"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Add district"   name="add_district_ids" type="object" default_focus="1" class="btn-primary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_product_pricelist_wizard_district" model="ir.actions.act_window">
+            <field name="name">Add district</field>
+            <field name="res_model">product.pricelist.wizard.district</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="product_pricelist_wizard_district_view_form"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+    
+</odoo>

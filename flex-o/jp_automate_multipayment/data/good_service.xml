@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Type of operation -->
+        <record id="type_01" model="type.operation">
+            <field name="name">01</field>
+            <field name="description">01 - Venta de bienes o prestación de servicios</field>
+        </record>
+        <record id="type_02" model="type.operation">
+            <field name="name">02</field>
+            <field name="description">02 - Retiro de bienes</field>
+        </record>
+        <record id="type_03" model="type.operation">
+            <field name="name">03</field>
+            <field name="description">03 - Traslados que no son venta</field>
+        </record>
+        <record id="type_04" model="type.operation">
+            <field name="name">04</field>
+            <field name="description">04 - Venta a través de la Bolsa de Productos</field>
+        </record>
+        <record id="type_05" model="type.operation">
+            <field name="name">05</field>
+            <field name="description">05 - Venta de Bienes exonerados del IGV</field>
+        </record>
+        <record id="type_09" model="type.operation">
+            <field name="name">09</field>
+            <field name="description">09 - Pago Ley N° 30737</field>
+        </record>
+
+        <!-- Type of good or service -->
+        <record id="gs_001" model="good.service">
+            <field name="name">001</field>
+            <field name="description">001 - Azúcar y melaza de caña</field>
+        </record>
+        <record id="gs_002" model="good.service">
+            <field name="name">002</field>
+            <field name="description">002 - Arroz</field>
+        </record>
+        <record id="gs_003" model="good.service">
+            <field name="name">003</field>
+            <field name="description">003 - Alcohol etílico</field>
+        </record>
+        <record id="gs_004" model="good.service">
+            <field name="name">004</field>
+            <field name="description">004 - Recursos hidrobiológicos</field>
+        </record>
+        <record id="gs_005" model="good.service">
+            <field name="name">005</field>
+            <field name="description">005 - Maíz amarillo duro</field>
+        </record>
+        <record id="gs_007" model="good.service">
+            <field name="name">007</field>
+            <field name="description">007 - Caña de azúcar</field>
+        </record>
+        <record id="gs_008" model="good.service">
+            <field name="name">008</field>
+            <field name="description">008 - Madera</field>
+        </record>
+        <record id="gs_009" model="good.service">
+            <field name="name">009</field>
+            <field name="description">009 - Arena y piedra.</field>
+        </record>
+        <record id="gs_010" model="good.service">
+            <field name="name">010</field>
+            <field name="description">010 - Residuos, subproductos, desechos, recortes y desperdicios</field>
+        </record>
+        <record id="gs_011" model="good.service">
+            <field name="name">011</field>
+            <field name="description">011 - Bienes gravados con el IGV, o renuncia a la exoneración</field>
+        </record>
+        <record id="gs_012" model="good.service">
+            <field name="name">012</field>
+            <field name="description">012 - Intermediación laboral y tercerización</field>
+        </record>
+        <record id="gs_013" model="good.service">
+            <field name="name">013</field>
+            <field name="description">013 - Animales vivos</field>
+        </record>
+        <record id="gs_014" model="good.service">
+            <field name="name">014</field>
+            <field name="description">014 - Carnes y despojos comestibles</field>
+        </record>
+        <record id="gs_015" model="good.service">
+            <field name="name">015</field>
+            <field name="description">015 - Abonos, cueros y pieles de origen animal</field>
+        </record>
+        <record id="gs_016" model="good.service">
+            <field name="name">016</field>
+            <field name="description">016 - Aceite de pescado</field>
+        </record>
+        <record id="gs_017" model="good.service">
+            <field name="name">017</field>
+            <field name="description">017 - Harina, polvo y “pellets” de pescado, crustáceos, moluscos y demás invertebrados acuáticos</field>
+        </record>
+        <record id="gs_019" model="good.service">
+            <field name="name">019</field>
+            <field name="description">019 - Arrendamiento de bienes muebles</field>
+        </record>
+        <record id="gs_020" model="good.service">
+            <field name="name">020</field>
+            <field name="description">020 - Mantenimiento y reparación de bienes muebles</field>
+        </record>
+        <record id="gs_021" model="good.service">
+            <field name="name">021</field>
+            <field name="description">021 - Movimiento de carga</field>
+        </record>
+        <record id="gs_022" model="good.service">
+            <field name="name">022</field>
+            <field name="description">022 - Otros servicios empresariales</field>
+        </record>
+        <record id="gs_024" model="good.service">
+            <field name="name">024</field>
+            <field name="description">024 - Comisión mercantil</field>
+        </record>
+        <record id="gs_025" model="good.service">
+            <field name="name">025</field>
+            <field name="description">025 - Fabricación de bienes por encargo</field>
+        </record>
+        <record id="gs_026" model="good.service">
+            <field name="name">026</field>
+            <field name="description">026 - Servicio de transporte de personas</field>
+        </record>
+        <record id="gs_027" model="good.service">
+            <field name="name">027</field>
+            <field name="description">027 - Servicio de transporte de carga</field>
+        </record>
+        <record id="gs_028" model="good.service">
+            <field name="name">028</field>
+            <field name="description">028 - Transporte de pasajeros</field>
+        </record>
+        <record id="gs_030" model="good.service">
+            <field name="name">030</field>
+            <field name="description">030 - Contratos de construcción</field>
+        </record>
+        <record id="gs_031" model="good.service">
+            <field name="name">031</field>
+            <field name="description">031 - Oro gravado con el IGV</field>
+        </record>
+        <record id="gs_034" model="good.service">
+            <field name="name">034</field>
+            <field name="description">034 - Minerales metálicos no auríferos</field>
+        </record>
+        <record id="gs_035" model="good.service">
+            <field name="name">035</field>
+            <field name="description">035 - Bienes exonerados del IGV</field>
+        </record>
+        <record id="gs_036" model="good.service">
+            <field name="name">036</field>
+            <field name="description">036 - Oro y demás minerales metálicos exonerados del IGV</field>
+        </record>
+        <record id="gs_037" model="good.service">
+            <field name="name">037</field>
+            <field name="description">037 - Demás servicios gravados con el IGV</field>
+        </record>
+        <record id="gs_039" model="good.service">
+            <field name="name">039</field>
+            <field name="description">039 - Minerales no metálicos</field>
+        </record>
+        <record id="gs_040" model="good.service">
+            <field name="name">040</field>
+            <field name="description">040 - Bien inmueble gravado con IGV</field>
+        </record>
+    
+    </data>
+</odoo>

@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_multiple_payment_bbva,multiple.payment.bbva,model_multiple_payment_bbva,account.group_account_manager,1,1,1,1
+access_multiple_payment_bbva_line,multiple.payment.bbva.line,model_multiple_payment_bbva_line,account.group_account_manager,1,1,1,1
+access_multiple_payment_bcp,multiple.payment.bcp,model_multiple_payment_bcp,account.group_account_manager,1,1,1,1
+access_multiple_payment_bcp_line,multiple.payment.bcp.line,model_multiple_payment_bcp_line,account.group_account_manager,1,1,1,1
+access_multiple_payment_interbank,multiple.payment.interbank,model_multiple_payment_interbank,account.group_account_manager,1,1,1,1
+access_multiple_payment_interbank_line,multiple.payment.interbank.line,model_multiple_payment_interbank_line,account.group_account_manager,1,1,1,1
+access_multiple_payment_scotiabank,multiple.payment.scotiabank,model_multiple_payment_scotiabank,account.group_account_manager,1,1,1,1
+access_multiple_payment_scotiabank_line,multiple.payment.scotiabank.line,model_multiple_payment_scotiabank_line,account.group_account_manager,1,1,1,1

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="logs_form_view" model="ir.ui.view">
+            <field name="name">logs.request.form</field>
+            <field name="model">logs.request</field>
+            <field name="arch" type="xml">
+                <form string="Logs">
+                    <header>
+
+                        <field name="stages_id" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet string="Logs">
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="codigoOperacion" readonly="1"/>
+                                <field name="numeroOperacion" readonly="1"/>
+                                <field name="web_service"/>
+                                <field name="referencia_deuda"/>
+                                <field name="numero_documento"/>
+                            </group>
+                            <group>
+                                <field name="canalOperacion" readonly="1"/>
+                                <field name="codigoOficina" readonly="1"/>
+                                <field name="fechaOperacion" readonly="1"/>
+                                <field name="horaOperacion" readonly="1"/>
+                                <field name="company_id" readonly="1"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <group>
+                                <field name="json_in" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="json_out" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="error_info" string="Error" >
+                                <field name="error_details" readonly="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_logs_search" model="ir.ui.view">                                
+          <field name="name">logs.request.search</field>                                
+          <field name="model">logs.request</field>                                
+          <field name="arch" type="xml">                                    
+            <search string="Buscar Logs"> 
+
+              <field name="name"></field>
+
+              <filter string="Nuevo" domain="[('stages_id', '=', 'new')]" name="is_new"></filter>
+              <filter string="Ejecutado" domain="[('stages_id', '=', 'done')]" name="is_done"></filter>
+              <filter string="Error" domain="[('stages_id', '=', 'error')]" name="is_error"></filter>
+
+              <group expand="0" string="Group By">                                            
+                <filter string="Webservice" name="web_service" context="{'group_by': 'web_service'}"></filter>
+                <filter string="Socio" name="referencia_deuda" context="{'group_by': 'referencia_deuda'}"></filter>
+                <filter string="Estado" name="stages_id" context="{'group_by': 'stages_id'}"></filter>
+              </group>                                    
+            </search>                                
+          </field>                            
+        </record>
+
+        <record model="ir.ui.view" id="logs_tree_view">
+            <field name="name">logs.request.tree</field>
+            <field name="model">logs.request</field>
+            <field name="arch" type="xml">
+                <tree string="Logs" decoration-info = "stages_id == 'new'" decoration-muted = "stages_id == 'done'" decoration-danger = "stages_id == 'error'" default_order="create_date desc">
+
+                    <field name="create_date" string="Creado en"/>
+                    <field name="name"/>
+                    <field name="web_service"/>
+                    <field name="referencia_deuda"/>
+                    <field name="numero_documento"/>
+
+                    <field name="codigoOperacion" optional="show"/>
+                    <field name="numeroOperacion" optional="show"/>
+                    <field name="codigoBanco" optional="hide"/>
+                    <field name="codigoConvenio" optional="hide"/>
+                    <field name="canalOperacion" optional="hide"/>
+                    <field name="codigoOficina" optional="hide"/>
+                    <field name="fechaOperacion"/>
+                    <field name="horaOperacion"/>
+					<field name="stages_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ir_cron_act_logs" model="ir.actions.act_window">
+            <field name="name">Logs Request</field>
+            <field name="res_model">logs.request</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="logs_tree_view"/>
+            <field name="search_view_id" ref="view_logs_search"></field> 
+        </record>
+
+        <menuitem id="menu_ir_cron_logs" action="ir_cron_act_logs"/>
+    </data>
+</odoo>

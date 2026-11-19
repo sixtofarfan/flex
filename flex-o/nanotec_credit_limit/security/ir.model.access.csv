@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_partner_credit_detail,res.partner.credit.detail,model_res_partner_credit_detail,sales_team.group_sale_salesman,1,1,1,1
+access_res_partner_credit_detail_finantial,res.partner.credit.detail.finantial,model_res_partner_credit_detail_finantial,sales_team.group_sale_salesman,1,1,1,1
+access_res_partner_credit_detail_commerciall,res.partner.credit.detail.commercial,model_res_partner_credit_detail_commercial,sales_team.group_sale_salesman,1,1,1,1
+access_res_partner_credit_detail_bank,res.partner.credit.detail.bank,model_res_partner_credit_detail_bank,sales_team.group_sale_salesman,1,1,1,1
+access_res_user_credit_limit,res.user.credit.limit,model_res_user_credit_limit,sales_team.group_sale_manager,1,1,1,1
+access_sale_order_approval,res.sale.order.approval,model_sale_order_approval,sales_team.group_sale_manager,1,1,1,1

@@ -1,0 +1,168 @@
+<odoo>
+	<record id="fxo_payment_request_line_view_form" model="ir.ui.view">
+		<field name="name">fxo.payment.request.line.view.form</field>
+		<field name="model">fxo.payment.request.line</field>
+		<field name="arch" type="xml">
+			<form create="0">
+				<header>
+					<button name="get_request_moves_manual" string="Actualizar" type="object" class="oe_highlight"/>
+				</header>
+				<sheet>
+					<group>
+						<group>
+							<field name="rel_name"/>
+							<field name="rel_user"/>
+							<field name="rel_date"/>
+							<field name="product_id"/>
+							<field name="rel_journal"/>
+							<field name="doc_number"/>
+							<field name="internal_ref"/>
+							<field name="internal_ref_child"/>
+							<field name="rel_catalog_payment"/>
+							<field name="notes"/>
+						</group>
+						<group>
+							<field name="rel_bank"/>
+							<field name="currency_id"/>
+							<field name="amount"/>
+							<field name="payment_total"/>
+							<field name="payment_residual"/>
+							<field name="amount_invoiced"/>
+							<field name="amount_residual"/>
+							<field name="rel_paid_to"/>
+							<field name="rel_partner"/>
+							<field name="partner_id"/>
+						</group>
+					</group>
+					<field name="move_line_ids" readonly="1" context="{'tree_view_ref':'fxo_account_invoice_control.account_move_line_tree_request'}"
+						colors="red: parent.type in ['out_invoice', 'out_refund'];
+								green: parent.type in ['in_invoice', 'in_refund'];">
+					</field>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="account_move_line_tree_request" model="ir.ui.view">
+		<field name="name">account.move.line.tree.request</field>
+		<field name="model">account.move.line</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="product_id"/>
+				<field name="name"/>
+				<field name="account_id"/>
+                <field name="partner_id" optional="show"/>
+                <field name="type_document_id" optional="show"/>
+				<field name="ref" optional="show"/>
+				<field name="analytic_account_id"/>
+				<field name="analytic_tag_ids"/>
+				<field name="debit" sum="debit"/>
+				<field name="credit" sum="credit"/>
+                <field name="amount_currency" groups="base.group_multi_currency" sum="amount_currency" optional="hide"/>
+			</tree>
+		</field>
+	</record>
+	<record id="fxo_payment_request_line_view_tree" model="ir.ui.view">
+		<field name="name">fxo.payment.request.line.view.tree</field>
+		<field name="model">fxo.payment.request.line</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="rel_name"/>
+				<field name="rel_user"/>
+                <field name="partner_id"/>
+                <field name="rel_partner"/>
+				<field name="rel_date"/>
+				<field name="doc_number"/>
+                <field name="internal_ref"/>
+				<field name="internal_ref_child"/>
+				<field name="rel_catalog_payment" optional="hide"/>
+				<field name="rel_bank" optional="show"/>
+				<field name="currency_id" optional="show"/>
+				<field name="amount" optional="show"/>
+				<field name="payment_total" optional="show"/>
+				<field name="payment_residual" optional="show"/>
+				<field name="amount_invoiced" optional="show"/>
+				<field name="amount_residual" optional="show"/>
+				<field name="rel_paid_to" optional="hide"/>
+                <field name="product_id" optional="hide"/>
+                <field name="rel_journal" optional="hide"/>
+				<field name="notes" optional="show"/>
+			</tree>
+		</field>
+	</record>
+	<record id="fxo_payment_request_line_view_search" model="ir.ui.view">
+		<field name="name">fxo.payment.request.line.view.search</field>
+		<field name="model">fxo.payment.request.line</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="rel_name"/>
+				<field name="rel_user"/>
+				<field name="rel_date"/>
+				<field name="product_id"/>
+				<field name="rel_journal"/>
+				<field name="doc_number"/>
+				<field name="internal_ref"/>
+                <field name="internal_ref_child"/>
+				<field name="rel_catalog_payment"/>
+				<field name="rel_bank"/>
+				<field name="currency_id"/>
+				<field name="amount"/>
+				<field name="rel_paid_to"/>
+				<field name="rel_partner"/>
+				<field name="partner_id"/>
+				<separator/>
+				<filter string="Estado Pagado" name="state_payed" domain="[('payment_request_id.state', '=', 'payed')]"/>
+				<filter string="Por pagar" name="not_payed" domain="[('payment_residual','!=', 0)]"/>
+				<filter string="Pagado" name="payed" domain="[('payment_residual','=', 0)]"/>
+				<filter string="Por sustentar" name="not_sustained" domain="[('amount_residual','!=', 0)]"/>
+				<filter string="Sustentado" name="sustained" domain="[('amount_residual', '=', 0)]"/>
+				<group expand="0" string="Group By">
+					<filter name="rel_name" context="{'group_by': 'rel_name'}" string='Nro. Solicitud'/>
+					<filter name="rel_user" context="{'group_by': 'rel_user'}" string='Solicitante'/>
+					<filter name="rel_date" context="{'group_by': 'rel_date'}" string='Fecha Solicitud'/>
+					<filter name="product_id" context="{'group_by': 'product_id'}" string="Producto"/>
+					<filter name="rel_journal" context="{'group_by': 'rel_journal'}" string='Diario de Pago'/>
+					<filter name="doc_number" context="{'group_by': 'doc_number'}" string="Nro. Operacion"/>
+					<filter name="internal_ref_child" context="{'group_by': 'internal_ref_child'}" string="Nro. Referencia"/>
+					<filter name="rel_catalog_payment" context="{'group_by': 'rel_catalog_payment'}" string='Medio de Pago'/>
+					<filter name="rel_bank" context="{'group_by': 'rel_bank'}" string='Cuenta Bancaria'/>
+					<filter name="currency_id" context="{'group_by': 'currency_id'}" string="Moneda"/>
+					<filter name="amount" context="{'group_by': 'amount'}" string="Monto"/>
+					<filter name="rel_paid_to" context="{'group_by': 'rel_paid_to'}" string='Girado a'/>
+					<filter name="rel_partner" context="{'group_by': 'rel_partner'}" string='Proveedor'/>
+					<filter name="partner_id" context="{'group_by': 'partner_id'}" string="Cliente"/>
+				</group>
+			</search>
+		</field>
+	</record>
+	<record id="fxo_payment_request_func" model="ir.actions.act_window">
+        <field name="name">Control de Facturas Canceladas</field>
+        <field name="res_model">fxo.payment.request.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+	<record id="fxo_payment_request_all" model="ir.actions.server">
+		<field name="name">Mostrar todo el detalle</field>
+		<field name="model_id" ref="fxo_account_invoice_control.model_fxo_payment_request_line"/>
+		<field name="binding_model_id" ref="fxo_account_invoice_control.model_fxo_payment_request_line"/>
+		<field name="state">code</field>
+		<field name="code">action = records.get_all_request_data()</field>
+	</record>
+	<menuitem
+		id="fxo_payment_request_menu"
+		action="fxo_payment_request_func"
+		parent="purchase.menu_procurement_management"
+		sequence="14"
+		groups="fxo_payment_request.group_fxo_payment_request"
+	/>
+	<record id="fxo_payment_request_line_temp_view_form" model="ir.ui.view">
+		<field name="name">fxo.payment.request.line.temp.view.form</field>
+		<field name="model">fxo.payment.request.line.temp</field>
+		<field name="arch" type="xml">
+			<form>
+				<field name="request_line_ids" readonly="1" 
+					context="{'tree_view_ref':'fxo_account_invoice_control.fxo_payment_request_line_view_tree'}"/>
+				<field name="move_line_ids" readonly="1" 
+					context="{'tree_view_ref':'fxo_account_invoice_control.account_move_line_tree_request'}"/>
+			</form>
+		</field>
+	</record>
+</odoo>

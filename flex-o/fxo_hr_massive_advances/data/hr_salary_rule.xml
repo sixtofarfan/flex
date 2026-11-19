@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<record model='hr.salary.rule' id="salary_rule_ADE_QUI">
+			<field name='name'>Adelanto Quincenal</field>
+			<field name='code'>ADE_QUI</field>
+			<field name='sequence'>43</field>
+			<field name='appears_on_payslip'>True</field>
+			<field name='is_subtotal'>False</field>
+			<field name='condition_select'>none</field>
+			<field name='amount_select'>code</field>
+			<field name='amount_python_compute'>
+result = inputs.ADE_QUI.amount if inputs.ADE_QUI else 0
+			</field>
+			<field name='category_id' ref='hr_fields_it.DES_NET'/>
+			<field name='struct_id' ref='hr_base_it.base_structure'/>
+		</record>
+		<record model='hr.salary.rule' id="hr_fields_it.salary_rule_TDES">
+			<field name='amount_python_compute'>
+result = ONP+A_JUB+COMFI+COMMIX+SEGI+QUINTA+ADELANTO+RET_JUD+ADE_QUI
+			</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        
+        <!--<record id="view_partner_property_form" model="ir.ui.view">
+            <field name="name">res.partner.product.property.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="product.view_partner_property_form"/>
+            <field name="groups_id" eval="[(4, ref('product.group_product_pricelist'))]"/>
+            <field name="arch" type="xml">
+                    <field name="property_product_pricelist" position="replace">
+                        <field name="property_product_pricelist" groups="product.group_product_pricelist" />
+                    </field>
+                    
+            </field>
+        </record>-->
+
+
+        <!-- Add you code here -->
+        <!-- res.partner inherit form view -->
+        <record id="view_crm_partner_geo_form_extend" model="ir.ui.view">
+            <field name="name">res.partner.inherit.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base_geolocalize.view_crm_partner_geo_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <page name="geo_location" position="inside">
+                    <group >
+                        <field name="kmz"/>
+                    </group>
+                </page>
+            </field>
+        </record>
+
+        <!-- res.partner inherit form view -->
+        <record id="res_partner_address_form_inherit_location" model="ir.ui.view">
+            <field name="name">res.partner.inherit.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+
+                <xpath expr="//field[@name='child_ids']/form/sheet/group/group[1]/div" position="attributes">
+                    <attribute name="attrs"></attribute>
+                </xpath>
+
+
+                <xpath expr="//field[@name='child_ids']/form//field[@name='comment']" position="before">
+                    <field name="type_via" placeholder="Via"/>
+                    <field name="number_via"/>
+                    <field name="interior"/>
+                    <field name="poblation"/>
+                    <field name="floor" placeholder="Piso" />
+                </xpath>
+                <xpath expr="//field[@name='child_ids']/form//field[@name='mobile']" position="after">
+                    <field name="property_product_pricelist" readonly="1" force_save="1"/>
+                    <field name="partner_latitude"/>
+                    <field name="partner_longitude"/>
+                    <field name="kmz"/>
+                    <field name="name_via" placeholder="Nombre Via"/>
+                    <field name="number_new" placeholder="Numero"/>
+                    <field name="interior_valor"/>
+                    <field name="poblacion_valor"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- model.name inherit form view -->
+        <record id="res_partner_address_form_inherit" model="ir.ui.view">
+			<field name="name">pe.res.partner.form.inherit</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base_geolocalize.view_crm_partner_geo_form"/>
+			<field name="arch" type="xml">
+                <xpath expr="//page[@name='geo_location']" position="after">
+                    <page string="Location" name="location" >
+                        <group>
+                            <group>
+                                <field name="type_via" placeholder="Via"/>
+                                <field name="number_via"/>
+                                <field name="interior"/>
+                                <field name="poblation"/>
+                                <field name="floor" placeholder="Piso" />
+                            </group>
+                            <group>
+                                <field name="name_via" placeholder="Nombre Via"/>
+                                <field name="number_new" placeholder="Numero"/>
+                                <field name="interior_valor"/>
+                                <field name="poblacion_valor"/>
+                            </group>
+                        </group>
+                    </page>
+				</xpath>
+			</field>
+		</record>
+    </data>
+</odoo>

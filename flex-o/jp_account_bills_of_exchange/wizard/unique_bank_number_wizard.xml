@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_unique_bank_number_wizard" model="ir.ui.view">
+            <field name="name">bank.number.wizard.form</field>
+            <field name="model">bank.number.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Bank Number Wizard">
+                    <group>
+                        <group>
+                            <field name="first_number"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Update numbers" name="update_numbers" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    <!-- Add action entry in the Action Menu for Bank Numbers -->
+    <act_window id="act_window_unique_bank_number_wizard"
+        name="Unique bank number"
+        binding_model="account.bill"
+        res_model="bank.number.wizard"
+        binding_views="list"
+        view_mode="form"
+        target="new"
+    />
+
+    <record id="account_bill_form_update_number" model="ir.actions.server">
+        <field name="name">Update bill number</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_account_bill_form"/>
+        <field name="binding_model_id" ref="model_account_bill_form"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.update_sequence_final_all()
+        </field>
+    </record>
+
+    </data>
+</odoo>

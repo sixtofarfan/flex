@@ -1,0 +1,12 @@
+<odoo>
+    <record id="main_parameter_form_inherit_subs_upgrade_new" model="ir.ui.view">
+        <field name="name">main.parameter.form.inherit.subs.upgrade.new</field>
+        <field name="model">main.parameter</field>
+        <field name="inherit_id" ref="ebill.view_main_parameter_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page/group/group/field[@name='bank_numbers']" position="after">
+                <field name="generate_invoices_for_upgrades" widget="radio" options="{'horizontal':True}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

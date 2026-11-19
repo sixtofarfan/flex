@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_account_advanced_bill_form_form_inherit" model="ir.ui.view">
+		<field name="name">account.advanced.bill.form.form.inherit</field>
+		<field name="model">account.advanced.bill.form</field>
+		<field name="inherit_id" ref="jp_account_bills_of_exchange.view_account_bill_form_form_advanced"/>
+		<field name="arch" type="xml">
+			<field name="import_number" position="after">
+				<field name="type_interest"/>
+				<field name="interest"/>
+				<field name="interest_percent"/>
+				<field name="type_time"/>
+				<field name="interest_time"/>
+				<field name="type_freight"/>
+				<field name="freight_interest"/>
+				<field name="igv"/>
+			</field>
+			<field name="acceptor_id" position="after">
+				<field name="order_id"/>
+				<field name="avoid_days"/>
+			</field>
+			<xpath expr="//field[@name='bill_ids']/tree/field[@name='account_id']" position="after">
+				<field name="order_id"/>
+				<field name="internal_ref"/>
+				<field name="interest"/>
+				<field name="interest_time"/>
+				<field name="freight_interest"/>
+				<field name="igv"/>
+			</xpath>
+			<field name="gloss" position="after">
+				<field name="aceptation_date"/>
+			</field>
+			<field name="range_bill" position="after">
+				<field name="multi_range_bill"/>
+			</field>
+			<button name="update_bills" position="after">
+				<button name="update_multi_range" string="Actualizar Rangos" type="object" class="oe_highlight"/>
+			</button>
+			<button name="process" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</button>
+			<button name="process" position="after">
+				<button name="get_aceptation_wizard" string="Procesar" type="object" class="oe_highlight"/>
+			</button>
+			<xpath expr="//field[@name='bill_ids']/tree/field[@name='bill_amount_total']" position="before">
+				<field name="capital"/>
+			</xpath>
+			
+		</field>
+	</record>
+
+	<!-- account.import.bill.form inherit form view -->
+	<record id="view_account_bill_form_form_import" model="ir.ui.view">
+		<field name="name">account.import.bill.form.inherit.view.form</field>
+		<field name="model">account.import.bill.form</field>
+		<field name="inherit_id" ref="jp_account_bills_of_exchange.view_account_bill_form_form_import"/>
+		<field name="arch" type="xml">
+			<!-- Add your xpath here -->
+			<xpath expr="//field[@name='bill_ids']/tree/field[@name='account_id']" position="after">
+				<field name="order_id"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

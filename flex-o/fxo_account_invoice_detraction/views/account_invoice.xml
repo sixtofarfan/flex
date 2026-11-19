@@ -1,0 +1,119 @@
+<odoo>
+  <data>
+  
+        <record id="invoice_form_detraction_inherit" model="ir.ui.view">
+            <field name="name">invoice.form.detraction.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='preview_invoice']" position="before">
+                    <button name="%(action_account_invoice_detraction)d" id="account_invoice_detraction_btn" type="action"
+                            attrs="{'invisible': ['|','|',('detraction_privisioned', '=', True),('state','not in',['posted']),('type', '=', 'entry')]}"
+                            string="Provision Detraction" groups="account.group_account_invoice" class="oe_highlight"/>
+                    <button name="cancel_privisioned_detraction" type="object"
+                            attrs="{'invisible': ['|','|',('detraction_privisioned', '=', False),('state','not in',['posted']),('type', '=', 'entry')]}"
+                            string="Cancel Provisioned Detraction" groups="account.group_account_invoice"/>
+                    <field name="detraction_privisioned" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- <record id="invoice_supplier_form_detraction_inherit" model="ir.ui.view">
+            <field name="name">invoice.supplier.form.detraction.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice_cancel']" position="before">
+                    <button name="%(action_account_invoice_detraction)d" id="account_invoice_detraction_btn" type="action"
+                            attrs="{'invisible': ['|',('detraction_privisioned', '=', True),('state','not in',['open','in_payment'])]}"
+                            string="Provision Detraction" groups="account.group_account_invoice" class="oe_highlight"/>
+                    <button name="cancel_privisioned_detraction" type="object"
+                            attrs="{'invisible': ['|',('detraction_privisioned', '=', False),('state','not in',['open','in_payment'])]}"
+                            string="Cancel Provisioned Detraction" groups="account.group_account_invoice"/>
+                    <field name="detraction_privisioned" invisible="1"/>
+                </xpath>
+            </field>
+        </record> -->
+
+        <record id="view_account_supplier_payment_tree" model="ir.ui.view">
+            <field name="name">account.supplier.payment.tree</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_supplier_payment_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position='after'>
+                    <field name="reconciled_invoice_ids" widget="many2many_tags"/>
+                </field>
+            </field>
+        </record>
+
+        <act_window
+            name="Detraction File"
+            res_model="detraction.create.file.wizard"
+            binding_model="account.payment"
+            binding_views="list"
+            view_mode="form"
+            target="new"
+            view_id="fxo_account_invoice_detraction.view_detraction_create_file_form_wizard"
+            id="action_account_create_file_from_detraction"
+        />
+    <!-- <act_window
+        name="Generate a Payment Link"
+        res_model="payment.link.wizard"
+        binding_model="account.move"
+        binding_views="form"
+        view_mode="form"
+        target="new"
+        view_id="payment_link_wizard_view_form"
+        id="action_invoice_order_generate_link"
+    /> -->
+            <!-- 
+            multi="True"
+            key2="client_action_multi"
+            src_model="account.payment"
+        /> -->
+
+        <!-- <record id="view_account_detraction_lot_form" model="ir.ui.view">
+            <field name="name">account.detraction.lot.form</field>
+            <field name="model">detraction.create.file</field>
+            <field name="arch" type="xml">
+                <form string="Detraction Lot" edit="0" create="0" delete="0">
+                <group>
+                    <field name="name"/>
+                    <field name="type_operation"/>
+                    <field name="type_good_service"/>
+                </group>
+                <group>
+                    <field name="payment_ids"/>
+                </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_account_detraction_lot_tree" model="ir.ui.view">
+            <field name="name">account.detraction.lot.tree</field>
+            <field name="model">detraction.create.file</field>
+            <field name="arch" type="xml">
+                <tree string="Detraction Lot" create="0">
+                    <field name="name"/>
+                    <field name="type_operation"/>
+                    <field name="type_good_service"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_account_detraction_tree" model="ir.actions.act_window">
+            <field name="name">Detraction Lot</field>
+            <field name="res_model">detraction.create.file</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_account_detraction_lot_tree"/>
+        </record>
+
+        <menuitem
+            name='Detraction Lots'
+            action="action_account_detraction_tree"
+            id="menu_action_account_detraction_tree"
+            parent="account.menu_finance_payables" sequence="99"/> -->
+
+  </data>
+</odoo>

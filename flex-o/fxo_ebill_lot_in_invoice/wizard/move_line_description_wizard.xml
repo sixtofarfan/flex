@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.ui.view" id="move_line_description_wizard_form">
+		<field name="name">move.line.description.wizard.form</field>
+		<field name="model">move.line.description.wizard</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<group>
+						<field name="name"/>
+					</group>
+				</group>
+				<footer>
+					<button string="Actualizar" name="set_description" type="object" class="oe_highlight"/>
+					<button string="Cancel" class="oe_link" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+</odoo>

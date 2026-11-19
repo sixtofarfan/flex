@@ -1,0 +1,3 @@
+<odoo>
+	<function model="account.higher.rep" name="generate_view"/>
+</odoo>

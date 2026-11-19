@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_send_to_bank_tree" model="ir.ui.view">
+            <field name="name">account.send.bank.tree.view</field>
+            <field name="model">account.send.bank</field>
+            <field name="arch" type="xml">
+                <tree string="Send to Bank Tree">
+                    <field name="name"/>
+                    <field name="send_date"/>
+                    <field name="journal_id"/>
+                    <field name="bank_position"/>
+                    <field name="bill_ids"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_send_to_bank_form" model="ir.ui.view">
+            <field name="name">account.send.bank.form.view</field>
+            <field name="model">account.send.bank</field>
+            <field name="arch" type="xml">
+                <form string="Send to Bank Form">
+                    <header>
+                        <button string="Process" type="object" name="process" class="oe_highlight" attrs="{'invisible':[('state','!=','draft')]}"/>
+                        <button string="Cancel" type="object" name="cancel" confirm="Are you sure you want to unreconcile the conciliation and delete the accounting entries?" attrs="{'invisible':[('state','=','draft')]}"/>
+                        <button string="Disburse" type="object" name="disburse_wizard" class="oe_highlight" attrs="{'invisible':[('state','!=','to_disburse')]}"/>
+                        <button string="Reconcile" type="object" name="reconcile" confirm="Are you sure you want to reconcile the document?" class="oe_highlight" attrs="{'invisible':[('state','in',['draft', 'to_disburse', 'sent', 'disbursed','imported',])]}"/>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet string="Send to Bank Form">
+                        <div name="button_box" class="oe_button_box">
+                            <button name="open_bill_form_view" class="oe_stat_button" icon="fa-bars" type="object" attrs="{'invisible': [('bill_form_ids', '=', [])]}" string="Bill forms">
+                            </button>
+                            <field name="bill_form_ids" invisible="1"/>
+                            <button name="open_bill_refinancing_form_view" class="oe_stat_button" icon="fa-bars" type="object" attrs="{'invisible': [('bill_refinancing_form_ids', '=', [])]}" string="Bill refinancing forms">
+                            </button>
+                            <field name="bill_refinancing_form_ids" invisible="1"/>
+                        </div>
+                        <h1 class="mt0">
+                            <field name="name" readonly="1" class="oe_inline"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="send_date" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="journal_id" domain="[('type','=','boe')]" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <!-- <field name="bank_position" required="1" attrs="{'readonly':[('state','!=','draft')]}"/> -->
+                                <field name="bank_position" required="1" readonly="1" force_save="1"/>
+                                <field name="interest_rate" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <!-- <field name="disbursement_date" readonly="1" attrs="{'invisible':[('disbursement_date','=',False)]}"/> -->
+                                <field name="bank_disbursement_id" readonly="1" attrs="{'invisible':[('bank_disbursement_id','=',False)]}"/>
+                            </group>
+                            <group> 
+                                <field name="currency_id" force_save="1" required="1" attrs="{'readonly':[('bill_ids','!=',[])]}"/>
+                                <field name="custom_exchange_rate" attrs="{'readonly':[('state','!=','draft'),('bill_ids','!=',[])],'invisible':[('currency_id','=','company_currency_id')]}"/>
+                                <field name="exchange_rate" force_save="1" required="1" attrs="{'readonly':['|',('state','!=','draft'),('custom_exchange_rate','=',False)]}"/>
+                                <field name="gloss" force_save="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Bills of Exchange">
+                                <field name="bill_ids" required="1" domain="[('state_of_bill','=','portfolio'),('bill_currency_id','=',currency_id),('type_bill','=','receivable')]" attrs="{'readonly':[('state','!=','draft')]}">
+                                    <tree>                
+                                        <field name="bill_number" />
+                                        <field name="bank_number"/>
+                                        <field name="account_id"/>
+                                        <field name="guarantee_id"/>
+                                        <field name="acceptor_id"/>
+                                        <field name="bill_date_due"/>
+                                        <field name="bill_currency_id"/>
+                                        <field name="bill_amount_total"/>
+                                        <field name="state_of_bill"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Journal Items" attrs="{'readonly':[('state','!=','draft')],'invisible':[('state','=','draft')]}">
+                                <group>
+                                    <group>
+                                        <field name="account_move" invisible="1" readonly="1"/>
+                                    </group>
+                                    <field name="account_move_line_ids" attrs="{'readonly':[('state','!=','draft')]}">
+                                        <tree>
+                                            <field name="date"/>
+                                            <field name="move_id"/>
+                                            <field name="account_id"/>
+                                            <field name="name"/>
+                                            <field name="full_reconcile_id"/>
+                                            <field name="debit" sum="Total"/>
+                                            <field name="credit" sum="Total"/>
+                                            <field name="amount_currency"/>
+                                            <field name="exchange_rate"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="send_to_bank_form_search_view" model="ir.ui.view">
+            <field name="name">account.send.bank.search</field>
+            <field name="model">account.send.bank</field>
+            <field eval="10" name="priority"/>
+            <field name="arch" type="xml">
+                <search string="Send Bank Forms">
+                    <field name="bill_ids" string="Bill" filter_domain="[('bill_ids.bill_number', 'ilike', self)]"/>
+                    <field name="name" string="Form"/>
+                    <field name="send_date" string="Send date"/>
+                    <group expand='0' string='Filters'>
+                        <filter name='state_draft' string="Draft forms" domain="[('state','=','draft')]"/>
+                        <filter name='state_to_reconcile' string="To reconcile forms" domain="[('state','=','to_reconcile')]"/>
+                        <filter name='state_to_disburse' string="To disburse forms" domain="[('state','=','to_disburse')]"/>
+                        <filter name='state_sent' string="Sent forms" domain="[('state','=','sent')]"/>
+                        <filter name='state_disbursed' string="Disbursed forms" domain="[('state','=','disbursed')]"/>
+                        <filter name='state_imported' string="Imported forms" domain="[('state','=','imported')]"/>
+                    </group>
+                    <group expand='0' string='Group By...'>
+                        <filter string="Journal" name="journal_id" domain="[]" context="{'group_by':'journal_id'}"/>
+                        <filter string="Send date" name="send_date" domain="[]" context="{'group_by':'send_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_account_send_bank" model="ir.actions.act_window">
+            <field name="name">Send to Bank Forms</field>
+            <field name="res_model">account.send.bank</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_send_to_bank_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_send_to_bank_form')})]"/>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_account_send_bank" name="Send to Bank Forms"
+                parent="menu_bills_customer_title"
+                action="action_account_send_bank" sequence="230"/>
+
+    </data>
+</odoo>

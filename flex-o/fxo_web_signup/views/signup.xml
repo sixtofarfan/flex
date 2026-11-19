@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+        <!-- Add you code here -->
+        <template id="fxo_web_signup.signup_extend" inherit_id="auth_signup.signup" name="Sign in Login extend">
+            <xpath expr="//form[@class='oe_signup_form']" position="replace">
+                <form class="oe_signup_form_demo" role="form" method="post" t-if="not message">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                    <t t-call="fxo_web_signup.fields">
+                        <t t-set="only_passwords" t-value="bool(token and not invalid_token)"/>
+                    </t>
+
+                    <p class="alert alert-danger" t-if="error" role="alert">
+                        <t t-esc="error"/>
+                    </p>
+                    <input type="hidden" name="redirect" t-att-value="redirect"/>
+                    <input type="hidden" name="token" t-att-value="token"/>
+                    <div class="row justify-content-md-center">
+                        <div class="col col-lg-4 d-sm-none d-md-block">
+                        </div>
+                        <div class="col-md-auto d-sm-none d-md-block">
+                            <div class="text-center oe_login_buttons pt-3">
+                                <button type="submit" class="btn btn-primary btn-block"> Registrarse</button>
+                                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Ya tengo Cuenta</a>
+                                <div class="o_login_auth"/>
+                            </div>
+                        </div>
+                        <div class="col col-lg-4 d-sm-none d-md-block">
+                        </div>
+                    </div>
+
+                </form>
+                
+            </xpath>
+        </template>
+        <template id="fxo_web_signup.fields" name="Auth Signup/ResetPassword form fields extend">
+            <div class="row">
+                <!-- Datos Personales -->
+                <div class="col-lg-12 col-sm-12">
+                    <div class="form-group  row">
+                        <label for="name_p" class="col-sm-2 col-form-label" >Nombres<b style="color:red;">(*)</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name_p" t-att-value="name_p" id="name_p" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <div class="form-group row">
+                        <label for="last_name" class="col-sm-2 col-form-label">Apellidos<b style="color:red;">(*)</b></label>
+                        <div class="col-sm-10">
+                            <input type="last_name" name="last_name" t-att-value="last_name" id="last_name" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="col-lg-12 col-sm-12">
+                    <div class="form-group row">
+                        <label for="l10n_latam_identification_type_id" class="col-sm-2 col-form-label">Tipo de Documento <b style="color:red;">(*)</b></label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="l10n_latam_identification_type_id" required="required">
+                                <option value="">Seleccionar...</option>
+                                <t t-foreach="type_ids or []" t-as="type_id">
+                                    <option t-att-value="type_id.id" >
+                                        <t t-esc="type_id.name" />
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+         
+                 <div class="col-lg-12 col-sm-12">
+                    <div class="form-group field-cedula row">
+                        <label for="document" class="col-sm-2 col-form-label">Documento <b style="color:red;">(*)</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="document" t-att-value="document" id="document" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-sm-12">
+                    <div class="form-group field-login row">
+                        <label for="login" class="col-sm-2 col-form-label">Email <b style="color:red;">(*)</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="login" t-att-value="login" id="login" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-sm-12">
+                    <div class="form-group field-password pt-2 row" >
+                        <label for="password" class="col-sm-2 col-form-label" >Contraseña <b style="color:red;">(*)</b></label>
+                        <div class="col-sm-10">
+                            <input type="password" name="password" id="password" class="form-control form-control-sm" required="required" t-att-autofocus="'autofocus' if only_passwords else None"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-sm-12 ">
+                    <div class="form-group field-confirm_password row">
+                        <label for="confirm_password" class="col-sm-2 col-form-label" >Repetir Contraseña <b style="color:red;">(*)</b></label>
+                        <div class="col-sm-10">
+                            <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-sm-12 ">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" />
+                            <label class="form-check-label" for="invalidCheck">
+                                Autorizo el tratamiento de datos Personales
+                            </label>
+                           
+                        </div>
+                    </div>
+                </div>
+                  <div class="col-lg-12 col-sm-12 ">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" />
+                            <label class="form-check-label" for="invalidCheck">
+                                Autorizo la remision de publicidad
+                            </label>
+                           
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </template>
+    </data>
+</odoo>

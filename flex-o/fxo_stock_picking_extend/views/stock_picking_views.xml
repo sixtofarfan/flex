@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+    
+        <record id="view_picking_form_extend_kardex" model="ir.ui.view">
+            <field name="name">stock.picking.extend.form.kardex</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[last()]" position="before">
+                    <page string="Driver" name="driver">
+                        <group>
+                            <group>
+                                <field name="pe_carrier_id"/>
+                                <field name="fleete_id"/>
+                                <field name="driver_id"/>
+                                <field name="marca"/>
+                                <field name="placa"/>
+                                <field name="nro_const"/>
+                                <field name="licencia"/>
+                                <field name="nombre"/>
+                                <field name="ruc"/>
+                            </group>
+                            <group>
+                                <field name="tipo"/>
+                                <field name="nombre"/>
+                                <field name="ruc"/>
+                                <field name="nro_comp"/>
+                                <field name="nro_guia"/>
+                                <field name="fecha_traslado"/>
+                                <field name="punto_partida" invisible="1"/>
+                                <field name="punto_llegada" invisible="1"/>
+                                <field name="punto_partida_id"/>
+                                <field name="punto_llegada_id" domain="[('parent_id', '=',partner_id )]"/>
+                            </group>
+                        </group>
+                        
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_picking_form_extend_sale_order" model="ir.ui.view">
+            <field name="name">stock.picking.extend.sale.order</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='origin']" position="before">
+                    <field name="sale_id"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="account_payment_application_group" model="res.groups">
+		<field name="name">Aplicaciones de Pagos por Lote</field>
+		<field name="category_id" ref="base.module_category_hidden"/>
+	</record>
+	<record model="ir.rule" id="account_payment_application_not_shared_multi_company_rule">
+		<field name="name">Non Shared Records: Aplicaciones de Pagos por Lote</field>
+		<field name="model_id" ref="fxo_account_payment_application.model_account_payment_application"/>
+		<field name="global" eval="True"/>
+		<field name="domain_force">
+			[('company_id', 'in', company_ids)]
+		</field>
+	</record>
+</odoo>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<record id="customer_logo_1" model="reliable.partners">
+			<field name="image" type="base64"
+				file="theme_plus/static/src/img/customer-logo-1.png" />
+		</record>
+		<record id="customer_logo_2" model="reliable.partners">
+			<field name="image" type="base64"
+				file="theme_plus/static/src/img/customer-logo-2.png" />
+		</record>
+		<record id="customer_logo_3" model="reliable.partners">
+			<field name="image" type="base64"
+				file="theme_plus/static/src/img/customer-logo-3.png" />
+		</record>
+		<record id="customer_logo_4" model="reliable.partners">
+			<field name="image" type="base64"
+				file="theme_plus/static/src/img/customer-logo-4.png" />
+		</record>
+		<record id="customer_logo_5" model="reliable.partners">
+			<field name="image" type="base64"
+				file="theme_plus/static/src/img/customer-logo-5.png" />
+		</record>
+		<record id="customer_logo_6" model="reliable.partners">
+			<field name="image" type="base64"
+				file="theme_plus/static/src/img/customer-logo-6.png" />
+		</record>
+		<!-- Customer -->
+		<record id="cust_partner_1" model="res.partner">
+			<field name="name">Joseph deboungawer</field>
+			<field name="function">Maneger of Business Development, 2base</field>
+			<field name="is_company">1</field>
+			<field name="street">7500 W Linne Road</field>
+			<field name="city">Tracy</field>
+			<field name="state_id" ref='base.state_us_5' />
+			<field name="zip">95304</field>
+			<field name="country_id" ref="base.us" />
+			<field name="email">ready.mat28@example.com</field>
+			<field name="phone">(803)-873-6126</field>
+			<field name="image_1920" type="base64"
+				file="theme_plus/static/src/img/testimonial_img1.jpg" />
+		</record>
+		<record id="cust_partner_2" model="res.partner">
+			<field name="name">Archie Tracey</field>
+			<field name="function">Technician</field>
+			<field name="is_company">1</field>
+			<field name="street">7500 W Linne Road</field>
+			<field name="city">Tracy</field>
+			<field name="state_id" ref='base.state_us_5' />
+			<field name="zip">95304</field>
+			<field name="country_id" ref="base.us" />
+			<field name="email">ready.mat28@example.com</field>
+			<field name="phone">(803)-873-6126</field>
+			<field name="image_1920" type="base64"
+				file="theme_plus/static/src/img/testimonial_img2.jpg" />
+		</record>
+		<record id="cust_partner_3" model="res.partner">
+			<field name="name">Brodie Hopley</field>
+			<field name="function">Chief Elevator</field>
+			<field name="is_company">1</field>
+			<field name="street">7500 W Linne Road</field>
+			<field name="city">Tracy</field>
+			<field name="state_id" ref='base.state_us_5' />
+			<field name="zip">95304</field>
+			<field name="country_id" ref="base.us" />
+			<field name="email">ready.mat28@example.com</field>
+			<field name="phone">(803)-873-6126</field>
+			<field name="image_1920" type="base64"
+				file="theme_plus/static/src/img/testimonial_img3.jpg" />
+		</record>
+
+		<record id="customer_review_1" model="customers.reviews">
+			<field name="customer_id" ref="cust_partner_1" />
+			<field name="review">I just finished my trial period and was so amazed
+				with the support and results that I purchased Plus right away at
+				the
+				special price.
+			</field>
+		</record>
+
+		<record id="customer_review_2" model="customers.reviews">
+			<field name="customer_id" ref="cust_partner_3" />
+			<field name="review">Plus has always helped or startup to position
+				itself in the highly competitive market of mobile applications. You
+				will not regret using it!
+			</field>
+		</record>
+
+		<record id="customer_review_3" model="customers.reviews">
+			<field name="customer_id" ref="cust_partner_2" />
+			<field name="review">Love their services and was so amazed with the
+				support and results that I purchased Plus for two years in a row.
+				They are awesome.
+			</field>
+		</record>
+
+		<record id="base.main_company" model="res.company">
+			<field name="website_iframe">https://maps.google.com/maps?q=Icon%20Technology%2C%20Rajkot%2C%20India&amp;t=m&amp;z=11&amp;output=embed&amp;iwloc=near
+			</field>
+		</record>
+
+		<record id="base.main_partner" model="res.partner">
+			<field name="image_1920" type="base64"
+				file="theme_plus/static/src/img/logo.svg" />
+		</record>
+
+	</data>
+</odoo>

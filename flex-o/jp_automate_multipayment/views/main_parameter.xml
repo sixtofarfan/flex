@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_main_parameter_form_inherit_retention" model="ir.ui.view">
+		<field name="name">main.parameter.form.inherit.retention</field>
+		<field name="model">main.parameter</field>
+		<field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+		<field name="arch" type="xml">
+			<field name="credit_journal" position="after">
+				<field name="round_journal_id"/>
+			</field>
+			<xpath expr="//notebook" position="inside">
+				<page string="Retenciones">
+					<group string="Retenciones">
+						<group>
+							<field name="p_retention"/>
+							<field name="min_amount"/>
+						</group>
+					</group>
+				</page>
+				<page string="Detracciones">
+					<group string="Detracciones">
+						<group>
+							<field name="auto_detractions_clients"/>
+							<field name="auto_detractions_suppliers"/>
+							<field name="detraction_doc_ids" widget="many2many_tags"/>
+							<field name="defaul_detracionts"/>
+							<field name="defaul_detraction_payment_id"/>
+						</group>
+						<group>
+							<field name="round_detractions"/>
+							<field name="partner_cash_id"/>
+						</group>
+					</group>
+					<field name="limit_line_ids">
+						<tree editable="bottom">
+							<field name="amount"/>
+							<field name="catalog_54_ids" widget="many2many_tags"/>
+						</tree>
+					</field>
+				</page>
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

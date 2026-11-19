@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_subscription_suspend_reactivated" model="res.groups">
+        <field name="name">Solicita Suspensión o Reactivación de Contratos</field>
+        <field name="category_id" ref="sale_subscription.module_category_subscription_management"/>
+    </record>
+
+    <record id="group_subscription_request_approved" model="res.groups">
+        <field name="name">Aprueba Solicitudes de Suspensión o Reactivación de Contratos</field>
+        <field name="category_id" ref="sale_subscription.module_category_subscription_management"/>
+        <field name="implied_ids" eval="[(4, ref('group_subscription_suspend_reactivated'))]"/>
+    </record>
+</odoo>

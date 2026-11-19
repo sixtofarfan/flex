@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            id="account_bills_print_form"
+            model="account.bill.form"
+            string="Print bills form"
+            report_type="qweb-pdf"
+            name="jp_account_bills_of_exchange.template_bill_form"
+            file="jp_account_bills_of_exchange.template_bill_form"
+            attachment_use="False"
+        />
+        <report
+            id="account_print_bills"
+            model="account.bill.form"
+            string="Print bills"
+            report_type="qweb-pdf"
+            name="jp_account_bills_of_exchange.template_bill"
+            file="jp_account_bills_of_exchange.template_bill"
+            attachment_use="False"
+        />
+        <report
+            id="account_refinancing_print_form"
+            model="account.refinancing.form"
+            string="Print refinancing form"
+            report_type="qweb-pdf"
+            name="jp_account_bills_of_exchange.template_refinancing_form"
+            file="jp_account_bills_of_exchange.template_refinancing_form"
+            attachment_use="False"
+        />
+        <!-- <report
+            id="account_print_bills"
+            model="account.bill.form"
+            string="Print bills"
+            report_type="qweb-pdf"
+            name="jp_account_bills_of_exchange.template_bill"
+            file="jp_account_bills_of_exchange.template_bill"
+            attachment_use="False"
+        /> -->
+        <report
+            id="account_print_refinancing_bills"
+            model="account.refinancing.form"
+            string="Print bills"
+            report_type="qweb-pdf"
+            name="jp_account_bills_of_exchange.template_bill"
+            file="jp_account_bills_of_exchange.template_bill"
+            attachment_use="False"
+        />
+        <report
+            id="account_print_bills_renew"
+            model="renew.bill.form"
+            string="Print bills"
+            report_type="qweb-pdf"
+            name="jp_account_bills_of_exchange.template_bill_renew"
+            file="jp_account_bills_of_exchange.template_bill_renew"
+            attachment_use="False"
+        />
+        <report
+            id="account_print_form_bcp"
+            model="account.send.bank"
+            string="Print form BCP"
+            report_type="qweb-pdf"
+            name="jp_account_bills_of_exchange.template_planilla_bcp"
+            file="jp_account_bills_of_exchange.template_planilla_bcp"
+            attachment_use="False"
+        />
+        <report
+            id="account_print_form_bbva"
+            model="account.send.bank"
+            string="Print form BBVA"
+            report_type="qweb-pdf"
+            name="jp_account_bills_of_exchange.template_planilla_bbva"
+            file="jp_account_bills_of_exchange.template_planilla_bbva"
+            attachment_use="False"
+        />
+        <record id="paperformat_bank_forms" model="report.paperformat">
+            <field name="name">Planilla de Bancos</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">25</field>
+            <field name="margin_left">9</field>
+            <field name="margin_right">9</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">0</field>
+            <field name="dpi">80</field>
+        </record>
+
+        <record id="account_print_form_bcp" model="ir.actions.report">
+            <field name="paperformat_id" ref="jp_account_bills_of_exchange.paperformat_bank_forms"/>
+        </record>
+
+        <record id="account_print_form_bbva" model="ir.actions.report">
+            <field name="paperformat_id" ref="jp_account_bills_of_exchange.paperformat_bank_forms"/>
+        </record>
+        
+    </data>
+</odoo>

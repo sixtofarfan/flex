@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <report
+            id="payment_efficiency_xlsx"
+            model="payment.efficiency.wizard"
+            string="Imprimir a XLSX"
+            report_type="xlsx"
+            name="fxo_account_payment_efficiency.payment_efficiency_xlsx"
+            file="Eficiencia de Cobranza"
+            attachment_use="False"
+            menu="False"
+    />
+</odoo>

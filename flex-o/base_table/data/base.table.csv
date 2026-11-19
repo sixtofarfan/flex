@@ -1,0 +1,4 @@
+id,company_id,country_id,code,name,description,parent_id:id,type
+bank_operations,,Perú,BANK.OPERATIONS,Tipo de operación,Tipo de operación,,normal
+status_partner,,Perú,STATUS.PARTNER,Estado de Cliente,Estado Cliente,,normal
+

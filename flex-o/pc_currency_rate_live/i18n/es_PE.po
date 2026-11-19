@@ -1,0 +1,227 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pc_currency_rate_live
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-06 01:39+0000\n"
+"PO-Revision-Date: 2025-02-06 01:39+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pc_currency_rate_live
+#: model_terms:ir.ui.view,arch_db:pc_currency_rate_live.view_manual_wizard
+#: model_terms:ir.ui.view,arch_db:pc_currency_rate_live.view_range_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: pc_currency_rate_live
+#: model:ir.model,name:pc_currency_rate_live.model_res_company
+msgid "Companies"
+msgstr "Empresas"
+
+#. module: pc_currency_rate_live
+#: model:ir.model,name:pc_currency_rate_live.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes de configuración"
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_manual_wizard__create_uid
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_range_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_manual_wizard__create_date
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_range_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: pc_currency_rate_live
+#: model:ir.model,name:pc_currency_rate_live.model_res_currency
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: pc_currency_rate_live
+#: model:ir.model,name:pc_currency_rate_live.model_res_currency_rate
+msgid "Currency Rate"
+msgstr "Tasa de cambio"
+
+#. module: pc_currency_rate_live
+#. odoo-javascript
+#: code:addons/extra_addons/pc/pc_currency_rate_live/static/src/js/systray_currency.js:0
+#: code:addons/pc_currency_rate_live/static/src/js/systray_currency.js:0
+msgid "Currency Rates"
+msgstr "Tasas de Cambio"
+
+#. module: pc_currency_rate_live
+#. odoo-python
+#: code:addons/extra_addons/pc/pc_currency_rate_live/models/res_currency.py:0
+#: code:addons/pc_currency_rate_live/models/res_currency.py:0
+msgid "Date: "
+msgstr "Fecha: "
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_res_company__foreign_currency_id
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_res_config_settings__foreign_currency_id
+msgid "Default foreign currency rate"
+msgstr "Moneda extranjera por defecto"
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_manual_wizard__display_name
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_range_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: pc_currency_rate_live
+#: model_terms:ir.ui.view,arch_db:pc_currency_rate_live.res_config_settings_view_form
+msgid "Don't have a free token?:"
+msgstr "No tienes un token gratis?"
+
+#. module: pc_currency_rate_live
+#: model_terms:ir.ui.view,arch_db:pc_currency_rate_live.res_config_settings_view_form
+msgid "Foreign currency rate"
+msgstr "Tasa de Cambio de Moneda Extranjera"
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_range_wizard__from_date
+msgid "From date"
+msgstr "Desde"
+
+#. module: pc_currency_rate_live
+#: model_terms:ir.ui.view,arch_db:pc_currency_rate_live.res_config_settings_view_form
+msgid "Get it here"
+msgstr "Obtenlo aquí"
+
+#. module: pc_currency_rate_live
+#. odoo-python
+#: code:addons/extra_addons/pc/pc_currency_rate_live/wizards/range_wizard.py:0
+#: code:addons/pc_currency_rate_live/wizards/range_wizard.py:0
+msgid "Go to settings"
+msgstr "Ir a Configuración"
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_manual_wizard__id
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_range_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_manual_wizard__write_uid
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_range_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_manual_wizard__write_date
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_range_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: pc_currency_rate_live
+#: model:ir.model,name:pc_currency_rate_live.model_manual_wizard
+#: model_terms:ir.ui.view,arch_db:pc_currency_rate_live.view_manual_wizard
+msgid "Manual Wizard"
+msgstr "Asistente Manual"
+
+#. module: pc_currency_rate_live
+#. odoo-python
+#: code:addons/extra_addons/pc/pc_currency_rate_live/wizards/range_wizard.py:0
+#: code:addons/pc_currency_rate_live/wizards/range_wizard.py:0
+msgid "There is no token configured on the company from Json-pe."
+msgstr "No se ha configurado el token de API en la compañía de Json-pe."
+
+#. module: pc_currency_rate_live
+#: model:ir.model,name:pc_currency_rate_live.model_range_wizard
+#: model_terms:ir.ui.view,arch_db:pc_currency_rate_live.view_range_wizard
+msgid "Range Wizard"
+msgstr "Asistente de Rango"
+
+#. module: pc_currency_rate_live
+#. odoo-javascript
+#: code:addons/extra_addons/pc/pc_currency_rate_live/static/src/js/systray.js:0
+#: code:addons/pc_currency_rate_live/static/src/js/systray.js:0
+msgid "Success message test."
+msgstr ""
+
+#. module: pc_currency_rate_live
+#. odoo-javascript
+#: code:addons/extra_addons/pc/pc_currency_rate_live/static/src/xml/systray_template_pc.xml:0
+#: code:addons/pc_currency_rate_live/static/src/xml/systray_template_pc.xml:0
+msgid "Sunat Icon"
+msgstr ""
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_res_currency_rate__purchase_type
+msgid "Tipo Compra"
+msgstr ""
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_res_currency_rate__sale_type
+msgid "Tipo Venta"
+msgstr ""
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_range_wizard__to_date
+msgid "To date"
+msgstr "Hasta"
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_manual_wizard__manual_rate
+msgid "Today's rate"
+msgstr "Tasa de Cambio de hoy"
+
+#. module: pc_currency_rate_live
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_res_company__json_pe_token
+#: model:ir.model.fields,field_description:pc_currency_rate_live.field_res_config_settings__json_pe_token
+msgid "Token json-pe"
+msgstr ""
+
+#. module: pc_currency_rate_live
+#: model_terms:ir.ui.view,arch_db:pc_currency_rate_live.view_manual_wizard
+#: model_terms:ir.ui.view,arch_db:pc_currency_rate_live.view_range_wizard
+msgid "Update"
+msgstr "Actualizar"
+
+#. module: pc_currency_rate_live
+#. odoo-javascript
+#: code:addons/extra_addons/pc/pc_currency_rate_live/static/src/js/systray_currency.js:0
+#: code:addons/pc_currency_rate_live/static/src/js/systray_currency.js:0
+msgid "Update Range"
+msgstr "Actualizar rango"
+
+#. module: pc_currency_rate_live
+#. odoo-javascript
+#: code:addons/extra_addons/pc/pc_currency_rate_live/static/src/js/systray_currency.js:0
+#: code:addons/pc_currency_rate_live/static/src/js/systray_currency.js:0
+msgid "Update currency rate"
+msgstr "Actualizar Tasa de Cambio"
+
+#. module: pc_currency_rate_live
+#. odoo-javascript
+#: code:addons/extra_addons/pc/pc_currency_rate_live/static/src/js/systray_currency.js:0
+#: code:addons/pc_currency_rate_live/static/src/js/systray_currency.js:0
+msgid "Update currency rate Manually"
+msgstr "Actualizar Tasa de Cambio Manual"
+
+#. module: pc_currency_rate_live
+#. odoo-python
+#: code:addons/extra_addons/pc/pc_currency_rate_live/wizards/range_wizard.py:0
+#: code:addons/pc_currency_rate_live/wizards/range_wizard.py:0
+msgid "You cannot set To date in the future."
+msgstr "La fecha hasta no puede ser una fecha futura."
+
+#. module: pc_currency_rate_live
+#. odoo-python
+#: code:addons/extra_addons/pc/pc_currency_rate_live/models/res_company.py:0
+#: code:addons/pc_currency_rate_live/models/res_company.py:0
+msgid ""
+"Your main currency (%s) is not supported by this exchange rate provider. "
+"Please choose another one."
+msgstr ""

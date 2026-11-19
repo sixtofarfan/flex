@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit_ib" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.ib</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="500"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//div[@id='invoicing_settings']" position="after"> -->
+            <!-- <xpath expr="//div[hasclass('settings')]" position="inside"> -->
+            <!-- <div id="fiscalyear" position="before">
+            <xpath expr="//div[@data-key='project']" position="after"> -->
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Invoicing" string="Invoicing" data-key="account" groups="account.group_account_manager">
+                <!-- <div class="app_settings_block" data-string="Inventories and Balances" string="Inventories and Balances" data-key="jp_invnetories_and_balances" groups="account.group_account_manager"> -->
+                    <h2>Inventories and Balances</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box" title="None">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">PLEs Configuration</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                                <div class="text-muted">
+                                    Company SUNAT sector configuration
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="table_34_sector_id" string="Company Sector" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="table_34_sector_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- <record id="jp_inventories_and_balances_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form_inherit_ib"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'jp_inventories_and_balances'}</field>
+    </record> -->
+    
+    <!-- <menuitem name="Configuration" parent="menu_root_boe" groups="group_module_account_bill_manager" id="iab_configuration" sequence="400"/> -->
+    <!-- <menuitem name="Settings" parent="iab_configuration" groups="base.group_system" id="iab_settings" sequence="100" action="jp_inventories_and_balances_config_settings_action"/> -->
+
+</odoo>

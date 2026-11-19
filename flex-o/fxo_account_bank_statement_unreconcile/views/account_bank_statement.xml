@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bank_statement_form_fxo_unreconcile" model="ir.ui.view">
+        <field name="name">account.bank.statement.form.fxo.unreconcile</field>
+        <field name="model">account.bank.statement</field>
+        <field name="inherit_id" ref="account.view_bank_statement_form"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='button_reopen']" position="after">
+                <button name="action_fxo_unreconcile_all" type="object"
+                        string="Unreconcile all"
+                        attrs="{'invisible': ['|', ('state', '!=', 'open'), ('move_line_count', '=', 0)]}"
+                        confirm="The reconciliation of ALL the lines of this statement will be reverted. The journal entries created by the reconciliation will be deleted. Do you want to continue?"/>
+                <button name="action_fxo_unreconcile_delete" type="object"
+                        string="Delete statement"
+                        attrs="{'invisible': [('state', '!=', 'open')]}"
+                        confirm="The whole statement will be DELETED: all its reconciliations will be reverted and all its lines removed. This cannot be undone. Do you want to continue?"/>
+            </xpath>
+            <xpath expr="//field[@name='line_ids']/tree/button[@name='button_cancel_reconciliation']" position="after">
+                <button name="action_fxo_unreconcile_delete" type="object"
+                        string="Unreconcile and delete line" icon="fa-trash-o"
+                        attrs="{'invisible': [('state', '=', 'confirm')]}"
+                        confirm="This line will be deleted. If it is reconciled, the reconciliation will be reverted first. Do you want to continue?"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+
+        <record id="kardex_action" model="ir.actions.act_window">
+            <field name="name">Valued Kardex</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kardex.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_kardex_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            name="Valued Kardex"
+            action="kardex_action"
+            id="kardex_wizard"
+            parent="stock.menu_stock_warehouse_mgmt" sequence="200"/>
+
+  </data>
+</odoo>

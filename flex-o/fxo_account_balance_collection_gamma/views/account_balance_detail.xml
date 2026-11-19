@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="view_account_balance_detail_book_tree_inherit" model="ir.ui.view">
+			<field name="name">account.balance.detail.book.tree.inherit</field>
+			<field name="model">account.balance.detail.book</field>
+			<field name="inherit_id" ref="account_balance_doc_rep_it.view_account_balance_detail_book_tree"/>
+			<field name="arch" type="xml">
+				<field name="partner" position="after">
+					<field name="user_request"/>
+					<field name="payment_request"/>
+					<field name="operation_number"/>
+					<field name="internal_ref"/>
+					<field name="internal_ref_child"/>
+					<field name="product"/>
+				</field>
+			</field>
+		</record>
+
+		<record id="account_balance_detail_book_search_inherit" model="ir.ui.view">
+			<field name="name">account.balance.detail.book.search.inherit</field>
+			<field name="model">account.balance.detail.book</field>
+			<field name="inherit_id" ref="account_balance_doc_rep_it.account_balance_detail_book_search"/>
+			<field name="arch" type="xml">
+				<field name="partner" position="after">
+					<field name="user_request"/>
+					<field name="payment_request"/>
+					<field name="operation_number"/>
+					<field name="internal_ref"/>
+					<field name="internal_ref_child"/>
+					<field name="product"/>
+				</field>
+				<filter name="partner" position="after">
+					<filter string="Solicitante" name="user_request" icon="terp-partner" context="{'group_by':'user_request'}"/>
+					<filter string="Solicitud de Pago" name="payment_request" context="{'group_by':'payment_request'}"/>
+					<filter string="Numero de Operacion" name="operation_number" context="{'group_by':'operation_number'}"/>
+					<filter string="Referencia Interna" name="internal_ref" context="{'group_by':'internal_ref'}"/>
+					<filter string="Referencia Interna Hija" name="internal_ref_child" context="{'group_by':'internal_ref_child'}"/>
+					<filter string="Producto" name="product" context="{'group_by':'product'}"/>
+				</filter>
+			</field>
+		</record>
+	</data>
+</odoo>

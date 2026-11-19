@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_detraction_crteate_file_user,detraction.crteate.file.user,model_detraction_create_file,account.group_account_user,1,1,1,1
+access_detraction_crteate_file_manager,detraction.crteate.file.manager,model_detraction_create_file,account.group_account_manager,1,1,1,1

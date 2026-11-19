@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.bills.exchange</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="100"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//div[@id='invoicing_settings']" position="after"> -->
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Bills of Exchange" string="Bills of Exchange" data-key="jp_account_bills_of_exchange" groups="account.group_account_manager">
+                    <h2>Bills of Exchange</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box" title="None">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Customer configuration</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                                <div class="text-muted">
+                                    Client journal for bills of exchange
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="customer_boe_journal_id" string="Customer Journal" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="customer_boe_journal_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" title="None">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Supplier configuration</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                                <div class="text-muted">
+                                    Supplier journal for bills of exchange
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="supplier_boe_journal_id" string="Supplier Journal" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="supplier_boe_journal_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" title="None">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Protests configuration</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                                <div class="text-muted">
+                                    Protests journals
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="protests_boe_journal_id" string="Protests Journal" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="protests_boe_journal_id"/>
+                                    </div>
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="protests_financial_expenses_boe_journal_id" string="Interest and Financial Expenses for Protests Journal" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="protests_financial_expenses_boe_journal_id"/>
+                                    </div>
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="protests_financial_expenses_boe_account_id" string="Interest and Financial Expenses for Protests Account" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="protests_financial_expenses_boe_account_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-12 col-lg-6 o_setting_box" title="None">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Interests and Financial Expenses configuration</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                                <div class="text-muted">
+                                    Interests and financial expenses journal 
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="protests_financial_expenses_boe_journal_id" string="Financial Expenses Journal" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="protests_financial_expenses_boe_journal_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col-12 col-lg-6 o_setting_box" title="None">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Bank Interests and Financial Expenses configuration</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                                <div class="text-muted">
+                                    Bank interest and financial expenses journal
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="bank_interests_boe_journal_id" string="Bank Interests and Financial Expenses Journal" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="bank_interests_boe_journal_id"/>
+                                    </div>
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="bank_claim_journal_id" string="Bank Interests Claim Journal" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="bank_claim_journal_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" title="None">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Currency configuration</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                                <div class="text-muted">
+                                    Currency round gain and loss journal
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="round_boe_journal_id" string="Round Journal" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="round_boe_journal_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" title="None">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Advanced payment journal</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                                <div class="text-muted">
+                                    Advanced payment journal
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="advanced_boe_journal_id" string="Advanced Journal" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="advanced_boe_journal_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" title="None">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Retention Configuration</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                                <div class="text-muted">
+                                    Retention account for bills of exchange
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="retention_boe_account_id" string="Retention Account" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="retention_boe_account_id"/>
+                                    </div>
+                                </div>
+                                <!-- <div class="text-muted">
+                                    Supplier Journal for bills of exchange
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="boe_journal_id" string="Supplier Journale" class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="boe_journal_id"/>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="jp_account_bills_of_exchange_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'jp_account_bills_of_exchange'}</field>
+    </record>
+    
+    <menuitem name="Configuration" parent="menu_root_boe" groups="group_module_account_bill_manager" id="boe_configuration" sequence="400"/>
+    <menuitem name="Settings" parent="boe_configuration" groups="base.group_system" id="boe_settings" sequence="100" action="jp_account_bills_of_exchange_config_settings_action"/>
+
+</odoo>

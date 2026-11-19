@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_partner_form_inherit" model="ir.ui.view">
+			<field name="name">res.partner.form.inherit</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
+                <field name="country_home_nd" position="after">
+                    <field name="country_home_nd_jp"/>
+                </field>
+                <field name="v_con_nd" position="after">
+                    <field name="v_con_nd_jp"/>
+                    <field name="c_d_imp_jp" attrs="{'required': [('is_not_home','=',True)]}"/>
+                </field>
+                <field name="country_home_nd" position="attributes">
+                    <attribute name="invisible">1</attribute>
+				</field>
+                <field name="v_con_nd" position="attributes">
+                    <attribute name="invisible">1</attribute>
+				</field>
+                <field name="c_d_imp" position="attributes">
+                    <attribute name="invisible">1</attribute>
+				</field>
+			</field>
+		</record>
+	</data>
+</odoo>

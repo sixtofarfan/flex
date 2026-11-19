@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <record id="hr_advance_form_inherit" model="ir.ui.view">
+            <field name="name">hr_advance_form_view_inherit</field>
+            <field name="model">hr.advance</field>
+            <field name="inherit_id" ref="hr_advances_and_loans.hr_advance_form"/>
+            <field name="arch" type="xml">
+                <field name="amount" position="after">
+                    <field name="struct_id" invisible="1"/>
+                </field>
+                <xpath expr="//sheet" position="inside">
+                    <field name="input_ids" attrs="{'invisible': [('struct_id', '=', False)]}">
+                        <tree string="Input Data" editable="bottom">
+                            <field name="input_type_id" required="True"/>
+                            <field name="amount_type" required="True"/>
+                            <field name="amount" sum="amount"/>
+                        </tree>
+                    </field>
+                </xpath>
+            </field>
+        </record>
+        <record id="action_get_advance_excel" model="ir.actions.server">
+            <field name="name">Reporte de Adelantos Quincenales</field>
+            <field name="model_id" ref="fxo_hr_massive_advances.model_hr_advance"/>
+            <field name="binding_model_id" ref="fxo_hr_massive_advances.model_hr_advance"/>
+            <field name="state">code</field>
+            <field name="code">action = records.get_advance_excel()</field>
+        </record>
+    </data>
+</odoo>

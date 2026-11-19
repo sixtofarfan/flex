@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Secuencia de diario de letras de cliente -->
+        <record id="seq_boe_customer_sequence" model="ir.sequence">
+            <field name="name">Secuencia de Letras de Cambio Cliente</field>
+            <field name="implementation">no_gap</field>
+            <field name="prefix">LCC-</field>
+            <field name="padding">7</field>
+            <field name="use_date_range">False</field>
+        </record>
+
+        <!-- Diario de letras de cliente -->
+        <record id="boe_customer_journal" model="account.journal">
+            <field name="name">Letras de Cambio Clientes</field>
+            <field name="type">general</field>
+            <field name="code">LCC</field>
+            <field name="default_debit_account_id" ref="l10n_pe.chart1232"/>
+            <field name="default_credit_account_id" ref="l10n_pe.chart1213"/>
+            <field name="sequence_id" ref="seq_boe_customer_sequence"/>
+        </record>
+
+        <!-- Secuencia de diario de letras de proveedor -->
+        <record id="seq_boe_supplier_sequence" model="ir.sequence">
+            <field name="name">Secuencia de Letras de Cambio Proveedor</field>
+            <field name="implementation">no_gap</field>
+            <field name="prefix">LCP-</field>
+            <field name="padding">7</field>
+            <field name="use_date_range">False</field>
+        </record>
+
+        <!-- Diario de letras de proveedor -->
+        <record id="boe_supplier_journal" model="account.journal">
+            <field name="name">Letras de Cambio Proveedor</field>
+            <field name="type">general</field>
+            <field name="code">LCP</field>
+            <field name="default_debit_account_id" ref="l10n_pe.chart423"/>
+            <field name="default_credit_account_id" ref="l10n_pe.chart4212"/>
+            <field name="sequence_id" ref="seq_boe_supplier_sequence"/>
+        </record>
+
+        <!-- Secuencia de diario de ajuste por redondeo -->
+        <record id="seq_round_journal_sequence" model="ir.sequence">
+            <field name="name">Secuencia Diario de Redondeo</field>
+            <field name="implementation">no_gap</field>
+            <field name="prefix">DR-</field>
+            <field name="padding">7</field>
+            <field name="use_date_range">False</field>
+        </record>
+
+        <!-- Cuenta de ajuste de ganancia por redondeo -->
+        <record id="round_journal_gain_account" model="account.account">
+            <field name="code">7595000</field>
+            <field name="name">Otros ingresos de gestión - Ajuste de ganancia por redondeo</field>
+            <field name="internal_type">other</field>
+            <field name="internal_group">income</field>
+            <field name="reconcile">f</field>
+            <field name="user_type_id">14</field>
+            <field name="group_id" ref="l10n_pe.group75"/>
+        </record>
+
+        <!-- Cuenta de ajuste de perdida por redondeo -->
+        <record id="round_journal_loss_account" model="account.account">
+            <field name="code">6593000</field>
+            <field name="name">Otros gastos de gestión - Ajuste de perdida por redondeo</field>
+            <field name="internal_type">other</field>
+            <field name="internal_group">expense</field>
+            <field name="reconcile">f</field>
+            <field name="user_type_id">15</field>
+            <field name="group_id" ref="l10n_pe.group65"/>
+        </record>
+
+        <!-- Diario de ajuste por redondeo -->
+        <record id="round_journal" model="account.journal">
+            <field name="name">Redondeo de cambio</field>
+            <field name="type">general</field>
+            <field name="code">DR</field>
+            <field name="default_debit_account_id" ref="jp_account_bills_of_exchange.round_journal_gain_account"/>
+            <field name="default_credit_account_id" ref="jp_account_bills_of_exchange.round_journal_loss_account"/>
+            <field name="sequence_id" ref="seq_round_journal_sequence"/>
+        </record>
+
+        <!-- Secuencia de diario de protestos -->
+        <record id="seq_protest_journal_sequence" model="ir.sequence">
+            <field name="name">Secuencia Diraio de Protestos</field>
+            <field name="implementation">no_gap</field>
+            <field name="prefix">DP-</field>
+            <field name="padding">7</field>
+            <field name="use_date_range">False</field>
+        </record>
+
+        <!-- Cuenta de protestos credito -->
+        <record id="protest_journal_credit_account" model="account.account">
+            <field name="code">1235000</field>
+            <field name="name">Letras por Cobrar - Protestadas</field>
+            <field name="internal_type">receivable</field>
+            <field name="internal_group">asset</field>
+            <field name="reconcile">t</field>
+            <field name="user_type_id">1</field>
+            <field name="group_id" ref="l10n_pe.group12"/>
+        </record>
+
+        <!-- Cuenta de protestos debito -->
+        <record id="protest_journal_debit_account" model="account.account">
+            <field name="code">4231000</field>
+            <field name="name">Letras por Pagar - Protestadas</field>
+            <field name="internal_type">payable</field>
+            <field name="internal_group">liability</field>
+            <field name="reconcile">t</field>
+            <field name="user_type_id">2</field>
+            <field name="group_id" ref="l10n_pe.group42"/>
+        </record>
+
+        <!-- Diario de protestos -->
+        <record id="protests_journal" model="account.journal">
+            <field name="name">Diario de Protestos</field>
+            <field name="type">general</field>
+            <field name="code">DP</field>
+            <field name="default_debit_account_id" ref="jp_account_bills_of_exchange.protest_journal_credit_account"/>
+            <field name="default_credit_account_id" ref="jp_account_bills_of_exchange.protest_journal_debit_account"/>
+            <field name="sequence_id" ref="seq_protest_journal_sequence"/>
+        </record>
+
+        <!-- Secuencia de diario de gastos financieros -->
+        <record id="seq_protest_financial_expenses_journal_sequence" model="ir.sequence">
+            <field name="name">Secuencia de Diario de Gastos Financieros</field>
+            <field name="implementation">no_gap</field>
+            <field name="prefix">GF-</field>
+            <field name="padding">7</field>
+            <field name="use_date_range">False</field>
+        </record>
+
+        <!-- Cuenta de gastos financieros credito  -->
+        <record id="protest_financial_expenses_journal_credit_account" model="account.account">
+            <field name="code">6794000</field>
+            <field name="name">Otros gastos financieros - Letras por cobrar</field>
+            <field name="internal_type">other</field>
+            <field name="internal_group">expense</field>
+            <field name="reconcile">t</field>
+            <field name="user_type_id">15</field>
+            <field name="group_id" ref="l10n_pe.group67"/>
+        </record>
+
+        <!-- Cuenta de gastos financieros debito -->
+        <!-- <record id="protest_financial_expenses_journal_debit_account" model="account.account">
+            <field name="code">6794000</field>
+            <field name="name">Otros gastos financieros - Letras por cobrar</field>
+            <field name="internal_type">other</field>
+            <field name="internal_group">expense</field>
+            <field name="reconcile">t</field>
+            <field name="user_type_id">15</field>
+            <field name="group_id" ref="l10n_pe.group12"/>
+        </record> -->
+
+        <!-- Diario de gastos financieros -->
+        <record id="protest_financial_expenses_journal" model="account.journal">
+            <field name="name">Intereses y Gastos Financieros de Protestos</field>
+            <field name="type">general</field>
+            <field name="code">GF</field>
+            <field name="default_debit_account_id" ref="jp_account_bills_of_exchange.protest_financial_expenses_journal_credit_account"/>
+            <field name="default_credit_account_id" ref="jp_account_bills_of_exchange.protest_financial_expenses_journal_credit_account"/>
+            <field name="sequence_id" ref="seq_protest_financial_expenses_journal_sequence"/>
+        </record>
+
+        <!-- Secuencia de diario de intereses bancarios -->
+        <record id="seq_bank_interests_journal_sequence" model="ir.sequence">
+            <field name="name">Secuencia de Diario de Intereses Bancarios</field>
+            <field name="implementation">no_gap</field>
+            <field name="prefix">IB-</field>
+            <field name="padding">7</field>
+            <field name="use_date_range">False</field>
+        </record>
+
+        <!-- Cuenta de gastos financieros credito -->
+        <!-- <record id="bank_interests_journal_credit_account" model="account.account">
+            <field name="code">6794000</field>
+            <field name="name">Otros gastos financieros - Letras por cobrar</field>
+            <field name="internal_type">other</field>
+            <field name="internal_group">expense</field>
+            <field name="reconcile">t</field>
+            <field name="user_type_id">15</field>
+            <field name="group_id" ref="l10n_pe.group12"/>
+        </record> -->
+
+        <!-- Cuenta de gastos financieros debito -->
+        <!-- <record id="bank_interests_journal_debito_account" model="account.account">
+            <field name="code">6794000</field>
+            <field name="name">Otros gastos financieros - Letras por cobrar</field>
+            <field name="internal_type">other</field>
+            <field name="internal_group">expense</field>
+            <field name="reconcile">t</field>
+            <field name="user_type_id">15</field>
+            <field name="group_id" ref="l10n_pe.group12"/>
+        </record> -->
+
+        <!-- Diario de intereses bancarios -->
+        <record id="bank_interests_journal" model="account.journal">
+            <field name="name">Intereses y Gastos Financieros Bancarios</field>
+            <field name="type">general</field>
+            <field name="code">IB</field>
+            <field name="default_debit_account_id" ref="l10n_pe.chart67311"/>
+            <field name="default_credit_account_id" ref="l10n_pe.chart67311"/>
+            <field name="sequence_id" ref="seq_bank_interests_journal_sequence"/>
+        </record>
+
+        <!-- Secuencia de diario de intereses bancarios -->
+        <record id="seq_bank_interests_claim_journal_sequence" model="ir.sequence">
+            <field name="name">Secuencia de Diario de Reclamo de Intereses Bancarios</field>
+            <field name="implementation">no_gap</field>
+            <field name="prefix">IB-</field>
+            <field name="padding">7</field>
+            <field name="use_date_range">False</field>
+        </record>
+
+        <!-- Diario de reclamo de intereses bancarios -->
+        <record id="bank_interest_claim_account" model="account.journal">
+            <field name="name">Reclamo de Intereses Bancarios</field>
+            <field name="type">general</field>
+            <field name="code">RIB</field>
+            <field name="default_debit_account_id" ref="l10n_pe.chart1629"/>
+            <field name="default_credit_account_id" ref="l10n_pe.chart1629"/>
+            <field name="sequence_id" ref="seq_bank_interests_claim_journal_sequence"/>
+        </record>
+
+        <!-- Secuencia de diario de letras en descuento -->
+        <record id="seq_discount_bills_journal_sequence" model="ir.sequence">
+            <field name="name">Secuencia de Letras en Descuento</field>
+            <field name="implementation">no_gap</field>
+            <field name="prefix">LED-</field>
+            <field name="padding">7</field>
+            <field name="use_date_range">False</field>
+        </record>
+
+        <!-- Diario de Letras en Descuento -->
+        <record id="discount_bills_journal" model="account.journal">
+            <field name="name">Letras en Descuento</field>
+            <field name="type">boe</field>
+            <field name="bank_position">discount</field>
+            <field name="code">LED</field>
+            <field name="default_debit_account_id" ref="l10n_pe.chart1234"/>
+            <field name="default_credit_account_id" ref="l10n_pe.chart45541"/>
+            <field name="sequence_id" ref="seq_discount_bills_journal_sequence"/>
+        </record>
+
+        <!-- Secuencia de diario de intereses bancarios -->
+        <record id="seq_collect_bills_journal_sequence" model="ir.sequence">
+            <field name="name">Secuencia de Letras en Conranza</field>
+            <field name="implementation">no_gap</field>
+            <field name="prefix">LEC-</field>
+            <field name="padding">7</field>
+            <field name="use_date_range">False</field>
+        </record>
+
+        <!-- Diario de Letras en Cobranza -->
+        <record id="collect_bills_journal" model="account.journal">
+            <field name="name">Letras en Cobranza</field>
+            <field name="type">boe</field>
+            <field name="bank_position">collection</field>
+            <field name="code">LEC</field>
+            <field name="default_debit_account_id" ref="l10n_pe.chart1233"/>
+            <field name="default_credit_account_id" ref="l10n_pe.chart1233"/>
+            <field name="sequence_id" ref="seq_collect_bills_journal_sequence"/>
+        </record>
+
+        <!-- Ddefault Journals -->
+        <record id="default_customer_journal" model="ir.config_parameter">
+            <field name="key">jp_account_bills_of_exchange.customer_boe_journal_id</field>
+            <field name="value" ref="boe_customer_journal"/>
+        </record>
+
+        <record id="default_supplier_journal" model="ir.config_parameter">
+            <field name="key">jp_account_bills_of_exchange.supplier_boe_journal_id</field>
+            <field name="value" ref="boe_supplier_journal"/>
+        </record>
+
+        <record id="default_round_journal" model="ir.config_parameter">
+            <field name="key">jp_account_bills_of_exchange.round_boe_journal_id</field>
+            <field name="value" ref="round_journal"/>
+        </record>
+
+        <record id="default_protests_journal" model="ir.config_parameter">
+            <field name="key">jp_account_bills_of_exchange.protests_boe_journal_id</field>
+            <field name="value" ref="protests_journal"/>
+        </record>
+
+        <record id="default_protest_financial_expenses_journal" model="ir.config_parameter">
+            <field name="key">jp_account_bills_of_exchange.protests_financial_expenses_boe_journal_id</field>
+            <field name="value" ref="protest_financial_expenses_journal"/>
+        </record>
+
+        <record id="default_bank_interests_journal" model="ir.config_parameter">
+            <field name="key">jp_account_bills_of_exchange.bank_interests_boe_journal_id</field>
+            <field name="value" ref="bank_interests_journal"/>
+        </record>
+
+        <record id="default_bank_interest_claim_journal" model="ir.config_parameter">
+            <field name="key">jp_account_bills_of_exchange.bank_claim_journal_id</field>
+            <field name="value" ref="bank_interest_claim_account"/>
+        </record>
+
+        <record id="default_retention_account" model="ir.config_parameter">
+            <field name="key">jp_account_bills_of_exchange.retention_boe_account_id</field>
+            <field name="value" ref="l10n_pe.chart40114"/>
+        </record>
+
+    </data>
+</odoo>

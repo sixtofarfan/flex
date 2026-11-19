@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="sale_subscription_line_tree">
+        <field name="name">sale.subscription.line.tree</field>
+        <field name="model">sale.subscription.line</field>
+        <field name="arch" type="xml">
+            <tree delete="false" create="false" edit="false">
+                <field name="name" optional="show" readonly="1"/>
+                <field name="analytic_account_id" optional="show"/>
+                <field name="partner_id" optional="show"/>
+                <field name="period_report_id" invisible="1"/>
+                <field name="name_period" optional="show"/>
+                <field name="stop_date" optional="show"/>
+                <field name="service_id" optional="show"/>
+                <field name="currency_id" optional="show"/>
+                <field name="price_subtotal" optional="show"/>
+                <field name="monto_facturado_total" optional="show"/>
+                <button name="action_view_supscripcion" icon="fa-external-link" type="object"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_subscription_line_search" model="ir.ui.view">
+        <field name="name">sale.subscription.line.search</field>
+        <field name="model">sale.subscription.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="analytic_account_id"/>
+                <field name="service_id"/>
+                <field name="currency_id"/>
+                <field name="partner_id"/>
+                <field name="period_report_id" invisible="1"/>
+                <field name="name_period"/>
+                <group string="Group By">
+                    <filter name="by_suscri" string="Suscripcion"
+                            context="{'group_by': 'analytic_account_id'}"/>
+                    <filter name="by_customer" string="Customer"
+                            context="{'group_by': 'partner_id'}"/>
+                    <filter name="by_currency" string="Currency"
+                            context="{'group_by': 'currency_id'}"/>
+                    <filter name="by_period_report_id" string="Period"
+                            context="{'group_by': 'period_report_id'}"/>
+                    <filter name="by_name_period" string="Period Name"
+                            context="{'group_by': 'name_period'}"/>
+                    <filter name="by_stop_date" string="Stop date"
+                            context="{'group_by': 'stop_date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+</odoo>

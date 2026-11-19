@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+    <record id="import_scord_view_company_form" model="ir.ui.view">
+        <field name="name">res.company.import_scord</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[1]" position="after">
+                <page groups="base.group_user" string="Integración Scord">
+                    <group>
+                        <group string="Información servidor">
+                            <field name="param_url_scord"/>
+                            <field name="param_db_scord"/>
+                        </group>
+                        <group string="Información conexión">
+                            <field name="param_username_scord"/>
+                            <field name="param_password_scord" password="True"/>
+                        </group>
+                        <group string="Información FTP servidor">
+                            <field name="param_ftp_server" />
+                        </group>
+                        <group string="Información FTP conexión">
+                            <field name="param_ftp_username" />
+                            <field name="param_ftp_password" />
+                        </group>
+                        <group string="Producto">
+                            <field name="category_product_id" />
+                            <field name="account_journal_id" />
+                            <field name="account_company_id" />
+                            <field name="taxes_id" />
+                        </group>
+                    </group>
+
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

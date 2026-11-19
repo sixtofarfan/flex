@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_guide_template">
+         <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <!--<t t-call="web.external_layout"> -->
+
+                        <div class="header">
+                            <table width="100%" style="font-size:12px; padding-top: 1px; margin-top: 1px; font-family: 'Times New Roman', Times, serif;">
+                                <colgroup>
+                                    <col width="10%"/>
+                                    <col width="30%"/>
+                                    <col width="25%"/>
+                                    <col width="35%"/>
+                                </colgroup>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td style=" text-align: left;">
+                                        <t t-esc="o.kardex_date"/>
+                                    </td>
+                                    <td style=" text-align: left;">
+                                        <t t-esc="o.transfer_date"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o.numberg"/>
+                                    </td>
+                                </tr>
+                            </table> 
+                        </div> 
+                        <div class="footer">
+                            <table width="100%" style="font-size:12px; margin-top: 15px; font-family: 'Times New Roman', Times, serif;">
+                                <colgroup>
+                                    <col width="10%"/>
+                                    <col width="30%"/>
+                                    <col width="60%"/>
+                                </colgroup>
+                                <tr>
+                                    <td style=" text-align: left;">
+                                    </td>
+                                    <td style=" text-align: left;">
+                                        <span t-field="o.carrier_id_it.name"/>
+                                    </td>
+                                    <td style=" text-align: left;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style=" text-align: left;">
+                                    </td>
+                                    <td style=" text-align: left;">
+                                        <span t-field="o.carrier_id_it.vat"/>
+                                    </td>
+                                    <td style=" text-align: left;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style=" text-align: left;">
+                                    </td>
+                                    <td style=" text-align: left;">
+                                        <span t-field="o.origin"/>
+                                    </td>
+                                    <td style=" text-align: left;">
+                                    </td>
+                                </tr>
+
+                            </table> 
+                        </div>
+
+                        <div class="page">
+                            <div class="row"><hr style="height:0px;visibility:hidden;"/> 
+                                <table width="100%" style="font-size:12px; margin-top: 1px; font-family: 'Times New Roman', Times, serif;">
+                                    <colgroup>
+                                        <col width="50%"/>
+                                        <col width="50%"/>
+                                    </colgroup>
+
+                                    <tr>
+                                        <td style=" text-align: left;">
+                                            <span t-field="o.starting_point"/>
+                                        </td>
+                                        <td style=" text-align: left;">
+                                            &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<span t-field="o.ending_point"/>
+                                        </td>
+                                    </tr>
+                                </table> 
+                                <table width="100%" style="font-size:12px; margin-top: 30px; font-family: 'Times New Roman', Times, serif;">
+                                    <colgroup>
+                                        <col width="50%"/>
+                                        <col width="20%"/>
+                                        <col width="30%"/>
+                                    </colgroup>
+
+                                    <tr>
+                                        <td style=" text-align: left;">
+                                        </td>
+                                        <td style=" text-align: left;">
+                                        </td>
+                                        <td style=" text-align: left;">
+                                            <span t-field="o.vehicle_id"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style=" text-align: left;">
+                                            &amp;nbsp;&amp;nbsp;<t t-esc="o.partner_id.name"/><br/>
+					    &amp;nbsp;&amp;nbsp;<t t-esc="o.partner_id.street"/>
+                                        </td>
+                                        <td style=" text-align: left;">
+                                        </td>
+                                        <td style=" text-align: left;">
+                                            <t t-esc="o.reason_transfer.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style=" text-align: left;">
+                                        </td>
+                                        <td style=" text-align: left;">
+                                        </td>
+                                        <td style=" text-align: left;">
+                                            <t t-esc="o.driver_id.number_driver_licence"/>
+                                        </td>
+                                    </tr>
+
+                                </table> 
+                            </div>
+                            <div class="row">
+                                <table width="100%" style="font-size:12px">
+                                    <colgroup>
+                                        <col width="15%"/>
+                                        <col width="5%"/>
+                                        <col width="10%"/>
+                                        <col width="70%"/>
+                                    </colgroup>
+                                    <br/>
+                                    <br/>
+                                        <tr t-foreach="o.move_ids_without_package" t-as="p">
+                                            <td style=" text-align: left;" height="30">
+                                                <t t-esc="p.product_id.default_code"/>
+                                            </td>
+                                            <td style=" text-align: left;">
+                                                <t t-esc="'%.2f'%(p.product_qty)"/>
+                                            </td>
+                                            <td style=" text-align: left;">
+                                                <t t-esc="p.product_uom.name"/>
+                                            </td>
+                                            <td style=" text-align: left;">
+                                                <span>
+                                                    <!-- <t t-esc="p.product_id.name"/> <t t-if="p.lot_id"> <br/> Lote: <t t-esc="p.lot_id.name"/> F.V: <t t-esc="p.lot_id.life_date"/> </t> -->
+                                                    <t t-esc="p.product_id.name"/> <t t-if="p.report_series"> <br/> Series: <t t-esc="p.report_series"/>  </t>
+                                                </span>
+                                                <!-- <t t-if="p.lot_id">
+                                                    <br/>
+                                                    <div style="text-align: center;">
+                                                        <table width="100%">
+                                                            <colgroup>
+                                                                <col width="15%"/>
+                                                                <col width="15%"/>
+                                                                <col width="20%"/>
+                                                                <col width="25%"/>
+                                                                <col width="25%"/>
+                                                            </colgroup>
+                                                            <tr style="text-align: left;">
+                                                                <td>Lote</td>
+                                                                <td>Cant.</td>
+                                                                <td>F.V</td>
+                                                            </tr>
+                                                            <tr t-foreach="p.lot_id" t-as="lot">
+                                                                <td style="text-align: left;">
+                                                                    <t t-esc="lot.lot_id.name"/>
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                    <t t-esc="lot.qty"/>
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                    <t t-if="lot.lot_id.life_date">
+                                                                        <t t-esc="lot.lot_id.life_date[0:10]"/>
+                                                                    </t>
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </t> -->
+                                            </td>
+                                        </tr>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                <!-- </t> -->
+            </t>
+        </t>
+    </template>
+
+        <template id="report_picking_guia">
+                        <t t-if="docs[0].company_id.picking_guide == 'modelo1' ">
+                            <t t-call="sistemerp_ereport_template.report_guide_template"
+                               />
+                        </t>                                 
+                        <t t-if="docs[0].company_id.picking_guide == 'modelo2' ">
+                            <t t-call="sistemerp_ereport_template.report_guide_template"
+                               />
+                        </t>                  
+        </template>
+
+
+</odoo>

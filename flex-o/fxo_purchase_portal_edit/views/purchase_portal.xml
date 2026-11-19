@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="portal_my_purchase_order" name="Portal  purchase extend" inherit_id="purchase.portal_my_purchase_order" priority="25">
+        <xpath expr='//div[hasclass("card-body")]/div[hasclass("row")]' position="replace">
+            <div class="row">
+                <div class="col-lg-4">
+                  <strong>Producto</strong>
+                </div>
+                <div class="col-lg-2 text-right">
+                  <strong>Precio Uni</strong>
+                </div>
+                <div class="col-lg-2 text-right">
+                  <strong>Cantidad</strong>
+                </div>
+                <div class="col-lg-2 text-right">
+                  <strong>Subtotal</strong>
+                </div>
+                <div class="col-lg-2 text-right">
+                  <strong>Estado</strong>
+                </div>
+                 <div class="col-lg-2 text-center">
+                  <strong>Accion</strong>
+                </div>
+             </div>
+        </xpath>
+        <xpath expr="//t[@t-foreach='order.order_line']" position="replace">
+            <t t-foreach="order.order_line" t-as="ol">
+                <form class="" role="form" method="post">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input type="hidden" name="id_linea" t-att-value="ol.id"  class="form-control form-control-sm"  />
+
+                    <t t-set="current_subtotal" t-value="current_subtotal + ol.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                    <t t-set="current_subtotal" t-value="current_subtotal + ol.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                    <div t-if="not ol.display_type" class="row purchases_vertical_align">
+                    <div class="col-lg-1 text-center">
+                        <img t-att-src="image_data_uri(resize_to_48(ol.product_id.image_128))" alt="Product"/>
+                    </div>
+                    <div id="product_name" class="col-lg-3">
+                        <span t-esc="ol.name"/>
+                    </div>
+                    <div class="col-lg-2 text-right">
+                        <t t-if="ol.state in ('sent','draft')">
+                            <input type="text" name="price_unit" t-att-value="ol.price_unit"  class="form-control form-control-sm"  required="required"/>
+                        </t>
+                        <t t-else="">
+                            <span t-field="ol.price_unit" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: order.currency_id}"/>
+                        </t>
+                    </div>
+                    <div class="col-lg-2 text-right">
+                        <span t-esc="ol.product_qty"/>
+                    </div>
+                    <div class="col-lg-2 text-right">
+                        <span t-field="ol.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: order.currency_id}"/>
+                    </div>
+                    <div class="col-lg-2 text-center">
+                        <t t-if="ol.state in ('sent','draft')">
+                            <button type="submit" class="btn btn-primary "> Guardar</button>
+                        </t>
+                       
+                    </div>
+                    </div>
+                    <t t-if="ol.display_type == 'line_section'">
+                        <div class="col-lg-12 bg-200">
+                            <strong t-esc="ol.name"/>
+                        </div>
+                        <t t-set="current_section" t-value="ol"/>
+                        <t t-set="current_subtotal" t-value="0"/>
+                    </t>
+                    <t t-elif="ol.display_type == 'line_note'">
+                        <div class="col-lg-12 font-italic">
+                            <span t-esc="ol.name"/>
+                        </div>
+                    </t>
+                    <t t-if="current_section and (ol_last or order.order_line[ol_index+1].display_type == 'line_section')">
+                    <div class="row">
+                        <div class="col-lg-10 text-right">Subtotal</div>
+                        <div class="col-lg-2 text-right">
+                        <span t-esc="current_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: order.currency_id}"/>
+                        </div>
+                    </div>
+                    </t>
+                </form>
+              </t>
+        </xpath>
+        <xpath expr="//div[@class='oe_structure mb32']" position="after">
+            <div id="order_communication" class="mt-4">
+                <h2>History</h2>
+                <t t-call="portal.message_thread">
+                    <t t-set="object" t-value="order"/>
+                </t>
+            </div>
+        </xpath>
+  </template>
+</odoo>

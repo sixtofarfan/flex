@@ -1,0 +1,46 @@
+<odoo>
+	<record id="form_account_update_detractions" model="ir.ui.view">
+		<field name="name">account.update.detractions.form</field>
+		<field name="model">account.update.detractions</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="update_invoices" string="Actualizar Facturas" type="object" class="oe_highlight" states="draft"/>
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<group>
+						<group>
+							<field name="output_name" invisible="1"/>
+							<field name="file" widget="file" filename="output_name"/>
+						</group>
+						<group>
+							<field name="date" readonly="1"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="tree_account_update_detractions" model="ir.ui.view">
+		<field name="name">account.update.detractions.tree</field>
+		<field name="model">account.update.detractions</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="date" optional="show"/>
+				<field name="file" optional="show"/>
+			</tree>
+		</field>
+	</record>
+	<record id="action_account_update_detractions" model="ir.actions.act_window">
+        <field name="name">Actualizacion de Facturas Detraidas</field>
+        <field name="res_model">account.update.detractions</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem 
+		id="menu_account_update_detractions"
+		action="action_account_update_detractions"
+		parent="account_base_it.menu_treasury"
+		sequence="9"
+		groups="fxo_account_update_detractions.update_detractions_group"/>
+</odoo>

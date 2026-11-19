@@ -1,0 +1,120 @@
+<odoo>
+	<record id="account_payment_application_form" model="ir.ui.view">
+		<field name="name">account.payment.application.form</field>
+		<field name="model">account.payment.application</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="apply_payments" type="object" string="Aplicar Pagos" class="oe_highlight" states="draft"/>
+					<button name="get_wizard" type="object" string="Agregar Facturas" states="draft"/>
+					<button name="set_draft" type="object" string="Volver a Borrador" class="oe_highlight" states="done" confirm="¿Esta seguro que desea volver a borrador? Este proceso rompera conciliacion en todas las facturas seleccionadas."/>
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<h1 class="mt0">
+						<field name="name" readonly="1"/>
+					</h1>
+					<group>
+						<group>
+							<field name="journal_id" required="1" attrs="{'readonly': [('state','=','done')]}"/>
+							<field name="date" required="1" attrs="{'readonly': [('state','=','done')]}"/>
+							<field name="type" required="1" attrs="{'readonly': [('state','=','done')]}"/>
+							<field name="debit_id" required="1" attrs="{'readonly': [('state','=','done')]}"/>
+							<field name="debit_currency_id" invisible="1"/>
+							<field name="total_debits" readonly="1" force_save="1"/>
+							<field name="total_applied" readonly="1" force_save="1"/>
+							<field name="total_net" readonly="1" force_save="1"/>
+						</group>
+						<group>
+							<field name="partner_id" attrs="{'readonly': [('state','=','done')]}"/>
+							<field name="company_id" attrs="{'readonly': [('state','=','done')]}"/>
+							<field name="company_currency_id" invisible="1"/>
+							<field name="currency_id" invisible="1"/>
+							<!-- <field name="total_inv"/> -->
+							<field name="total_company_currency" readonly="1" force_save="1"/>
+							<field name="total_foreign_currency" readonly="1" force_save="1"/>
+							<field name="application_move" readonly="1"/>
+							<field name="custom_rate" groups="base.group_multi_currency" attrs="{'readonly': [('state','=','done')]}"/>
+							<field name="currency_rate" groups="base.group_multi_currency" force_save="1" attrs="{ 'readonly': ['|',('custom_rate','=', False),('state','=','done')]}"/>
+						</group>
+					</group>
+					<notebook>
+						<!-- <page string="Debitos" name="debit_ids">
+							<field name="debit_ids">
+								<tree editable="bottom" string="Lineas">
+									<field name="ref"/>
+									<field name="account_id"/>
+									<field name="journal_id"/>
+									<field name="date"/>
+									<field name="order_id"/>
+									<field name="internal_ref"/>
+									<field name="currency_id"/>
+									<field name="amount_currency"/>
+									<field name="debit"/>
+									<field name="credit"/>
+								</tree>
+							</field>
+						</page> -->
+						<page string="Facturas" name="move_ids">
+							<!-- <field name="move_ids" domain="[('', '=', )]"> -->
+							<field name="application_lines" attrs="{'readonly': [('state','=','done')]}">
+								<tree editable="bottom" string="Lineas" create="0">
+									<field name="name"/>
+									<field name="partner_id"/>
+									<field name="currency_id"/>
+									<field name="total_invoice"/>
+									<field name="total_balance"/>
+									<field name="currency_rate"/>
+									<field name="application_amount" sum="Monto Aplicación"/>
+									<field name="application_balance" force_save="1"/>
+									<field name="state"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="account_payment_application_tree" model="ir.ui.view">
+		<field name="name">account.payment.application.tree</field>
+		<field name="model">account.payment.application</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="date"/>
+				<field name="type"/>
+				<field name="company_id"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="account_payment_application_search" model="ir.ui.view">
+		<field name="name">account.payment.application.search</field>
+		<field name="model">account.payment.application</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<filter string="Fecha" name="date" domain="[]" context="{'group_by': 'date'}"/>
+				<filter string="Tipo" name="type" domain="[]" context="{'group_by': 'type'}"/>
+				<filter string="Estado" name="state" domain="[]" context="{'group_by': 'state'}"/>
+			</search>
+		</field>
+	</record>
+
+	<record id="account_payment_application_action" model="ir.actions.act_window">
+		<field name="name">Aplicaciones de Pagos por Lote</field>
+		<field name="res_model">account.payment.application</field>
+		<field name="search_view_id" ref="account_payment_application_search"/>
+	</record>
+
+	<menuitem
+		id="account_payment_application_menu"
+		action="account_payment_application_action"
+		parent="account_base_it.menu_treasury"
+		sequence="1"
+		groups="fxo_account_payment_application.account_payment_application_group"
+	/>
+</odoo>

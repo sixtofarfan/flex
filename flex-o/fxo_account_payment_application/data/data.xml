@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="seq_payment_application" model="ir.sequence">
+		<field name="name">Secuencia de Aplicaciones de Pagos por Lote</field>
+		<field name="code">seq_payment_application</field>
+		<field name="prefix">APP-</field>
+		<field name="padding">5</field>
+	</record>
+</odoo>

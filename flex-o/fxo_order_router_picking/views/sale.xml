@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+        <!-- Add you code here -->
+        <!-- sale.order tree view -->
+        <record id="sale_order_driver_view_tree" model="ir.ui.view">
+            <field name="name">sale.order.view.tree</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="compute_name"/>
+                    <field name="compute_partner_id"/>
+                    <field name="product_id"/>
+                    <field name="category"/>
+                    <field name="day_scheduling"/>
+                    <field name="router"/>
+                    <field name="router_partner"/>
+                    <field name="router_day"/>
+                    <field name="state_router"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- model.name form view -->
+        <record id="sale_order_driver_view_form" model="ir.ui.view">
+            <field name="name">sale.order.view.form</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="compute_name"/>
+                            <field name="compute_partner_id"/>
+                            <field name="day_scheduling"/>
+                            <field name="product_id"/>
+                            <field name="category"/>
+                            <field name="router"/>
+                            <field name="router_partner"/>
+                            <field name="router_day"/>
+                            <field name="state_router"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- sale.order search view -->
+        <record id="sale_order_driver_view_search" model="ir.ui.view">
+            <field name="name">sale.order.view.search</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <search string="Search Description">
+                    <!-- Add your fields here -->
+                    <field name="compute_name"/>
+                    <field name="compute_partner_id"/>
+                    <field name="day_scheduling"/>
+                    <field name="product_id"/>
+                    <field name="category"/>
+                    <field name="router"/>
+                    <field name="router_partner"/>
+                    <field name="router_day"/>
+                    <field name="state_router"/>
+                    <separator/>
+                    <filter name="confirm" string="Confirm" domain="[('state_router','=', 'confirm')]"/>
+                    <filter name="NotDeliver" string="Not Deliver" domain="[('state_router','=', 'not deliver')]"/>
+                    <filter name="delivered" string="Delivered" domain="[('state_router','=', 'delivered')]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Date" name="date" context="{'group_by':'day_scheduling'}"/>
+                        <filter name="status" string="Status" context="{'group_by':'state_router'}"/>
+                        <separator/>
+                        <filter string="plan" name="plan" context="{'group_by': 'category'}"/>
+                        <filter string="Drivers" name="drive" context="{'group_by': 'router_partner'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_sale_order_driver" model="ir.actions.act_window">
+            <field name="name">sale.order</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('sale_order_driver_view_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('sale_order_driver_view_form')})]"/>
+            <field name="domain">[('state_router','in',('confirm','not deliver','delivered'))]</field> 
+            <field name="search_view_id" ref="sale_order_driver_view_search"/>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem   id="menu_sale_order_driver" 
+                    name="Drivers" 
+                    parent="stock.menu_stock_config_settings"
+                    action="action_sale_order_driver"/>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_disburse_wizard" model="ir.ui.view">
+            <field name="name">disburse.wizard.form</field>
+            <field name="model">disburse.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Disbursement Wizard">
+                    <group>
+                        <group>
+                            <field name="disbursement_date" required="1"/>
+                            <field name="journal_id" required="1" domain="[('type','=','bank')]"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="disbursement_amount" invisible="1"/>
+                            <field name="operation_number" required="1"/>
+                            <field name="gloss" required="1"/>
+                        </group>
+                        <group>
+                            <field name="disbursement_interests" required="1"/>
+                            <!-- <field name="interest_operation_number" attrs="{'invisible':[('disbursement_interests','&lt;=',0)],'required':[('disbursement_interests','>',0)]}"/> -->
+                            <field name="financial_expenses" required="1"/>
+                            <!-- <field name="expenses_operation_number" attrs="{'invisible':[('financial_expenses','&lt;=',0)],'required':[('financial_expenses','>',0)]}"/> -->
+                            <field name="proceed"/>
+                            <field name="bank_claim" attrs="{'invisible':[('proceed','=', False)]}"/>
+                            <field name="bank_claim_journal_id" attrs="{'invisible':[('bank_claim','=', False)], 'required':[('bank_claim','=', True)]}"/>
+                            <field name="amount_claim" attrs="{'invisible':[('bank_claim','=', False)]}"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Disburse" name="disburse" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

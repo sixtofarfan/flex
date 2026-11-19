@@ -1,0 +1,28 @@
+<odoo>
+	<record id="product_template_only_form_view_inherit_refundable" model="ir.ui.view">
+		<field name="name">product.template.only.form.inherit.refundable</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_only_form_view"/>
+		<field name="arch" type="xml">
+			<field name="property_account_creditor_price_difference" position="after">
+				<field name="account_refundable_nc_id"/>
+				<field name="account_refundable_fc_id"/>
+				<field name="account_destination_nc_id"/>
+				<field name="account_destination_fc_id"/>
+			</field>
+		</field>
+	</record>
+	<record id="product_normal_form_inherit_refundable" model="ir.ui.view">
+		<field name="name">product.normal.form.inherit.refundable</field>
+		<field name="model">product.product</field>
+		<field name="inherit_id" ref="product.product_normal_form_view"/>
+		<field name="arch" type="xml">
+			<field name="property_account_creditor_price_difference" position="after">
+				<field name="account_refundable_nc_id"/>
+				<field name="account_refundable_fc_id"/>
+				<field name="account_destination_nc_id"/>
+				<field name="account_destination_fc_id"/>
+			</field>
+		</field>
+	</record>
+</odoo>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_account_bill_form_form" model="ir.ui.view">
+        <field name="name">account.bill.form.form</field>
+        <field name="model">account.bill.form</field>
+        <field name="arch" type="xml">
+            <form string="Bill of Exchange Forms" attrs="{'readonly':[('state','!=','draft')]}">
+                <header>
+                    <button string="Process" type="object" name="process" class="oe_highlight" attrs="{'invisible':[('state','!=','draft')]}"/>
+                    <button string="Cancel" type="object" name="cancel" confirm="Are you sure you want to unreconcile the conciliation and delete the accounting entries?" attrs="{'invisible':['|',('state','in',('draft','advanced')),('type_form','=','3')]}"/>
+                    <!-- <button string="Reconcile" type="object" name="reconcile" confirm="Are you sure you want to reconcile the document?" class="oe_highlight" attrs="{'invisible':[('state','in',['draft', 'done','imported','advanced'])]}"/> -->
+                    <button string="Reconcile" type="object" name="reconcile" class="oe_highlight" attrs="{'invisible':[('state','in',['draft', 'done','imported','advanced'])]}"/>
+                    <button name="action_form_send_to_bank" id="account_bill_form_send_button"
+                            type="object" class="oe_highlight"
+                            attrs="{'invisible': ['|','|',('send_form_ids','!=',[]),('state', '!=', 'done'),('type_form','in', ['2','3'])]}"
+                            string="Send Form"/>
+                    <button string="Correccion" type="object" name="correccion_de_conciliaciones" class="oe_highlight" groups="base.group_no_one" attrs="{'invisible':[('state','!=','done')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,to_reconcile,done" readonly="1"/>
+                </header>
+                <sheet string="Bill of Exchange Forms">
+                    <div name="button_box" class="oe_button_box">
+                        <button name="open_send_bank_view" class="oe_stat_button" icon="fa-bars" type="object" attrs="{'invisible': [('send_form_ids', '=', [])]}" string="Send forms">
+                        </button>
+                        <field name="send_form_ids" invisible="1"/>
+                    </div>
+                    <h1 class="mt0">
+                        <!-- <field name="name" readonly="1" class="oe_inline"/> -->
+                        <field name="name" readonly="0" class="oe_inline"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="journal_id" force_save="1" required="1" attrs="{'readonly':['|',('state','not in','draft'),('invoice_ids','!=',[])]}"/>
+                            <field name="partner_id" force_save="1" required="1" attrs="{'readonly':['|',('state','not in','draft'),('invoice_ids','!=',[])]}"/>
+                            <!-- <field name="currency_id" groups="base.group_multi_currency" force_save="1" required="1" attrs="{'readonly':['|',('state','not in','draft'),('invoice_ids','!=',[])]}"/> -->
+                            <field name="currency_id" groups="base.group_multi_currency" force_save="1" required="1" readonly="1"/>
+                            <field name="type_form" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="company_currency_id" invisible="1"/>
+                            <field name="exchange_date" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                            <field name="custom_exchange_rate" groups="base.group_multi_currency" force_save="1" attrs="{'readonly':['|',('state','not in','draft'),('invoice_ids','!=',[])],'invisible':[('currency_id','=','company_currency_id')]}"/>
+                            <field name="exchange_rate" groups="base.group_multi_currency" force_save="1" required="1"  attrs="{'readonly':['|','|',('state','not in','draft'),('custom_exchange_rate','=',False),('invoice_ids','!=',[])]}"/>
+                        </group>
+                        <group>
+                            <field name="reference" attrs="{'readonly':[('state','not in','draft')]}"/>
+                            <field name="gloss"/>
+                            <field name="apply_retention" attrs="{'readonly':[('state','not in','draft')]}"/>
+                            <field name="retention_percentage" attrs="{'readonly':[('apply_retention','=',False)],'readonly':[('state','not in','draft')]}"/>
+                            <field name="total_retention" force_save="1" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Invoices">
+                            <field name="invoice_ids" required="1" attrs="{'readonly':[('state','not in','draft')]}" domain="[('state','=','posted'),('partner_id','=', partner_id),('currency_id','=',currency_id),('type','in',[context.get('type')]),('amount_residual','>', 0)]">
+                                <tree>
+                                    <field name="partner_id" invisible="1"/>
+                                    <field name="ref" readonly="1" string="Number"/>
+                                    <field name="type" required="0" readonly="1"/>
+                                    <field name="currency_id" groups="base.group_multi_currency" required="0" readonly="1"/>
+                                    <field name="amount_total" required="1" readonly="0" sum="Total"/>
+                                    <field name="amount_residual" required="1" readonly="0" sum="Total"/>
+                                    <field name="amount_residual_signed" string="Amount Residual Signed" groups="base.group_multi_currency" sum="Total" required="1" readonly="0"/>
+                                    <field name="exchange_amount" required="1" readonly="0"/>
+                                    <field name="exchange_amount_signed"  groups="base.group_multi_currency" sum="Total" required="1" readonly="0"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Bills" attrs="{'readonly':[('state','not in','draft')]}">
+                            <group>
+                                <group>
+                                    <field name="bills_qty" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="days_due_first" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="range_bill" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                </group>
+                                <group>
+                                    <field name="guarantee_id" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                    <field name="acceptor_id" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <button string="Update Bills" type="object" name="update_bills"  class="oe_highlight" attrs="{'invisible':[('state','not in','draft')]}"/>
+                            </group>
+                            <field name="bill_ids" attrs="{'readonly':[('state','not in','draft')]}">
+                                <tree editable="bottom" create="1" delete="1">
+                                    <field name="bill_date_issue" required="1"/>
+                                    <field name="bill_date_due" required="1"/>
+                                    <field name="bill_number"/>
+                                    <field name="guarantee_id"/>
+                                    <field name="acceptor_id" required="1"/>
+                                    <field name="account_id" required="1"/>
+                                    <!-- <field name="account_id" readonly="1" /> -->
+                                    <!-- <field name="bill_date_due" required="1"/> -->
+                                    <!-- <field name="porcentaje" readonly="1"/> -->
+
+                                    <field name="bill_currency_id" groups="base.group_multi_currency" required="1"/>
+                                    <field name="bill_amount_total" groups="base.group_multi_currency" required="1" sum="Total"/>
+                                    <field name="exchange_rate" groups="base.group_multi_currency" required="1"/>
+                                    <field name="bill_amount_total_signed" required="1" sum="Total "/>
+                                    <!-- <field name="monto_total" required="1" sum="Total " readonly="1"/> -->
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Journal Items" attrs="{'readonly':[('state','not in',('draft','to_reconcile'))],'invisible':[('state','in',('draft','to_reconcile'))]}">
+                            <group>
+                                <group>
+                                    <field name="account_move" invisible="1" readonly="1"/>
+                                </group>
+                                <field name="account_move_line_ids">
+                                    <tree>
+                                        <field name="date"/>
+                                        <field name="move_id"/>
+                                        <field name="account_id"/>
+                                        <field name="name"/>
+                                        <field name="full_reconcile_id"/>
+                                        <field name="debit" sum="Total"/>
+                                        <field name="credit" sum="Total"/>
+                                        <field name="amount_currency"/>
+                                        <field name="exchange_rate"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>  
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_account_bill_form_tree" model="ir.ui.view">
+        <field name="name">account.bill.form.tree</field>
+        <field name="model">account.bill.form</field>
+        <field name="arch" type="xml">
+            <tree string="Bill Forms">
+                <field name="name"/>
+                <field name="exchange_date"/>
+                <field name="partner_id"/>
+                <field name="currency_id"/>
+                <field name="exchange_rate"/>
+                <field name="reference"/>
+                <field name="gloss"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="account_bill_form_search_view" model="ir.ui.view">
+        <field name="name">account.bill.form.search</field>
+        <field name="model">account.bill.form</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Bill Forms">
+                <field name="invoice_ids" string="Invoice" filter_domain="[('invoice_ids.ref', 'ilike', self)]"/>
+                <field name="name" string="Form"/>
+                <field name="bill_ids" string="Bill of Exchange" filter_domain="[('bill_ids.bill_number', 'ilike', self)]"/>
+                <field name="partner_id"/>
+                <group expand='0' string='Filters'>
+                    <filter name='state_done' string="Done bill forms" domain="[('state','=','done')]"/>
+                    <filter name='state_draft' string="Draft bill forms" domain="[('state','=','draft')]"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="action_account_customer_bill_forms" model="ir.actions.act_window">
+        <field name="name">Bill of Exchange Forms</field>
+        <field name="res_model">account.bill.form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_account_bill_form_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_bill_form_form')})]"/>
+        <field name="view_mode">tree,form</field>
+        <!-- <field name="domain">[('invoice_ids.type','=','out_invoice')]</field> -->
+        <field name="domain">[('type_form','=','1')]</field>
+        <field name="context">{'type': 'out_invoice'}</field>
+    </record>
+
+    <record id="action_account_supplier_bill_forms" model="ir.actions.act_window">
+        <field name="name">Bill of Exchange Forms</field>
+        <field name="res_model">account.bill.form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_account_bill_form_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_bill_form_form')})]"/>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('type_form','=','2')]</field>
+        <field name="context">{'type': 'in_invoice'}</field>
+    </record>
+
+    <!-- <record id="action_account_customer_bill_forms_import" model="ir.actions.act_window">
+        <field name="name">Import Bill of Exchange Forms</field>
+        <field name="res_model">account.import.bill.form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_account_bill_form_tree_import')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_bill_form_form_import')})]"/>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('type_form','=', '3')]</field>
+        <field name="context">{'type_import': '1'}</field>
+    </record> -->
+    
+    <!-- Icono de modulo en lanzador-->
+    <menuitem name="Bills of Exchange" id="menu_root_boe" groups="group_module_account_bill_manager" web_icon="jp_account_bills_of_exchange,static/description/icon.png"/>
+    
+    <menuitem id="menu_bills_customer_title" 
+                name="Bills of exchange Customer"
+                parent="menu_root_boe" 
+                sequence="200" 
+                groups="group_module_account_bill_manager"/>
+
+    <menuitem id="menu_bills_supplier_title" 
+                name="Bills of exchange Supplier" 
+                parent="menu_root_boe" 
+                sequence="300" 
+                groups="group_module_account_bill_manager"/>
+
+    <menuitem id="menu_account_customer_bill_forms" name="Bill of Exchange Forms"
+              parent="menu_bills_customer_title"
+              action="action_account_customer_bill_forms" sequence="220"/>
+
+    <menuitem id="menu_account_supplier_bill_tree" name="Bill of Exchange Forms"
+              parent="menu_bills_supplier_title"
+              action="action_account_supplier_bill_forms" sequence="220"/>
+
+    <!-- <menuitem id="menu_account_customer_bill_forms_import" name="Import Bill of Exchange Forms"
+              parent="menu_bills_customer_title"
+              action="action_account_customer_bill_forms_import" sequence="240"/> -->
+
+    <menuitem id="menu_view_resource_calendar_leaves_tree"
+        parent="menu_bills_customer_title"
+        action="resource.action_resource_calendar_leave_tree"/>
+
+</odoo>

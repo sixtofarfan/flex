@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_fxo_sale_main_parameter_form" model="ir.ui.view">
+            <field name="name">fxo.sale.main.parameter.form</field>
+            <field name="model">fxo.sale.main.parameter</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" help="Parametros para la compañia "/>
+                        </group>
+                        <group string="Factibilidad">
+                            <label for="expiration_type"
+                                   help="Indique el tiempo de vencimiento que van a tener los documentos por defecto "/>
+                            <div class="o_row">
+                                <field name="expiration_type"
+                                       help="Indique el tiempo de vencimiento que van a tener los documentos por defecto "
+                                       required="1"/>
+                                <field name="expiration" class="field_rule_type" required="1"
+                                       help="Indique el tiempo de vencimiento que van a tener los documentos por defecto "/>
+                            </div>
+                            <field name="producto_costo_instalacion"
+                                   help="Producto por defecto para la costo de Instalacion"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_fxo_sale_main_parameter_form_inherit" model="ir.ui.view">
+                <field name="name">fxo.sale.main.parameter.form</field>
+                <field name="model">fxo.sale.main.parameter</field>
+                <field name="inherit_id" ref="fxo_sale_parameter_extend.view_fxo_sale_main_parameter_form"/>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Tipo de Cambio">
+                            <group colspan="4" col="4">
+                                <field name="use_tc"/>
+                                <field name="tc" attrs="{'invisible':[('use_tc','=',False)],
+                 'required':[('use_tc','=',True)]}"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </field>
+        </record>
+    </data>
+</odoo>
+

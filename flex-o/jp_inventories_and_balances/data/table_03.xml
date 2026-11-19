@@ -1,0 +1,44 @@
+<odoo>
+	<data noupdate="1">
+        
+        <record model='table.03' id="bank_01"><field name='code'>01</field><field name='name'>CENTRAL RESERVA DEL PERU</field></record>
+        <record model='table.03' id="bank_02"><field name='code'>02</field><field name='name'>DE CREDITO DEL PERU</field></record>
+        <record model='table.03' id="bank_03"><field name='code'>03</field><field name='name'>INTERNACIONAL DEL PERU</field></record>
+        <record model='table.03' id="bank_05"><field name='code'>05</field><field name='name'>LATINO</field></record>
+        <record model='table.03' id="bank_07"><field name='code'>07</field><field name='name'>CITIBANK DEL PERU S.A.</field></record>
+        <record model='table.03' id="bank_08"><field name='code'>08</field><field name='name'>STANDARD CHARTERED</field></record>
+        <record model='table.03' id="bank_09"><field name='code'>09</field><field name='name'>SCOTIABANK PERU</field></record>
+        <record model='table.03' id="bank_11"><field name='code'>11</field><field name='name'>CONTINENTAL</field></record>
+        <record model='table.03' id="bank_12"><field name='code'>12</field><field name='name'>DE LIMA</field></record>
+        <record model='table.03' id="bank_16"><field name='code'>16</field><field name='name'>MERCANTIL</field></record>
+        <record model='table.03' id="bank_18"><field name='code'>18</field><field name='name'>NACION</field></record>
+        <record model='table.03' id="bank_22"><field name='code'>22</field><field name='name'>SANTANDER CENTRAL HISPANO</field></record>
+        <record model='table.03' id="bank_23"><field name='code'>23</field><field name='name'>DE COMERCIO</field></record>
+        <record model='table.03' id="bank_25"><field name='code'>25</field><field name='name'>REPUBLICA</field></record>
+        <record model='table.03' id="bank_26"><field name='code'>26</field><field name='name'>NBK BANK</field></record>
+        <record model='table.03' id="bank_29"><field name='code'>29</field><field name='name'>BANCOSUR</field></record>
+        <record model='table.03' id="bank_35"><field name='code'>35</field><field name='name'>FINANCIERO DEL PERU</field></record>
+        <record model='table.03' id="bank_37"><field name='code'>37</field><field name='name'>DEL PROGRESO</field></record>
+        <record model='table.03' id="bank_38"><field name='code'>38</field><field name='name'>INTERAMERICANO FINANZAS  </field></record>
+        <record model='table.03' id="bank_39"><field name='code'>39</field><field name='name'>BANEX</field></record>
+        <record model='table.03' id="bank_40"><field name='code'>40</field><field name='name'>NUEVO MUNDO</field></record>
+        <record model='table.03' id="bank_41"><field name='code'>41</field><field name='name'>SUDAMERICANO</field></record>
+        <record model='table.03' id="bank_42"><field name='code'>42</field><field name='name'>DEL LIBERTADOR</field></record>
+        <record model='table.03' id="bank_43"><field name='code'>43</field><field name='name'>DEL TRABAJO</field></record>
+        <record model='table.03' id="bank_44"><field name='code'>44</field><field name='name'>SOLVENTA</field></record>
+        <record model='table.03' id="bank_45"><field name='code'>45</field><field name='name'>SERBANCO SA.</field></record>
+        <record model='table.03' id="bank_46"><field name='code'>46</field><field name='name'>BANK OF BOSTON</field></record>
+        <record model='table.03' id="bank_47"><field name='code'>47</field><field name='name'>ORION</field></record>
+        <record model='table.03' id="bank_48"><field name='code'>48</field><field name='name'>DEL PAIS</field></record>
+        <record model='table.03' id="bank_49"><field name='code'>49</field><field name='name'>MI BANCO</field></record>
+        <record model='table.03' id="bank_50"><field name='code'>50</field><field name='name'>BNP PARIBAS</field></record>
+        <record model='table.03' id="bank_51"><field name='code'>51</field><field name='name'>AGROBANCO</field></record>
+        <record model='table.03' id="bank_53"><field name='code'>53</field><field name='name'>HSBC BANK PERU S.A.</field></record>
+        <record model='table.03' id="bank_54"><field name='code'>54</field><field name='name'>BANCO FALABELLA S.A.</field></record>
+        <record model='table.03' id="bank_55"><field name='code'>55</field><field name='name'>BANCO RIPLEY</field></record>
+        <record model='table.03' id="bank_56"><field name='code'>56</field><field name='name'>BANCO SANTANDER PERU S.A.</field></record>
+        <record model='table.03' id="bank_58"><field name='code'>58</field><field name='name'>BANCO AZTECA DEL PERU</field></record>
+        <record model='table.03' id="bank_99"><field name='code'>99</field><field name='name'>OTROS</field></record>
+        
+	</data>
+</odoo>

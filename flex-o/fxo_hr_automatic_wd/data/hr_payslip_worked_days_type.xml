@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<record model='hr.payslip.worked_days.type' id='hr_base_it.wd_FAL'>
+			<field name="is_discount">True</field>
+		</record>
+		<record model='hr.payslip.worked_days.type' id='hr_base_it.wd_SMAR'>
+			<field name="is_discount">True</field>
+		</record>
+		<record model='hr.payslip.worked_days.type' id='hr_base_it.wd_SENF'>
+			<field name="is_discount">True</field>
+		</record>
+		<record model='hr.payslip.worked_days.type' id='hr_base_it.wd_DVAC'>
+			<field name="is_discount">True</field>
+		</record>
+		<record model='hr.payslip.worked_days.type' id='hr_base_it.wd_DPAT'>
+			<field name="is_discount">True</field>
+		</record>
+	</data>
+</odoo>

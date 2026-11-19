@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <!-- wk.team inherit form view -->
+        <record id="wk_team_view" model="ir.ui.view">
+            <field name="name">wk.team.inherit.view.form</field>
+            <field name="model">wk.team</field>
+            <field name="inherit_id" ref="project_advance_team.wk_team_view"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <xpath expr="//page[@name='child_teams']" position="after">
+                    <page string="Configuracion" name="config">
+                        <h2>Asignacion</h2>
+                        <div class="row mt16 o_settings_container" id="productivity">
+                            <div class="col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <label for="aprovate"/>
+                                    <div class="text-muted">
+                                       Requiere aprovate
+                                    </div>
+                                    <div>
+                                        <field name="aprovate" options="{'color_field': 'color'}" class="mt16"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 o_setting_box" title="With random assignation, every user gets the same number of tickets. With balanced assignation, tickets are assigned to the user with the least amount of open tickets.">
+                                <div class="o_setting_right_pane">
+                                    <label for="assign_method"/>
+                                    <div class="text-muted">
+                                       Como asignar las nuevas tareas creados a la persona correcta
+                                    </div>
+                                    <div>
+                                        <field name="assign_method"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </page>
+                    <page string="Aprobaciones" name="approval_category">
+                        <field name="approval_id"/>
+                    </page>
+                </xpath>
+                
+            </field>
+        </record>
+
+        <!-- model.name inherit form view -->
+        <record id="view_task_form2" model="ir.ui.view">
+            <field name="name">project.task.inherit.view.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="date_assign" position="after">
+                    <field name="wk_team_id"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

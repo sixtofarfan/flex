@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="template_planilla_bbva">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="jp_account_bills_of_exchange.report_planilla_bbva" t-lang="o.company_id.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_planilla_bbva">
+            <t t-set="o" t-value="o.with_context({'lang':o.company_id.partner_id.lang})"/>
+                            
+<div class="page">
+
+<style type="text/css">
+
+.banco {
+  height: 22px;
+  width: 330px;
+  background-color: rgb(0,0,127);
+}
+.cartera {
+  height: 18px;
+  width: 132px;
+  background-color: rgb(0,0,127);
+}
+.codigo {
+  height: 18px;
+  width: 230px;
+  background-color: rgb(0,0,127);
+}
+.cabecera {
+  height: 30px;
+  width: 850px;
+  background-color: rgb(0,0,127);
+}
+                    table {
+                    font-family: arial, sans-serif;
+                    border-collapse: collapse;
+                    width: 91.5%;
+                    }
+
+                    .bigt {
+                    font-family: Laksaman;
+                    font-size: 32px;
+                    }
+
+                    .tittle {
+                    font-weight: bold;
+                    }
+
+					th{
+                    text-align: left;
+                    padding: 8px;
+                    color: white;
+  					background-color: rgb(0,0,127);
+                    font-family:Arial,serif;
+                    font-size:12.0px;
+                    }
+                   
+                    td {
+                    text-align: left;
+                    padding: 8px;
+                    }
+
+                    alv {
+                    vertical-align: bottom;
+                    }
+
+                    .tot{
+                    border-bottom: 1px solid black;
+                    border-left: 1px solid black;
+                    border-right: 1px solid black;
+                    border-top: 1px solid black;
+                    }
+                    .totw{
+                    border-bottom: 1px solid black;
+                    border-left: 1px solid black;
+                    border-right: 1px solid black;
+                    border-top: 1px solid black;
+                    color:white;
+                    }
+
+                    .izq{
+                    border-bottom: 1px solid black;
+                    border-left: 1px solid black;
+                    }
+                    .aba{
+                    border-bottom: 1px solid black;
+                    }
+                    .der{
+                    border-bottom: 1px solid black;
+                    border-right: 1px solid black;
+                    }
+
+                    .com{
+                    border-bottom: 1px solid black;
+                    border-left: 1px solid black;
+                    border-right: 1px solid black;
+                    font-family:Arial,serif;
+                    font-size:12.0px;
+                    }
+
+                    .negro{
+                    background-color:black;
+                    color:white;
+                    }
+
+                    .alder{
+                    text-align:right;
+                    }
+                    .alizq{
+                    text-align:left;
+                    }
+span.cls_002{font-family:Arial,serif;font-size:18.0px;color:rgb(0,0,127);font-weight:bold;font-style:normal;text-decoration: none;white-space: nowrap}
+div.cls_002{font-family:Arial,serif;font-size:18.0px;color:rgb(0,0,127);font-weight:bold;font-style:normal;text-decoration: none;white-space: nowrap}
+span.cls_003{font-family:Arial,serif;font-size:12.5px;color:rgb(0,0,127);font-weight:normal;font-style:normal;text-decoration: none;white-space: nowrap}
+div.cls_003{font-family:Arial,serif;font-size:12.5px;color:rgb(0,0,127);font-weight:normal;font-style:normal;text-decoration: none;white-space: nowrap}
+span.cls_004{font-family:Arial,serif;font-size:14.1px;color:rgb(0,0,127);font-weight:normal;font-style:normal;text-decoration: none;white-space: nowrap}
+div.cls_004{font-family:Arial,serif;font-size:14.1px;color:rgb(0,0,127);font-weight:normal;font-style:normal;text-decoration: none;white-space: nowrap}
+span.cls_011{font-family:Arial,serif;font-size:14.1px;color:rgb(0,0,127);font-weight:normal;font-style:normal;text-decoration: underline}
+div.cls_011{font-family:Arial,serif;font-size:14.1px;color:rgb(0,0,127);font-weight:normal;font-style:normal;text-decoration: none;white-space: nowrap}
+span.cls_005{font-family:Arial,serif;font-size:12.0px;color:rgb(255,255,255);background-color:rgb(0,0,127);font-weight:bold;font-style:normal;text-decoration: none;white-space: nowrap}
+div.cls_005{font-family:Arial,serif;font-size:12.0px;color:rgb(255,255,255);background-color:rgb(0,0,127);font-weight:bold;font-style:normal;text-decoration: none;white-space: nowrap}
+span.cls_006{font-family:Arial,serif;font-size:14.1px;color:rgb(255,255,255);background-color:rgb(0,0,127);font-weight:bold;font-style:normal;text-decoration: none;white-space: nowrap}
+div.cls_006{font-family:Arial,serif;font-size:14.1px;color:rgb(255,255,255);background-color:rgb(0,0,127);font-weight:bold;font-style:normal;text-decoration: none;white-space: nowrap}
+span.cls_007{font-family:Arial,serif;font-size:12.0px;color:rgb(0,0,127);font-weight:bold;font-style:normal;text-decoration: none;white-space: nowrap}
+div.cls_007{font-family:Arial,serif;font-size:12.0px;color:rgb(0,0,127);font-weight:bold;font-style:normal;text-decoration: none;white-space: nowrap}
+span.cls_008{font-family:Tahoma,serif;font-size:14.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none;white-space: nowrap}
+div.cls_008{font-family:Tahoma,serif;font-size:14.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none;white-space: nowrap}
+span.cls_009{font-family:Arial,serif;font-size:14.1px;color:rgb(0,0,127);font-weight:bold;font-style:normal;text-decoration: none;white-space: nowrap}
+div.cls_009{font-family:Arial,serif;font-size:14.1px;color:rgb(0,0,127);font-weight:bold;font-style:normal;text-decoration: none;white-space: nowrap}
+span.cls_010{font-family:Arial,serif;font-size:14.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none;white-space: nowrap}
+div.cls_010{font-family:Arial,serif;font-size:14.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none;white-space: nowrap}
+
+</style>
+
+<svg style="position:absolute;left:51.00px;top:110.04px" height="1300" width="900">
+<!--Codigo de cartera:-->
+  <line x1="132" y1="60" x2="132" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="132" y1="78" x2="382" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="157" y1="60" x2="157" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="182" y1="60" x2="182" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="207" y1="60" x2="207" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="232" y1="60" x2="232" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="257" y1="60" x2="257" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="282" y1="60" x2="282" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="307" y1="60" x2="307" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="332" y1="60" x2="332" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="357" y1="60" x2="357" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="382" y1="60" x2="382" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  
+  <line x1="407" y1="60" x2="407" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="407" y1="78" x2="457" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="432" y1="60" x2="432" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+  <line x1="457" y1="60" x2="457" y2="78" style="stroke:rgb(0,0,0);stroke-width:1" />
+<!--Producto:-->
+<line x1="0" y1="113" x2="5" y2="113" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="0" y1="113" x2="0" y2="210" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="0" y1="210" x2="225" y2="210" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="225" y1="210" x2="225" y2="113" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="225" y1="113" x2="70" y2="113" style="stroke:rgb(0,0,0);stroke-width:1" />
+<circle cx="22" cy="136" r="7" stroke="black" stroke-width="1" fill="white" />
+<circle cx="22" cy="156" r="7" stroke="black" stroke-width="1" fill="white" />
+<circle cx="22" cy="176" r="7" stroke="black" stroke-width="1" fill="white" />
+<circle cx="22" cy="196" r="7" stroke="black" stroke-width="1" fill="white" />
+<t t-if="o.bank_position == 'collection'">
+	<circle cx="22" cy="136" r="5" stroke="black" stroke-width="1" fill="black" />
+</t>
+<t t-if="o.bank_position == 'guarantee'">
+    <circle cx="22" cy="156" r="5" stroke="black" stroke-width="1" fill="black" />
+</t>
+<t t-if="o.bank_position == 'discount'">
+    <circle cx="22" cy="176" r="5" stroke="black" stroke-width="1" fill="black" />
+</t>
+<line x1="42" y1="190" x2="42" y2="206" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="42" y1="206" x2="210" y2="206" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="210" y1="190" x2="210" y2="206" style="stroke:rgb(0,0,0);stroke-width:1" />
+<!--Instrumentos:-->
+<line x1="270" y1="113" x2="275" y2="113" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="270" y1="113" x2="270" y2="210" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="270" y1="210" x2="495" y2="210" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="495" y1="210" x2="495" y2="113" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="365" y1="113" x2="495" y2="113" style="stroke:rgb(0,0,0);stroke-width:1" />
+<circle cx="285" cy="136" r="7" stroke="black" stroke-width="1" fill="white" />
+<circle cx="285" cy="156" r="7" stroke="black" stroke-width="1" fill="white" />
+<circle cx="285" cy="176" r="7" stroke="black" stroke-width="1" fill="white" />
+<circle cx="285" cy="136" r="5" stroke="black" stroke-width="1" fill="black" />
+<line x1="312" y1="170" x2="312" y2="186" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="312" y1="186" x2="480" y2="186" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="480" y1="170" x2="480" y2="186" style="stroke:rgb(0,0,0);stroke-width:1" />
+<!--Protesto:-->
+<line x1="0" y1="230" x2="5" y2="230" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="0" y1="230" x2="0" y2="330" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="0" y1="330" x2="225" y2="330" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="225" y1="330" x2="225" y2="230" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="225" y1="230" x2="65" y2="230" style="stroke:rgb(0,0,0);stroke-width:1" />
+<circle cx="22" cy="260" r="7" stroke="black" stroke-width="1" fill="white" />
+<circle cx="22" cy="280" r="7" stroke="black" stroke-width="1" fill="white" />
+<circle cx="22" cy="280" r="5" stroke="black" stroke-width="1" fill="black" />
+<!--Moneda:-->
+<line x1="270" y1="230" x2="275" y2="230" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="270" y1="230" x2="270" y2="330" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="270" y1="330" x2="495" y2="330" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="495" y1="330" x2="495" y2="230" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="495" y1="230" x2="335" y2="230" style="stroke:rgb(0,0,0);stroke-width:1" />
+<circle cx="285" cy="260" r="7" stroke="black" stroke-width="1" fill="white" />
+<circle cx="285" cy="280" r="7" stroke="black" stroke-width="1" fill="white" />
+<t t-if="o.currency_id == o.company_id.currency_id">
+	<circle cx="285" cy="260" r="5" stroke="black" stroke-width="1" fill="black" />
+</t>
+<t t-if="o.currency_id != o.company_id.currency_id">
+	<circle cx="285" cy="280" r="5" stroke="black" stroke-width="1" fill="black" />
+</t>
+<!--PARA SER CUBIERTO POR EL BANCO-->
+<line x1="520" y1="60" x2="520" y2="410" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="520" y1="410" x2="850" y2="410" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="850" y1="410" x2="850" y2="60" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="600" y1="100" x2="600" y2="118" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="600" y1="118" x2="690" y2="118" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="644" y1="100" x2="644" y2="118" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="667" y1="100" x2="667" y2="118" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="690" y1="100" x2="690" y2="118" style="stroke:rgb(0,0,0);stroke-width:1" />
+<rect x="790" y="85" width="60" height="35" style="fill:rgb(255,255,255);stroke-width:1;stroke:rgb(0,0,0)" />
+<line x1="790" y1="102" x2="850" y2="102" style="stroke:rgb(0,0,0);stroke-width:1" />
+<rect x="575" y="150" width="275" height="17" style="fill:rgb(255,255,255);stroke-width:1;stroke:rgb(0,0,0)" />
+<rect x="645" y="167" width="205" height="42" style="fill:rgb(255,255,255);stroke-width:1;stroke:rgb(0,0,0)" />
+<line x1="630" y1="245" x2="850" y2="245" style="stroke:rgb(0,0,0);stroke-width:1" />
+<rect x="520" y="265" width="330" height="20" style="fill:rgb(255,255,255);stroke-width:1;stroke:rgb(0,0,0)" />
+<rect x="520" y="285" width="330" height="20" style="fill:rgb(255,255,255);stroke-width:1;stroke:rgb(0,0,0)" />
+<line x1="530" y1="380" x2="840" y2="380" style="stroke:rgb(0,0,0);stroke-width:1" />
+<!--CODIGO DE CUENTA A ABONAR-->
+<line x1="0" y1="385" x2="0" y2="405" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="0" y1="405" x2="230" y2="405" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="230" y1="385" x2="230" y2="405" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="50" y1="385" x2="50" y2="405" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="100" y1="385" x2="100" y2="405" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="205" y1="385" x2="205" y2="405" style="stroke:rgb(0,0,0);stroke-width:1" />
+<!--NOMBRE O RAZON SOCIAL-->
+<line x1="0" y1="445" x2="0" y2="465" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="0" y1="465" x2="390" y2="465" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="390" y1="445" x2="390" y2="465" style="stroke:rgb(0,0,0);stroke-width:1" />
+<!--RUC-->
+<line x1="410" y1="445" x2="410" y2="465" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="410" y1="465" x2="610" y2="465" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="610" y1="445" x2="610" y2="465" style="stroke:rgb(0,0,0);stroke-width:1" />
+<!--TELEFONO-->
+<line x1="630" y1="445" x2="630" y2="465" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="630" y1="465" x2="850" y2="465" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="850" y1="445" x2="850" y2="465" style="stroke:rgb(0,0,0);stroke-width:1" />
+<!--DIRECCION-->
+<line x1="0" y1="495" x2="0" y2="515" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="0" y1="515" x2="390" y2="515" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="390" y1="495" x2="390" y2="515" style="stroke:rgb(0,0,0);stroke-width:1" />
+<!--PERSONA DE CONTACTO-->
+<line x1="410" y1="495" x2="410" y2="515" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="410" y1="515" x2="850" y2="515" style="stroke:rgb(0,0,0);stroke-width:1" />
+<line x1="850" y1="495" x2="850" y2="515" style="stroke:rgb(0,0,0);stroke-width:1" />
+</svg>
+
+<div style="position:absolute;left:190.00px;top:170.04px" class="cls_008"><span class="cls_008">1</span></div>
+<div style="position:absolute;left:215.00px;top:170.04px" class="cls_008"><span class="cls_008">2</span></div>
+<div style="position:absolute;left:240.00px;top:170.04px" class="cls_008"><span class="cls_008">3</span></div>
+<div style="position:absolute;left:265.00px;top:170.04px" class="cls_008"><span class="cls_008">4</span></div>
+<div style="position:absolute;left:290.00px;top:170.04px" class="cls_008"><span class="cls_008">5</span></div>
+<div style="position:absolute;left:315.00px;top:170.04px" class="cls_008"><span class="cls_008">6</span></div>
+<div style="position:absolute;left:340.00px;top:170.04px" class="cls_008"><span class="cls_008">7</span></div>
+<div style="position:absolute;left:365.00px;top:170.04px" class="cls_008"><span class="cls_008">8</span></div>
+<div style="position:absolute;left:390.00px;top:170.04px" class="cls_008"><span class="cls_008">9</span></div>
+<div style="position:absolute;left:415.00px;top:170.04px" class="cls_008"><span class="cls_008">1</span></div>
+<div style="position:absolute;left:465.00px;top:170.04px" class="cls_008"><span class="cls_008">2</span></div>
+<div style="position:absolute;left:490.00px;top:170.04px" class="cls_008"><span class="cls_008">3</span></div>
+<!-- <div style="position:absolute;left:50%;margin-left:-200px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden"> -->
+<div style="position:absolute;left:51.00px;top:0px">
+    <img src='/jp_account_bills_of_exchange/static/src/img/bbva.jpg' height="25px"/>
+</div>
+<div style="position:absolute;left:410.00px;top:27.04px" class="cls_002"><span class="cls_002">SOLICITUD DE DESCUENTO / SOLICITUD DE COBRANZA</span></div>
+<div style="position:absolute;left:480.00px;top:50.04px" class="cls_003"><span class="cls_003">(Presentar tres (3) formularios por Producto y/o Moneda)</span></div>
+<div style="position:absolute;left:51.00px;top:70.97px" class="cls_004"><span class="cls_004">Señores</span></div>
+<div style="position:absolute;left:51.00px;top:90.97px" class="cls_004"><span class="cls_004">BANCO CONTINENTAL</span></div>
+<div style="position:absolute;left:51.00px;top:110.97px" class="cls_011"><span class="cls_011">Presente</span></div>
+<div style="position:absolute;left:51.00px;top:130.97px" class="cls_004"><span class="cls_004">Les agradeceremos se sirvan otorgarnos la siguiente operación:</span></div>
+<div style="position:absolute;left:51.00px;top:170.04px" class="cartera"></div>
+<div style="position:absolute;left:58.00px;top:170.04px" class="cls_005"><span class="cls_005">Código de Cartera:</span></div>
+<div style="position:absolute;left:570.00px;top:168.04px" class="banco"></div>
+<div style="position:absolute;left:600.00px;top:168.97px" class="cls_006"><span class="cls_006">PARA SER CUBIERTO POR EL BANCO</span></div>
+<div style="position:absolute;left:575.00px;top:195.04px" class="cls_007"><span class="cls_007">Fecha</span></div>
+<div style="position:absolute;left:785.00px;top:195.04px" class="cls_007"><span class="cls_007">TEM</span></div>
+<div style="position:absolute;left:60.00px;top:215.97px" class="cls_008"><span class="cls_008">Producto:</span></div>
+<div style="position:absolute;left:330.00px;top:215.97px" class="cls_008"><span class="cls_008">Instrumentos:</span></div>
+<div style="position:absolute;left:575.00px;top:215.04px" class="cls_007"><span class="cls_007">Desembolso</span></div>
+<div style="position:absolute;left:785.00px;top:215.04px" class="cls_007"><span class="cls_007">TEA</span></div>
+<div style="position:absolute;left:93.00px;top:240.04px" class="cls_007"><span class="cls_007">COBRANZA LIBRE</span></div>
+<div style="position:absolute;left:363.00px;top:240.04px" class="cls_007"><span class="cls_007">LETRAS</span></div>
+<div style="position:absolute;left:93.00px;top:260.04px" class="cls_007"><span class="cls_007">COBRANZA GARANTIA</span></div>
+<div style="position:absolute;left:363.00px;top:260.04px" class="cls_007"><span class="cls_007">FACTURAS</span></div>
+<div style="position:absolute;left:575.00px;top:260.97px" class="cls_004"><span class="cls_004">Línea</span></div>
+<div style="position:absolute;left:93.00px;top:280.04px" class="cls_007"><span class="cls_007">DESCUENTOS</span></div>
+<div style="position:absolute;left:575.00px;top:280.97px" class="cls_004"><span class="cls_004">Responsabilidad</span></div>
+<div style="position:absolute;left:575.00px;top:300.97px" class="cls_004"><span class="cls_004">Descuentos</span></div>
+<div style="position:absolute;left:60.00px;top:330.97px" class="cls_008"><span class="cls_008">Protesto:</span></div>
+<div style="position:absolute;left:330.00px;top:330.97px" class="cls_008"><span class="cls_008">Moneda:</span></div>
+<div style="position:absolute;left:575.00px;top:340.97px" class="cls_004"><span class="cls_004">Observaciones:</span></div>
+<div style="position:absolute;left:93.00px;top:365.97px" class="cls_007"><span class="cls_007">SI</span></div>
+<div style="position:absolute;left:363.00px;top:365.97px" class="cls_007"><span class="cls_007">NUEVOS SOLES</span></div>
+<div style="position:absolute;left:93.00px;top:385.97px" class="cls_007"><span class="cls_007">NO</span></div>
+<div style="position:absolute;left:363.00px;top:385.04px" class="cls_007"><span class="cls_007">DOLARES</span></div>
+<div style="position:absolute;left:73.00px;top:422.04px" class="cls_003"><span class="cls_003">Sólo para cobranza libre</span></div>
+<div style="position:absolute;left:51.00px;top:455.04px" class="codigo"></div>
+<div style="position:absolute;left:70.00px;top:455.04px" class="cls_005"><span class="cls_005">CODIGO DE CUENTA A ABONAR</span></div>
+<div style="position:absolute;left:54.00px;top:476.04px" class="cls_007"><span class="cls_0073">Banco</span></div>
+<div style="position:absolute;left:105.00px;top:476.04px" class="cls_007"><span class="cls_007">Oficina</span></div>
+<div style="position:absolute;left:182.00px;top:476.04px" class="cls_007"><span class="cls_007">Cuenta</span></div>
+<div style="position:absolute;left:255.00px;top:476.04px" class="cls_007"><span class="cls_007">D.C.</span></div>
+<div style="position:absolute;left:57.00px;top:496.04px" class="cls_007"><span class="cls_007">0011</span></div>
+<div style="position:absolute;left:660.00px;top:496.97px" class="cls_009"><span class="cls_009">FIRMA AUTORIZADA</span></div>
+<div style="position:absolute;left:51.00px;top:536.04px" class="cls_007"><span class="cls_007">Nombre o Razón Social del Girador</span></div>
+<div style="position:absolute;left:465.00px;top:536.04px" class="cls_007"><span class="cls_007">RUC</span></div>
+<div style="position:absolute;left:681.00px;top:536.04px" class="cls_007"><span class="cls_007">Teléfono</span></div>
+<div style="position:absolute;left:51.00px;top:586.04px" class="cls_007"><span class="cls_007">Dirección</span></div>
+<div style="position:absolute;left:465.00px;top:586.04px" class="cls_007"><span class="cls_007">Persona de Contacto</span></div>
+                        <table style="position:absolute;left:51.00px;top:646.04px">
+                            <tr>
+                                <th width="25">N°</th>
+                                <th style="text-align:center" width="265">ACEPTANTE</th>
+                                <th style="text-align:center" width="65">RUC</th>
+                                <th style="text-align:center" width="25">PLAZA DE COBRO</th>
+                                <th style="text-align:center" width="25">FECHA VCTO AAAAMMDD</th>
+                                <th style="text-align:center" width="90">IMPORTE</th>
+                            </tr>
+                            <t t-set="total" t-value="0"/>
+                            <t t-set="cuenta" t-value="1"/>
+                            <div t-foreach="o.bill_ids" t-as="l">
+                                <tr>
+                                    <!-- <td class="com"><span t-field="l.nro_comprobante"/></td> -->
+                                    <td class="com"><span t-esc="cuenta"/></td>
+                                    <td class="com"><span t-field="l.acceptor_id.name"/></td>
+                                    <td style="text-align:center" class="com"><span t-field="l.acceptor_id.vat"/></td>
+                                    <td style="text-align:center" class="com">Lima</td>
+                                    <td style="text-align:center" class="com"><span t-field="l.bill_date_due"/></td>
+                                    <td class="com alder"><span t-esc="l.bill_amount_total" t-options='{"widget": "float", "precision": 2}'/></td>
+                                </tr>
+                                <t t-set="total" t-value="total + l.bill_amount_total "/>
+                                <t t-set="cuenta" t-value="cuenta + 1"/>
+                            </div>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="tot">
+                                    <div style="text-align: center;" class="cls_009">TOTAL</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="alder" colspan="5">
+                                  <table style="width:39%">
+                                    <tr>
+                                      <td class="com" width="30"></td>
+                                      <td class="com" width="15"></td>
+                                      <td class="com" width="15"></td>
+                                      <td class="com" width="15"></td>
+                                    </tr>
+                                  </table>
+                                </td>
+                                <td class="com tot alder"><span t-esc="total" t-options='{"widget": "float", "precision": 2}'/></td>
+                            </tr>
+                            <tr>
+                              <td colspan="6">
+                              	<div class="cls_003">
+                                  <table style="width:37%">
+                                    <tr>
+                                      <td width="30">Localidad</td>
+                                      <td width="15">Día</td>
+                                      <td width="15">Mes</td>
+                                      <td width="15">Año</td>
+                                    </tr>
+                                  </table>
+                                 </div>
+                              </td>
+                            </tr>
+                            <tr>  
+                                <td colspan="3">
+                                    <div style="
+                                    text-align: justify;
+                                    text-justify: inter-word;
+                                    width: 500px;
+                                    height: 100px;
+                                    font-family:Arial,serif;
+                                    font-size:12.0px;
+                                    color:rgb(0,0,127);
+                                    font-weight:normal;
+                                    font-style:normal;
+                                    text-decoration: none;" calss="textofinal">DECLARO(AMOS)  EXPRESAMENTE  QUE  LOS DOCUMENTOS INCLUIDOS  EN  ESTA
+                                    SOLICITUD  SE  REGIRAN  POR  EL  CONTRATO  DE  LINEA  DE DESCUENTO  Y/O EL
+                                    CONTRATO  MARCO  DE  CONDICIONES  APLICABLES  A  LA COBRANZA  LIBRE  Y
+                                    COBRANZA GARANTIA  DE INSTRUMENTOS CON CONTENIDO  CREDITICIO SUSCRITO
+                                    POR NOSOTROS Y QUE DECLARAMOS CONOCER Y ACEPTAR</div>
+								</td>
+            
+                                <td style="text-align: center;
+                    border-left: 1px solid black;
+                    border-right: 1px solid black;
+                    border-top: 1px solid black;" colspan="5" rowspan="5">
+                                    <div class="cls_007"><span class="cls_007"></span></div>
+                                </td>
+                            </tr>
+                            <tr><td/></tr>
+                            <tr><td/></tr>
+                            <tr><td/></tr>
+                            <tr><td class="aba" colspan="2"/></tr>
+                            <tr>
+                                <td colspan="2"> 
+                                    <div style="text-align: center;" class="cls_007"><span class="cls_007">FIRMA(S) AUTORIZADA(S) DEL CLIENTE</span></div>
+                                </td>
+                                <td/>
+                                <td class="com" style="text-align: center;" valign="bottom" colspan="3">
+                                    <div class="cls_007"><span class="cls_007">V° B° Y SELLO DE RECEPCION</span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="cls_004"><span class="cls_004">Nombre del(los) Representante(s)</span></div>
+                                </td>             
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;
+                    border-left: 1px solid black;
+                    border-right: 1px solid black;
+                    border-bottom: 1px solid black;" colspan="3"/>
+                                <td/>             
+                            </tr>
+                            <tr><td/></tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="cls_010"><span class="cls_010">E3131 - 26.04.2006 (Odoo v13.0)</span></div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="cls_010"><span class="cls_010">28/04/2006 04:10 p.m.</span></div>
+                                </td>
+                                <td colspan="2" style="text-align: right;">
+                                    <div class="cls_010"><span class="cls_010">Página 1 de 1</span></div>
+                                </td>
+                            </tr>
+                        </table>
+<!-- </div> -->
+</div>
+        </template>
+    </data>
+</odoo>

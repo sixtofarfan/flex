@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<record id="sale_subscription_line_view_form_inheirt" model="ir.ui.view">
+		<field name="name">sale.subscription.view.form.inherit</field>
+		<field name="model">sale.subscription</field>
+		<field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='recurring_invoice_line_ids']/form/notebook/page[@id='order_lines']" position="after">
+				<page string="Historial de Cambios de Estado">
+					<field name="state_line_ids" readonly="1">
+						<tree default_order="date desc,id desc">
+							<field name="date"/>
+							<field name="user_id"/>
+							<field name="notes"/>
+							<field name="historical_state"/>
+							<field name="state"/>
+						</tree>
+					</field>
+				</page>
+			</xpath>
+			<xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='state']" position="attributes">
+				<attribute name="readonly">1</attribute>
+			</xpath>
+			<page id="other_info" position="after">
+				<page string="Historial de Cambios de Estado">
+					<field name="state_line_ids" readonly="1">
+						<tree default_order="date desc,id desc">
+							<field name="product_line"/>
+							<field name="street_line"/>
+							<field name="date"/>
+							<field name="stop_date"/>
+							<field name="user_id"/>
+							<field name="notes"/>
+							<field name="historical_state"/>
+							<field name="state"/>
+						</tree>
+					</field>
+				</page>
+			</page>
+		</field>
+	</record>
+</odoo>

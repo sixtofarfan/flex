@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_account_bill_form_form_inherit" model="ir.ui.view">
+		<field name="name">account.bill.form.form.inherit</field>
+		<field name="model">account.bill.form</field>
+		<field name="inherit_id" ref="jp_account_bills_of_exchange.view_account_bill_form_form"/>
+		<field name="arch" type="xml">
+			<field name="exchange_date" position="after">
+				<field name="type_interest"/>
+				<field name="interest"/>
+				<field name="interest_percent"/>
+				<field name="type_time"/>
+				<field name="interest_time"/>
+				<field name="type_freight"/>
+				<field name="freight_interest"/>
+				<field name="igv"/>
+			</field>
+			<field name="acceptor_id" position="after">
+				<field name="order_id"/>
+				<field name="avoid_days"/>
+			</field>
+			<field name="gloss" position="after">
+				<field name="aceptation_date"/>
+			</field>
+			<field name="range_bill" position="after">
+				<field name="multi_range_bill"/>
+			</field>
+			<button name="update_bills" position="after">
+				<button name="update_multi_range" string="Actualizar Rangos" type="object" class="oe_highlight"/>
+			</button>
+			<button name="process" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</button>
+			<button name="process" position="after">
+				<button name="get_aceptation_wizard" string="Procesar" type="object" class="oe_highlight" attrs="{'invisible':[('state','!=','draft')]}"/>
+			</button>
+			<xpath expr="//field[@name='bill_ids']/tree/field[@name='account_id']" position="after">
+				<field name="order_id"/>
+				<field name="internal_ref"/>
+				<field name="interest"/>
+				<field name="interest_time"/>
+				<field name="freight_interest"/>
+				<field name="igv"/>
+			</xpath>
+			<xpath expr="//field[@name='bill_ids']/tree/field[@name='bill_amount_total']" position="before">
+				<field name="capital"/>
+			</xpath>
+			<xpath expr="//field[@name='account_move_line_ids']/tree/field[@name='amount_currency']" position="before">
+				<field name="order_id"/>
+			</xpath>
+		</field>
+	</record>
+	<record model="ir.actions.server" id="action_general_bill_report">
+		<field name="name">Generar Reporte General</field>
+		<field name="model_id" ref="fxo_account_bills_of_exchange_extend.model_account_bill"/>
+		<field name="binding_model_id" ref="fxo_account_bills_of_exchange_extend.model_account_bill"/>
+		<field name="state">code</field>
+		<field name="code">action = records.get_general_bill_report()</field>
+	</record>
+</odoo>

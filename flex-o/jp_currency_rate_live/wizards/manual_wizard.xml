@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_manual_wizard" model="ir.ui.view">
+            <field name="name">manual.wizard.form</field>
+            <field name="model">manual.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Manual Wizard">
+                    <group>
+                        <group>
+                            <field name="manual_rate" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Update" name="update_currency_manual" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_move_line_extra,account.move.line.extra,model_account_move_line_extra,,1,1,1,1
+access_sale_subscription_time_line,sale.subscription.time.line,model_sale_subscription_time_line,,1,1,1,1
+access_serie_control_line,serie.control.line,model_serie_control_line,sale_subscription.group_sale_subscription_manager,1,1,1,1
+access_sale_subscription_log_manager,sale.subscription.log.manager,model_sale_subscription_log,sale_subscription.group_sale_subscription_manager,1,1,1,1
+access_account_move_line_custom_user,account.move.line.custom.user,model_account_move_line_custom,account.group_account_user,1,1,1,1
+access_account_move_line_custom_manager,account.move.line.custom.manager,model_account_move_line_custom,account.group_account_manager,1,1,1,1
+access_sale_subscription_line_custom_manager,sale.subscription.line.custom.manager,model_sale_subscription_line_custom,sale_subscription.group_sale_subscription_manager,1,1,1,1

@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="view_sync_data_server_tree">
+            <field name="name">sync.data.server.tree</field>
+            <field name="model">sync.data.server</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="usuario"/>
+                    <field name="servidor"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_datos_server_from" model="ir.ui.view">
+            <field name="name">sync.data.server.form</field>
+            <field name="model">sync.data.server</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_draft" string="Draft" states="cancel" type="object"/>
+                        <button name="action_done" string="Done" states="draft" type="object"/>
+                        <button name="action_cancel" string="Cancel" states="done" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                    <group>
+                        <field name="name" required="1"/>
+                        <group>
+                            <field name="usuario" required="1"/>
+                            <field name="servidor" required="1"/>
+                            <field name="nombre_servicio" required="1"/>
+                        </group>
+                        <group>
+                            <field name="password" required="1"/>
+                            <field name="puerto" required="1"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="action_sync_data_server">
+            <field name="name">Sync Data Server</field>
+            <field name="res_model">sync.data.server</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_list_sync_data_server" name="Server data Sync" action="action_sync_data_server"
+                  parent="l10n_pe_cpe.pe_cpe_configuration_menu" sequence="1000"/>
+        <!--
+        <record model="ir.ui.view" id="view_company_sync_form">
+            <field name="name">res.company.form.inherit.sync.data.server</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="l10n_pe_invoice.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='pe_cpe_server_id']" position="after">
+                    <field name="sync_data_server_id" options="{'no_create': True}" groups="l10n_pe_cpe.group_pe_cpe_manager"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_company_sync_form">
+            <field name="name">account.journal.form.inherit.sync.data.server</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="l10n_pe_invoice.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='pe_payment_method']" position="after">
+                    <field name="account_id" groups="l10n_pe_cpe.group_pe_cpe_manager"/>
+                </xpath>
+            </field>
+        </record>
+        -->
+
+    </data>
+</odoo>

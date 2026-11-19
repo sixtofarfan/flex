@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.ui.view" id="view_account_balance_period_rep_form_gamma">
+		<field name="name">account.balance.period.rep.form.gamma</field>
+		<field name="model">account.balance.period.rep</field>
+		<field name="arch" type="xml">
+			<form string="Saldo por Fecha Contable">
+					<group>
+						<group>
+							<field name="company_id"/>
+                            <field name="exercise"/>
+							<field name="date_ini"/>
+							<field name="date_end"/>
+						</group>
+						<group>
+							<field name="type_show"/>
+							<field name="only_pending"/>
+							<field name="bills"/>
+							<field name="type_account"/>
+							<field name="partner_id"/>
+							<field name="account_id" domain="[('is_document_an', '=', True)]"/>
+							<field name="journal_id"/>
+							<field name="type_document_id" widget="many2many_tags"/>
+							<field name="is_not_home"/>
+							<field name="bill_to_numberdocument"/>
+						</group>
+					</group>
+					<footer>
+						<button string="Mostrar" name="get_report_gamma" type="object" class="oe_highlight"/>
+                        or
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+			</form>
+		</field>
+	</record>
+	<record id="account_balance_period_rep_gamma_action" model="ir.actions.act_window">
+		<field name="name">Saldo por Fecha Contable Gamma</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">account.balance.period.rep</field>
+		<field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_balance_period_rep_form_gamma')})]"/>
+		<field name="target">new</field>
+	</record>
+	<menuitem 
+		action="account_balance_period_rep_gamma_action"
+		id="menu_action_account_balance_period_rep_gamma"
+		parent="account_balance_doc_rep_it.menu_account_account_report"
+		sequence="1" 
+		groups="account_base_it.group_account_tables_user"/>
+</odoo>

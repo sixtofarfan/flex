@@ -1,0 +1,151 @@
+<odoo>
+    <data>
+        <record id="approval_category_form_inherit" model="ir.ui.view">
+            <field name="name">approval.category.form.inherit</field>
+            <field name="model">approval.category</field>
+            <field name="inherit_id" ref="approvals.approval_category_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='has_location']" position="before">
+                    <field name="has_sale_order" string="Sale Order" widget="radio" options="{'horizontal': true}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="approval_request_form_inherit" model="ir.ui.view">
+            <field name="name">approval.request.form.inherit</field>
+            <field name="model">approval.request</field>
+            <field name="inherit_id" ref="approvals.approval_request_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="has_sale_order" invisible="1"/>
+                    <field name="sale_id" string="Sale Order-Project"
+                           attrs="{'invisible':[('has_sale_order','==','no')] }"/>
+                    <field name="sale_id_project" string="Sale Order-SO"
+                           attrs="{'invisible':[('has_sale_order','==','no')] }"/>
+                </xpath>
+                <xpath expr="//notebook/page[@name='approvers']/field[@name='approver_ids']/tree/field[@name='user_id']"
+                       position="after">
+                    <field name="datetime_approve"/>
+                </xpath>
+                <xpath expr="//notebook/page[@name='approvers']/field[@name='approver_ids']/form/group/field[@name='user_id']"
+                       position="after">
+                    <field name="datetime_approve"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="crm_team_form_inherit" model="ir.ui.view">
+            <field name="name">crm.team.form.inherit</field>
+            <field name="model">crm.team</field>
+            <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='members']" position="after">
+                    <page string="Aprobación Proyecto" name="approval_category">
+                        <field name="approval_id"/>
+                    </page>
+                    <page string="Aprobación Cotizacion" name="approval_category2">
+                        <field name="approval_sale_id"/>
+                    </page>
+                    <page string="Equipo de Factibilidad" name="equipo_factibility">
+                        <field name="user_factibility_id"/>
+                    </page>
+                    <page string="Equipo de Manager Proyecto" name="equipo_manager_project">
+                        <field name="user_project_manager_id"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="project_task_form_inherit" model="ir.ui.view">
+            <field name="name">project.task.form.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_assign_to_me']" position="after">
+                    <button name="next_stage_id" string="Next stage" type="object" class="oe_highlight"
+                            attrs="{'invisible' : ['|',('is_sale_approvate', '=', False),('is_closed', '=', True)]}"/>
+                    <button name="activate_invoice" string="Activate Invoice" type="object" class="oe_highlight"
+                            attrs="{'invisible' : [('is_actitave_invoice', '=', False)]}"/>
+                    <field name="is_closed" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='user_id']" position="before">
+                    <field name="is_actitave_invoice" invisible="1"/>
+                    <field name="is_sale_approvate" invisible="1"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="sale_subscription_form_inherit" model="ir.ui.view">
+            <field name="name">sale.subscription.form.inherit</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group/group/div/button[@name='recurring_invoice']" position="replace">
+                    <button name="recurring_invoice" string="Generate Invoice" class="oe_link"
+                            icon="fa-long-arrow-right" type="object" groups="base.group_no_one"
+                            attrs="{'invisible': [('is_actitave_invoice', '=', False)]}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="is_actitave_invoice" invisible="1"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <!-- approval.request inherit tree view -->
+        <record id="approval_request_inherit_tree" model="ir.ui.view">
+            <field name="name">approval.request.inherit.view.tree</field>
+            <field name="model">approval.request</field>
+            <field name="inherit_id" ref="approvals.approval_request_view_tree"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="category_id" position="before">
+                    <field name="partner_id" optional="show"/>
+                    <field name="date" optional="show"/>
+                    <field name="sale_id" string="Sale Order-Project" optional="show"/>
+                    <field name="sale_id_project" string="Sale Order-SO" optional="show"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- approval.request inherit search view -->
+        <record id="approval_request_inherit_search_id" model="ir.ui.view">
+            <field name="name">approval.request.inherit.view.search</field>
+            <field name="model">approval.request</field>
+            <field name="inherit_id" ref="approvals.approval_search_view_search"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <filter name="filter_my_request" position="before">
+                    <field name="partner_id"/>
+                    <field name="sale_id" string="Sale Order-Project"/>
+                    <field name="sale_id_project" string="Sale Order-SO"/>
+                    <field name="project_id" string="Proyecto"/>
+
+                </filter>
+
+            </field>
+        </record>
+
+
+        <record id="edit_project" model="ir.ui.view">
+            <field name="name">project.project.form.inherit</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Aprobacion">
+                        <field name="approval_id" string="Aprobaciones Proyecto"/>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

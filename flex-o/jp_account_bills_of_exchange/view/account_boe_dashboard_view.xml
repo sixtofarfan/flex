@@ -1,0 +1,22 @@
+<odoo>
+
+    <record id="open_account_boe_dashboard_kanban" model="ir.actions.act_window">
+        <field name="name">Bills of Exchange Overview</field>
+        <field name="res_model">account.bill</field>
+        <field name="view_mode">kanban,tree,form,pivot,graph</field>
+        <field name="view_id" ref="account_bill_kanban_view"/>
+        <field name="usage">menu</field>
+        <field name="context">{'search_default_state_of_bill': 1, 'search_default_overdue': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_neutral_face">
+                This is the account bills of exchange dashboard
+            </p>
+            <p>
+                If you have not created and configured journals for exchange bills, please configure them first.<br/>
+            <a type="action" name="%(jp_account_bills_of_exchange_config_settings_action)d" tabindex="-1">Account bills of exchange settings.</a>
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_board_boe_stock" name="Overview" action="open_account_boe_dashboard_kanban" parent="menu_root_boe" sequence="2" groups="group_module_account_bill_manager"/>
+</odoo>

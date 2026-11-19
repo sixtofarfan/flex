@@ -1,0 +1,177 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fx_currency_rate_live
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-05 00:31+0000\n"
+"PO-Revision-Date: 2024-01-05 00:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fx_currency_rate_live
+#. odoo-javascript
+#: code:addons/extra-addons/pc/fx_currency_rate_live/static/src/xml/systray_custom.xml:0
+#: code:addons/fx_currency_rate_live/static/src/xml/systray_custom.xml:0
+#, python-format
+msgid "Activities"
+msgstr ""
+
+#. module: fx_currency_rate_live
+#: model_terms:ir.ui.view,arch_db:fx_currency_rate_live.view_manual_wizard
+#: model_terms:ir.ui.view,arch_db:fx_currency_rate_live.view_range_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: fx_currency_rate_live
+#: model:ir.model,name:fx_currency_rate_live.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: fx_currency_rate_live
+#: model:ir.model,name:fx_currency_rate_live.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: fx_currency_rate_live
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_manual_wizard__create_uid
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_range_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: fx_currency_rate_live
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_manual_wizard__create_date
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_range_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: fx_currency_rate_live
+#: model:ir.model,name:fx_currency_rate_live.model_res_currency
+msgid "Currency"
+msgstr ""
+
+#. module: fx_currency_rate_live
+#. odoo-javascript
+#: code:addons/extra-addons/pc/fx_currency_rate_live/static/src/js/systray_custom.js:0
+#: code:addons/fx_currency_rate_live/static/src/js/systray_custom.js:0
+#, python-format
+msgid "Currency Rates"
+msgstr "Tasas de Cambio"
+
+#. module: fx_currency_rate_live
+#. odoo-python
+#: code:addons/extra-addons/pc/fx_currency_rate_live/models/res_currency.py:0
+#: code:addons/fx_currency_rate_live/models/res_currency.py:0
+#, python-format
+msgid "Date: "
+msgstr "Fecha: "
+
+#. module: fx_currency_rate_live
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_res_company__foreign_currency_id
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_res_config_settings__foreign_currency_id
+msgid "Default foreign currency rate"
+msgstr "Moneda extranjera por defecto"
+
+#. module: fx_currency_rate_live
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_manual_wizard__display_name
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_range_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: fx_currency_rate_live
+#: model_terms:ir.ui.view,arch_db:fx_currency_rate_live.res_config_settings_view_form
+msgid "Foreign currency rate"
+msgstr "Moneda extranjera base"
+
+#. module: fx_currency_rate_live
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_range_wizard__from_date
+msgid "From date"
+msgstr "Desde"
+
+#. module: fx_currency_rate_live
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_manual_wizard__id
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_range_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: fx_currency_rate_live
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_manual_wizard__write_uid
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_range_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: fx_currency_rate_live
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_manual_wizard__write_date
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_range_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: fx_currency_rate_live
+#: model:ir.model,name:fx_currency_rate_live.model_manual_wizard
+#: model_terms:ir.ui.view,arch_db:fx_currency_rate_live.view_manual_wizard
+msgid "Manual Wizard"
+msgstr "Asistente Manual"
+
+#. module: fx_currency_rate_live
+#: model:ir.model,name:fx_currency_rate_live.model_range_wizard
+#: model_terms:ir.ui.view,arch_db:fx_currency_rate_live.view_range_wizard
+msgid "Range Wizard"
+msgstr "Asistente de Rango"
+
+#. module: fx_currency_rate_live
+#. odoo-python
+#: code:addons/extra-addons/pc/fx_currency_rate_live/wizards/range_wizard.py:0
+#: code:addons/fx_currency_rate_live/wizards/range_wizard.py:0
+#, python-format
+msgid ""
+"The maximum number of attempts (5) has been reached. Please check connection"
+" and try again."
+msgstr ""
+"Se ha alcanzado el número máximo de intentos (5). Por favor revise la conexión"
+" e intente otra vez."
+
+#. module: fx_currency_rate_live
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_range_wizard__to_date
+msgid "To date"
+msgstr "Hasta"
+
+#. module: fx_currency_rate_live
+#: model:ir.model.fields,field_description:fx_currency_rate_live.field_manual_wizard__manual_rate
+msgid "Today's rate"
+msgstr "Tasa de hoy"
+
+#. module: fx_currency_rate_live
+#: model_terms:ir.ui.view,arch_db:fx_currency_rate_live.view_manual_wizard
+#: model_terms:ir.ui.view,arch_db:fx_currency_rate_live.view_range_wizard
+msgid "Update"
+msgstr "Actualizar"
+
+#. module: fx_currency_rate_live
+#. odoo-javascript
+#: code:addons/extra-addons/pc/fx_currency_rate_live/static/src/js/systray_custom.js:0
+#: code:addons/fx_currency_rate_live/static/src/js/systray_custom.js:0
+#, python-format
+msgid "Update Range"
+msgstr "Actualizar tasa en rango"
+
+#. module: fx_currency_rate_live
+#. odoo-javascript
+#: code:addons/extra-addons/pc/fx_currency_rate_live/static/src/js/systray_custom.js:0
+#: code:addons/fx_currency_rate_live/static/src/js/systray_custom.js:0
+#, python-format
+msgid "Update currency rate"
+msgstr "Actualizar tasa"
+
+#. module: fx_currency_rate_live
+#. odoo-javascript
+#: code:addons/extra-addons/pc/fx_currency_rate_live/static/src/js/systray_custom.js:0
+#: code:addons/fx_currency_rate_live/static/src/js/systray_custom.js:0
+#, python-format
+msgid "Update currency rate Manually"
+msgstr "Actualizar tasa manual"

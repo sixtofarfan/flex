@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_main_parameter_form_inherit_compensation" model="ir.ui.view">
+		<field name="name">main.parameter.form.inherit.compensation</field>
+		<field name="model">main.parameter</field>
+		<field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page name="compensation_page" string="Compensation">
+					<group>
+						<field name="bridge_account_ids"/>
+					</group>
+				</page>
+			</xpath>
+		</field>
+	</record>
+</odoo>

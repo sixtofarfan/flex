@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_main_parameter_form_inherit_email" model="ir.ui.view">
+		<field name="name">main.parameter.form.inherit.email</field>
+		<field name="model">main.parameter</field>
+		<field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+		<field name="arch" type="xml">
+			<field name="bank_numbers" position="after">
+				<field name="send_email_nf"/>
+				<field name="send_nubefact"/>
+				<field name="send_multi_credits"/>
+
+
+			</field>
+		</field>
+	</record>
+</odoo>

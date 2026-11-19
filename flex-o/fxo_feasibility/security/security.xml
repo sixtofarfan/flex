@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="group_factibility_user" model="res.groups">
+            <field name="name">Usuario: Solo Ver sus Propios Factibilidades</field>
+            <field name="category_id" ref="factibility_module_category"/>
+        </record>
+        <record id="group_factibility_manager" model="res.groups">
+            <field name="name">Usuario: Ver Factibilidades de Todos</field>
+            <field name="category_id" ref="factibility_module_category"/>
+        </record>
+        <record id="group_factibility_administrator" model="res.groups">
+            <field name="name">Usuario: Administrador</field>
+            <field name="category_id" ref="factibility_module_category"/>
+        </record>
+
+        <record id="group_add_pricelist" model="res.groups">
+            <field name="name">Actualizar Tarifas en Estudio Económico</field>
+            <field name="category_id" ref="factibility_module_category"/>
+        </record>
+
+
+        <record id="sale_order_line_factibility_company_id" model="ir.rule">
+            <field name="name">Sale Order Line Factibility Multi-Company</field>
+            <field name="model_id" ref="model_sale_order_line_factibility"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="sale_order_line_qty_street_company_id" model="ir.rule">
+            <field name="name">sale.order.line.qty_street Multi-Company</field>
+            <field name="model_id" ref="model_sale_order_line_qty_street"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="economic_study_move_company_id" model="ir.rule">
+            <field name="name">Economic Study Move Multi-Company</field>
+            <field name="model_id" ref="model_economic_study_move"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="economic_study_move_balance_company_id" model="ir.rule">
+            <field name="name">Economic Study Move Balance Company Multi-Company</field>
+            <field name="model_id" ref="model_economic_study_move_balance"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="fxo_feasibility_params_company_id" model="ir.rule">
+            <field name="name">fxo_feasibility_params_company Multi-Company</field>
+            <field name="model_id" ref="model_fxo_feasibility_params"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="fxo_feasibility_params_lines_company_id" model="ir.rule">
+            <field name="name">fxo_feasibility_params_lines_company Multi-Company</field>
+            <field name="model_id" ref="model_fxo_feasibility_params_lines"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="subscription_line_upgrade_company_id" model="ir.rule">
+            <field name="name">Subscription Line Upgrade Multi-Company</field>
+            <field name="model_id" ref="model_subscription_line_upgrade"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+
+
+    </data>
+</odoo>

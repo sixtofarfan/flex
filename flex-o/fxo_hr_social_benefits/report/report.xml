@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            id="action_report_cts_release"
+            model="hr.cts.line"
+            string="Liberacion CTS"
+            report_type="qweb-pdf"
+            name="fxo_hr_social_benefits.template_cts_release"
+            file="fxo_hr_social_benefits.template_cts_release"
+        />
+
+        <record id="action_report_cts_release" model="ir.actions.report">
+            <field name="paperformat_id" ref="fxo_hr_social_benefits.paperformat_cts_release"/>
+        </record>
+
+        <report
+            id="action_report_work_voucher"
+            model="hr.employee"
+            string="Certificado de Trabajo"
+            report_type="qweb-pdf"
+            name="fxo_hr_social_benefits.template_work_voucher"
+            file="fxo_hr_social_benefits.template_work_voucher"
+        />
+
+        <record id="action_report_work_voucher" model="ir.actions.report">
+            <field name="paperformat_id" ref="fxo_hr_social_benefits.paperformat_work_voucher"/>
+        </record>
+    </data>
+</odoo>

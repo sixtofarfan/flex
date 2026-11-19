@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="template_refinancing_form">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="jp_account_bills_of_exchange.refinancing_form" t-lang="o.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="refinancing_form">
+            <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+            <div class="header">
+                <t t-if="o and o.company_id">
+                    <t t-set="company" t-value="o.company_id"></t>
+                </t>
+                <t t-if="o and o.company_id and o.company_id.partner_id">
+                    <t t-set="partner" t-value="o.company_id.partner_id"></t>
+                </t>
+                <table>
+                    <tr>
+                        <td>
+                            <br/>
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-left" alt="Logo" style="max-height: 80; max-width:80px;"/>
+                        </td>
+                        <td>
+                            <br/>
+                            <div style="font-size: 12px; padding-left: 45px;">
+                                <b>
+                                    <span style="font-size: 14px;" t-field="company.name"/>
+                                </b>
+                                <br/>
+                                <span t-field="partner.street"/>
+                                <br/>
+                                <span t-field="partner.street2"/>
+                                <br/>
+                                <span t-field="partner.state_id.name"/>-<span t-field="partner.city_id.name"/>-<span t-field="partner.l10n_pe_district.name"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page" style="margin-top: 30px;">
+                <div class="dets_order">
+                    <table width="100%">
+                        <thead style=" background-color: #C9CAC9;">
+                            <tr>
+                                <th colspan="3" width="100%" style="text-align: center;font-size: 11px;">COMPROBANTE DE LETRAS POR ACEPTAR POR REFINANCIEAMIENTO</th>
+                            </tr>
+                        </thead>
+                        <tbody style="font-size: 12px;">
+                            <tr>
+                                <td width="70%" colspan="2"><b>CLIENTE: </b><span t-field="o.partner_id.name"/> </td>
+                                <td><b>FECHA EMSIÓN: </b><span t-field="o.exchange_date"/> </td>
+                            </tr>
+                            <tr>
+                                <td width="70%" colspan="2"><b>DIRECCIÓN: </b><span t-field="o.partner_id.street"/> </td>
+                                <td><b>PLANILLA: </b><span t-field="o.name"/> </td>
+                            </tr>
+                            <tr>
+                                <td width="70%" colspan="2"><b>CIUDAD - PAÍS: </b><span t-field="o.partner_id.state_id.name"/>-<span t-field="o.partner_id.country_id.name"/></td>
+                                <td><b>MONEDA: </b><span t-field="o.currency_id.name"/> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><b>ESTADO: </b><span t-field="o.state"/> </td>
+                                <td><b>TIPO DE CAMBIO: </b><span t-field="o.exchange_rate"/> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2> Facturas </h2>
+                    <table width="100%" style="font-size: 11px;border-top:1px solid black">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Doc</th>
+                                <th style="text-align: left;">Serie</th>
+                                <th style="text-align: left;">Nro.</th>
+                                <th style="text-align: left;">Fecha Emisión</th>
+                                <th style="text-align: left;">Moneda</th>
+                                <th style="text-align: right;">Saldo</th>
+                                <th style="text-align: right;">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="total" t-value="0"/>
+                            <t t-set="total_signed" t-value="0"/>
+                            <tr t-foreach="o.invoice_ids" t-as="l">
+                                <td><span t-field="l.type_document_id.name"/></td>
+                                <td><span t-esc="l.ref[:l.ref.find('-')] if l.ref.find('-') != -1 else ''"/></td>
+                                <td><span t-esc="l.ref[l.ref.find('-')+1:] if l.ref.find('-') != -1 else ''"/></td>
+                                <td><span t-esc="l.invoice_date" t-options='{"widget": "date"}' /></td>
+                                <t t-if="l.currency_id.name">
+                                    <td><span t-esc="l.currency_id.name"/></td>
+                                </t>
+                                <t t-if="not l.currency_id.name">
+                                    <td><span t-esc="o.company_id.currency_id.name"/></td>
+                                </t>
+                                <t t-if="o.state == 'done'">
+                                    <td style="text-align: right;"><span t-esc="'%.2f'%(l.exchange_amount)"/></td>
+                                    <td style="text-align: right;"><span t-esc="'%.2f'%(l.exchange_amount_signed)"/></td>
+                                    <t t-set="total" t-value="total + l.exchange_amount"/>
+                                    <t t-set="total_signed" t-value="total + l.exchange_amount_signed"/>
+                                </t> 
+                                <t t-if="o.state != 'done'">
+                                    <td style="text-align: right;"><span t-esc="'%.2f'%(l.amount_residual)"/></td>
+                                    <td style="text-align: right;"><span t-esc="'%.2f'%(l.amount_residual_signed)"/></td>
+                                    <t t-set="total" t-value="total + l.amount_residual"/>
+                                    <t t-set="total_signed" t-value="total + l.amount_residual_signed"/>
+                                </t> 
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;" colspan="5"><b>TOTALES: </b></td>
+                                <td style="text-align: right; border-top: 1px solid black;"><span t-esc="'%.2f'%(total)"/> </td>
+                                <td style="text-align: right; border-top: 1px solid black;"><span t-esc="'%.2f'%(total_signed)"/> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <h2>Letras Originales</h2>
+                    <table width="100%" style="font-size: 11px;border-top:1px solid black">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Letra</th>
+                                <th style="text-align: left;">Aceptante</th>
+                                <th style="text-align: left;">Aval</th>
+                                <th style="text-align: left;">Fecha Vencimiento</th>
+                                <th style="text-align: left;">Moneda</th>
+                                <th style="text-align: right;">Importe</th>
+                                <th style="text-align: right;">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="saldo" t-value="0"/>
+                            <t t-set="total" t-value="0"/>
+                            <tr t-foreach="o.overdue_bill_ids" t-as="l">
+                                <td>
+                                    <span style="text-align: left;" t-esc="l.bill_number"/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-field="l.acceptor_id.name"/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-esc="l.guarantee_id.name"/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-field="l.bill_date_due" t-options='{"widget": "date"}'/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-esc="l.bill_currency_id.name"  />
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.bill_amount_total)" />
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.bill_amount_total_signed)"/>
+                                </td>
+                                <t t-set="saldo" t-value="saldo + l.bill_amount_total"/>
+                                <t t-set="total" t-value="total + l.bill_amount_total_signed "/>
+                            </tr>
+                            <tr/>
+                            <tr>
+                                <td style="text-align: right;" colspan="5">
+                                    <b>TOTALES: </b>
+                                </td>
+                                <td style="text-align: right; border-top: 1px solid black;">
+                                    <span t-esc="'%.2f'%(saldo)"/>
+                                </td>
+                                <td style="text-align: right; border-top: 1px solid black;">
+                                    <span t-esc="'%.2f'%(total)"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <h2>Intereses por mora</h2>
+                    <table width="100%" style="font-size: 11px;border-top:1px solid black">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Tipo de documento</th>
+                                <th style="text-align: left;">Tipo ddocumento SUNAT</th>
+                                <th style="text-align: left;">Importe</th>
+                                <th style="text-align: left;">Fecha Vencimiento Original</th>
+                                <th style="text-align: left;">Nueva Fecha</th>
+                                <th style="text-align: right;">Días</th>
+                                <th style="text-align: right;">Tasa %</th>
+                                <th style="text-align: left;">Moneda</th>
+                                <th style="text-align: right;">Interes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="saldo" t-value="0"/>
+                            <tr t-foreach="o.interest_lp_ids" t-as="l">
+                                <td>
+                                    <span style="text-align: left;" t-esc="l.document_type"/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-field="l.document_type_sunat"/>
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.amount)"/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-field="l.original_due_date" t-options='{"widget": "date"}'/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-field="l.new_due_date" t-options='{"widget": "date"}'/>
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.days)" />
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.refinancing_rate)" />
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-esc="l.currency_id.name"/>
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.interest)"/>
+                                </td>
+                                <t t-set="saldo" t-value="saldo + l.interest"/>
+                            </tr>
+                            <tr/>
+                            <tr>
+                                <td style="text-align: right;" colspan="8">
+                                    <t t-if="o.debit_note_lp_id">
+                                        <b>SUB-TOTAL: </b>
+                                    </t>
+                                    <t t-if="not o.debit_note_lp_id">
+                                        <b>TOTAL: </b>
+                                    </t>
+                                </td>
+                                <td style="text-align: right; border-top: 1px solid black;">
+                                    <span t-esc="'%.2f'%(saldo)"/>
+                                </td>
+                            </tr>
+                            <t t-if="o.debit_note_lp_id">
+                                <tr>
+                                    <td style="text-align: right;" colspan="8">
+                                        <b>GASTOS ADMIN.: </b>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <span t-esc="'%.2f'%(o.debit_note_lp_id.amount_untaxed - saldo)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right;" colspan="8">
+                                        <b>ND <span t-field="o.debit_note_lp_id.ref"/>:</b>
+                                    </td>
+                                    <td style="text-align: right; border-top: 1px solid black;">
+                                        <span t-esc="'%.2f'%(o.debit_note_lp_id.amount_untaxed)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right;" colspan="8">
+                                        <b>IMPUESTOS: </b>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <span t-esc="'%.2f'%(o.debit_note_lp_id.amount_tax)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right;" colspan="8">
+                                        <b>TOTAL: </b>
+                                    </td>
+                                    <td style="text-align: right; border-top: 1px solid black;">
+                                        <span t-esc="'%.2f'%(o.debit_note_lp_id.amount_total)"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <h2>Letras</h2>
+                    <table width="100%" style="font-size: 11px;border-top:1px solid black">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Letra</th>
+                                <th style="text-align: left;">Aceptante</th>
+                                <th style="text-align: left;">Aval</th>
+                                <th style="text-align: left;">Fecha Vencimiento</th>
+                                <th style="text-align: left;">Moneda</th>
+                                <th style="text-align: right;">Importe</th>
+                                <th style="text-align: right;">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="saldo" t-value="0"/>
+                            <t t-set="total" t-value="0"/>
+                            <tr t-foreach="o.bill_ids" t-as="l">
+                                <td>
+                                    <span style="text-align: left;" t-esc="l.bill_number"/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-field="l.acceptor_id.name"/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-esc="l.guarantee_id.name"/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-field="l.bill_date_due" t-options='{"widget": "date"}'/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-esc="l.bill_currency_id.name"  />
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.bill_amount_total)" />
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.bill_amount_total_signed)"/>
+                                </td>
+                                <t t-set="saldo" t-value="saldo + l.bill_amount_total"/>
+                                <t t-set="total" t-value="total + l.bill_amount_total_signed "/>
+
+                            </tr>
+                            <tr/>
+                            <tr>
+                                <td style="text-align: right;" colspan="5">
+                                    <b>TOTALES: </b>
+                                </td>
+                                <td style="text-align: right; border-top: 1px solid black;">
+                                    <span t-esc="'%.2f'%(saldo)"/>
+                                </td>
+                                <td style="text-align: right; border-top: 1px solid black;">
+                                    <span t-esc="'%.2f'%(total)"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <h2>Intereses por refinanciamiento</h2>
+                    <table width="100%" style="font-size: 11px;border-top:1px solid black">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Tipo de documento</th>
+                                <th style="text-align: left;">Tipo ddocumento SUNAT</th>
+                                <th style="text-align: left;">Importe</th>
+                                <th style="text-align: left;">Fecha Vencimiento Original</th>
+                                <th style="text-align: left;">Nueva Fecha</th>
+                                <th style="text-align: right;">Días</th>
+                                <th style="text-align: right;">Tasa %</th>
+                                <th style="text-align: left;">Moneda</th>
+                                <th style="text-align: right;">Interes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="saldo" t-value="0"/>
+                            <tr t-foreach="o.interest_or_ids" t-as="l">
+                                <td>
+                                    <span style="text-align: left;" t-esc="l.document_type"/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-field="l.document_type_sunat"/>
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.amount)"/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-field="l.original_due_date" t-options='{"widget": "date"}'/>
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-field="l.new_due_date" t-options='{"widget": "date"}'/>
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.days)" />
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.refinancing_rate)" />
+                                </td>
+                                <td>
+                                    <span style="text-align: left;" t-esc="l.currency_id.name"/>
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="'%.2f'%(l.interest)"/>
+                                </td>
+                                <t t-set="saldo" t-value="saldo + l.interest"/>
+                            </tr>
+                            <tr/>
+                            <tr>
+                                <td style="text-align: right;" colspan="8">
+                                    <t t-if="o.debit_note_or_id">
+                                        <b>SUB-TOTAL: </b>
+                                    </t>
+                                    <t t-if="not o.debit_note_or_id">
+                                        <b>TOTAL: </b>
+                                    </t>
+                                </td>
+                                <td style="text-align: right; border-top: 1px solid black;">
+                                    <span t-esc="'%.2f'%(saldo)"/>
+                                </td>
+                            </tr>
+                            <t t-if="o.debit_note_or_id">
+                                <tr>
+                                    <td style="text-align: right;" colspan="8">
+                                        <b>GASTOS ADMIN.: </b>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <span t-esc="'%.2f'%(o.debit_note_or_id.amount_untaxed - saldo)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right;" colspan="8">
+                                        <b>ND <span t-field="o.debit_note_or_id.ref"/>:</b>
+                                    </td>
+                                    <td style="text-align: right; border-top: 1px solid black;">
+                                        <span t-esc="'%.2f'%(o.debit_note_or_id.amount_untaxed)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right;" colspan="8">
+                                        <b>IMPUESTOS: </b>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <span t-esc="'%.2f'%(o.debit_note_or_id.amount_tax)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right;" colspan="8">
+                                        <b>TOTAL: </b>
+                                    </td>
+                                    <td style="text-align: right; border-top: 1px solid black;">
+                                        <span t-esc="'%.2f'%(o.debit_note_or_id.amount_total)"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <t t-if="o.total_retention > 0">
+                        <h2>Retenciones</h2>
+                        <table width="100%" style="font-size: 11px;border-top:1px solid black">
+                            <tr>
+                                <td style="text-align: right;" colspan="8">
+                                    <b>TOTALES: </b>
+                                </td>
+                                <td style="text-align: right;">
+                                    <span t-esc="o.total_retention"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </t>
+                </div>
+            </div>
+        </template>
+    </data>
+</odoo>

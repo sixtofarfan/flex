@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_import_move_apertura_it_form_inherit">
+			<field name="name">import.move.apertura.it.form.inherit</field>
+			<field name="model">import.move.apertura.it</field>
+			<field name="inherit_id" ref="import_saldos_iniciales_it.view_import_move_apertura_it_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='detalle']/tree/field[@name='doc_origin']" position="after">
+					<field name="collection_id"/>
+					<field name="invoice_period_id"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

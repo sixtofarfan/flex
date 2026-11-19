@@ -1,0 +1,5 @@
+Modulo fxo_website_helpdesk_form
+campo service_id  lee  lineas de contratos.
+
+* Quitar comentarios para poner campos al instalar modulos de website
+fxo_website_helpdesk_form/__manifest__.py

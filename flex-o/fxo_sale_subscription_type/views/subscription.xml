@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <!-- sale.subscription inherit form view -->
+        <record id="sale_subscription_view_form_extend" model="ir.ui.view">
+            <field name="name">sale.subscription.inherit.view.form</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <page id="lines" position="after">
+                    <page name="upgrade_downgrade" string="Historial Contrato">
+                        <field name="sale_update_id" readonly="1">
+                            <tree default_order="id desc">
+                                <field name="name"/>
+                                <field name="type_id"/>
+                                <field name="date_update_from"/>
+                                <field name="date_update_to"/>
+                                <field name="currency_id"/>
+                                <field name="amount_untaxed"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="sale_subscription_lien_view_form_extend" model="ir.ui.view">
+            <field name="name">sale.subscription.inherit.view.form</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='name']" position="after">
+                    <field name="order_reference"/>
+                    <field name="order_partner_street_id" invisible="1"/>
+                    <field name="partner_street_destination"
+                           domain="['|',('id', '=', order_partner_street_id),('parent_id', '=', order_partner_street_id)]"/>
+                </xpath>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree" position="inside">
+                    <field name="state"/>
+                </xpath>
+                <field name="code" position="after">
+                    <field name="signature_date" force_save="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="sale_subscription_stage_id_view_stage_form" model="ir.ui.view">
+            <field name="name">sale_subscription_stage_id.stage.form</field>
+            <field name="model">sale.subscription.stage</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_stage_view_form"/>
+            <field name="arch" type="xml">
+                <field name="fold" position="before">
+                    <field name="code"/>
+                </field>
+            </field>
+        </record>
+
+
+        <record id="sale_subscription_stage_id_view_stage_tree" model="ir.ui.view">
+            <field name="name">sale_subscription_stage_id.stage.tree</field>
+            <field name="model">sale.subscription.stage</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_stage_view_list"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="code"/>
+                </field>
+            </field>
+        </record>
+
+
+        <record id="sale_subscription_view_search_filter_extend" model="ir.ui.view">
+            <field name="name">sale.subscription.view.search.inherit</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_search"/>
+            <field name="arch" type="xml">
+                <search position="inside">
+                    <filter string="Hoy" name="date_deadline_hoy_filter"
+                            domain="[('date', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                    <filter name="date_deadline_week_filter" string="Esta Semana" domain="[
+                        ('date', '>=', (datetime.datetime.combine(context_today() + relativedelta(weeks=-1,days=1,weekday=0), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S')),
+                        ('date', '&lt;', (datetime.datetime.combine(context_today() + relativedelta(days=1,weekday=0), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+
+                    <filter string="Siguientes 2 Semanas" name="date_deadline_week_2_filter"
+                            domain="[('date', '&lt;=', (context_today() + relativedelta(weeks=2)).strftime('%Y-%m-%d')),
+                                     ('date', '&gt;=', (context_today().strftime('%Y-%m-%d')))]"/>
+
+                    <filter name="date_this_month_filter" string="Este Mes"
+                            domain="[('date','&gt;=', context_today().strftime('%%Y-%%m-01')),('date','&lt;', (context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01'))]"/>
+
+
+                    <filter name="date_this_month_filter" string="Próximo Mes"
+                            domain="[('date','&gt;=', (context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')),('date','&lt;', (context_today()+relativedelta(months=2)).strftime('%%Y-%%m-01'))]"/>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

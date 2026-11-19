@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_move_form_inherit" model="ir.ui.view">
+		<field name="name">move.form.inherit</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form"/>
+		<field name="arch" type="xml">
+			<data>
+				<!-- <xpath expr="//field[@name='type_op_det']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='code_operation']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath> -->
+				<xpath expr="//field[@name='type_op_det']" position="after">
+                    <field name="type_operation" options="{'no_create': True, 'no_create_edit':True}"/>
+                    <field name="type_good_service" options="{'no_create': True, 'no_create_edit':True}"/>
+                    <field name="percent_detraction"/>
+				</xpath>
+				<field name="glosa" position="after">
+					<field name="referencial_value"/>
+				</field>
+			</data>
+		</field>
+	</record>
+
+        <record id="view_move_form_inherit" model="ir.ui.view">
+                <field name="name">move.form.inherit</field>
+                <field name="model">account.move</field>
+                <field name="inherit_id" ref="ebill.view_move_form_inherit"/>
+                <field name="arch" type="xml">
+                        <field name="detraction_amount" position="after">
+                                <field name="retencion_amount"  />
+                                <field name="p_retention"  />
+                        </field>
+                </field>
+        </record>
+
+	<record id="get_import_txt_wizard" model="ir.actions.server">
+		<field name="name">Importación txt Constancia Detr. Sunat</field>
+		<field name="model_id" ref="account.model_account_move"/>
+		<field name="binding_model_id" ref="account.model_account_move"/>
+		<field name="state">code</field>
+		<field name="code">action = records.get_import_txt_wizard()</field>
+	</record>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="view_account_balance_period_book_tree_inherit" model="ir.ui.view">
+			<field name="name">account.balance.period.book.tree.inherit</field>
+			<field name="model">account.balance.period.book</field>
+			<field name="inherit_id" ref="account_balance_doc_rep_it.view_account_balance_period_book_tree"/>
+			<field name="arch" type="xml">
+				<field name="partner" position="after">
+					<field name="collection"/>
+					<field name="invoice_period"/>
+				</field>
+			</field>
+		</record>
+
+		<record id="account_balance_period_book_search_inherit" model="ir.ui.view">
+			<field name="name">account.balance.period.book.search.inherit</field>
+			<field name="model">account.balance.period.book</field>
+			<field name="inherit_id" ref="account_balance_doc_rep_it.account_balance_period_book_search"/>
+			<field name="arch" type="xml">
+				<field name="partner" position="after">
+					<field name="collection"/>
+					<field name="invoice_period"/>
+				</field>
+				<filter name="partner" position="after">
+					<filter string="Cobrador" name="collection" icon="terp-partner" context="{'group_by':'collection'}"/>
+					<filter string="Periodo de Facturacion" name="invoice_period" icon="terp-partner" context="{'group_by':'invoice_period'}"/>
+				</filter>
+			</field>
+		</record>
+	</data>
+</odoo>

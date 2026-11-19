@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<template id="report_invoice_document" inherit_id="account.report_invoice_document">
+		<xpath expr="//div[@id='total']" position="replace">
+			<div id="total" class="row">
+				<div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+					<table class="table table-sm" style="page-break-inside: avoid;">
+						<tr class="border-black o_subtotal" style="">
+							<td><strong>Subtotal</strong></td>
+							<td class="text-right">
+								<t t-if="o.dua_free!='free'">
+									<span t-field="o.amount_untaxed"/>
+								</t>
+								<t t-elif="o.dua_free=='free'">
+									<span t-field="o.currency_id.symbol"></span> 0.00
+								</t>
+							</td>
+						</tr>
+						<t t-foreach="o.amount_by_group" t-as="amount_by_group">
+							<tr style="">
+								<t t-if="len(o.line_ids.filtered(lambda line: line.tax_line_id)) in [0, 1] and o.amount_untaxed == amount_by_group[2]">
+									<td><span class="text-nowrap" t-esc="amount_by_group[0]"/></td>
+									<td class="text-right o_price_total">
+										<t t-if="o.dua_free!='free'">
+											<span class="text-nowrap" t-esc="amount_by_group[3]"/>
+										</t>
+										<t t-elif="o.dua_free=='free'">
+											<span class="text-nowrap" t-field="o.currency_id.symbol"></span> 0.00
+										</t>
+									</td>
+								</t>
+								<t t-else="">
+									<td>
+										<t t-if="o.dua_free!='free'">
+											<span t-esc="amount_by_group[0]"/>
+										</t>
+										<t t-elif="o.dua_free=='free'">
+											<span t-field="o.currency_id.symbol"></span> 0.00
+										</t>
+										<span class="text-nowrap"> on
+											<t t-if="o.dua_free!='free'">
+												<t t-esc="amount_by_group[4]"/>
+											</t>
+											<t t-elif="o.dua_free=='free'">
+												<span t-field="o.currency_id.symbol"></span> 0.00
+											</t>
+										</span>
+									</td>
+									<td class="text-right o_price_total">
+										<t t-if="o.dua_free!='free'">
+											<span class="text-nowrap" t-esc="amount_by_group[3]"/>
+										</t>
+										<t t-elif="o.dua_free=='free'">
+											<span class="text-nowrap" t-field="o.currency_id.symbol"></span> 0.00
+										</t>
+									</td>
+								</t>
+							</tr>
+						</t>
+						<tr class="border-black o_total">
+							<td><strong>Total</strong></td>
+							<td class="text-right">
+								<t t-if="o.dua_free!='free'">
+									<span class="text-nowrap" t-field="o.amount_total"/>
+								</t>
+								<t t-elif="o.dua_free=='free'">
+									<span class="text-nowrap" t-field="o.currency_id.symbol"></span> 0.00
+								</t>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</xpath>
+	</template>
+
+</odoo>

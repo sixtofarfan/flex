@@ -1,0 +1,192 @@
+<odoo>
+  <data>
+
+    <record id="account_closure_model_list" model="ir.ui.view">
+        <field name="name">account.closure.model.list</field>
+        <field name="model">account.closure.model</field>
+        <field name="arch" type="xml">
+        <tree string="Closure model">
+            <field name="name"/>
+            <field name="closure_stage_ids"/>
+        </tree>
+        </field>
+    </record>
+
+    <record id="account_closure_model_form" model="ir.ui.view">
+        <field name="name">account.closure.model.form</field>
+        <field name="model">account.closure.model</field>
+        <field name="arch" type="xml">
+            <form string="Closure model">
+                <sheet>
+                    <h1 class="mt0">
+                        <field name="name" class="oe_inline"/>
+                    </h1>
+                    <notebook>
+                        <page string="Stages">
+                            <field name="closure_stage_ids" nolabel="1" widget="many2many" mode="tree">
+                                <tree>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="type_stage"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="account_closure_stage_list" model="ir.ui.view">
+        <field name="name">account.closure.stage.list</field>
+        <field name="model">account.closure.stage</field>
+        <field name="arch" type="xml">
+        <tree string="Closure stage">
+            <field name="name"/>
+            <field name="description"/>
+            <field name="type_stage"/>
+        </tree>
+        </field>
+    </record>
+
+    <record id="account_closure_stage_form" model="ir.ui.view">
+        <field name="name">account.closure.stage.form</field>
+        <field name="model">account.closure.stage</field>
+        <field name="arch" type="xml">
+            <form string="Closure stage">
+                <sheet>
+                    <h1 class="mt0">
+                        <field name="name" required="1" class="oe_inline"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="type_stage" required="1"/>
+                            <field name="account_simple_id" attrs="{'invisible': [('type_stage','=','complex')], 'required': [('type_stage','=','simple')]}" domain="[('internal_group', '!=', 'off_balance')]"/>
+                            <field name="sync_time" required="1" widget="radio"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Accounts" attrs="{'invisible': ['|', ('type_stage','=','simple'), ('type_stage','=', False)]}">
+                            <field name="complex_line_ids" nolabel="1" widget="one2many" mode="tree">
+                                <tree editable="bottom">
+                                    <field name="origin_account_id" domain="[('internal_group', '!=', 'off_balance')]"/>
+                                    <field name="destin_account_id" domain="[('internal_group', '!=', 'off_balance')]"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Accounts" attrs="{'invisible': ['|', ('type_stage','=','complex'), ('type_stage','=', False)]}">
+                            <field name="simple_line_ids" nolabel="1" widget="many2many" mode="tree" domain="[('internal_group', '!=', 'off_balance')]"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="account_closure_list" model="ir.ui.view">
+        <field name="name">account.closure.list</field>
+        <field name="model">account.closure</field>
+        <field name="arch" type="xml">
+        <tree string="Close fiscal year">
+            <field name="name"/>
+            <field name="closing_fiscal_year_id"/>
+        </tree>
+        </field>
+    </record>
+
+    <record id="account_closure_form" model="ir.ui.view">
+        <field name="name">account.closure.form</field>
+        <field name="model">account.closure</field>
+        <field name="arch" type="xml">
+            <form string="Close fiscal year">
+                <header>
+                    <button string="Checking Balance" name="checking_balance" type="object" class="oe_highlight" states="draft"/>
+                    <button string="Prepare" name="make_pre_closure" type="object" class="oe_highlight" states="checked"/>
+                    <button string="Close" name="make_post_closure" type="object" class="oe_highlight" states="prepared"/>
+                    <button string="Cancel" name="cancel" type="object" states="checked,prepared,done"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,checked,prepared,done" readonly="1"/>
+                </header>
+                <sheet>
+                    <h1 class="mt0">
+                        <field name="name" required="1" class="oe_inline" attrs="{'readonly': [('state','!=','draft')]}"/>
+                    </h1>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': [('state', '!=', 'prepared')]}">
+                        Please create the income tax move to finish the closure procedure.
+                    </div>
+                    <group>
+                        <group>
+                            <field name="closure_model_id" attrs="{'readonly': [('state','!=','draft')]}" required="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="closing_fiscal_year_id" required="1" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="closing_period_id" attrs="{'readonly': [('state','!=','draft')]}" domain="[('fiscal_year_id','=',closing_fiscal_year_id)]" required="1"/>
+                            <field name="closing_journal_id" attrs="{'readonly': [('state','!=','draft')]}" required="1"/>
+                        </group>
+                        <group>
+                            <field name="opening_fiscal_year_id" required="1" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="opening_period_id" attrs="{'readonly': [('state','!=','draft')]}" domain="[('fiscal_year_id','=',opening_fiscal_year_id)]" required="1"/>
+                            <field name="opening_journal_id" attrs="{'readonly': [('state','!=','draft')]}" required="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Journal entries">
+                            <field name="account_move_ids">
+                                <tree create="false" >
+                                    <field name="date"/>
+                                    <field name="name"/>
+                                    <field name="journal_id"/>
+                                    <field name="glosa"/>
+                                    <field name="amount_total_signed" sum="Total"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="account_closure_action_window" model="ir.actions.act_window">
+      <field name="name">Close fiscal year</field>
+      <field name="res_model">account.closure</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="account_closure_action_window" model="ir.actions.act_window">
+      <field name="name">Close fiscal year</field>
+      <field name="res_model">account.closure</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="account_closure_model_action_window" model="ir.actions.act_window">
+      <field name="name">Close model</field>
+      <field name="res_model">account.closure.model</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="account_closure_stages_action_window" model="ir.actions.act_window">
+      <field name="name">Close stages</field>
+      <field name="res_model">account.closure.stage</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_finance_entries_closure" name="Accounting closure" parent="account.menu_finance_entries" sequence="12"/>
+            
+    <menuitem name="Closure models" id="closure_model" parent="menu_finance_entries_closure"
+            action="account_closure_model_action_window" sequence="10"/>
+
+    <menuitem name="Closure stages" id="closure_stages" parent="menu_finance_entries_closure"
+            action="account_closure_stages_action_window" sequence="20"/>
+
+    <menuitem name="Close fiscal year" id="close_fiscal_year" parent="menu_finance_entries_closure"
+            action="account_closure_action_window" sequence="30"/>
+
+  </data>
+</odoo>

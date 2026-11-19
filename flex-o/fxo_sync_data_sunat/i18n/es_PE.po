@@ -1,0 +1,273 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* fxo_sync_data_sunat
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-23 03:51+0000\n"
+"PO-Revision-Date: 2019-04-23 03:51+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,help:fxo_sync_data_sunat.field_ir_cron_website_published
+msgid "A code server action can be executed from the website, using a dedicated controller. The address is <base>/website/action/<website_path>. Set this field as True to allow users to run this action. If it is set to False the action cannot be run through the website."
+msgstr "Se puede ejecutar desde el sitio web una acción de servidor de código, usando un controlador dedicado. La dirección es <base>/website/action/<website_path>. Establezca este campo a verdadero para permitir a los usuarios ejecutar esta acción. Si se establece a falso, la acción no se podrá ejecutar a través del sitio web."
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_active
+msgid "Active"
+msgstr "Activo"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_ir_cron_channel_ids
+msgid "Add Channels"
+msgstr "Añadir canales"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_ir_cron_partner_ids
+msgid "Add Followers"
+msgstr "Añadir seguidores"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_ir_cron_website_published
+msgid "Available on the Website"
+msgstr "Disponible en el sitio web"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_cadena_conexion
+msgid "Cadena de Conexion"
+msgstr "Cadena de Conexion"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.ui.view,arch_db:fxo_sync_data_sunat.view_datos_server_from
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: fxo_sync_data_sunat
+#: selection:sync.data.server,state:0
+msgid "Cancelled"
+msgstr "Cancelled"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model,name:fxo_sync_data_sunat.model_res_company
+msgid "Companies"
+msgstr "Compañias"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.ui.menu,name:fxo_sync_data_sunat.menu_list_sync_data_in
+msgid "Data Sync In"
+msgstr "Data Sync In"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_account_invoice_sync_data_id
+msgid "Datos Sync"
+msgstr "Datos Sync"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_in_display_name
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_display_name
+msgid "Display Name"
+msgstr "Nombre a Mostrar"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.ui.view,arch_db:fxo_sync_data_sunat.view_datos_server_from
+#: selection:sync.data.server,state:0
+msgid "Done"
+msgstr "Realizado"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.ui.view,arch_db:fxo_sync_data_sunat.view_datos_server_from
+#: selection:sync.data.server,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_ir_cron_template_id
+msgid "Email Template"
+msgstr "Plantilla de correo electrónico"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_in_invoice_ids
+msgid "Facturas"
+msgstr "Facturas"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_in_fecha_proceso
+msgid "Fecha proceso"
+msgstr "Fecha proceso"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_id
+msgid "ID"
+msgstr "ID"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_account_invoice_cabecera_id
+msgid "Id de tabla"
+msgstr "Id de tabla"
+
+#. module: fxo_sync_data_sunat
+#: selection:sync.data.in,tipo:0
+msgid "Ingreso"
+msgstr "Ingreso"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model,name:fxo_sync_data_sunat.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model,name:fxo_sync_data_sunat.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Detalle de Factura"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_in_datas_json
+msgid "JSON Data"
+msgstr "JSON Data"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model,name:fxo_sync_data_sunat.model_account_journal
+msgid "Journal"
+msgstr "Diario"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_in___last_update
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server___last_update
+msgid "Last Modified on"
+msgstr "Ultima Modificación en"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_write_uid
+msgid "Last Updated by"
+msgstr "Actualizado última vez por"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_write_date
+msgid "Last Updated on"
+msgstr "Ultima Actualización"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_in_name
+msgid "Numero de Transaccion"
+msgstr "Numero de Transaccion"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.actions.server,name:fxo_sync_data_sunat.sync_auto_send_ir_actions_server
+#: model:ir.cron,cron_name:fxo_sync_data_sunat.sync_auto_send
+#: model:ir.cron,name:fxo_sync_data_sunat.sync_auto_send
+msgid "Obteción Automático de datos de facturas anuladas"
+msgstr "Obtención automática de datos para Facturación Electrónica"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_password
+msgid "Password"
+msgstr "Contraseña"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.ui.view,arch_db:fxo_sync_data_sunat.view_sync_data_in_from
+msgid "Procesar"
+msgstr "Procesar"
+
+#. module: fxo_sync_data_sunat
+#: selection:sync.data.in,tipo:0
+msgid "Salida"
+msgstr "Salida"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model,name:fxo_sync_data_sunat.model_ir_cron
+msgid "Scheduled Actions"
+msgstr "Acciones planificadas"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_res_company_sync_data_server_id
+msgid "Server Sync Data"
+msgstr "Servidor de datos"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.ui.menu,name:fxo_sync_data_sunat.menu_list_sync_data_server
+msgid "Server data Sync"
+msgstr "Servidor de datos"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_state
+msgid "Status"
+msgstr "Estado"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.actions.act_window,name:fxo_sync_data_sunat.action_sync_data_in
+msgid "Sync Data In"
+msgstr "Data"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.actions.act_window,name:fxo_sync_data_sunat.action_sync_data_server
+msgid "Sync Data Server"
+msgstr "Servidor de datos"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,help:fxo_sync_data_sunat.field_ir_cron_website_url
+msgid "The full URL to access the server action through the website."
+msgstr "URL completa para acceder a la acción de servidor a través del sitio web."
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_usuario
+msgid "Usuario"
+msgstr "Usuario"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_ir_cron_website_path
+msgid "Website Path"
+msgstr "Ruta del sitio web"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_ir_cron_website_url
+msgid "Website Url"
+msgstr "URL del servidor web"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_account_journal_account_id
+msgid "cuenta por defecto"
+msgstr "Cuenta por defecto del documento"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_account_invoice_line_detalle_id
+msgid "id de tabla detalle"
+msgstr "id de tabla detalle"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_server_name
+msgid "name"
+msgstr "name"
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model,name:fxo_sync_data_sunat.model_sync_data_in
+msgid "sync.data.in"
+msgstr ""
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model,name:fxo_sync_data_sunat.model_sync_data_server
+msgid "sync.data.server"
+msgstr ""
+
+#. module: fxo_sync_data_sunat
+#: model:ir.model.fields,field_description:fxo_sync_data_sunat.field_sync_data_in_tipo
+msgid "tipo de proceso"
+msgstr "tipo de proceso"
+

@@ -1,0 +1,21 @@
+<odoo>
+	<data noupdate="1">
+        
+        <record model='table.34.sector' id="sector_01"><field name='code'>01</field><field name='name'>Sector Diversas</field></record>
+        <record model='table.34.sector' id="sector_02"><field name='code'>02</field><field name='name'>Sector Seguros</field></record>
+        <record model='table.34.sector' id="sector_03"><field name='code'>03</field><field name='name'>Sector Bancos y Financieras</field></record>
+        <record model='table.34.sector' id="sector_04"><field name='code'>04</field><field name='name'>Administradoras de Fondos de Pensiones (AFP)</field></record>
+        <record model='table.34.sector' id="sector_05"><field name='code'>05</field><field name='name'>Agentes de Intermediación</field></record>
+        <record model='table.34.sector' id="sector_06"><field name='code'>06</field><field name='name'>Fondos de Inversión</field></record>
+        <record model='table.34.sector' id="sector_07"><field name='code'>07</field><field name='name'>Patrimonio en Fideicomisos</field></record>
+        <record model='table.34.sector' id="sector_08"><field name='code'>08</field><field name='name'>ICLV</field></record>
+        
+        <record model='table.34.item' id="item_31"><field name='code'>3.1</field><field name='name'>Estado de Situación Financiera</field></record>
+        <record model='table.34.item' id="item_318"><field name='code'>3.18</field><field name='name'>Estado de Flujos de Efectivo - Método Directo</field></record>
+        <record model='table.34.item' id="item_319"><field name='code'>3.19</field><field name='name'>Estado de Cambios en el Patrimonio Neto</field></record>
+        <record model='table.34.item' id="item_320"><field name='code'>3.20</field><field name='name'>Estado de Resultados</field></record>
+        <record model='table.34.item' id="item_324"><field name='code'>3.24</field><field name='name'>Estado de Resultados Integrales</field></record>
+        <record model='table.34.item' id="item_325"><field name='code'>3.25</field><field name='name'>Estado de Flujos de Efectivo - Método Indirecto</field></record>
+
+	</data>
+</odoo>

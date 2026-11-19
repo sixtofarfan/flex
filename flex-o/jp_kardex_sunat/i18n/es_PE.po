@@ -1,0 +1,828 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* jp_kardex_sunat
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-21 06:43+0000\n"
+"PO-Revision-Date: 2021-02-21 06:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: jp_kardex_sunat
+#: model:ir.actions.report,print_report_name:jp_kardex_sunat.action_report_closure
+msgid "(object.state in ('draft', 'done') and 'Closure - %s' % (object.name))"
+msgstr "(object.state in ('draft', 'done') and 'Cierre - %s' % (object.name))"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "<span>Closure Period </span>"
+msgstr "<span>Periodo de Cierre </span>"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "<strong>End Date:</strong>"
+msgstr "<strong>Fecha Final:</strong>"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "<strong>Initial Date:</strong>"
+msgstr "<strong>Fecha Inicial:</strong>"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "<strong>Lock Date:</strong>"
+msgstr "<strong>Fecha Cierre:</strong>"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "<strong>Period:</strong>"
+msgstr "<strong>Periodo:</strong>"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__all_locations
+msgid "All Locations"
+msgstr "Todas las Ubicaciones"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__all_products
+msgid "All Productos"
+msgstr "Todos los Productos"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_view_form
+msgid "Are you sure you want to cancel the closed period to draft?"
+msgstr "Esta seguro que desea cancelar el cierre del periodo?"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_view_form
+msgid "Are you sure you want to close the period?"
+msgstr "Esta seguro que desea cerrar el periodo?"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_view_form
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.view_kardex_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_stock_change_standard_price
+msgid "Change Standard Price"
+msgstr "Cambiar Precio Estándar"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_view_form
+msgid "Clear lines"
+msgstr "Limpiar líneas"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_view_form
+msgid "Close Period"
+msgstr "Cerrar Periodo"
+
+#. module: jp_kardex_sunat
+#: model:ir.actions.act_window,name:jp_kardex_sunat.closing_period_action
+#: model:ir.model,name:jp_kardex_sunat.model_closing_period
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_search_view
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_view_form
+msgid "Closing Period"
+msgstr "Periodo de Cierre"
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_closing_period_line
+msgid "Closing Period Line"
+msgstr "Línea de Cierre de Periodo"
+
+#. module: jp_kardex_sunat
+#: model:ir.ui.menu,name:jp_kardex_sunat.closing_period
+msgid "Closing period"
+msgstr "Cerrar periodo"
+
+#. module: jp_kardex_sunat
+#: model:ir.actions.report,name:jp_kardex_sunat.action_report_closure
+msgid "Closure Report"
+msgstr "Reporte de Cierre"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "Code"
+msgstr "Código"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__company_currency_id
+msgid "Company Currency"
+msgstr "Moneda de la Compañía"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_product_product__standard_price
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_product_template__standard_price
+msgid "Cost"
+msgstr "Costo"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__create_uid
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__create_uid
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__create_date
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__create_date
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_stock_inventory_line__sunat_code
+msgid "Código de tipo de operación SUNAT"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__display_name
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__display_name
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__display_name
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_report_kardex__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields.selection,name:jp_kardex_sunat.selection__closing_period__state__done
+msgid "Done"
+msgstr "Realizado"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_search_view
+msgid "Done closing"
+msgstr "Cirre realizado"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields.selection,name:jp_kardex_sunat.selection__closing_period__state__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_search_view
+msgid "Draft closing"
+msgstr "Borrador de cierre"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__end_date
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__end_date
+msgid "End Date"
+msgstr "Fecha Final"
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/jp_kardex_sunat/models/period_balance.py:0
+#, python-format
+msgid "End date and initial date must be in the same period."
+msgstr "La fecha inicial y final deben pertenecer al mismo periodo."
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/jp_kardex_sunat/models/period_balance.py:0
+#, python-format
+msgid "End date must be greather than initial date."
+msgstr "La fecha final debe ser mayor a la fecha inicial."
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/wizards/kardex_wizard.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/wizards/kardex_wizard.py:0
+#: code:addons/jp_kardex_sunat/wizards/kardex_wizard.py:0
+#: code:addons/jp_kardex_sunat/wizards/kardex_wizard.py:0
+#, python-format
+msgid "End date should be greather than initial date."
+msgstr "La fecha final debería ser mayor a la fecha inicial."
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_view_form
+msgid "Error Lines"
+msgstr "Inconsistencias"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_stock_picking__kardex_date
+msgid "Fecha kardex"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_search_view
+msgid "Filters"
+msgstr "Filtros"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.view_kardex_wizard
+msgid "Get Kardex"
+msgstr "Obtener Kardex"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_view_form
+msgid "Get locked lines"
+msgstr "Obtener cierre"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_search_view
+msgid "Group by..."
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/stock_picking.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/stock_picking.py:0
+#: code:addons/jp_kardex_sunat/models/stock_picking.py:0
+#, python-format
+msgid ""
+"Guide format is incorrect. Please enter serie and number separated by a "
+"dash."
+msgstr ""
+"El formato de la guía de remisión es incorrecto. Por favor ingrese una serie y número separado por "
+"un guión."
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__id
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__id
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__id
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_report_kardex__id
+msgid "ID"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,help:jp_kardex_sunat.field_closing_period__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,help:jp_kardex_sunat.field_closing_period__message_needaction
+#: model:ir.model.fields,help:jp_kardex_sunat.field_closing_period__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,help:jp_kardex_sunat.field_closing_period__message_has_error
+#: model:ir.model.fields,help:jp_kardex_sunat.field_closing_period__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,help:jp_kardex_sunat.field_stock_change_standard_price__new_price
+msgid ""
+"If cost price is increased, stock variation account will be debited and stock output account will be credited with the value = (difference of amount * quantity available).\n"
+"If cost price is decreased, stock variation account will be creadited and stock input account will be debited."
+msgstr ""
+"Si el precio de coste se incrementa, la cuenta de variación de existencias aumentará el debe y la cuenta de salida de existencias disminuirá el haber con el valor = (diferencia de cantidad * cantidad disponible).\n"
+"Si el precio de coste se reduce, la operación será la contraria."
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__image_1920
+msgid "Image"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__image_1024
+msgid "Image 1024"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__image_128
+msgid "Image 128"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__image_256
+msgid "Image 256"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__image_512
+msgid "Image 512"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,help:jp_kardex_sunat.field_product_product__standard_price
+#: model:ir.model.fields,help:jp_kardex_sunat.field_product_template__standard_price
+msgid ""
+"In Standard Price & AVCO: value of the product (automatically computed in AVCO).\n"
+"        In FIFO: value of the last unit that left the stock (automatically computed).\n"
+"        Used to value the product when the purchase cost is not known (e.g. inventory adjustment).\n"
+"        Used to compute margins on sale orders."
+msgstr ""
+"En Standard Price & AVCO: valor del producto (calculado automáticamente en AVCO).\n"
+"En FIFO: valor de la última unidad que salió del stock (calculado automáticamente).\n"
+"Se utiliza para valorar el producto cuando se desconoce el coste de compra (por ejemplo, ajuste de inventario).\n"
+"Se utiliza para calcular los márgenes de las órdenes de venta."
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/get_value.py:0
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/kardex_sunat_xlsx.py:0
+#: code:addons/jp_kardex_sunat/models/get_value.py:0
+#: code:addons/jp_kardex_sunat/models/kardex_sunat_xlsx.py:0
+#, python-format
+msgid "Initial Balance"
+msgstr "Saldo inicial"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_stock_inventory_line__initial_cost
+msgid "Initial Cost"
+msgstr "Costo Inicial"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__initial_date
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__initial_date
+msgid "Initial Date"
+msgstr "Fecha Inicial"
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/wizards/kardex_wizard.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/wizards/kardex_wizard.py:0
+#: code:addons/jp_kardex_sunat/wizards/kardex_wizard.py:0
+#: code:addons/jp_kardex_sunat/wizards/kardex_wizard.py:0
+#, python-format
+msgid "Initial date and final date must be in the same period."
+msgstr "La fecha inicial y final deben pertenecer al mismo periodo."
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_stock_inventory
+msgid "Inventory"
+msgstr "Inventario"
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_stock_inventory_line
+msgid "Inventory Line"
+msgstr "Línea inventario"
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/stock_inventory.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/stock_inventory.py:0
+#: code:addons/jp_kardex_sunat/models/stock_inventory.py:0
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.view_inventory_form_kardex
+#, python-format
+msgid "Inventory Lines"
+msgstr "Líneas de inventario."
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__is_negative
+msgid "Is negative?"
+msgstr "Es negativo?"
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_account_move
+msgid "Journal Entries"
+msgstr "Asientos contables"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_stock_move__kardex_price_unit
+msgid "Kardex Price Unit"
+msgstr "Costo Unitario Kardex"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period____last_update
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line____last_update
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard____last_update
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_report_kardex____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__write_uid
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__write_uid
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__write_date
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__write_date
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_product_product__last_cost_kardex
+msgid "Last cost for kardex"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__location_ids
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__location_id
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "Location"
+msgstr "Ubicación"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__location_ids
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_search_view
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.view_kardex_wizard
+msgid "Locations"
+msgstr "Ubicaciones"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__lock_date
+msgid "Lock Date"
+msgstr "Fecha de Cierre"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_view_form
+msgid "Locked Lines"
+msgstr "Líneas de Cierre"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__name
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_search_view
+msgid "Name"
+msgstr "Nombre"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.view_stock_move_line_operation_tree_inherit
+msgid "Nro. Guía"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,help:jp_kardex_sunat.field_closing_period__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,help:jp_kardex_sunat.field_closing_period__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,help:jp_kardex_sunat.field_closing_period__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__locked_period
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__period_id
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__locked_period
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_search_view
+msgid "Period"
+msgstr "Periodo"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__period_lines
+msgid "Period Lines"
+msgstr "Líneas de Periodo"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__period_lines_errors
+msgid "Period Lines Errors"
+msgstr "Inconsistencias"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_account_move__picking_ids
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.view_account_move_form_inherit
+msgid "Pickings"
+msgstr "Guías"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_stock_change_standard_price__new_price
+msgid "Price"
+msgstr "Precio"
+
+#. module: jp_kardex_sunat
+#: model:ir.actions.report,name:jp_kardex_sunat.report_kardex_sunat_xlsx
+msgid "Print to XLSX"
+msgstr "Imprimir a XLSX"
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_product_product
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__product_id
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "Product"
+msgstr "Producto"
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de Producto"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__quantity
+msgid "Product quantity"
+msgstr "Cantidad de producto"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.view_kardex_wizard
+msgid "Productos"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_kardex_wizard__product_ids
+msgid "Products"
+msgstr "Productos"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_stock_inventory_line__currency_id
+msgid "Purchase currency"
+msgstr "Moneda de compra"
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__data_date
+msgid "Retrieve Date"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields.selection,name:jp_kardex_sunat.selection__closing_period__state__data
+msgid "Retrieved"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/stock_picking.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/stock_picking.py:0
+#: code:addons/jp_kardex_sunat/models/stock_picking.py:0
+#, python-format
+msgid "Some products on the picking are not present in the invoice."
+msgstr "Algunos productos de la guía no estan en la factura."
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__state
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.closing_period_search_view
+msgid "State"
+msgstr "Estado"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,help:jp_kardex_sunat.field_closing_period__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de Stock"
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_stock_valuation_layer
+msgid "Stock Valuation Layer"
+msgstr "Capa de valoración de stock"
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/stock_move.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/stock_move.py:0
+#: code:addons/jp_kardex_sunat/models/stock_move.py:0
+#, python-format
+msgid ""
+"The move you want to create belongs to a period allready closed in "
+"inventory."
+msgstr ""
+"El movimiento que intenta crear pertenece a un periodo de inventario que "
+"se encuentra cerrado."
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/jp_kardex_sunat/models/period_balance.py:0
+#, python-format
+msgid "There is a closing period with the same location and locked period."
+msgstr "Ya existe un periodo de cierre con la misma ubicación."
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/get_value.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/get_value.py:0
+#: code:addons/jp_kardex_sunat/models/get_value.py:0
+#: code:addons/jp_kardex_sunat/models/get_value.py:0
+#, python-format
+msgid ""
+"There is an inconsistency in the amount of kardex, please check its "
+"traceability for %s."
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/product_template.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/product_template.py:0
+#: code:addons/jp_kardex_sunat/models/product_template.py:0
+#, python-format
+msgid "There is product variants. You must get the kardex for each variant."
+msgstr "Existen variantes del producto. Debe obetener el kardex para cada variante."
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_stock_picking__type_operation_sunat_id
+msgid "Tipo de Operacion SUNAT"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_stock_inventory__type_operation_sunat_id
+msgid "Tipo de Operación SUNAT"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "Total Cost"
+msgstr "Costo Total"
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,help:jp_kardex_sunat.field_closing_period__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "Unit Cost"
+msgstr "Costo Unitario"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_stock_valuation_layer__unit_cost
+msgid "Unit Value"
+msgstr "Valor unitario"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__unit_cost
+msgid "Unit cost"
+msgstr "Costo unitario"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period_line__uom_uom
+#: model_terms:ir.ui.view,arch_db:jp_kardex_sunat.report_closing_period_document
+msgid "Unit of Measure"
+msgstr "Unidad de Medida"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_stock_picking__use_kardex_date
+msgid "Usar Fecha kardex"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.actions.act_window,name:jp_kardex_sunat.kardex_action
+#: model:ir.actions.server,name:jp_kardex_sunat.action_make_kardex_product_product
+#: model:ir.actions.server,name:jp_kardex_sunat.action_make_kardex_product_template
+#: model:ir.ui.menu,name:jp_kardex_sunat.kardex_wizard
+msgid "Valued Kardex"
+msgstr "Kardex Valorizado"
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,field_description:jp_kardex_sunat.field_closing_period__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model.fields,help:jp_kardex_sunat.field_closing_period__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/account_move.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/account_move.py:0
+#: code:addons/jp_kardex_sunat/models/account_move.py:0
+#, python-format
+msgid ""
+"You can't change the transit move because this invoice is in landed cost %s"
+msgstr ""
+"No puede cambiar el asiento de transito porque la factura esta en costos en destino %s"
+
+#. module: jp_kardex_sunat
+#: code:addons/extra-addons/jp/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/extra-addons/jp_not_shared/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/jp_kardex_sunat/models/period_balance.py:0
+#: code:addons/jp_kardex_sunat/models/period_balance.py:0
+#, python-format
+msgid "You cant delete a period with done state"
+msgstr "No se puede eliminar un periodo en estado realizado"
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_kardex_wizard
+msgid "kardex.wizard"
+msgstr ""
+
+#. module: jp_kardex_sunat
+#: model:ir.model,name:jp_kardex_sunat.model_report_kardex
+msgid "report.kardex"
+msgstr ""

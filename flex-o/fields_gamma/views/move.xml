@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+        <record id="view_move_line_gamma" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <xpath expr="//field[@name='ref']" position="after">
+                    <field name="type_invoice" required="1"/>
+                </xpath>
+                <xpath expr="//field[@name='invoice_origin']" position="after">
+                    <field name="corporate_reference" />
+                    <field name="shipping_documents"/>
+                </xpath>
+
+                <xpath expr="//field[@name='invoice_user_id']" position="after">
+                    <field name="invoice_expo_user_id"/>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='tax_ids']" position="before">
+                    <field name="order_id" optional="show"  attrs="{'required': [('type_invoice', '=', 'O') ]}" />
+                    <field name="type_id" optional="show"/>
+                    <field name="internal_ref" optional="show"/>
+                    <field name="internal_ref_child" optional="show"/>
+                    <field name="type_invoice" invisible="1"/>
+
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/tree//field[@name='tax_ids']" position="before">
+                    <field name="partner_id" optional="show" />
+                    <field name="order_id" optional="show" />
+                    <field name="type_id" optional="show"/>
+                    <field name="internal_ref" optional="show"/>
+                    <field name="internal_ref_child" optional="show"/>
+                    <field name="type_invoice" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_account_payment_form_gamma" model="ir.ui.view">
+            <field name="name">account.payment.term.inherit.view.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                 <field name="payment_date" position="after">
+                    <field name="is_advance" />
+                    <field name="order_id" />
+                    <field name="internal_ref"/>
+                 </field>
+            </field>
+        </record>
+
+        <!-- account.move.line inherit tree view -->
+        <record id="view_move_line_tree" model="ir.ui.view">
+            <field name="name">account.move.line.inherit.view.tree</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_tree"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="ref" position="after">
+                    <field name="order_id" optional="show" />
+                    <field name="type_id" optional="show" />
+                    <field name="internal_ref" optional="show"/>
+                    <field name="internal_ref_child" optional="show"/>
+                 </field>
+            </field>
+        </record>
+
+        <!-- account.move.line inherit search view -->
+        <record id="view_account_move_line_filter" model="ir.ui.view">
+            <field name="name">account.move.line.inherit.view.search</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="partner_id" position="after">
+                    <field name="order_id" />
+                    <field name="type_id"/>
+                    <field name="internal_ref"/>
+                    <field name="internal_ref_child"/>
+                </field>
+                 <filter name="groupby_date" position="after">
+                    <filter string="Order" name="order" domain="[]" context="{'group_by': 'order_id'}"/>
+                    <filter string="Tipo de Order" name="type_order" domain="[]" context="{'group_by': 'type_id'}"/>
+                    <filter string="Referencia Interna" name="internal_ref" domain="[]" context="{'group_by': 'internal_ref'}"/>
+                    <filter string="Referencia Interna Hija" name="internal_ref_child" domain="[]" context="{'group_by': 'internal_ref_child'}"/>
+                </filter>             
+
+            </field>
+        </record>
+
+        <!-- account.move.line inherit tree view -->
+        <record id="view_move_line_tree_form_inherit" model="ir.ui.view">
+            <field name="name">account.move.line.inherit.view.tree</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account_fields_it.view_move_line_tree_form_inherit"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="move_id" position="after">
+                    <field name="order_id" optional="show" />
+                    <field name="type_id" optional="show" />
+                    <field name="internal_ref" optional="show"/>
+                    <field name="internal_ref_child" optional="show"/>
+				</field>
+            </field>
+        </record>
+
+        <record id="view_account_invoice_filter_inherit_order" model="ir.ui.view">
+            <field name="name">account.invoice.select.inherit.order</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <field name="journal_id" position="before">
+                    <field name="invoice_line_ids" string="# Operacion" filter_domain="[('invoice_line_ids.order_id', 'ilike', self)]"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_picking_import_form_view" model="ir.ui.view">
+        <field name="name">import.stock.picking.form.view</field>
+        <field name="model">import.stock.picking</field>
+        <field name="arch" type="xml">
+            <form string="Import Shipment and Delivery Order">
+                <group>
+                    <group>
+                        <field name="import_file_option" widget="radio"/>
+                    </group>
+                    <group>
+                        <field name="import_option" widget='radio'/>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="file"/>
+                    </group>
+                </group><group>
+                    <group>
+                        <field name="picking_type_id"/>
+                    </group>
+                    <group>
+                        <field name="location_id"/>
+                        <field name="location_dest_id"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="import_stock_picking" string="Import" type="object" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_import_stock_picking" model="ir.actions.act_window">
+        <field name="name">Import Shipment/Delivery/Intarnal Transfer Operations</field>
+        <field name="res_model">import.stock.picking</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

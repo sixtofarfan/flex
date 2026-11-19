@@ -1,0 +1,531 @@
+_# -*- coding: utf-8 -*-
+
+import ssl
+from xmlrpc import client
+from datetime import datetime 
+from xlrd import open_workbook
+from odoo.modules.module import get_module_resource
+
+from odoo import api, fields, models
+
+invoice_fileds = {
+    "item": {"field":"","read":False,"type":"invoice"},
+    "id": {"field":"","read":False,"type":"invoice"},
+    "partner_id": {"field":"partner_id_name","read":True,"type":"invoice"},
+    "type_document_id": {"field":"type_document_id","read":True,"type":"invoice"},
+    "ref": {"field":"ref","read":True,"type":"invoice", "group_by":True},
+    "serie_id": {"field":"","read":False,"type":"invoice"},
+    "invoice_payment_term_id": {"field":"invoice_payment_term_id","read":True,"type":"invoice"},
+    "invoice_date": {"field":"invoice_date","read":True,"type":"invoice"},
+    "invoice_date_due": {"field":"invoice_date_due","read":True,"type":"invoice"},
+    "currency_id": {"field":"currency_id","read":True,"type":"invoice"},
+    "Aux_Currency_Rate": {"field":"currency_rate","read":True,"type":"invoice"},
+    "glosa": {"field":"glosa","read":True,"type":"invoice"},
+    "journal_id": {"field":"journal_id","read":True,"type":"invoice"},
+    "team_id": {"field":"","read":False,"type":"invoice"},
+    "invoice_user_id": {"field":"","read":False,"type":"invoice"},
+    "collection_id": {"field":"","read":False,"type":"invoice"},
+    "invoice_line_ids_service_id": {"field":"service_id","read":True,"type":"invoice_line"},
+    "producto_id": {"field":"product_id","read":True,"type":"invoice_line"},
+    "invoice_line_ids_product_id": {"field":"name","read":True, "type":"invoice_line"},
+    "invoice_line_ids_quantity": {"field":"quantity","read":True,"type":"invoice_line"},
+    "invoice_line_ids_price_unit": {"field":"price_unit","read":True,"type":"invoice_line"},
+    "invoice_line_ids_nro_comp": {"field":"nro_comp","read":True,"type":"invoice_line", "group_by":True},
+    "invoice_line_ids_tax_ids": {"field":"tax_ids","read":True,"type":"invoice_line"},
+    "invoice_line_ids_type_document_id": {"field":"type_document_id","read":True,"type":"invoice_line"},
+    "invoice_period_id": {"field":"invoice_period_id","read":True,"type":"invoice"},
+    "invoice_total": {"field":"","read":False,"type":"invoice"},
+    "categoria": {"field":"fxo_category_id","read":True,"type":"invoice"},
+    "cod_tarifa":{"field":"cod_tarifa","read":False,"type":"invoice"},#
+    "planInternet": {"field":"plan","read":False,"type":"invoice"},
+    "direccion": {"field":"direccion","read":False,"type":"invoice"},#
+    "estadoSunat": {"field":"sunat_state","read":False,"type":"invoice"},
+    "num_doc_identidad": {"field":"partner_id","read":True,"type":"invoice"},
+    "tipodocumento_identidad": {"field":"l10n_latam_identification_type_id","read":False,"type":"invoice"},#
+    "email": {"field":"email","read":False,"type":"invoice"},#
+    "telefono": {"field":"mobile","read":False,"type":"invoice"},#
+}
+
+note_credit_fields = {
+    "item":{"field":"","read":False,"type":"invoice"},
+    "id":{"field":"","read":False,"type":"invoice"},
+    "partner_id":{"field":"partner_id_name","read":True,"type":"invoice"},
+    "type_document_id":{"field":"type_document_id","read":True,"type":"invoice"},
+    "ref":{"field":"ref","read":True,"type":"invoice", "group_by":True},
+    "invoice_date":{"field":"invoice_date","read":True,"type":"invoice"},
+    "serie_id":{"field":"","read":False,"type":"invoice"},
+    "invoice_payment_term_id":{"field":"invoice_payment_term_id","read":True,"type":"invoice"},
+    "invoice_date_due":{"field":"invoice_date_due","read":True,"type":"invoice"},
+    "currency_id":{"field":"currency_id","read":True,"type":"invoice"},
+    "Aux Currency Rate":{"field":"currency_rate","read":True,"type":"invoice"},
+    "credit_note_type_id":{"field":"credit_note_type_id","read":True,"type":"invoice"},#
+    "glosa":{"field":"glosa","read":True,"type":"invoice"},
+    "journal_id":{"field":"journal_id","read":True,"type":"invoice"},
+    "invoice_user_id":{"field":"","read":False,"type":"invoice"},
+    "team_id":{"field":"","read":False,"type":"invoice"},
+    "collection_id":{"field":"","read":False,"type":"invoice"},
+    "invoice_line_ids/service_id":{"field":"service_id","read":True,"type":"invoice_line"},
+    "invoice_line_ids/product_id":{"field":"product_id","read":True,"type":"invoice_line"},
+    "invoice_line_ids/quantity":{"field":"quantity","read":True,"type":"invoice_line"},
+    "invoice_line_ids/price_unit":{"field":"price_unit","read":True,"type":"invoice_line"},
+    "invoice_line_ids/nro_comp":{"field":"nro_comp","read":True,"type":"invoice_line", "group_by":True},
+    "invoice_line_ids/tax_ids":{"field":"tax_ids","read":True,"type":"invoice_line"},
+    "invoice_line_ids/type_document_id":{"field":"type_document_id","read":True,"type":"invoice_line"},
+    "invoice_period_id":{"field":"invoice_period_id","read":True,"type":"invoice"},
+    "doc_invoice_relac/type_document_id":{"field":"type_document_id","read":True,"type":"document_relation"},
+    "doc_invoice_relac/nro_comprobante":{"field":"nro_comprobante","read":True,"type":"document_relation"},
+    "doc_invoice_relac/date":{"field":"date","read":True,"type":"document_relation"},
+    "doc_invoice_relac/bas_amount":{"field":"bas_amount","read":True,"type":"document_relation"},
+    "doc_invoice_relac/tax_amount":{"field":"tax_amount","read":True,"type":"document_relation"},
+    "doc_invoice_relac/amount_currency":{"field":"amount_currency","read":True,"type":"document_relation"},
+    "doc_invoice_relac/amount":{"field":"amount","read":True,"type":"document_relation"},
+    "estadoSunat":{"field":"","read":False,"type":"invoice"},
+    "num_doc_identidad":{"field":"partner_id","read":True,"type":"invoice"},
+}
+
+purchase_fields = {
+    "code":{"field":"journal_id","read":True,"type":"header"},
+    "date":{"field":"payment_date","read":True,"type":"header"},
+    "ruc":{"field":"partner_id","read":True,"type":"line"},
+    "partner_id":{"field":"partner_id_name","read":False,"type":"line"},
+    "Nro Doc":{"field":"invoice_id","read":True,"type":"line"},
+    "amount":{"field":"importe_divisa","read":True,"type":"line"},
+    "Currency":{"field":"currency_id","read":True,"type":"line"},
+    "Nro Operacion":{"field":"nro_operation","read":True,"type":"header"},
+}
+
+class ModelImport(models.TransientModel):
+    _name = "model.import"
+    _description = "Model para importar archivo excel"
+
+    def _connect_to_server(self):
+        URL = self.env.company.param_url_scord
+        DATABASE = self.env.company.param_db_scord
+        username = self.env.company.param_username_scord
+        password = self.env.company.param_password_scord
+        compania = int(self.env.company.account_company_id)
+
+        if not URL or not DATABASE or not username or not password or not self.env.company.category_product_id or not self.env.company.account_journal_id or not self.env.company.account_company_id or not self.env.company.taxes_id:
+            return False,False,False,False,False
+        
+        common = client.ServerProxy('{}/xmlrpc/2/common'.format(URL), verbose=False, use_datetime=True,
+                                               context=ssl._create_unverified_context())
+        uid = common.authenticate(DATABASE, username, password, {})
+        print('***********common',common)
+        print('***********uid',uid)
+        models = client.ServerProxy('{}/xmlrpc/2/object'.format(URL), verbose=False, use_datetime=True,
+                                            context=ssl._create_unverified_context())
+        return models,uid,DATABASE,password,compania
+
+    def _cron_import_purchase(self):
+        models,uid,DATABASE,password,compania = self._connect_to_server()
+
+        if not models:
+            self.write_log_import("Pagos","Conexion a servidor fallido o campos requeridos","","")
+            return    
+        
+        local_filename = "cobros.xlsx"
+        download_ftp = self.connect_ftp(local_filename)
+        if not download_ftp:
+            self.write_log_import("Pagos","Conexion a servidor FTP fallido o no se encontro archivo","",local_filename)
+            return
+        sheet = self.read_xlsx(local_filename)
+        if not sheet:
+            self.write_log_import("Pagos","Error al abrir archivo excel","",local_filename)
+            return
+        
+        data = self.get_data_purchase(sheet,purchase_fields)
+
+        if not data:
+            self.write_log_import("Pagos","Informacion incorrecta en archivo excel","",local_filename)
+            return
+        
+        for payment in data:
+            data[payment]["journal_id"] = self.get_journal_id(models,DATABASE,uid,password,data[payment])
+            old_date = datetime.strptime(data[payment]["payment_date"],"%d/%m/%Y")
+            data[payment]["payment_date"] = old_date.strftime("%Y-%m-%d")
+            data[payment]["invoice_type"] = "out_invoice"
+            data[payment]["company_id"] = int(self.env.company.account_company_id)
+            lines = list()
+            #print('xxxxxxxxxxxxxxxxxxxxxdata',data)
+            for line in data[payment].get("invoice_ids",[]):
+                partner =  self.get_partner_id(models,DATABASE,uid,password,line)
+                line["partner_id"] = partner[0] if isinstance(partner,list) else partner
+                line["currency_id"] = self.get_currency(models,DATABASE,uid,password,line)[0]
+                invoice_line = self.get_account_move_line(models,DATABASE,uid,password,compania,line["invoice_id"])
+                if not invoice_line:
+                    print('->->->->->->->->->line[invoice_id] no existe',line["invoice_id"])
+                    continue
+                line["invoice_id"] = invoice_line[0] if isinstance(invoice_line,list) else invoice_line
+                values_invoice = self.get_invoice_type_document(models,DATABASE,uid,password,line["invoice_id"])
+                #type_document = models.execute_kw(DATABASE, uid, password,'account.move.line','read',[[id],['name','type_document_id','currency_id','amount_residual','amount_residual_currency']])
+                #print('xxxxxxxxxxxxxxxxinvoice_line',invoice_line)
+                print('****************values_invoice',values_invoice)
+                print('****************line[invoice_id]',line["invoice_id"])
+                if not values_invoice:
+                    #print('->->->->->->->->->********line[invoice_id] no existe',line["invoice_id"])
+                    continue
+                line["tipo_documento"] = values_invoice[0].get("type_document_id")[0]
+                divisa_line_id = models.execute_kw(DATABASE, uid, password, 'res.currency.rate','search',[[['name','=',old_date.strftime("%Y-%m-%d")],['company_id','=',int(self.env.company.account_company_id)]]])
+                if divisa_line_id:
+                    divisa = models.execute_kw(DATABASE, uid, password,'res.currency.rate','read',[[divisa_line_id[0]],['name','sale_type']])
+                    tc = 1
+                    if len(divisa)>0:
+                        tc = divisa[0].get("sale_type",0)
+                    residual_amount = 0
+                    if values_invoice[0].get("currency_id",False):
+                        #print('->->->->->->->->->xxxxxxxxline[invoice_id] no existe',line["invoice_id"])
+                        residual_amount = values_invoice[0].get("amount_residual",0)
+                    else:
+                        residual_amount = values_invoice[0].get("amount_residual_currency",0)
+                    importe_divisa = line.get("importe_divisa",0)*-1
+                    amount_extra = line.get("importe_divisa",0)-residual_amount if line.get("importe_divisa",0)>residual_amount else 0
+                    importe_pagado = importe_divisa+amount_extra
+                    line["importe_divisa"] = importe_pagado
+                    line["haber"] = abs(importe_pagado*tc) if values_invoice[0].get("currency_id",False) else abs(importe_pagado)
+                    line["saldo"] = residual_amount
+                    line["amount_extra"] = amount_extra*-1
+                lines.append([0,0,line])
+            data[payment]["invoice_ids"] = lines
+            #print('yyyyyyyyyyyyyyyyyylines',lines)
+            models.execute_kw(DATABASE, uid, password, 'multipayment.advance.it', 'create',[data[payment]])
+
+    def _cron_import_credit_note(self):
+        models,uid,DATABASE,password,compania = self._connect_to_server()
+
+        if not models:
+            self.write_log_import("Nota de Crédito","Conexion a servidor fallido o campos requeridos","","")
+            return    
+        
+        local_filename = "notas.xlsx"
+        download_ftp = self.connect_ftp(local_filename)
+        if not download_ftp:
+            self.write_log_import("Nota de Crédito","Conexion a servidor FTP fallido o no se encontro archivo","",local_filename)
+            return
+        sheet = self.read_xlsx(local_filename)
+        if not sheet:
+            self.write_log_import("Nota de Crédito","Error al abrir archivo excel","",local_filename)
+            return
+        
+        data = self.get_data(sheet,note_credit_fields)
+
+        if not data:
+            self.write_log_import("Nota de Crédito","Informacion incorrecta en archivo excel","",local_filename)
+            return
+
+        for note_credit in data:
+            inv = self.get_account_move(models,DATABASE,uid,password,compania,note_credit)
+            if not inv:
+                #validar partner
+                cliente = data[note_credit].get("partner_id",False)
+                partner = self.get_partner_id(models,DATABASE,uid,password,data[note_credit])
+                if not partner:
+                    self.write_log_import("Nota de Crédito","Cliente no encontrado: "+cliente,note_credit,local_filename)
+                    continue
+                data[note_credit]["partner_id"] = partner[0] if isinstance(partner,list) else partner             
+                #validar producto
+                #validar cantidad producto
+                find_product = False
+                lines = []
+                for line in data[note_credit].get("invoice_line_ids",[]):
+                    if int(line.get("quantity",0)) < 1:                        
+                        continue
+                    product = self.get_product_id(models,DATABASE,uid,password,line)
+                    if not product:
+                        find_product = True
+                        break
+                    if float(line.get("tax_ids",0))>0:
+                        line["tax_ids"] = [[6,0,[int(self.env.company.taxes_id)]]]
+                    line["type_document_id"] = self.get_type_document(models,DATABASE,uid,password,line)[0]
+                    line["product_id"] = product[0] if isinstance(product,list) else product 
+                    lines.append([0,0,line])
+                for relation in data[note_credit].get("doc_invoice_relac",[]):
+                    relation["type_document_id"] = self.get_type_document(models,DATABASE,uid,password,relation)[0]
+                    nro_comprobante = self.get_account_move(models,DATABASE,uid,password,compania,relation.get("nro_comprobante",False))
+                    relation["nro_comprobante"] = nro_comprobante[0] if isinstance(nro_comprobante,list) else nro_comprobante
+                    old_date = datetime.strptime(relation["date"],"%d/%m/%Y")
+                    relation["date"] = old_date.strftime("%Y-%m-%d")
+                    
+                if not find_product:
+                    data[note_credit]["credit_note_type_id"] = self.get_credit_note(models,DATABASE,uid,password,data[note_credit])
+                    data[note_credit]["invoice_period_id"] = self.get_period(models,DATABASE,uid,password,data[note_credit])
+                    data[note_credit]["type"] = 'out_refund'
+                    data[note_credit]["company_id"] = int(self.env.company.account_company_id)
+                    data[note_credit]["journal_id"] = int(self.env.company.account_journal_id)
+                    data[note_credit]["invoice_payment_term_id"] = self.get_payment_term(models,DATABASE,uid,password,data[note_credit])
+                    data[note_credit]["currency_id"] = self.get_currency(models,DATABASE,uid,password,data[note_credit])[0]
+                    data[note_credit]["type_document_id"] = self.get_type_document(models,DATABASE,uid,password,data[note_credit])[0]
+                    data[note_credit]["invoice_line_ids"] = lines
+                    data[note_credit].pop("partner_id_name")
+                    models.execute_kw(DATABASE, uid, password, 'account.move', 'create',[data[note_credit]])
+                else:
+                    self.write_log_import("Nota de Crédito","Producto no encontrado",note_credit,local_filename)
+            else:
+                self.write_log_import("Nota de Crédito","Nota de Crédito ya registrada",note_credit,local_filename)
+        
+
+    def _cron_import_invoice(self):
+        models,uid,DATABASE,password,compania = self._connect_to_server()
+        #print('***********************compania',compania)
+        if not models:
+            self.write_log_import("Factura","Conexion a servidor fallido o campos requeridos","","")
+            return        
+
+        local_filename = "facturas.xlsx"
+        download_ftp = self.connect_ftp(local_filename)
+        if not download_ftp:
+            self.write_log_import("Factura","Conexion a servidor FTP fallido o no se encontro archivo","",local_filename)
+            return True
+        sheet = self.read_xlsx(local_filename)
+        if not sheet:
+            self.write_log_import("Factura","Error al abrir archivo excel","",local_filename)
+            return
+        
+        data = self.get_data(sheet,invoice_fileds)
+
+        if not data:
+            self.write_log_import("Factura","Informacion incorrecta en archivo excel","",local_filename)
+            return
+        #print('********data',data)
+
+        for invoice in data:
+            #validar factura
+            inv = self.get_account_move(models,DATABASE,uid,password,compania,invoice)
+            if not inv:
+                #validar partner
+                print('#########data[invoice]',data[invoice])
+                cliente = data[invoice].get("partner_id",False)
+                partner = self.get_partner_id(models,DATABASE,uid,password,data[invoice])
+                if not partner:
+                    self.write_log_import("Factura","Cliente no encontrado o está archivado "+cliente,invoice,local_filename)
+                    continue
+                data[invoice]["partner_id"] = partner[0] if isinstance(partner,list) else partner             
+                #validar producto
+                #validar cantidad producto
+                find_product = False
+                lines = []
+                for line in data[invoice].get("invoice_line_ids",[]):
+                    if int(line.get("quantity",0)) < 1:                       
+                        continue
+                    product = self.get_product_id(models,DATABASE,uid,password,line)
+                    if not product:
+                        find_product = True
+                        break
+                    if float(line.get("tax_ids",0))>0:
+                        line["tax_ids"] = [[6,0,[int(self.env.company.taxes_id)]]]
+                    line["type_document_id"] = self.get_type_document(models,DATABASE,uid,password,line)[0]
+                    line["product_id"] = product[0] if isinstance(product,list) else product 
+                    lines.append([0,0,line])
+                if not find_product:
+                    data[invoice]["invoice_period_id"] = self.get_period(models,DATABASE,uid,password,data[invoice])
+                    data[invoice]["type"] = 'out_invoice'
+                    data[invoice]["auto_post"] = True
+                    data[invoice]["company_id"] = int(self.env.company.account_company_id)
+                    data[invoice]["journal_id"] = int(self.env.company.account_journal_id)
+                    data[invoice]["fxo_category_id"] = self.get_category(models,DATABASE,uid,password,data[invoice])
+                    data[invoice]["invoice_payment_term_id"] = self.get_payment_term(models,DATABASE,uid,password,data[invoice])
+                    data[invoice]["currency_id"] = self.get_currency(models,DATABASE,uid,password,data[invoice])[0]
+                    data[invoice]["type_document_id"] = self.get_type_document(models,DATABASE,uid,password,data[invoice])[0]
+                    data[invoice]["invoice_line_ids"] = lines
+                    data[invoice].pop("partner_id_name")                    
+                    models.execute_kw(DATABASE, uid, password, 'account.move', 'create',[data[invoice]])
+                else:
+                    self.write_log_import("Factura","Producto no encontrado",invoice,local_filename)
+            else:
+                self.write_log_import("Factura","Factura ya registrada",invoice,local_filename)
+
+    def connect_ftp(self,local_filename):
+        print('********local_filename',local_filename)
+        if not self.env.company.param_ftp_server or not self.env.company.param_ftp_username or not self.env.company.param_ftp_password:
+            return False
+        from ftplib import FTP
+        print('********FTP paso')
+        try:
+            with FTP(self.env.company.param_ftp_server or "") as ftp:
+                print('********dentro de FTP')
+                ftp.login(user=self.env.company.param_ftp_username or "",passwd=self.env.company.param_ftp_password or "")
+                print('********LOGIN')
+                # SFR La carpeta debe estar con permiso 777
+                file_path = get_module_resource('import_scord', 'static', 'src','file')+f'/{local_filename}'
+                print('********file_path',file_path)
+                server_path = "./files/prueba/"
+                with open(file_path, "wb") as file:
+                    ftp.retrbinary(f"RETR {server_path}{local_filename}",file.write)
+                # Emilina file en el ftp
+                ftp.delete(f"{server_path}{local_filename}")
+                return True
+        except Exception as err:
+            print('********EXCEPT!!')
+            return False
+        
+
+    def get_data(self,sheet,header_fields):
+        data = {}
+        keys = list(header_fields.keys())
+        # if len(sheet.row(0)) != len(header_fields) or not all([(v.value or v.value.encode('utf-8')) == keys[i] for i,v in enumerate(sheet.row(0))]):
+        #     return False
+             
+        for row_no in range(1,sheet.nrows):
+            line_values = dict()
+            invoice_values = dict()
+            line_relation_values = dict()
+            group_by = ""
+            for i,fields in enumerate(header_fields):
+                if header_fields[fields].get("group_by",False) == True:
+                    value = sheet.cell_value(row_no,i)
+                    if value:
+                        group_by = value
+                        break
+            for i,fields in enumerate(header_fields):
+                if not header_fields[fields].get("read",False):
+                    continue
+                if header_fields[fields].get("type",'') == 'invoice':
+                    invoice_values.update({header_fields[fields].get("field",""):sheet.cell_value(row_no,i)})
+                elif header_fields[fields].get("type",'') == 'invoice_line':
+                    line_values.update({header_fields[fields].get("field",""):sheet.cell_value(row_no,i)})
+                elif header_fields[fields].get("type",'') == 'document_relation':
+                    line_relation_values.update({header_fields[fields].get("field",""):sheet.cell_value(row_no,i)})
+            
+            if group_by in data:                    
+                    data[group_by]['invoice_line_ids'].append(line_values)
+                    if line_relation_values:
+                        data[group_by]['doc_invoice_relac'].append(line_relation_values)
+
+            else:
+                invoice_values.update({
+                    'invoice_line_ids': [line_values]
+                })
+                if line_relation_values:
+                    invoice_values.update({
+                        'doc_invoice_relac': [line_relation_values]
+                    })
+                data[group_by] = invoice_values
+        return data
+
+    def get_data_purchase(self,sheet,header_fields):
+        data = dict()
+        keys = list(header_fields.keys())
+        if len(sheet.row(0)) != len(header_fields) or not all([(v.value or v.value.encode('utf-8')) == keys[i] for i,v in enumerate(sheet.row(0))]):
+            return False
+             
+        for row_no in range(1,sheet.nrows):
+            line_values = dict()
+            invoice_values = dict()
+
+            group_by = f"{sheet.cell_value(row_no,1)} {sheet.cell_value(row_no,0)} {sheet.cell_value(row_no,6)}"
+            for i,fields in enumerate(header_fields):
+                if not header_fields[fields].get("read",False):
+                    continue
+                if header_fields[fields].get("type",'') == 'header':
+                    invoice_values.update({header_fields[fields].get("field",""):sheet.cell_value(row_no,i)})
+                elif header_fields[fields].get("type",'') == 'line':
+                    line_values.update({header_fields[fields].get("field",""):sheet.cell_value(row_no,i)})
+            
+            if group_by in data:                    
+                data[group_by]['invoice_ids'].append(line_values)
+            else:
+                invoice_values.update({
+                    'invoice_ids': [line_values]
+                })
+                data[group_by] = invoice_values
+        return data
+
+
+    def read_xlsx(self,name):
+        try:
+            file_path = get_module_resource('import_scord', 'static', 'src/file', f'{name}')
+            workbook = open_workbook(file_path)
+            sheet = workbook.sheet_by_index(0)
+            return sheet
+        except Exception as e:
+            raise False
+
+    def get_account_move(self, models,DATABASE,uid,password,compania,invoice):
+        #SFR return models.execute_kw(DATABASE, uid, password, 'account.move','search',[[['ref','=',invoice]]])
+        return models.execute_kw(DATABASE, uid, password, 'account.move','search',[[['ref','=',invoice],['company_id','=',compania]]])
+
+    def get_account_move_line(self, models,DATABASE,uid,password,compania,invoice):
+        #SFR return models.execute_kw(DATABASE, uid, password, 'account.move.line','search',[[['nro_comp','=',invoice],['account_internal_type',"in",["receivable","payable"]]]])
+        return models.execute_kw(DATABASE, uid, password, 'account.move.line','search',[[['nro_comp','=',invoice],['account_internal_type','=',"receivable"],['company_id','=',compania],['debit','>',0]]])
+        #return models.execute_kw(DATABASE, uid, password, 'account.move.line','search',[[['nro_comp','=',invoice],['account_internal_type','=',"receivable"],['company_id','=',compania]]])
+        #account_id = self.env['account.account'].search([('code', '=', line.account_id), ('company_id', '=', self.env.company.id)])
+
+    def get_type_document(self, models,DATABASE,uid,password,invoice):
+        return models.execute_kw(DATABASE, uid, password, 'einvoice.catalog.01','search',[[['code','=',invoice.get("type_document_id","00")]]])
+
+    def get_currency(self, models,DATABASE,uid,password,invoice):
+        return models.execute_kw(DATABASE, uid, password, 'res.currency','search',[[['name','=',invoice.get("currency_id","PEN")]]])
+    
+    def get_payment_term(self, models,DATABASE,uid,password,invoice):
+        payment_term = models.execute_kw(DATABASE, uid, password, 'account.payment.term','search',[[['name','=',invoice.get("invoice_payment_term_id","CREDITO")]]])
+        if not payment_term:
+            return False
+        return payment_term[0]
+
+    def get_credit_note(self,models,DATABASE,uid,password,invoice):
+        credit_note = models.execute_kw(DATABASE, uid, password, 'einvoice.catalog.09','search',[[['name','in',[invoice.get("credit_note_type_id","Anulación de la operación"),str(invoice.get("credit_note_type_id","Anulación de la operación")).capitalize(),str(invoice.get("credit_note_type_id","Anulación de la operación")).lower(),str(invoice.get("credit_note_type_id","Anulación de la operación")).upper()]]]])
+        if not credit_note:
+            return False
+        return credit_note[0] 
+
+    def get_invoice_type_document(self,models,DATABASE,uid,password,id):
+        type_document = models.execute_kw(DATABASE, uid, password,'account.move.line','read',[[id],['name','type_document_id','currency_id','amount_residual','amount_residual_currency']])
+        if not type_document:
+            return False
+        return type_document
+
+    def get_period(self, models,DATABASE,uid,password,invoice):
+        period = models.execute_kw(DATABASE, uid, password, 'account.period','search',[[['code','in',[invoice.get("period_id","")]]]])
+        if not period:
+            return False
+        return period[0]
+    def get_category(self, models,DATABASE,uid,password,invoice):
+        category = models.execute_kw(DATABASE, uid, password, 'res.partner.category','search',[[['name','in',[invoice.get("fxo_category_id","Corporativo"),str(invoice.get("fxo_category_id","Corporativo")).capitalize(),str(invoice.get("fxo_category_id","Corporativo")).lower(),str(invoice.get("fxo_category_id","Corporativo")).upper()]]]])
+        if not category:
+            return False
+        return category[0]
+
+    def get_partner_id(self,models,DATABASE,uid,password,invoice):
+        #print('***********************************************invoice',invoice)
+        cliente = str(invoice.get("partner_id",False)).replace(".0","")
+        print('************cliente',cliente)
+        partner = models.execute_kw(DATABASE, uid, password, 'res.partner','search',[[['vat','=',cliente]]])
+        #print('xyxyxyxyxyxpartner',partner)
+        if not partner:
+            domain_identifation = [['code_sunat','=','0']]
+            if len(str(invoice.get("partner_id","")).replace(".0","")) == 8:
+                domain_identifation = [['code_sunat','=','1']]
+            elif len(str(invoice.get("partner_id","")).replace(".0","")) == 11:
+                domain_identifation = [['code_sunat','=','6']]
+            
+            identification = models.execute_kw(DATABASE, uid, password, 'l10n_latam.identification.type','search',[domain_identifation])
+            if not identification:
+                return False
+            vals = dict(name = str(invoice.get("partner_id_name","")).replace(",",""),
+                        vat=invoice.get("partner_id",""),l10n_latam_identification_type_id=identification[0],)
+            #print('xxxxxxxxxxxxxxxxvals',vals)
+            try:
+                create_partner = models.execute_kw(DATABASE, uid, password, 'res.partner','create',[vals])
+                return create_partner
+            except Exception as e:
+                return False
+        return partner
+        
+
+    def get_product_id(self,models,DATABASE,uid,password,line):
+        product = models.execute_kw(DATABASE, uid, password, 'product.product','search',[[['name','in',[line.get("product_id",""),str(line.get("product_id","")).upper(),str(line.get("product_id","")).lower(),str(line.get("product_id","")).capitalize()]]]])
+        if not product:
+            vals = dict(name=line.get("product_id",""),categ_id=self.env.company.category_product_id,lst_price=line.get("price_unit",0),taxes_id=[[6,0,[int(self.env.company.taxes_id)]]])
+            create_product = models.execute_kw(DATABASE,uid,password,'product.product','create',[vals])
+            return create_product
+            # return False
+        return product
+
+    def get_journal_id(self,models,DATABASE,uid,password,payment):
+        journal = models.execute_kw(DATABASE,uid,password,'account.journal','search',[[['code','in',[payment.get("journal_id",""),str(payment.get("journal_id","")).upper(),str(payment.get("journal_id","")).lower(),str(payment.get("journal_id","")).capitalize()]]]])
+        if not journal:
+            return False
+        return journal[0]
+    
+    def write_log_import(self,name,description,ref,file):
+        return self.env["log.import.xlsx"].sudo().create(dict(name=name,description=description,ref=ref,file=file))

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <!-- l10n_latam.identification.typeinherit form view -->
+        <record id="view_einvoice_catalog_06_form" model="ir.ui.view">
+            <field name="name">l10n_latam.identification.type.inherit.view.form</field>
+            <field name="model">l10n_latam.identification.type</field>
+            <field name="inherit_id" ref="account_base_it.view_einvoice_catalog_06_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                 <field name="active" position="after">
+                    <field name="is_portal" />
+                </field>
+            </field>
+        </record>
+
+       <!-- l10n_latam.identification.typeinherit tree view -->
+       <record id="view_einvoice_catalog_06_list" model="ir.ui.view">
+           <field name="name">l10n_latam.identification.type.inherit.view.tree</field>
+           <field name="model">l10n_latam.identification.type</field>
+           <field name="inherit_id" ref="account_base_it.view_einvoice_catalog_06_list"/>
+           <field name="arch" type="xml">
+               <!-- Add your xpath here -->
+                <field name="active" position="after">
+                    <field name="is_portal" />
+                </field>
+           </field>
+       </record>
+       <!-- res.partner inherit form view -->
+       <record id="view_partner_form" model="ir.ui.view">
+           <field name="name">res.partner.inherit.view.form</field>
+           <field name="model">res.partner</field>
+           <field name="inherit_id" ref="base.view_partner_form"/>
+           <field name="arch" type="xml">
+               <!-- Add your xpath here -->
+                <field name="phone" position="after">
+                    <field name="document" />
+                </field>
+           </field>
+       </record>
+    </data>
+</odoo>

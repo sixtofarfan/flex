@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="job_cost_task_form_view" model="ir.ui.view">
+            <field name="name">project.task.inherited.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <button name="action_assign_to_me" position="after">
+                    <button name="generate_cost" string="Generar Costo de OT" type="object" class="oe_highlight"/>
+                    <button name="generate_requisition" string="Nueva Requisicion de Materiales" invisible="1" type="object" class="oe_highlight"/>                    
+                </button>
+
+            <xpath expr="//div[@name='button_box']" position="inside">
+                    <button class="oe_stat_button" string="Requisiciones de Materiales" name="generate_requisition" type="object" icon="fa-navicon">
+                    </button>
+            </xpath>
+
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="job_costing_form_view">
+        <field name="name">Job.Costing.Form</field>
+        <field name="model">job.costing</field>
+        <field name="inherit_id" ref="odoo_job_costing_management.job_costing_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Costo de Venta">
+                    <group>
+                        <field name="sale_order_line_ids" nolabel="1" readonly="1">
+                            <tree editable="bottom">
+                                <field name="product_id" />
+                                <field name="price_unit" />
+                            </tree>
+                        </field>
+                        <group string="Ganancia / Perdida">
+                            <field name="ganan_perd"     readonly="1" />              
+                        </group>
+                        <group>                            
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='job_cost_line_ids']/tree/field[@name='actual_quantity']" position="before" >
+                <field name="real_qty_consumed" readonly="1" />
+                <field name="cost_real_qty_consumed" readonly="1" />
+                
+            </xpath>
+            <xpath expr="//field[@name='job_overhead_line_ids']/tree/field[@name='actual_quantity']" position="before" >
+                <field name="real_qty_consumed" readonly="1" />
+                <field name="cost_real_qty_consumed" readonly="1" />
+            </xpath>
+        </field>
+    </record>
+
+
+        <record id="view_picking_form" model="ir.ui.view">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">            
+                <field name="picking_type_id" position="before">
+                    <field name="job_jp_project_id" />
+                    <field name="job_jp_task_id"  domain="[('project_id','=',job_jp_project_id)]"/>
+                </field>
+                <xpath expr="//field[@name='move_ids_without_package']" position="attributes">                    
+                    <attribute name="context">{'default_company_id': company_id, 'picking_type_code': picking_type_code, 'default_picking_id': id, 'form_view_ref':'stock.view_move_form', 'address_in_id': partner_id, 'default_picking_type_id': picking_type_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id, 'default_job_jp_project_id': job_jp_project_id, 'default_job_jp_task_id': job_jp_task_id}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_id']" position="after">
+                    <field name="job_jp_project_id" invisible="1" />
+                    <field name="job_jp_task_id"  domain="[('project_id','=',job_jp_project_id)]"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

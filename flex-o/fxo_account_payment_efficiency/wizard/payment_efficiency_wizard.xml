@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record id="view_payment_efficiency_wizard_form" model="ir.ui.view">
+            <field name="name">payment.efficiency.wizard.form</field>
+            <field name="model">payment.efficiency.wizard</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <form string="Eficiencia de Cobranza">
+                    <sheet>
+                        <group string="Asistente para mostrar el Reporte de Eficiencia de Cobranza!">
+                            <group>
+                                <field name="report_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="generate_report_xlsx" string="Imprimir" icon="fa-print" type="object"
+                                class="btn-primary oe_inline"/>
+                        o
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_payment_efficiency_wizard_form" model="ir.actions.act_window">
+            <field name="name">Eficiencia de Cobranza</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">payment.efficiency.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_payment_efficiency_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="action_payment_efficiency_wizard_form" id="menu_action_payment_efficiency_wizard_form_item"
+                  parent="account_balance_doc_rep_it.menu_account_account_report"
+                  groups="account_base_it.group_account_tables_user"/>
+    </data>
+</odoo>

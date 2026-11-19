@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="sale_subscription_log_tree" model="ir.ui.view">
+		<field name="name">sale.subscription.log.tree</field>
+		<field name="model">sale.subscription.log</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="sale_subscription_id" optional="show"/>
+				<field name="error" optional="show"/>
+				<field name="date" optional="show"/>
+				<field name="invoice_date" optional="show"/>
+				<field name="template_id" optional="show"/>
+			</tree>
+		</field>
+	</record>
+	<record id="action_subscription_log" model="ir.actions.act_window">
+		<field name="name">Log de Errores Facturacion</field>
+		<field name="res_model">sale.subscription.log</field>
+		<field name="view_mode">tree</field>
+	</record>
+	<menuitem
+		id="menu_subscription_log"
+		action="action_subscription_log"
+		parent="sale_subscription.menu_sale_subscription"
+		sequence="9"
+	/>
+</odoo>

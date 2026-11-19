@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="res_partner_view_detraction_form">
+            <field name="name">res.partner.view.detraction.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']//field[@name='property_account_position_id']" position="after">
+                    <field name="det_percent_by" invisible="1"/>
+                    <field name="det_percent" attrs="{'invisible': [('det_percent_by', '!=', '2')]}"/>
+                    <field name="type_operation" attrs="{'invisible': [('det_percent_by', '!=', '2')]}"/>
+                    <field name="type_good_service" attrs="{'invisible': [('det_percent_by', '!=', '2')]}"/>
+                </xpath>
+                <field name="p_detraction" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

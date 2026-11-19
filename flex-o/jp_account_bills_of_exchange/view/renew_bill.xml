@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_renew_tree" model="ir.ui.view">
+            <field name="name">renew.bill.form.tree.view</field>
+            <field name="model">renew.bill.form</field>
+            <field name="arch" type="xml">
+                <tree string="Renewal Tree">
+                    <field name="name"/>
+                    <field name="renew_date"/>
+                    <field name="renew_bill_ids"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_renew_form" model="ir.ui.view">
+            <field name="name">renew.bill.form.form.view</field>
+            <field name="model">renew.bill.form</field>
+            <field name="arch" type="xml">
+                <form string="Renewal Form">
+                    <header>
+                        <button string="Create Renewals" type="object" name="create_renew" class="oe_highlight" attrs="{'invisible':[('state','!=','draft')]}"/>
+                        <button string="Cancel" type="object" name="cancel" confirm="Are you sure you want to unreconcile the conciliation and delete the accounting entries?" attrs="{'invisible':[('state','=','draft')]}"/>
+                        <!-- <button string="Process" type="object" name="process" class="oe_highlight" attrs="{'invisible':[('state','!=','to_process')]}"/>
+                        <button string="Reconcile" type="object" name="reconcile" confirm="Are you sure you want to reconcile the document?" class="oe_highlight" attrs="{'invisible':[('state','in',['draft','to_process', 'renewed'])]}"/> -->
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet string="Renewal Form">
+                        <h1 class="mt0">
+                            <field name="name" readonly="1" class="oe_inline"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="renew_date" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                <field name="percentage" required="1" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                <field name="currency_id" groups="base.group_multi_currency" force_save="1" required="1" attrs="{'readonly':[('origin_bill_ids','!=',[])]}"/>
+                            </group>
+                            <group> 
+                                <field name="custom_exchange_rate" groups="base.group_multi_currency" attrs="{'readonly':[('state','not in','draft'),('origin_bill_ids','!=',[])],'invisible':[('currency_id','=','company_currency_id')]}"/>
+                                <field name="exchange_rate" groups="base.group_multi_currency" force_save="1" required="1" attrs="{'readonly':['|',('state','not in','draft'),('custom_exchange_rate','=',False)]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Origin Bills of Exchange">
+                                <field name="origin_bill_ids" required="1" domain="[('state_of_bill','in',['portfolio','discount','guarantee','collection','disbursed']),('type_bill','=','receivable'),('bill_currency_id','=',currency_id)]" attrs="{'readonly':[('state','not in','draft')]}">
+                                    <tree>                
+                                        <field name="bill_number" />
+                                        <field name="bank_number"/>
+                                        <field name="account_id"/>
+                                        <field name="guarantee_id"/>
+                                        <field name="acceptor_id"/>
+                                        <field name="bill_date_due"/>
+                                        <field name="bill_currency_id"/>
+                                        <field name="bill_amount_total"/>
+                                        <field name="state_of_bill"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Renewal Bills of Exchange" attrs="{'invisible':[('renew_bill_ids','=',[])]}">
+                                <group>
+                                    <!-- <field name="renew_bill_ids" edit="0" nolabel="1" domain="[('state_of_bill','in',['portfolio','discount','guarantee','collection','to_renew']),('type_bill','=','receivable')]" attrs="{'readonly':[('state','not in','draft')]}">
+                                        <tree> -->
+                                    <field name="renew_bill_ids" nolabel="1" domain="[('state_of_bill','in',['portfolio','discount','guarantee','collection','to_renew']),('type_bill','=','receivable')]">
+                                        <tree editable="bottom">                   
+                                            <field name="bill_number" />
+                                            <field name="bank_number"/>
+                                            <field name="account_id"/>
+                                            <field name="guarantee_id"/>
+                                            <field name="acceptor_id"/>
+                                            <field name="bill_date_due"/>
+                                            <field name="bill_currency_id"/>
+                                            <field name="bill_amount_total"/>
+                                            <field name="state_of_bill"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <!-- <page string="Journal Items" attrs="{'readonly':[('state','not in','draft')],'invisible':[('state','in',['draft','to_process'])]}">
+                                <group>
+                                    <group>
+                                        <field name="account_move" readonly="1"/>
+                                    </group>
+                                    <field name="account_move_line_ids" attrs="{'readonly':[('state','not in','draft')]}"/>
+                                </group>
+                            </page> -->
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_renew_search_view" model="ir.ui.view">
+            <field name="name">renew.bill.form.search</field>
+            <field name="model">renew.bill.form</field>
+            <field eval="10" name="priority"/>
+            <field name="arch" type="xml">
+                <search string="Bills">
+                    <field name="origin_bill_ids" string="Origin Bill" filter_domain="[('origin_bill_ids.bill_number', 'ilike', self)]"/>
+                    <field name="renew_bill_ids" string="Renew Bill" filter_domain="[('renew_bill_ids.bill_number', 'ilike', self)]"/>
+                    <!-- <group expand='0' string='Filters'>
+                        <filter name="unpaid" string="Bills Unpaid" domain="[('state_of_bill','in',['portfolio','collection','discount','guarantee','pending','disbursed','protested',])]"/>
+                        <filter name="overdue" string="Overdue Bills" domain="[('bill_date_due', '&lt;=', current_date),('state_of_bill', 'not in', ['draft','to_accept','to_reconcile','renewed','refinanced','paid','to_renew'])]"/>
+                        <filter name="overdue" string="Last day" domain="[('bill_date_due', '=', (context_today()-datetime.timedelta(days=8)).strftime('%Y-%m-%d')),('state_of_bill', 'not in', ['draft','to_accept','to_reconcile','renewed','refinanced','paid','to_renew'])]"/>
+                        <separator/>
+                        <filter name="to_accept" string="Bills to accept" domain="[('state_of_bill','=','to_accept')]"/>
+                        <filter name="disbursed" string="Bills Disbursed" domain="[('state_of_bill','=','disbursed')]"/>
+                        <filter name="collection" string="Bills in Collection" domain="[('state_of_bill','=','collection')]"/>
+                        <filter name="discount" string="Bills in Discount" domain="[('state_of_bill','=','discount')]"/>
+                        <filter name="guarantee" string="Bills in Guarantee" domain="[('state_of_bill','=','guarantee')]"/>
+                        <filter name="pending" string="Bills pending renew" domain="[('state_of_bill','=','pending')]"/>
+                        <filter name="torenew" string="Bills to renew" domain="[('state_of_bill','=','to_renew')]"/>
+                        <filter name="renewed" string="Renewed Bills" domain="[('state_of_bill','=','renewed')]"/>
+                        <filter name="protested" string="Protested Bills" domain="[('state_of_bill','=','protested')]"/>
+                        <filter name="refinanced" string="Refinanced Bills" domain="[('state_of_bill','=','refinanced')]"/>
+                        <filter name="paid" string="Paid Bills" domain="[('state_of_bill','=','paid')]"/>
+                    </group>
+                    <group expand='0' string='Group by...'>
+                        <filter string='Due Date' name="bill_date_due" context="{'group_by': 'bill_date_due'}"/>
+                        <filter string='Form' name="bill_form_id" context="{'group_by': 'bill_form_id'}"/>
+                        <filter string='State' name="state_of_bill" context="{'group_by': 'state_of_bill'}"/>
+                        <filter string='Acceptor' name="acceptor_id" domain="[]" context="{'group_by': 'acceptor_id'}"/>
+                        <filter string='Creditor' name="creditor_id" domain="[]" context="{'group_by': 'creditor_id'}"/>
+                        <filter string='Currency' name="currency_id" context="{'group_by': 'bill_currency_id'}" groups="base.group_multi_currency"/>
+                        <filter string='Account' name="account_id" domain="[]" context="{'group_by': 'account_id'}"/>
+                        <filter string='Company' name="company" domain="[]" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+                </group> -->
+                </search>
+            </field>
+        </record>
+
+        <!-- <record id="view_renew_bill_wizard" model="ir.ui.view">
+            <field name="name">renew.bill.wizard.form</field>
+            <field name="model">renew.bill.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Renewal Bill Wizard">
+                    <group>
+                        <group>
+                            <field name="renew_date"/>
+                            <field name="percentage"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Renew Bills" name="renew_bills_form" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record> -->
+
+    <!-- Add action entry in the Action Menu for Renew Bills -->
+    <!-- <act_window id="act_window_renew_bill_wizard"
+        name="Renew Bills"
+        binding_model="account.bill"
+        res_model="renew.bill.form"
+        binding_views="list"
+        view_mode="form"
+        target="new"
+    />
+
+        <record model="ir.actions.server" id="action_account_bill_reconcile_renew">
+            <field name="name">Reconcile Renew</field>
+            <field name="model_id" ref="model_renew_bill_wizard"/>
+            <field name="binding_model_id" ref="model_account_bill"/>
+            <field name="state">code</field>
+            <field name="code">
+                action = model.reconcile_renew()
+            </field>
+        </record> -->
+
+        <!-- Add action entry in the Action Menu for Send to Bank Bills -->
+        <!-- <act_window id="act_window_renew_form"
+            name="Renew Bills"
+            binding_model="account.bill"
+            res_model="renew.bill.wizard"
+            binding_views="list"
+            view_mode="form"
+            target="new"
+            view_id="view_renew_bill_wizard"
+        /> -->
+
+        <record id="action_renew_customer_forms" model="ir.actions.act_window">
+            <field name="name">Renewal Forms</field>
+            <field name="res_model">renew.bill.form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_renew_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_renew_form')})]"/>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('origin_bill_ids.type_bill','=','receivable')]</field>
+        </record>
+
+        <record id="action_renew_supplier_forms" model="ir.actions.act_window">
+            <field name="name">Renewal Forms</field>
+            <field name="res_model">renew.bill.form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_renew_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_renew_form')})]"/>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('origin_bill_ids.type_bill','=','payable')]</field>
+        </record>
+
+        <menuitem id="menu_account_renew_customer_forms" name="Renewal Forms"
+                parent="menu_bills_customer_title"
+                action="action_renew_customer_forms" sequence="240"/>
+
+        <menuitem id="menu_account_renew_supplier_forms" name="Renewal Forms"
+                parent="menu_bills_supplier_title"
+                action="action_renew_supplier_forms" sequence="240"/>
+
+    </data>
+</odoo>

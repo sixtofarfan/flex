@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="action_sale_order_line_factibility_old">
+            <field name="name">Factibility</field>
+            <field name="res_model">sale.order.line.factibility</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_sale_order_line_factibility_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_sale_order_line_factibility_from')})]"/>
+            <field name="search_view_id" ref="sale_order_line_factibility_search"/>
+            <field name="context">{'search_default_my_factibility': 1}</field>
+        </record>
+        <record id="action_sale_order_line_factibility" model="ir.actions.server">
+            <field name="name">Factibility</field>
+            <field name="model_id" ref="fxo_feasibility.model_sale_order_line_factibility"/>
+            <field name="state">code</field>
+            <field name="code">action = model.get_data()</field>
+        </record>
+        <record id="res_partner_view_map_extend_action" model="ir.actions.act_window">
+            <field name="name">Map Partner</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'map', 'view_id': ref('res_partner_view_map_extend')})]"/>
+            <field name="view_mode">map</field>
+        </record>
+        <record model="ir.actions.act_window" id="sale_order_line_qty_street_action">
+            <field name="name">Estudio Económico</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line.qty_street</field>
+            <field name="target">current</field>
+            <field name="view_mode">form</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_window_params">
+            <field name="name">Feasibility Cashflow</field>
+            <field name="res_model">fxo_feasibility.params</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

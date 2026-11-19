@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_recaudacion_diaria_directa_recaudacion,recaudacion_diaria_directa_recaudacion,model_recaudacion_diaria_directa_recaudacion,,1,1,1,1
+access_recaudacion_diaria_directa,recaudacion_diaria_directa,model_recaudacion_diaria_directa,,1,1,1,1
+access_banco_recaudacion_directa,banco_recaudacion_directa,model_banco_recaudacion_directa,,1,1,1,1

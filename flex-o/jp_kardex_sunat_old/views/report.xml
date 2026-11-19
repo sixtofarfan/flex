@@ -1,0 +1,15 @@
+<odoo>
+  <data>
+        
+        <report
+            id="report_kardex_sunat_xlsx"
+            model="kardex.wizard"
+            string="Print to XLSX"
+            report_type="xlsx"
+            name="kardex"
+            file="kardex"
+            attachment_use="False"
+        />
+
+  </data>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_payment_application,account.payment.application.root,model_account_payment_application,fxo_account_payment_application.account_payment_application_group,1,1,1,1
+access_account_payment_application_line,account.payment.application.line.root,model_account_payment_application_line,fxo_account_payment_application.account_payment_application_group,1,1,1,1

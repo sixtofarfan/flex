@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		
+		<record model="ir.ui.view" id="view_account_sunat_ib31_rep_form">
+			<field name="name">account.ib31.rep.form</field>
+			<field name="model">account.ib31.rep</field>
+			<field name="arch" type="xml">
+				<form string="Inventarios ">
+						<group>
+							<group>
+								<field name="company_id"/>
+								<field name="exercise" required="1"/>
+								<!-- <field name="period" required="1" domain="[('fiscal_year_id','=',exercise),('is_opening_close','=',False)]"/> -->
+							</group>
+						</group>
+						<footer>
+							<button string="Generar TXT" name="get_ib31" type="object" class="oe_highlight"/>
+							or
+							<button string="Generar Excel" name="get_ib31_excel" type="object" class="oe_highlight"/>
+							or
+							<button string="Cancel" class="oe_link" special="cancel"/>
+						</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="account_sunat_ib31_rep_action" model="ir.actions.act_window">
+			<field name="name">Inventarios y Balances 3.1</field>
+			<field name="res_model">account.ib31.rep</field>
+			<field name="view_mode">form</field>
+			<field name="view_ids"
+				   eval="
+							[
+							(5, 0, 0),
+							(0, 0, {'view_mode': 'form', 'view_id': ref('view_account_sunat_ib31_rep_form')}),
+							(0, 0, {'view_mode': 'kanban'})
+						  ]"
+			/>
+			<field name="target">new</field>
+		</record>
+
+	</data>
+</odoo>

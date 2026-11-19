@@ -1,0 +1,117 @@
+<odoo>
+	<record id="account_detraction_import_form" model="ir.ui.view">
+		<field name="name">account.detraction.import.form</field>
+		<field name="model">account.detraction.import</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="import_format_1" string="Importar Formato 1" type="object" class="oe_highlight"/>
+					<button name="import_format_2" string="Importar Formato 2" type="object" class="oe_highlight"/>
+				</header>
+				<sheet>
+					<div class="oe_title">
+						<h1>
+							<field name="name" readonly="1"/>
+						</h1>
+					</div>
+					<group>
+						<group>
+							<field name="company_id" readonly="1"/>
+						</group>
+					</group>
+					<group string="Formato 1">
+						<group>
+							<field name="file_name_1" invisible="1"/>
+							<field name="format1" filename="file_name_1"/>
+						</group>
+						<group>
+							<field name="import_date_1" readonly="1"/>
+						</group>
+					</group>
+					<group string="Formato 2">
+						<group>
+							<field name="file_name_2" invisible="1"/>
+							<field name="format2" filename="file_name_2"/>
+						</group>
+						<group>
+							<field name="import_date_2" readonly="1"/>
+						</group>
+					</group>
+					<notebook>
+						<page name="error" string="Errores">
+							<field name="import_line_ids" readonly="1">
+								<tree>
+									<field name="partner"/>
+									<field name="ruc"/>
+									<field name="ref"/>
+									<field name="op_number"/>
+									<field name="date"/>
+									<field name="format"/>
+								</tree>
+							</field>
+						</page>
+						<page name="registers" string="Registros Correctos">
+							<field name="import_line_registers_ids" readonly="1">
+								<tree>
+									<field name="partner"/>
+									<field name="ruc"/>
+									<field name="ref"/>
+									<field name="op_number"/>
+									<field name="date"/>
+									<field name="format"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="account_detraction_import_tree" model="ir.ui.view">
+		<field name="name">account.detraction.import.tree</field>
+		<field name="model">account.detraction.import</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="company_id"/>
+			</tree>
+		</field>
+	</record>
+	<record id="account_detraction_import_search" model="ir.ui.view">
+		<field name="name">account.detraction.import.search</field>
+		<field name="model">account.detraction.import</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<field name="file_name_1"/>
+				<field name="file_name_2"/>
+				<field name="import_date_1"/>
+				<field name="import_date_2"/>
+				<field name="company_id"/>
+				<separator/>
+				<group expand="0" string="Group By...">
+					<filter string="Fecha Formato 1" name="import_date_1" domain="[]" context="{'group_by':'import_date_1'}"/>
+					<filter string="Fecha Formato 2" name="import_date_2" domain="[]" context="{'group_by':'import_date_2'}"/>
+					<filter string="Compañia" name="company_id" domain="[]" context="{'group_by':'company_id'}"/>
+				</group>
+			</search>
+		</field>
+	</record>
+	<record id="account_detraction_import_action" model="ir.actions.act_window">
+		<field name="name">Importador de Detracciones</field>
+		<field name="res_model">account.detraction.import</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Crea tu primera Importacion de Detracciones aqui
+			</p>
+		</field>
+	</record>
+	<menuitem
+		id="account_detraction_import_menu"
+		action="account_detraction_import_action"
+		parent="account_base_it.menu_treasury"
+		sequence="8"
+		groups="account.group_account_manager"
+		/>
+</odoo>

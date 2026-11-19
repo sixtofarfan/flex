@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form" model="ir.ui.view" >
+        <field name="name">res.partner.form.inherited</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="image_1920" position="after">
+                <div class="oe_right">
+                    <div style="margin-top: 94px; position: absolute;">
+                        <span class="fa fa-camera mr4" aria-label="Take Picture" style="color: #875a7b !important;" title="Take Picture"/>
+                        <field name="acs_webcam_url" widget="url" text="Take Picture" class="oe_bold oe_inline" nolabel="1"/>
+                    </div>
+                </div>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_users_form" model="ir.ui.view" >
+        <field name="name">res.users.form.inherited</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <field name="image_1920" position="after">
+                <div class="oe_right">
+                    <div style="margin-top: 94px; position: absolute;">
+                        <span class="fa fa-camera mr4" aria-label="Take Picture" style="color: #875a7b !important;" title="Take Picture"/>
+                        <field name="acs_webcam_url" widget="url" text="Take Picture" class="oe_bold oe_inline" nolabel="1"/>
+                    </div>
+                </div>
+            </field>
+        </field>
+    </record>
+
+</odoo>

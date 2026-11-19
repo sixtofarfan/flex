@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data noupdate="0">
+        <record id="fxo_hr_employee_relative_hr_family_bond" model="ir.rule">
+            <field name="name">HR Family Bond Multi-Company</field>
+            <field name="model_id" ref="model_hr_family_bond"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="fxo_hr_employee_relative_hr_employee_child" model="ir.rule">
+            <field name="name">HR Employee Child Multi-Company</field>
+            <field name="model_id" ref="model_hr_employee_child"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+    </data>
+
+</odoo>

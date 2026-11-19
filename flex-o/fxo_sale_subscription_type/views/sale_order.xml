@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <!-- sale.order inherit form view -->
+        <record id="view_order_form_view" model="ir.ui.view">
+            <field name="name">sale.order.inherit.view.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="payment_term_id" position="after">
+                    <field name="save_suscripcion_to_duplicate" invisible="1"/>
+                </field>
+                <field name="partner_shipping_id" position="after">
+                    <field name="subscription_update_id" domain="[('partner_id', '=', partner_id)]"
+                           attrs="{'invisible':['|',('has_subscription_update_id','=','none'),('has_subscription_update_id','=',False)], 'required': [('has_subscription_update_id','==','required')]}"/>
+                    <field name="date_update_from"
+                           attrs="{'invisible':['|',('has_date_update_from','=','none'),('has_date_update_from','=',False)], 'required': [('has_date_update_from','==','required')]}"/>
+                    <field name="date_update_to"
+                           attrs="{'invisible':['|',('has_date_update_to','=','none'),('has_date_update_to','=',False)], 'required': [('has_date_update_to','==','required')]}"/>
+
+                    <field name="has_date_update_from" invisible="1"/>
+                    <field name="has_date_update_to" invisible="1"/>
+                    <field name="has_subscription_update_id" invisible="1"/>
+                    <field name="has_signature_date" invisible="1"/>
+                    <field name="has_subscription_template_id" invisible="1"/>
+                </field>
+                <field name="payment_term_id" position="before">
+                    <field name="subscription_template_id"
+                           attrs="{'invisible':['|',('has_subscription_template_id','=','none'),('has_subscription_template_id','=',False)], 'required': [('has_subscription_template_id','==','required')]}"/>
+
+                    <field name="signature_date"
+                           attrs="{'invisible':['|',('has_signature_date','=','none'),('has_signature_date','=',False)], 'required': [('has_signature_date','=','required')]}"/>
+                    <field name="type_id_select" invisible="1"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_order_line_form_view" model="ir.ui.view">
+            <field name="name">sale.order.inherit.view.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
+                    <field name="subscription_update_id" invisible="1"/>
+                    <field name="type_id_select" invisible="1"/>
+                    <field name="subscription_update_line_id"
+                           domain="[('analytic_account_id', '=', subscription_update_id)]"
+                           attrs="{'invisible': [('subscription_update_id', '=', False)],
+                           'required': ['|', ('subscription_update_id', '!=', False), ('type_id_select', '=', 'upgrade_temp')]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

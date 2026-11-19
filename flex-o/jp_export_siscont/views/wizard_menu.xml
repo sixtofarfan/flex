@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+
+        <record id="export_siscont_action" model="ir.actions.act_window">
+            <field name="name">Export to Siscont</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">export.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_export_siscont_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            name="Export to Siscont"
+            action="export_siscont_action"
+            id="export_siscont_wizard_menu"
+            parent="account.menu_finance_entries_accounting_miscellaneous" sequence="30"/>
+
+  </data>
+</odoo>

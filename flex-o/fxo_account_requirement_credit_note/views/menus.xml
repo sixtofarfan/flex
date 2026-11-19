@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<menuitem 
+		action="action_einvoice_catalog_09_internal_form" 
+		id="menu_action_einvoice_catalog_09_internal_form" 
+		parent="account_base_it.menu_account_base_it" 
+		sequence="10" 
+		groups="fxo_account_requirement_credit_note.group_request_credit_note"
+	/>
+	<menuitem 
+		action="action_request_credit_note_form" 
+		id="menu_request_credit_note_form" 
+		parent="sale.sale_order_menu" 
+		sequence="1"
+		groups="fxo_account_requirement_credit_note.group_request_credit_note"
+	/>
+</odoo>

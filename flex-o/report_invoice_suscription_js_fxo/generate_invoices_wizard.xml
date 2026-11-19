@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_generate_invoices_wizard" model="ir.ui.view">
+        <field name="name">view_generate_invoices_wizard.form</field>
+        <field name="model">generate.invoices.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <notebook>
+                        <page string="Subscriptions Lines">
+                            <field name="subscription_line_ids">
+                                <tree create="false" edit="false" delete="false">
+                                    <field name="name"/>
+                                    <field name="service_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </group>
+                <footer>
+                    <button name="generate_invoices" string="To Invoice" type="object"
+                            confirm="You this sure that do you wish to invoice these lines of subscription?"
+                            class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="generate_invoices_wizard_menu_action"
+                name="Generates Invoices"
+                binding_model="sale.subscription.line"
+                res_model="generate.invoices.wizard"
+                binding_views="list"
+                view_mode="form"
+                view_id="view_generate_invoices_wizard"
+                target="new"/>
+
+
+</odoo>

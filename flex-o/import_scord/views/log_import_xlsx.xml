@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="log_import_xlsx_view_tree" model="ir.ui.view">
+        <field name="name">log.import.xlsx.view.tree</field>
+        <field name="model">log.import.xlsx</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="date" />
+                <field name="description" />
+                <field name="ref" />
+                <field name="file" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="log_import_xlsx_action" model="ir.actions.act_window">
+        <field name="name">Logs Import xlsx</field>
+        <field name="res_model">log.import.xlsx</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="log_import_xlsx_menu"
+        name="Logs Import xlsx" 
+        action ="log_import_xlsx_action"/>
+
+</odoo>

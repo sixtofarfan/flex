@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_fixed_inputs_root,hr_fixed_inputs_root,fxo_hr_fixed_inputs.model_hr_fixed_inputs,hr_base_it.group_hr_tables_root,1,1,1,1
+access_hr_fixed_inputs_line_root,hr_fixed_inputs_line_root,fxo_hr_fixed_inputs.model_hr_fixed_inputs_line,hr_base_it.group_hr_tables_root,1,1,1,1

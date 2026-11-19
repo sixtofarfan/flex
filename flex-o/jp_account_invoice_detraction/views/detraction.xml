@@ -1,0 +1,79 @@
+<odoo>
+  <data>
+
+        <record id="view_account_detraction_lot_form" model="ir.ui.view">
+            <field name="name">account.detraction.lot.form</field>
+            <field name="model">detraction.create.file</field>
+            <field name="arch" type="xml">
+                <form string="Detraction Lot" create="0">
+                    <header>
+                        <button name="pay_detractions" string="Pay Detractions" class="oe_highlight" type="object" attrs="{'invisible': [('state', '=', '1')]}"/>
+                        <button name="unpay_detractions" string="Unpay Detractions" class="oe_highlight" type="object" attrs="{'invisible': [('state', '=', '0')]}"/>
+                        <button name="update_account_amount_list" string="Update Amount" type="object" attrs="{'invisible': [('state', '=', '1')]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="txt_file" filename="file_name" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="total_form" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="payment_ids" domain="[('is_detraction', '=', True),
+                                                           ('state', '=', 'posted'),
+                                                           ('detraction_state', '=', '0'),
+                                                           ('payment_type', '=', 'outbound')]" nolabel="1">
+                            <tree>
+                                <field name="payment_date"/>
+                                <field name="partner_id"/>
+                                <field name="type_operation"/>
+                                <field name="type_good_service"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="amount"/>
+                                <field name="account_amount" sum="Amount"/>
+                                <field name="detraction_state"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_account_detraction_lot_tree" model="ir.ui.view">
+            <field name="name">account.detraction.lot.tree</field>
+            <field name="model">detraction.create.file</field>
+            <field name="arch" type="xml">
+                <tree string="Detraction Lot" create="0">
+                    <field name="name"/>
+                    <!-- <field name="type_operation"/>
+                    <field name="type_good_service"/> -->
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_account_detraction_tree" model="ir.actions.act_window">
+            <field name="name">Detraction Lot</field>
+            <field name="res_model">detraction.create.file</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_account_detraction_lot_tree"/>
+        </record>
+
+        <menuitem
+            name='Detraction Lots'
+            action="action_account_detraction_tree"
+            id="menu_action_account_detraction_tree_supplier"
+            parent="account.menu_finance_payables" sequence="99"/>
+
+        <menuitem
+            name='Detraction Lots'
+            action="action_account_detraction_tree"
+            id="menu_action_account_detraction_tree"
+            parent="account.menu_finance_receivables" sequence="99"/>
+
+  </data>
+</odoo>

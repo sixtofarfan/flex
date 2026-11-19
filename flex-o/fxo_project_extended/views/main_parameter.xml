@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="view_main_parameter_form_inherit" model="ir.ui.view">
+        <field name="name">main.parameter.form.inherit</field>
+        <field name="model">main.parameter</field>
+        <field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Proyecto">
+                    <group string="Proyectos">
+                        <group>
+                            <field name="a_credit_default"/>
+                            <field name="a_debit_default"/>
+                        </group>
+                        <group>
+                            <field name="a_debit_default"/>
+                        </group>
+                    </group>
+                    <group string="Facturacion">
+                        <group>
+                            <field name="serie_factura"/>
+                            <field name="serie_boleta"/>
+                        </group>
+                        <group>
+                            <field name="serie_recibo"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

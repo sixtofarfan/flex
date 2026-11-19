@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_multiple_payment_bcp_slip_form" model="ir.ui.view">
+		<field name="name">multiple.payment.bcp.slip.form</field>
+		<field name="model">multiple.payment.bcp.slip</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="get_moves" string="Obtener Haberes" context="{'bank_type': 'bcp_slip'}" type="object" class="oe_highlight" states="draft"/>
+					<button name="turn_draft" string="Volver a Borrador" type="object" class="oe_highlight" states="txt"/>
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<group>
+						<group>
+							<field name="charge_account_id"/>
+							<field name="charge_currency_id" required="1"/>
+							<field name="total_charge"/>
+						</group>
+						<group>
+							<field name="reference"/>
+							<field name="process_date"/>
+							<field name="payslip_type"/>
+						</group>
+					</group>
+					<p>Nota: La referencia no debe tener letras acentuadas</p>
+					<field name="line_ids">
+						<tree editable="bottom" create="0">
+							<field name="move_id"/>
+							<field name="account_type"/>
+							<field name="payment_acc_number"/>
+							<field name="partner_doc_type"/>
+							<field name="partner_doc_number"/>
+							<field name="beneficiary_name"/>
+							<field name="beneficiary_ref"/>
+							<field name="company_ref"/>
+							<field name="amount"/>
+							<field name="flag"/>
+						</tree>
+					</field>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="view_multiple_payment_bcp_slip_tree" model="ir.ui.view">
+		<field name="name">multiple.payment.bcp.slip.tree</field>
+		<field name="model">multiple.payment.bcp.slip</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="charge_account_id"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+	<record id="action_multiple_payment_bcp_slip" model="ir.actions.act_window">
+		<field name="name">Pagos Masivos BCP Haberes</field>
+		<field name="res_model">multiple.payment.bcp.slip</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+		  <p class="o_view_nocontent_smiling_face">
+			Crea tu primera tabla de Pagos Masivos BCP Haberes aqui
+		  </p>
+		</field>
+	</record>
+	<record id="get_bcp_slip_txt" model="ir.actions.server">
+		<field name="name">Generar txt</field>
+		<field name="model_id" ref="fxo_hr_multiple_payment.model_multiple_payment_bcp_slip"/>
+		<field name="binding_model_id" ref="fxo_hr_multiple_payment.model_multiple_payment_bcp_slip"/>
+		<field name="state">code</field>
+		<field name="code">action = records.get_bcp_slip_txt()</field>
+	</record>
+</odoo>

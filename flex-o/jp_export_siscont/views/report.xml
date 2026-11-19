@@ -1,0 +1,15 @@
+<odoo>
+  <data>
+        
+        <report
+            id="report_export_voucher_xlsx"
+            model="export.wizard"
+            string="Print to XLSX"
+            report_type="xlsx"
+            name="voucher"
+            file="voucher"
+            attachment_use="False"
+        />
+
+  </data>
+</odoo>

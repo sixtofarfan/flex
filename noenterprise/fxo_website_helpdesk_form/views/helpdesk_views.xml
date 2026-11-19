@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="helpdesk_team_view_form_inherit" model="ir.ui.view">
+        <field name="name">helpdesk.team.view.form.inherit</field>
+        <field name="model">helpdesk.team</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_team_view_form"/>
+        <field name="arch" type="xml">
+            <div id="productivity" position="inside">
+                <div class="col-lg-6 o_setting_box" id="alias_collection">
+                    <div class="o_setting_left_pane">
+                        <field name="is_team_collection"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="is_team_collection"/>
+                        <div class="text-muted">
+                            Check para designar equipos de cobranza
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+    <record id="helpdesk_tickets_view_tree_inherit" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.tree.inherit</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="team_id" position="attributes" invisible="0">
+                <attribute name="optional">view</attribute>
+            </field>
+            <field name="partner_id" position="after">
+                <field name="date_from" optional="show"/>
+                <field name="create_date" optional="show"/>
+            </field>
+        </field>
+    </record>
+    <record id="helpdesk_ticket_view_form" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.form</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="replace"/>
+            <field name="team_id" position="replace"/>
+            <field name="partner_email" position="replace"/>
+            <field name="active" position="after">
+                <field name="id" string="Ticket Number" readonly="1" invisible="1"/>
+                <field name="partner_id" class="field_partner_id" domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
+                <field name="service_id" domain="[('partner_id', '=', partner_id)]" options="{'no_create': True,'no_edit': True}"/>
+                <field name="partner_email"/>
+                <field name="team_id"/>
+            </field>
+            <field name="email_cc" position="after">
+                <field name="problem"/>
+            </field>
+            <field name="partner_id" position="attributes">
+                <attribute name="domain">['|', '|', ('company_id', '=', False), ('company_id', '=', company_id), ('is_customer', '=', True)]</attribute>
+            </field>
+            <field name="partner_id" position="after">
+                <!-- <field name="partner_street_id" domain="[('parent_id', '=', partner_id), ('type', 'in', ('delivery','contact'))]"/>  -->
+                <field name="partner_street_id" domain="[('parent_id', '=', partner_id)]" invisible="1"/>
+                <field name="street"/>
+            </field>
+            <field name="email_cc" position="before">
+                <field name="afection_type"/>
+                <field name="motive_id"/>
+                <field name="detail_id"/>
+                <field name="cause_id"/>
+                <field name="responsable_id" domain="[('type', '=', 'contact')]"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="supplier_ticket"/>
+                <field name="fault_latitude"/>
+                <field name="fault_longitude"/>
+                <!--<field name="analytic_id" />-->
+            </field>
+            <field name="description" position="after">
+                <field name="description_solution" placeholder="Description of the solution"/>
+            </field>
+ 
+       </field>
+    </record>
+
+
+
+        <!-- sale.order.line.factibility tree view -->
+        <record id="view_helpdesk_afection_type_tree" model="ir.ui.view">
+            <field name="name">helpdesk.afection.type.tree</field>
+            <field name="model">helpdesk.afection.type</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="action_helpdesk_afection_type">
+            <field name="name">Tipo de Afectacion</field>
+            <field name="res_model">helpdesk.afection.type</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_helpdesk_afection_type_tree')})]"/>
+        </record>   
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem   id="helpdesk_afection_type_menu" 
+                    name="Tipo de Afectacion" 
+                    parent="helpdesk.helpdesk_menu_config" 
+                    action="action_helpdesk_afection_type" 
+                    sequence="20"/> 
+
+        <!-- sale.order.line.factibility tree view -->
+        <record id="view_helpdesk_problem_tree" model="ir.ui.view">
+            <field name="name">helpdesk.problem.tree</field>
+            <field name="model">helpdesk.problem</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="action_helpdesk_problem">
+            <field name="name">Problema</field>
+            <field name="res_model">helpdesk.problem</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_helpdesk_problem_tree')})]"/>
+        </record>   
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem   id="helpdesk_problem_menu" 
+                    name="Problema" 
+                    parent="helpdesk.helpdesk_menu_config" 
+                    action="action_helpdesk_problem" 
+                    sequence="20"/> 
+
+        <record id="view_helpdesk_motive_tree" model="ir.ui.view">
+            <field name="name">helpdesk.motive.tree</field>
+            <field name="model">helpdesk.motive</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="parent_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_helpdesk_motive" model="ir.actions.act_window">
+            <field name="name">Motive</field>
+            <field name="res_model">helpdesk.motive</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_helpdesk_motive_tree')})]"/>
+        </record>
+
+        <menuitem   id="helpdesk_motive_menu"  
+                    parent="helpdesk.helpdesk_menu_config" 
+                    action="action_helpdesk_motive" 
+                    sequence="21"/> 
+
+        <record id="view_helpdesk_detail_tree" model="ir.ui.view">
+            <field name="name">helpdesk.detail.tree</field>
+            <field name="model">helpdesk.detail</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="parent_id"/>
+                    <field name="child_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_helpdesk_detail" model="ir.actions.act_window">
+            <field name="name">Detail</field>
+            <field name="res_model">helpdesk.detail</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_helpdesk_detail_tree')})]"/>
+        </record>
+
+        <menuitem   id="helpdesk_detail_menu"  
+                    parent="helpdesk.helpdesk_menu_config" 
+                    action="action_helpdesk_detail" 
+                    sequence="22"/>
+
+        <record id="view_helpdesk_cause_tree" model="ir.ui.view">
+            <field name="name">helpdesk.cause.tree</field>
+            <field name="model">helpdesk.cause</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="child_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_helpdesk_cause" model="ir.actions.act_window">
+            <field name="name">Cause</field>
+            <field name="res_model">helpdesk.cause</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_helpdesk_cause_tree')})]"/>
+        </record>
+
+        <menuitem   id="helpdesk_cause_menu"  
+                    parent="helpdesk.helpdesk_menu_config" 
+                    action="action_helpdesk_cause" 
+                    sequence="23"/> 
+</odoo>

@@ -1,0 +1,175 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fxo_sale_subscription_suspend
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-11 20:47+0000\n"
+"PO-Revision-Date: 2021-11-11 15:48-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es_PE\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: fxo_sale_subscription_suspend
+#: model:res.groups,name:fxo_sale_subscription_suspend.group_subscription_request_approved
+msgid "Aprueba Solicitudes de Suspensión o Reactivación de Contratos"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields.selection,name:fxo_sale_subscription_suspend.selection__sale_subscription_suspend_reactivated__state__draft
+msgid "Borrador"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__company_id
+msgid "Company"
+msgstr "Compañia"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields.selection,name:fxo_sale_subscription_suspend.selection__sale_subscription_suspend_reactivated__state__confirmed
+msgid "Confirmado"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model_terms:ir.ui.view,arch_db:fxo_sale_subscription_suspend.sale_subscription_suspend_reactivated_form
+msgid "Confirmar"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__confirmed_date
+#: model_terms:ir.ui.view,arch_db:fxo_sale_subscription_suspend.sale_subscription_suspend_reactivated_search
+msgid "Confirmed Date"
+msgstr "Fecha de Confirmación"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__confirmed_user_id
+msgid "Confirmed User"
+msgstr "Usuario que aprueba"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__display_name
+msgid "Display Name"
+msgstr "Nombre a Mostrar"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__state
+#: model_terms:ir.ui.view,arch_db:fxo_sale_subscription_suspend.sale_subscription_suspend_reactivated_search
+msgid "Estado"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model_terms:ir.ui.view,arch_db:fxo_sale_subscription_suspend.sale_subscription_suspend_reactivated_search
+msgid "Group By"
+msgstr "Agrupado por"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__id
+msgid "ID"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado última vez por"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__write_date
+msgid "Last Updated on"
+msgstr "Ultima Actualización"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__observations
+msgid "Observations"
+msgstr "Observaciones"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields.selection,name:fxo_sale_subscription_suspend.selection__sale_subscription_suspend_reactivated__type__reactivation
+msgid "Reactivation"
+msgstr "Reactivación"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields.selection,name:fxo_sale_subscription_suspend.selection__sale_subscription_suspend_reactivated__state__done
+msgid "Realizado"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model_terms:ir.ui.view,arch_db:fxo_sale_subscription_suspend.sale_subscription_suspend_reactivated_form
+msgid "Realizar"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__request_date
+#: model_terms:ir.ui.view,arch_db:fxo_sale_subscription_suspend.sale_subscription_suspend_reactivated_search
+msgid "Request Date"
+msgstr "Fecha de Solicitud"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__name
+msgid "Request Number"
+msgstr "Número de Solicitud"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__request_user_id
+#: model_terms:ir.ui.view,arch_db:fxo_sale_subscription_suspend.sale_subscription_suspend_reactivated_search
+msgid "Request User"
+msgstr "Usuario que solicita"
+
+#. module: fxo_sale_subscription_suspend
+#: model:res.groups,name:fxo_sale_subscription_suspend.group_subscription_suspend_reactivated
+msgid "Solicita Suspensión o Reactivación de Contratos"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.actions.act_window,name:fxo_sale_subscription_suspend.action_sale_subscription_suspend_reactivated
+#: model:ir.ui.menu,name:fxo_sale_subscription_suspend.menu_sale_subscription_suspend_reactivated
+msgid "Solicitudes de Suspensión y Reactivación de Servicios"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields.selection,name:fxo_sale_subscription_suspend.selection__sale_subscription_suspend_reactivated__type__suspension
+msgid "Suspension"
+msgstr "Suspensión"
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model.fields,field_description:fxo_sale_subscription_suspend.field_sale_subscription_suspend_reactivated__type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: fxo_sale_subscription_suspend
+#: model_terms:ir.ui.view,arch_db:fxo_sale_subscription_suspend.sale_subscription_suspend_reactivated_form
+msgid "Volver a Borrador"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model:ir.model,name:fxo_sale_subscription_suspend.model_sale_subscription_suspend_reactivated
+msgid "sale.subscription.suspend.reactivated"
+msgstr ""
+
+#. module: fxo_sale_subscription_suspend
+#: model_terms:ir.ui.view,arch_db:fxo_sale_subscription_suspend.sale_subscription_suspend_reactivated_form
+msgid ""
+"¿Está seguro que desea realizar la operación?, una vez hecho esto ya no se "
+"podrán hacer modificaciones."
+msgstr ""

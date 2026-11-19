@@ -1,0 +1,251 @@
+import os
+
+from odoo import models, fields, exceptions, tools, api
+import xmlrpc.client
+from ftplib import FTP
+from os import remove
+import ssl
+
+no_xlwt = False
+try:
+    import xlwt
+except ImportError:
+    no_xlwt = True
+
+
+class ResCompany(models.Model):
+    _inherit = 'res.company'
+
+    bd_param_url = fields.Char(string=u'URL Conexion')
+    bd_param_db = fields.Char(string=u'Base de datos')
+    bd_param_username = fields.Char(string=u'Usuario')
+    bd_param_password = fields.Char(string=u'Clave')
+    path_local_api = fields.Char(string='Ruta Local Api')
+
+    intiza_server = fields.Char(string=u'Servidor', default='ftp.intiza.com')
+    intiza_port = fields.Char(string=u'Puerto', default='21')
+    intiza_user = fields.Char(string=u'Usuario')
+    intiza_clave = fields.Char(string=u'Clave')
+    intiza_directory_partner = fields.Char(string=u'Directorio para Clientes')
+    intiza_directory_invoice = fields.Char(string=u'Directorio para Facturas')
+
+    @api.model
+    def _cron_generate_xslx_to_ftp_intiza(self):
+        company = self.env.company
+        user = company.bd_param_username
+        bd = company.bd_param_db
+        url = company.bd_param_url
+        password = company.bd_param_password
+        common = xmlrpc.client.ServerProxy('%s/xmlrpc/2/common' % url, verbose=False,
+                                           use_datetime=True, context=ssl._create_unverified_context())
+        uid = common.authenticate(bd, user, password, {})
+
+        models = xmlrpc.client.ServerProxy('%s/xmlrpc/2/object' % url, verbose=False,
+                                           use_datetime=True, context=ssl._create_unverified_context())
+        res_company_ids = models.execute_kw(bd, uid, password, 'res.company', 'search_read',
+                                            [[['integration_intiza', '=', True]]], {'fields': ['id', 'name']})
+        ftp = FTP()
+        ftp.connect(company.intiza_server, int(company.intiza_port))
+        ftp.login(company.intiza_user, company.intiza_clave)
+        for company_n in res_company_ids:
+            account_move_ids = models.execute_kw(bd, uid, password, 'account.move',
+                                                 'search',
+                                                 [[['type', '=', 'out_invoice'], ['state', '=', 'posted'],
+                                                   ['amount_residual', '!=', 0], ['company_id', '=', company_n['id']]]],
+                                                 )
+            account_move_obj = models.execute_kw(bd, uid, password, 'account.move',
+                                                 'read',
+                                                 [account_move_ids],
+                                                 {'fields': ['ref',
+                                                             'type_document_id',
+                                                             'stage_sub_related_id',
+                                                             'partner_status_id',
+                                                             'partner_id',
+                                                             'invoice_date',
+                                                             'invoice_date_due',
+                                                             'currency_id',
+                                                             'amount_residual',
+                                                             'amount_residual_signed',
+                                                             'currency_rate']
+                                                  })
+            self._generate_excel_pending_to_ftp(account_move_obj, company_n, ftp)
+            #remove(company.path_local_api + company_n['name'] + ' Partner.xls')
+            #remove(company.path_local_api + company_n['name'] + ' Pending.xls')
+            print('Copiados Excel de Compañía: %s' % company_n['name'])
+        ftp.quit()
+        return True
+
+    def _generate_excel_pending_to_ftp(self, invoices, company_n, ftp):
+        if no_xlwt:
+            raise exceptions.Warning('Debe instalar la libreria xlwt de python\n'
+                                     'https://pypi.python.org/pypi/xlwt')
+        self._save_excel_pendings(invoices, company_n, ftp)
+        self._save_excel_customers(invoices, company_n, ftp)
+        return True
+
+    def _save_excel_pendings(self, invoices, company_n, ftp):
+        company = self if self else self.env.company
+        wb = xlwt.Workbook(encoding='utf8')
+        wb_sheet = wb.add_sheet('Pendientes')
+        wb_sheet.col(0).width = self.pixel2with(300)  # Company
+        wb_sheet.col(1).width = self.pixel2with(150)  # Nro Documento
+        wb_sheet.col(2).width = self.pixel2with(175)  # Tipo de Documento
+        wb_sheet.col(3).width = self.pixel2with(150)  # Est. Contrato
+        wb_sheet.col(4).width = self.pixel2with(500)  # Cliente
+        wb_sheet.col(5).width = self.pixel2with(150)  # Fecha de Emision
+        wb_sheet.col(6).width = self.pixel2with(150)  # Fecha de Vencimiento
+        wb_sheet.col(7).width = self.pixel2with(80)  # Moneda
+        wb_sheet.col(8).width = self.pixel2with(80)  # Tipo Cambio
+        wb_sheet.col(9).width = self.pixel2with(250)  # Moneda pendiente de cobro
+
+        xlwt.add_palette_colour("custom_colour", 0x21)
+        xlwt.add_palette_colour("custom_colour_1", 0x22)
+        wb.set_colour_RGB(0x21, 237, 125, 49)
+        wb.set_colour_RGB(0x22, 255, 230, 153)
+        style = xlwt.easyxf(
+            'font: bold 1,color black;alignment: wrap on,horiz center,vert center;pattern: pattern solid, fore_colour custom_colour;')
+
+        style2 = xlwt.easyxf(
+            'font: color black;alignment: wrap on,horiz left,vert center;')
+
+        style2_center = xlwt.easyxf(
+            'font: color black;alignment: wrap on,horiz center,vert center;')
+
+        style2_right = xlwt.easyxf(
+            'font: color black;alignment: wrap on,horiz right,vert center;')
+
+        wb_sheet.write(0, 0, u'Compañía', style)
+        wb_sheet.write(0, 1, u'Nro Documento', style)
+        wb_sheet.write(0, 2, u'Tipo de Documento', style)
+        wb_sheet.write(0, 3, u'Est. Contrato', style)
+        wb_sheet.write(0, 4, u'Cliente', style)
+        wb_sheet.write(0, 5, u'Fecha de Emisión', style)
+        wb_sheet.write(0, 6, u'Fecha de Vencimiento', style)
+        wb_sheet.write(0, 7, u'Moneda', style)
+        wb_sheet.write(0, 8, u'Moneda pendiente de cobro', style)
+        wb_sheet.write(0, 9, u'Tipo Cambio', style)
+        row = 1
+        for inv in invoices:
+            wb_sheet.write(row, 0, tools.ustr(company_n['name'], 'utf-8'), style2)
+            wb_sheet.write(row, 1, tools.ustr(inv['ref'], 'utf-8'), style2_center)
+            wb_sheet.write(row, 2, tools.ustr(inv['type_document_id'][1], 'utf-8'), style2)
+            if inv['stage_sub_related_id']:
+                wb_sheet.write(row, 3, tools.ustr(inv['stage_sub_related_id'][1], 'utf-8'), style2_center)
+            else:
+                wb_sheet.write(row, 3, '', style2_center)
+            wb_sheet.write(row, 4, tools.ustr(inv['partner_id'][1], 'utf-8'), style2)
+            wb_sheet.write(row, 5, inv['invoice_date'], style2_right)
+            wb_sheet.write(row, 6, inv['invoice_date_due'], style2_right)
+            wb_sheet.write(row, 7, tools.ustr(inv['currency_id'][1], 'utf-8'), style2_center)
+            wb_sheet.write(row, 8, inv['amount_residual'], style2_center)
+            wb_sheet.write(row, 9, inv['currency_rate'], style2_right)
+            row += 1
+        ftp.sendcmd('TYPE I')
+        remotepath = company.intiza_directory_invoice + company_n['name'] + ' Pending.xls'
+        wb.save(company.path_local_api + company_n['name'] + ' Pending.xls')
+        try:
+            with open(company.path_local_api + company_n['name'] + ' Pending.xls', 'rb') as xlsx_file:
+                ftp.storbinary('STOR ' + remotepath, xlsx_file)
+        except Exception as e:
+            raise e
+
+    def _save_excel_customers(self, invoices, company_n, ftp):
+        company = self if self else self.env.company
+        wb = xlwt.Workbook(encoding='utf8')
+        wb_sheet = wb.add_sheet('Clientes')
+        wb_sheet.col(0).width = self.pixel2with(350)  # Nombre a mostrar
+        wb_sheet.col(1).width = self.pixel2with(150)  # Estado Cliente
+        wb_sheet.col(2).width = self.pixel2with(250)  # Email
+        wb_sheet.col(3).width = self.pixel2with(175)  # Tipo de Identificación
+        wb_sheet.col(4).width = self.pixel2with(100)  # NIF
+        wb_sheet.col(5).width = self.pixel2with(225)  # Cobrador
+        wb_sheet.col(6).width = self.pixel2with(150)  # Categoría
+
+        xlwt.add_palette_colour("custom_colour", 0x21)
+        xlwt.add_palette_colour("custom_colour_1", 0x22)
+        wb.set_colour_RGB(0x21, 237, 125, 49)
+        wb.set_colour_RGB(0x22, 255, 230, 153)
+        style = xlwt.easyxf(
+            'font: bold 1,color black;alignment: wrap on,horiz center,vert center;pattern: pattern solid, fore_colour custom_colour;')
+
+        style2 = xlwt.easyxf(
+            'font: color black;alignment: wrap on,horiz left,vert center;')
+
+        style2_center = xlwt.easyxf(
+            'font: color black;alignment: wrap on,horiz center,vert center;')
+
+        wb_sheet.write(0, 0, u'Nombre a mostrar', style)
+        wb_sheet.write(0, 1, u'Estado Cliente', style)
+        wb_sheet.write(0, 2, u'Email', style)
+        wb_sheet.write(0, 3, u'Tipo de Identificación', style)
+        wb_sheet.write(0, 4, u'NIF', style)
+        wb_sheet.write(0, 5, u'Cobrador', style)
+        wb_sheet.write(0, 6, u'Categoría', style)
+        row = 1
+        partners = self._get_partners(invoices)[0]
+        partners_dict = self._get_partners(invoices)[1]
+        for partner in partners:
+            wb_sheet.write(row, 0, tools.ustr(partner['name'], 'utf-8'), style2)
+            wb_sheet.write(row, 1, tools.ustr(partners_dict[str(partner['id'])], 'utf-8'), style2)
+            wb_sheet.write(row, 2, tools.ustr(partner['email'], 'utf-8'), style2)
+            if partner['l10n_latam_identification_type_id']:
+                wb_sheet.write(row, 3, tools.ustr(partner['l10n_latam_identification_type_id'][1], 'utf-8'), style2_center)
+            else:
+                wb_sheet.write(row, 3, '', style2_center)
+            wb_sheet.write(row, 4, tools.ustr(partner['vat'], 'utf-8'), style2)
+            if partner['collection_id']:
+                wb_sheet.write(row, 5, tools.ustr(partner['collection_id'][1], 'utf-8'), style2)
+            else:
+                wb_sheet.write(row, 5, '', style2)
+            if partner['fxo_category_id']:
+                wb_sheet.write(row, 6, tools.ustr(partner['fxo_category_id'][1], 'utf-8'), style2)
+            else:
+                wb_sheet.write(row, 6, '', style2)
+            row += 1
+        ftp.sendcmd('TYPE I')
+        remotepath = company.intiza_directory_partner + company_n['name'] + ' Partner.xls'
+        wb.save(company.path_local_api + company_n['name'] + ' Partner.xls')
+        try:
+            with open(company.path_local_api + company_n['name'] + ' Partner.xls', 'rb') as xlsx_file:
+                ftp.storbinary('STOR ' + remotepath, xlsx_file)
+        except Exception as e:
+            raise e
+
+    def _get_partners(self, invoices):
+        company = self if self else self.env.company
+        user = company.bd_param_username
+        bd = company.bd_param_db
+        url = company.bd_param_url
+        password = company.bd_param_password
+        common = xmlrpc.client.ServerProxy('%s/xmlrpc/2/common' % url, verbose=False,
+                                           use_datetime=True, context=ssl._create_unverified_context())
+        uid = common.authenticate(bd, user, password, {})
+
+        models = xmlrpc.client.ServerProxy('%s/xmlrpc/2/object' % url, verbose=False,
+                                           use_datetime=True, context=ssl._create_unverified_context())
+        partners = list()
+        partners_final = list()
+        partners_dict = dict()
+        for inv in invoices:
+            if inv['partner_id'][0] not in partners:
+                partners.append(inv['partner_id'][0])
+                partners_dict[str(inv['partner_id'][0])] = inv['partner_status_id'][1] if inv[
+                    'partner_status_id'] else ''
+
+        partners_obj = models.execute_kw(bd, uid, password, 'res.partner',
+                                         'read',
+                                         [partners],
+                                         {'fields': ['id',
+                                                     'name',
+                                                     'email',
+                                                     'l10n_latam_identification_type_id',
+                                                     'vat',
+                                                     'collection_id',
+                                                     'fxo_category_id']
+                                          })
+        partners_final.append(partners_obj)
+        partners_final.append(partners_dict)
+        return partners_final
+
+    def pixel2with(self, pixel):
+        return int(round((pixel - 0.446) / 0.0272, 0))

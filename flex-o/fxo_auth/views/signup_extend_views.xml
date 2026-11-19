@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+         <template id="portal_my_details_fields_extend" inherit_id="portal.portal_my_details" name="My Detail Extend">
+   
+            <xpath expr="//input[@name='email']" position="replace">
+                <input type="email"  readonly="true" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email" />
+            </xpath>
+            <xpath expr="//div[2]" position="before">
+                <div t-attf-class="form-group #{error.get('aname') and 'o_has_error' or ''} col-xl-6">
+                    <label class="col-form-label" for="aname">Nombres</label>
+                    <input type="text" name="aname" t-attf-class="form-control #{error.get('aname') and 'is-invalid' or ''}" t-att-value="aname or partner.aname" />
+                </div>
+                <div t-attf-class="form-group #{error.get('las_name') and 'o_has_error' or ''} col-xl-6">
+                    <label class="col-form-label" for="las_name">Apellidos</label>
+                    <input type="text" name="las_name" t-attf-class="form-control #{error.get('las_name') and 'is-invalid' or ''}" t-att-value="las_name or partner.las_name" />
+                </div>
+                <div t-attf-class="form-group #{error.get('birthday') and 'o_has_error' or ''} col-xl-6">
+                    <label class="col-form-label" for="birthday">Fecha de Nacimiento</label>
+                    <input type="date" name="birthday" t-attf-class="form-control #{error.get('birthday') and 'is-invalid' or ''}" t-att-value="birthday or partner.birthday" />
+                </div>
+
+
+                <div t-attf-class="form-group #{error.get('birthday') and 'o_has_error' or ''} col-xl-6" >
+                    <label for="sex" class="control-label">Sexo</label>
+                    <br/>
+                    
+                    <input type="radio" name="sex" t-att-value="1"  required="required"  t-att-checked="true if int(partner.sex) == 1 else false "/> Masculino
+                    <input type="radio" name="sex" t-att-value="2"  required="required"  t-att-checked="true if int(partner.sex) == 2 else false " /> Femenino
+                </div>
+                
+            </xpath>
+            <xpath expr="//div[16]" position="replace">
+                <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-xl-6 field-country">
+                    <label class="col-form-label" for="country_id">País</label>
+                    <select name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
+                        <option value="">Seleccionar...</option>
+                        <t t-foreach="countries or []" t-as="country">
+                            <option t-att-value="country.id" t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
+                                <t t-esc="country.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </xpath>
+            <xpath expr="//div[17]" position="replace">
+                <div t-attf-class="form-group #{error.get('state_id') and 'o_has_error' or ''} col-xl-6 field-state">
+                    <label class="col-form-label label-optional" for="state_id">Departamento</label>
+                    <select name="state_id" id="state_ids" t-attf-class="form-control #{error.get('state_id') and 'is-invalid' or ''}">
+                        <option value="">Seleccionar...</option>
+                        <t t-foreach="states or []" t-as="state">
+                            <option t-att-value="state.id"  t-att-data-country_id="state.country_id.id" t-att-selected="state.id == partner.state_id.id">
+                                <t t-esc="state.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </xpath>
+            <xpath expr="//div[17]" position="after">
+                <div t-attf-class="form-group #{error.get('province_id') and 'o_has_error' or ''} col-xl-6 field-province">
+                    <label class="col-form-label label-optional1" for="province_id">Provincia</label>
+                    <select name="province_id" t-attf-class="form-control #{error.get('province_id') and 'is-invalid' or ''}">
+                        <option value="">Seleccionar...</option>
+                        <t t-foreach="provinces or []" t-as="province">
+                            <option t-att-value="province.id"  t-att-data-state_id="province.state_id.id" t-att-selected="province.id == partner.province_id.id">
+                                <t t-esc="province.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div t-attf-class="form-group #{error.get('district_id') and 'o_has_error' or ''} col-xl-6 field-district-id">
+                    <label class="col-form-label label-optional2" for="district_id">Distrito</label>
+                    <select name="district_id" t-attf-class="form-control #{error.get('district_id') and 'is-invalid' or ''}">
+                        <option value="">Seleccionar...</option>
+                        <t t-foreach="districts or []" t-as="district">
+                            <option t-att-value="district.id"  t-att-data-province_id="district.province_id.id" t-att-selected="district.id == partner.district_id.id">
+                                <t t-esc="district.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </xpath>
+            <xpath expr="//div[10]" position="replace">
+                <div invisible="1"/>
+            </xpath>
+            <xpath expr="//div[11]" position="replace">
+                <div invisible="1"/>
+            </xpath>
+            <xpath expr="//div[14]" position="replace">
+                <div invisible="1"/>
+            </xpath>
+            <xpath expr="//div[15]" position="replace">
+                <div invisible="1"/>
+            </xpath>
+            
+        </template> 
+
+        <template id="providers" name="OAuth Providers inherit" inherit_id="auth_oauth.providers" >
+            <xpath expr="//t[1]" position="replace"> 
+                <div class="o_auth_oauth_providers list-group mt-1 mb-1 text-left">
+                    <a t-foreach="providers" t-as="p" class="list-group-item list-group-item-action py-2" t-att-href="p['auth_link']">
+                        <i t-att-class="p['css_class']"/>
+                        <t t-esc="p['body']"/>
+                    </a>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="auth_signup_fields_extend" inherit_id="auth_signup.fields" name="Signup Fields Extend">
+            <xpath expr="//div[hasclass('field-login')]" position="replace">
+                <div class="form-group field-login" invisible="1"/>
+            </xpath>
+            <xpath expr="//div[hasclass('field-name')]" position="replace">
+                <div class="form-group field-name" invisible="1"/>
+            </xpath>
+            <xpath expr="//div[hasclass('field-password')]" position="replace">
+                <div class="form-group field-password" invisible="1"/>
+            </xpath>
+            <xpath expr="//div[hasclass('field-confirm_password')]" position="replace">
+                <div class="form-group field-confirm_password" invisible="1"/>
+            </xpath>
+        </template>
+
+        <template id="portal_layout_extend" inherit_id="portal.portal_layout" name="Portal my details Extend">
+            <xpath expr="//div[@t-field='user_id.partner_id']" position="after">
+                <div>
+                    N° de registro de usuario<div t-field="user_id.partner_id.nro_registro"/>
+                </div>
+            </xpath> 
+        </template>
+        
+        <template id="auth_signup_fields_extendv2" inherit_id="auth_signup.fields" name="Signup Fields Extend v2">
+           <xpath expr="//div[hasclass('field-name')]" position="after">
+                <t  t-if="only_passwords">
+                    <div class="form-group field-login">
+                        <label for="login">Your Email</label>
+                        <input type="text" name="login" t-att-value="login" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  id="login" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+                    </div>
+
+                    <div class="form-group field-name">
+                        <label for="name">Your Name</label>
+                        <input type="text" name="name" t-att-value="name" id="name" class="form-control form-control-sm" placeholder="e.g. John Doe" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                    
+                    <div class="form-group field-password pt-2">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control form-control-sm" required="required" t-att-autofocus="'autofocus' if only_passwords else None"/>
+                    </div>
+
+                    <div class="form-group field-confirm_password">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required"/>
+                    </div>
+                </t>    
+                <t t-else="">
+                    <div class="o_notebook">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a data-toggle="tab" disable_anchor="true" href="#reg" class="nav-link active " id="persona" role="tab">Registrate</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-toggle="tab" disable_anchor="true" href="#empre" class="nav-link " id="empresa" role="tab">Registrar tu empresa o instituto</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="reg">
+                                <img src="/fxo_auth/static/img/preparado.png" alt="" width="100%"/>
+                                <br/>
+                                <h1 class="text-center">Bienvenido a preparados.pe registrate y siente el poder de estar preparados</h1>
+                                <br/>
+                                <p class="text-center"> 
+                                    Dejanos tus datos para que puedas participar correctamente en el simulacro del 29 de mayo 2020 a las 10 de la mañana #GranSismo | Shake Out 
+                                </p>
+                                <br />
+                                <p class="text-center">
+                                    Registrate con :
+                                </p>
+                                <div class="row justify-content-md-center">
+                                    <div class=" col col-lg-1">
+                                        <div class="text-center">
+                                            <a href="https://www.facebook.com/dialog/oauth?response_type=token&amp;client_id=138390237275783&amp;redirect_uri=http%3A%2F%2Fpreparados.pe%2Fauth_oauth%2Fsignin&amp;scope=public_profile%2Cemail&amp;state=%7B%22d%22%3A+%22desa%22%2C+%22p%22%3A+2%2C+%22r%22%3A+%22http%253A%252F%252Fpreparados.pe%252Fweb%22%7D" >
+                                                <i class="fa fa-5x fa-facebook-square" style="color:blue;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class=" col col-lg-1">
+                                        <div class="text-center">
+                                            <a href="https://accounts.google.com/o/oauth2/auth?response_type=token&amp;client_id=375023584257-pehv6m0i3sad28io3pja6dh00d2lik3v.apps.googleusercontent.com&amp;redirect_uri=http%3A%2F%2Fpreparados.pe%2Fauth_oauth%2Fsignin&amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&amp;state=%7B%22d%22%3A+%22desa%22%2C+%22p%22%3A+3%2C+%22r%22%3A+%22http%253A%252F%252Fpreparados.pe%252Fweb%22%7D">
+                                                <i class="fa fa-5x  fa-google" style="color:red;"></i>
+                                                
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br />
+                                <p class="text-center">
+                                    o dejanos tus datos
+                                </p>
+                                <div class="row justify-content-md-center">
+                                    <div class=" col col-lg-6">
+                                        <div class="form-group field-login">
+                                            <label for="login">Email <b style="color:red">(*)</b></label>
+                                            <input type="text" name="login" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"   t-att-value="login" required="true" placeholder="pedro@ejemplo.com" id="login" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off"  />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-md-center">
+                                    <div class=" col col-lg-3">
+                                        <div class="form-group field-aname">
+                                            <label for="aname">Nombre <b style="color:red">(*)</b></label>
+                                            <input type="text" name="aname" t-att-value="aname" id="aname" required="true" placeholder="Pedro" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off"  />
+                                        </div>
+                                    </div>
+                                    <div class=" col col-lg-3">
+                                        <div class="form-group field-las_name">
+                                            <label for="las_name">Apellido <b style="color:red">(*)</b></label>
+                                            <input type="text" name="las_name" t-att-value="las_name" required="true" id="las_name" placeholder="Delgado Rodriguez"  class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off"  />
+                                            <input type="hidden" name="name" t-att-value="name" id="name" required="true" placeholder="Delgado Rodriguez" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" />
+                                            <input type="hidden" name="confirm_password" value="password" id="confirm_password" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" />
+                                            <input type="hidden" name="password" value="password" id="password" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" />
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="empre">
+                                <img src="/fxo_auth/static/img/empresa.png" alt="" width="100%"/>
+                                <br/>
+                                <h1 class="text-center">TU ERES EL ELEGIO PARA LLEVAR EL PODER DE ESTAR PREPARADOS A TODOS LOS QUE TE RODEAN</h1>
+                                <br/>
+                                <p class="text-center">
+                                    ¿Eres representante de una institucion educativa , empresa,institucion o entidad publica? dejanos los datos la entidad que representas y llena los datos con cifras reales para que juntamos hagamos un excelente trabajo.
+                                </p>
+                                <div class="row ">
+                                    <div class=" col col-lg-8">
+                                        <label class="col-form-label" for="category_id">Selecciona el rubro en el que te encuentas <b style="color:red">(*)</b></label>
+                                        <select name="category_id" t-attf-class="form-control" id="category_id">
+                                            <option value="">Seleccionar...</option>
+                                            <t t-foreach="categories or []" t-as="category">
+                                                <option t-att-value="category.id" >
+                                                    <t t-esc="category.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class=" col col-lg-8">
+                                        <div class="form-group field-razon">
+                                            <label for="razon">Razon Social <b style="color:red">(*)</b> </label>
+                                            <input type="text" name="razon" placeholder="Peruanos Preparados S.A" t-att-value="razon" id="razon" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" />
+                                        </div>
+                                    </div>
+                                    <div class=" col col-lg-4">
+                                        <div class="form-group field-ruc">
+                                            <label for="ruc">Ruc  </label>
+                                            <input type="text" name="ruc" t-att-value="ruc" id="ruc" placeholder="20600069891" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off"  />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class=" col col-lg-4">
+                                        <div class="form-group field-street">
+                                            <label for="street">¿Donde se encuenta?<b style="color:red">(*)</b> </label>
+                                            <input type="text" name="street" t-att-value="street" id="street" placeholder="Ate,Ate,Lima" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off"  />
+                                        </div>
+                                    </div>
+                                    <div class=" col col-lg-4">
+                                        <div class="form-group field-trabajadores">
+                                            <label for="trabajadores">Numero de Trabajadores</label>
+                                            <input type="text" name="trabajadores" t-att-value="trabajadores" placeholder="9000" id="trabajadores" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off"  />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class=" col col-lg-4">
+                                        <div class="form-group field-alumnos-menores">
+                                            <label for="alumnos_menores">Alumnos menores de edad</label>
+                                            <input type="text" name="alumnos_menores" t-att-value="alumnos_menores" id="alumnos_menores"  placeholder="9000" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off"  />
+                                        </div>
+                                    </div>
+                                    <div class=" col col-lg-4">
+                                        <div class="form-group field-alumnos_mayores">
+                                            <label for="alumnos_mayores">Alumnos mayores de edad</label>
+                                            <input type="text" name="alumnos_mayores" t-att-value="alumnos_mayores" id="alumnos_mayores"  placeholder="9000" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off"  />
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-center"> !Muy bien¡ Ahora dejanos tus datos para que nos contactemos contigo</p>
+                                <div class="row ">
+                                    <div class=" col col-lg-8">
+                                        <div class="form-group field-email_institucional">
+                                            <label for="email_institucional">Email Institucional <b style="color:red">(*)</b></label>
+                                            <input type="text" name="email_institucional" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  t-att-value="email_institucional" id="email_institucional" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" />
+                                        </div>
+                                    </div>
+                                    <div class=" col col-lg-4">
+                                        <div class="form-group field-cargo">
+                                            <label for="cargo">Tu cargo o representatividad <b style="color:red">(*)</b> </label>
+                                            <input type="text" name="cargo" t-att-value="cargo" id="cargo" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class=" col col-lg-4">
+                                        <div class="form-group field-nombre_responsable">
+                                            <label for="nombre_responsable">Nombre <b style="color:red">(*)</b></label>
+                                            <input type="text" name="nombre_responsable" t-att-value="nombre_responsable" id="nombre_responsable" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" />
+                                        </div>
+                                    </div>
+                                    <div class=" col col-lg-4">
+                                        <div class="form-group field-apellido_responsable">
+                                            <label for="apellido_responsable">Apellidos <b style="color:red">(*)</b></label>
+                                            <input type="text" name="apellido_responsable" t-att-value="apellido_responsable" id="apellido_responsable" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

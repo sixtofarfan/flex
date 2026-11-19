@@ -1,0 +1,64 @@
+<odoo>
+    <record id="fxo_payment_request_line_form" model="ir.ui.view">
+        <field name="name">fxo.payment.request.line.view.form</field>
+        <field name="model">fxo.payment.request.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box_routing">
+                        <button name="get_rounting_order_history" class="oe_stat_button" icon="fa-docs" type="object" attrs="{'invisible': [('routing_count', '=', 0)]}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="routing_count"/></span>
+                                <span class="o_stat_text">Documentos</span>
+                             </div>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="payment_request_id" invisible="1"/>
+                            <field name="partner_id"/>
+                            <field name="doc_number" domain="[('partner_id', '=', partner_id)]"/>
+                            <field name="internal_ref"/>
+                        </group>
+                        <group>
+                            <field name="internal_ref_child"/>
+                            <field name="product_id"/>
+                            <field name="currency_id"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="fxo_payment_request_line_view_tree" model="ir.ui.view">
+        <field name="name">fxo.payment.request.line.view.tree</field>
+        <field name="model">fxo.payment.request.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="payment_request_id" invisible="1"/>
+                <field name="partner_id"/>
+                <field name="doc_number" domain="[('partner_id', '=', partner_id)]"/>
+                <field name="internal_ref"/>
+                <field name="internal_ref_child"/>
+                <field name="product_id"/>
+                <field name="currency_id"/>
+                <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+    <record id="fxo_payment_request_line_action" model="ir.actions.act_window">
+        <field name="name">Lineas de Solicitud de Pago</field>
+        <field name="res_model">fxo.payment.request.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="fxo_payment_request_line_menu"
+        action="fxo_payment_request_line_action"
+        parent="purchase.menu_procurement_management"
+        sequence="14"
+        groups="fxo_payment_request.group_fxo_payment_request"
+    />
+</odoo>

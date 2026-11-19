@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<menuitem
+		action="action_multiple_payment_bbva"
+		id="menu_bbva_payment" 
+		parent="account_base_it.menu_treasury" 
+		sequence="6"
+		groups="account.group_account_manager"/>
+	<menuitem
+		action="action_multiple_payment_bcp"
+		id="menu_bcp_payment"
+		parent="account_base_it.menu_treasury"
+		sequence="9" 
+		groups="account.group_account_manager"/>
+	<menuitem
+		action="action_multiple_payment_interbank"
+		id="menu_interbank_payment" 
+		parent="account_base_it.menu_treasury" 
+		sequence="12"
+		groups="account.group_account_manager"/>
+	<menuitem
+		action="action_multiple_payment_scotiabank"
+		id="menu_scotiabank_payment" 
+		parent="account_base_it.menu_treasury" 
+		sequence="15"
+		groups="account.group_account_manager"/>
+</odoo>

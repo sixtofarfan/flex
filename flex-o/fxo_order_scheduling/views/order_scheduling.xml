@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- sale.order.scheduling tree view -->
+        <record id="sale_order_scheduling_view_tree" model="ir.ui.view">
+            <field name="name">sale.order.scheduling.view.tree</field>
+            <field name="model">sale.order.scheduling</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="period_id"/>
+                    <field name="category_id"/>
+                </tree>
+            </field>
+        </record>
+        <!-- sale.order.scheduling form view -->
+        <record id="sale_order_scheduling_form" model="ir.ui.view">
+            <field name="name">sale.order.scheduling.view.form</field>
+            <field name="model">sale.order.scheduling</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button name="confirm" states="draft" confirm="Are you sure, Confirm"  type="object" string="Confirm" />
+                        <button name="set_done" states="process" confirm="Are you sure, Close"  type="object" string="Close" />
+                        <!-- <button name="generate_sale_order" states="process" confirm="Are you sure, Generate Sale Order"  type="object" string="Generate Sale Order"/> -->
+                        <button name="set_draft" states="process"  confirm="Are you sure, Set Draft all orders" type="object" string="Set Draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,process,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_order" type="object" class="oe_stat_button" icon="fa-pencil-square-o" attrs="{'invisible': [('order_count', '=', 0)]}">
+                                <field name="order_count" widget="statinfo" string="Ordes"/>
+                            </button>
+                        </div>
+                        <group>
+                            <!-- Add your fields here -->
+                            <field name="period_id" required="1" attrs="{'readonly':[('state','in',['done'])]}"/>
+                            <field name="category_id" required="1" attrs="{'readonly':[('state','in',['done'])]}"/>
+                        </group>
+                        <notebook>
+                            <page string="Products" name="products">
+                                <field name="line_id" attrs="{'readonly':[('state','in',['done'])]}"/>
+                            </page>
+                            <page string="Ordes" name="ordes">
+                                <field name="order_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- model.name form view -->
+        <record id="sale_order_scheduling_line_view_form" model="ir.ui.view">
+            <field name="name">sale.order.scheduling.line.view.form</field>
+            <field name="model">sale.order.scheduling.line</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="proteins" />
+                            <field name="carohydrates" />
+                            <field name="fats" />
+                            <field name="calories"/>
+                        </group>
+                        <notebook>
+                            <page string="Products" name="products">
+                                <field name="scheduling_group_id">
+                                <tree string="Program Order Lines" editable="bottom">
+                                        <field name="name" invisible="1"/>
+                                        <field name="product_id" required="1"/>
+                                        <field name="type_scheduling" required="1"/>
+                                        <field name="proteins" sum="total"/>
+                                        <field name="carohydrates" sum="total"/>
+                                        <field name="fats" sum="total"/>
+                                        <field name="calories" sum="total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- sale.order.scheduling.line tree view -->
+        <record id="sale_order_scheduling_line_view_tree" model="ir.ui.view">
+            <field name="name">sale.order.scheduling.line.view.tree</field>
+            <field name="model">sale.order.scheduling.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="proteins" sum="total"/>
+                    <field name="carohydrates" sum="total"/>
+                    <field name="fats" sum="total"/>
+                    <field name="calories" sum="total"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="sale_order_scheduling_type_action" model="ir.actions.act_window">
+            <field name="name">Program</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.scheduling</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="sale_order_scheduling_menu" 
+        name="Program" parent="sale.sale_order_menu" 
+        action="sale_order_scheduling_type_action" sequence="20"/>
+
+        <!-- sale.order inherit form view -->
+        <record id="sale_order_inherit" model="ir.ui.view">
+            <field name="name">sale.order.inherit.view.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="origin" position="after">
+                    <field name="product_id" />
+                    <field name="category" />
+                    <field name="day_scheduling"/>
+                </field>
+                <field name="product_template_id" position="after">
+                    <field name="type_scheduling" />
+                    <field name="day_scheduling" />
+                    <field name="category" />
+                </field>
+
+            </field>
+        </record>
+        <!-- model.name inherit tree view -->
+        <record id="sale_order_inherit_tree" model="ir.ui.view">
+            <field name="name">sale.order.inherit.view.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="user_id" position="after">
+                    <field name="product_id" optional="show"/>
+                    <field name="category" optional="show"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- sale.order.scheduling.order form view -->
+        <record id="sale_order_scheduling_order_view_form" model="ir.ui.view">
+            <field name="name">sale.order.scheduling.order.view.form</field>
+            <field name="model">sale.order.scheduling.order</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button name="confirm" states="draft" confirm="Are you sure, Confirm all orders"  type="object" string="Confirm" />
+                        <button name="set_draft" states="done" confirm="Are you sure, Set Draft all orders"  type="object" string="Set Draft" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>   
+                        </group>
+                        <notebook>
+                            <page string="Orders" name="orders">
+                                <field name="order_id" readonly="1">
+                                    <tree editable="bottom" >
+                                        <field name="name" readonly="1"/>
+                                        <field name="partner_id" readonly="1"/>
+                                        <field name="product_id" readonly="1"/>
+                                        <field name="category"  readonly="1"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- sale.order.scheduling.order tree view -->
+        <record id="sale_order_scheduling_order_view_tree" model="ir.ui.view">
+            <field name="name">sale.order.scheduling.order.view.tree</field>
+            <field name="model">sale.order.scheduling.order</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="order_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- sale.subscription inherit form view -->
+        <record id="sale_subscription_view_inherit" model="ir.ui.view">
+            <field name="name">sale.subscription.inherit.view.form</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <xpath expr="//page[last()]" position="after">
+                    <page string="Alternative Product" id="scheduling">
+                        <div>
+                            <field name="scheduling_id">
+                                <tree editable="bottom" >
+                                    <field name="product_id" />
+                                    <field name="product_replance_id" />
+                                    <field name="qty" />
+                                    <field name="subscription_id" invisible="1" />
+                                </tree>
+                            </field>
+                        </div>
+                    </page>
+                    <page string="Additional Product" id="additional">
+                        <group>
+                            <field name="note_order"/>   
+                        </group>
+
+                        <div>
+                            <field name="additional_id">
+                                <tree editable="bottom" >
+                                    <field name="day" required="1" />
+                                    <field name="name" required="1" />
+                                    <field name="qty" required="1"/>
+                                    <field name="subscription_id" invisible="1" />
+                                </tree>
+                            </field>
+                        </div>
+                    </page>
+                    <page string="Optional Address" id="address">
+                        <div>
+                            <field name="address_id">
+                                <tree editable="bottom" >
+                                    <field name="day" required="1" />
+                                    <field name="partner_id" invisible="1" />
+                                    <field name="address_id" required="1"  domain="[('type','=','delivery'),('parent_id','=',partner_id)]"/>
+                                    <field name="subscription_id" invisible="1" />
+                                </tree>
+                            </field>
+                        </div>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

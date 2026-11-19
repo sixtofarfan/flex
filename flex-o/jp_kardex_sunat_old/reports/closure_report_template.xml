@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_closing_period_document">
+    <t t-call="web.external_layout">
+        <t t-set="doc" t-value="doc.with_context(lang=doc.company_id.partner_id.lang)" />
+        <div class="page">
+            <div class="oe_structure"/>
+            <h2 class="mt16">
+                <t><span>Closure Period </span></t>
+                <span t-field="doc.name"/>
+            </h2>
+            <div class="row mt32 mb32" id="informations">
+                <div t-if="doc.locked_period" class="col-auto mw-100 mb-2">
+                    <strong>Period:</strong>
+                    <p class="m-0" t-field="doc.locked_period"/>
+                </div>
+                <div t-if="doc.initial_date" class="col-auto mw-100 mb-2">
+                    <strong>Initial Date:</strong>
+                    <p class="m-0" t-field="doc.initial_date"/>
+                </div>
+                <div t-if="doc.end_date" class="col-auto mw-100 mb-2">
+                    <strong>End Date:</strong>
+                    <p class="m-0" t-field="doc.end_date"/>
+                </div>
+                <div t-if="doc.lock_date" class="col-auto mw-100 mb-2">
+                    <strong>Lock Date:</strong>
+                    <p class="m-0" t-field="doc.lock_date"/>
+                </div>
+            </div>
+            <table table-class="table table-sm table-striped o_main_table" width="100%">
+                <thead>
+                    <tr>
+                        <th name="th_location">Location</th>
+                        <th name="th_code">Code</th>
+                        <th name="th_product">Product</th>
+                        <th name="th_uom" class="text-center" groups="product.group_uom">Unit of Measure</th>
+                        <th name="th_quantity" class="text-right">Quantity</th>
+                        <th name="th_unit_cost" class="text-right">Unit Cost</th>
+                        <th name="th_total_cost" class="text-right">Total Cost</th>
+                    </tr>
+                </thead>
+                <tbody class="period_lines">
+                    <t t-set="total_quantity" t-value="0.0"/>
+                    <t t-set="total_cost" t-value="0.0"/>
+                    <t t-foreach="doc.period_lines" t-as="line">
+                        <tr>
+                            <t>
+                                <td name="td_location" class="text-left"><span t-field="line.location_id"/></td>
+                                <td name="td_code" class="text-left"><span t-field="line.product_id.default_code"/></td>
+                                <td name="td_product" class="text-left"><span t-field="line.product_id"/></td>
+                                <td name="td_uom" class="text-center" groups="product.group_uom"><span t-field="line.product_id.uom_id"/></td>
+                                <td name="td_quantity" class="text-right"><span t-field="line.quantity"/></td>
+                                <td name="td_unit_cost" class="text-right"><span t-field="line.unit_cost"/></td>
+                                <td name="td_total_cost" class="text-right"><span t-esc="(line.quantity * line.unit_cost)" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.company_currency_id}"/></td>
+                            </t>
+                        </tr>
+                        <t t-set="total_quantity" t-value="total_quantity + line.quantity"/>
+                        <t t-set="total_cost" t-value="total_cost + (line.quantity * line.unit_cost)"/>
+                        <t t-set="decimal_precision" t-value="request.env['decimal.precision'].precision_get('Product Unit of Measure')"/>
+                        <t t-foreach="line.product_id.stock_quant_ids" t-as="quant">
+                            <t t-if="line.location_id == quant.location_id and quant.lot_id and quant.company_id and quant.product_id.tracking == 'lot'">
+                                <tr>
+                                    <td name="td_space"></td>
+                                    <td name="td_space"></td>
+                                    <td name="td_lot_id" class="text-left"><span t-field="quant.lot_id"/></td>
+                                    <td name="td_space"></td>
+                                    <td name="td_lot_quantity" class="text-right"><span t-field="quant.quantity" t-options="{'widget': 'float', 'precision': decimal_precision}"/></td>
+                                    <td name="td_space"></td>
+                                    <td name="td_space"></td>
+                                </tr>
+                            </t>
+                        </t>
+                    </t>
+                </tbody>
+                <tfoot>
+                    <tr class="border-black">
+                        <td class="text-right" colspan="5"><t t-esc="total_quantity" t-options="{'widget': 'float', 'precision': decimal_precision}"/></td>
+                        <td class="text-right" colspan="2"><t t-esc="total_cost" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.company_currency_id}"/></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </t>
+</template>
+
+
+<template id="report_closing_period">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="jp_kardex_sunat.report_closing_period_document" t-lang="doc.company_id.partner_id.lang"/>
+        </t>
+    </t>
+</template>
+
+</odoo>

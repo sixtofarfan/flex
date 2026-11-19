@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="sale_order_line_qty_street_view_form">
+            <field name="name">sale.order.line.qty_street.view.form</field>
+            <field name="model">sale.order.line.qty_street</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_draft" type="object" string="Borrador" states="posted"/>
+                        <button name="action_post" type="object" string="Publicar" states="draft"/>
+                        <button name="open_pivot_view" type="object" string="Ver Informe"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,posted"/>
+                    </header>
+                    <sheet>
+                        <group string="Estudio Económico">
+                            <group>
+                                <field name="name" invisible="1"/>
+                                <field name="factibility_id" readonly="1"/>
+                                <field name="partner_street_destination"/>
+                                <field name="partner_street_destination_header"/>
+                                <field name="tc" readonly="1"/>
+                                <field name="prevent_onchange" invisible="1"/>
+                                <field name="company_id"/>
+                                <field name="is_migration_or_adenda" force_save="1"/>
+                            </group>
+                            <group>
+                                <field name="recurring_interval" string="Plazo de contrato"
+                                       force_save="1"/>
+                                <field name="gross_profit_percentage" string="Utilidad bruta"/>
+                                <field name="incomes_monthly_rent" string="Renta mensual"/>
+                                <field name="currency_order_id" string="Moneda"/>
+
+                                <label for="template_id"/>
+                                <div name="button_template" width="100%" style="display: flex;">
+                                    <field name="template_id" attrs="{'readonly': [('state','!=','draft')]}"
+                                           options="{'no_open': 1, 'no_create': 1}"/>
+                                    <button name="refresh_moves" style="width: 110px !important;" icon="fa-refresh"
+                                            type="object" class="oe_inline oe_edit_only"
+                                            attrs="{'invisible': [('state','!=','draft')]}"
+                                            confirm="Esta acción podría borrar la información digitada en el Estudio Económico, ¿Deseas continuar?">
+                                        <span>
+                                            Recargar
+                                        </span>
+                                    </button>
+                                </div>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Movimientos" name="moves">
+                                <group string="Ingresos">
+                                    <field name="incomes" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="product_id" required="1"
+                                                   attrs="{'readonly': [('name','==','Renta mensual')]}"/>
+                                            <field name="name" attrs="{'readonly': [('name','==','Renta mensual')]}"/>
+                                            <field name="quantity" required="1"
+                                                   attrs="{'readonly': [('name','==','Renta mensual')]}"/>
+                                            <field name="price_unit" required="1"
+                                                   attrs="{'readonly': [('name','==','Renta mensual')]}"/>
+                                            <field name="quotes" required="1"
+                                                   attrs="{'readonly': [('additional_profit','==',False)]}"/>
+                                            <field name="additional_profit" required="1"
+                                                   attrs="{'readonly': [('name','==','Renta mensual')]}"/>
+                                            <field name="price_total"/>
+                                        </tree>
+                                    </field>
+                                    <group col="8">
+                                        <field name="pricelist_id" force_save="1"/>
+                                        <field name="country_id"/>
+                                        <field name="state_id"/>
+                                        <field name="province_id"/>
+                                        <field name="district_id"/>
+                                    </group>
+
+                                    <group class="oe_subtotal_footer oe_right">
+                                        <field name="total_incomes" string="Total ingresos" widget="monetary"
+                                               options="{'currency_field': 'currency_order_id'}" readonly="1"/>
+                                        <field name="gross_with_additional_profit_percentage" widget="percentage"/>
+                                    </group>
+                                </group>
+                                <group string="Gastos">
+                                    <field name="expenses" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="product_id" required="1"
+                                                   attrs="{'readonly': ['|', ('name','==','Costo de servicio'), ('name','==','Costo de instalacion')]}"/>
+                                            <field name="name"
+                                                   attrs="{'readonly': ['|', ('name','==','Costo de servicio'), ('name','==','Costo de instalacion')]}"/>
+                                            <field name="quantity" required="1"
+                                                   attrs="{'readonly': ['|', ('name','==','Costo de servicio'), ('name','==','Costo de instalacion')]}"/>
+                                            <field name="price_unit" required="1"
+                                                   attrs="{'readonly': ['|', ('name','==','Costo de servicio'), ('name','==','Costo de instalacion')]}"/>
+                                            <field name="quotes" required="1"
+                                                   attrs="{'readonly': ['|', ('additional_profit','==',False), ('name','==','Costo de instalacion')]}"/>
+                                            <field name="additional_profit" required="1" string="Additional Expense"
+                                                   attrs="{'readonly': ['|', ('name','==','Costo de servicio'), ('name','==','Costo de instalacion')]}"/>
+                                            <field name="price_total"/>
+                                        </tree>
+                                    </field>
+                                    <group class="oe_subtotal_footer oe_right">
+                                        <field name="total_expenses" string="Total egresos" widget="monetary"
+                                               options="{'currency_field': 'currency_order_id'}"/>
+                                        <field name="total_incomes_monthly_rent"
+                                               string="Total ingresos por Renta mensual" widget="monetary"
+                                               options="{'currency_field': 'currency_order_id'}"/>
+                                        <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                            <label for="gross_profit" string="Total beneficio (saldo)"/>
+                                        </div>
+                                        <field name="gross_profit" nolabel="1" class="oe_subtotal_footer_separator"
+                                               widget="monetary" options="{'currency_field': 'currency_order_id'}"/>
+                                        <separator/>
+                                        <field name="net_flow" readonly="1" widget="monetary"
+                                               options="{'currency_field': 'currency_order_id'}"/>
+                                        <field name="net_flow_total" readonly="1" widget="monetary"
+                                               options="{'currency_field': 'currency_order_id'}"/>
+                                        <field name="pay_back" readonly="1" widget="monetary"
+                                               options="{'currency_field': 'currency_order_id'}"/>
+                                        <field name="tir" readonly="1" widget="percentage"
+                                               options="{'currency_field': 'currency_order_id'}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Otra información">
+                                <group>
+                                    <group string="Producto">
+                                        <field name="product_id" readonly="1"/>
+                                        <field name="product_price" readonly="1"/>
+                                        <field name="product_currency" readonly="1"/>
+                                        <field name="product_quantity" readonly="1"/>
+                                        <field name="product_uom" readonly="1"/>
+                                        <field name="product_price_total" readonly="1"/>
+                                    </group>
+                                    <group string="Instalación">
+                                        <field name="feasibility_installation_cost"/>
+                                        <field name="feasibility_currency_id" readonly="1"/>
+                                        <field name="tc" readonly="1"
+                                               attrs="{'invisible': [('feasibility_currency_id','==','PEN')]}"/>
+                                        <field name="feasibility_installation_cost_pen" readonly="1"
+                                               attrs="{'invisible': [('feasibility_currency_id','==','PEN')]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="economic_study_move_balance_view_pivot">
+            <field name="name">economic_study.move.balance.view.pivot</field>
+            <field name="model">economic_study.move.balance</field>
+            <field name="arch" type="xml">
+                <pivot string="Informe de movimientos">
+                    <field name="quote" type="col"/>
+                    <field name="type" type="row"/>
+                    <field name="name" type="row"/>
+                    <field name="fee" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+    </data>
+</odoo>

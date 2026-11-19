@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        
+        <record id="view_credit_approve_filter" model="ir.ui.view">
+            <field name="name">Credit Approve</field>
+            <field name="model">credit.approve</field>
+            <field name="arch" type="xml">
+                <search string="Credit Approve">
+                    <field name="name" string="Credit Approve"/>
+                    <field name="sale_order"/>
+                    <filter string="Draft, Confirmed" icon="terp-personal" name="draft_state" domain="[('state','in', ['draft','confirm'])]" help="To be processed"/>
+                </search>
+             </field>
+        </record>
+        
+        <record id="hr_credit_approve_tree_view" model="ir.ui.view">
+            <field name="name">credit.approve.tree</field>
+            <field name="model">credit.approve</field>
+            <field name="arch" type="xml">
+                <tree string="Credit Approves">
+                    <field name="sale_order"/>
+                    <field name="name"/>
+                    <field name="reason_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="hr_credit_approve_form_view" model="ir.ui.view">
+            <field name="name">credit.approve.form</field>
+            <field name="model">credit.approve</field>
+            <field name="arch" type="xml">
+                <form string="Credit Approve" version="7.0">
+                    <sheet>
+                        <header>
+                            <button name="act_confirm" type="object" states="draft" string="Confirm" class="oe_highlight"/>
+                            <button name="state_done" type="object" states="confirm" string="Aprobar credito" class="oe_highlight"/>
+                            <button name="state_cancel" type="object" states="confirm" string="Cancelar" class="oe_highlight"/>
+                            <field name="state" widget="statusbar"/>
+                        </header>
+                        <group>
+                            <group>
+                                <field name="sale_order"/>
+                                <field name="reason_id"/>
+                                <field name="name"/>
+                            </group>
+                            <group>
+
+                            </group>
+                        </group>
+                        <separator string="Notes"/>
+                        <field name="notes" nolabel="1"/>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_hr_credit_approve" model="ir.actions.act_window">
+            <field name="name">Credit Approve</field>
+            <field name="res_model">credit.approve</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_draft_state': 1}</field>
+            <field name="search_view_id" ref="view_credit_approve_filter"/>
+        </record>
+        <menuitem id="menu_hr_credit_approve"
+            action="open_hr_credit_approve"
+            parent="menu_credit_policies"
+            sequence="150"/>
+        
+        <!-- Termination Reason -->
+        <record id="view_credit_approve_reason_tree" model="ir.ui.view">
+            <field name="name">credit.approve.reason.tree</field>
+            <field name="model">credit.approve.reason</field>
+            <field name="arch" type="xml">
+                <tree string="Credit Approve Reasons">
+                    <field name="name"/>
+                    <field name="reason_sunat_code"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_credit_approve_reason_form" model="ir.ui.view">
+            <field name="name">credit.approve.reason.form</field>
+            <field name="model">credit.approve.reason</field>
+            <field name="arch" type="xml">
+                <form string="Credit Approve Reason">
+                    <field name="name" string="Motivo Fin de Periodo"/>
+                    <field name="reason_sunat_code" string="Cod.Sunat"/>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_credit_approve_reason" model="ir.actions.act_window">
+            <field name="name">Credit Approve Reasons</field>
+            <field name="res_model">credit.approve.reason</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_hr_credit_approve_reason"
+            action="open_credit_approve_reason"
+            parent="menu_credit_policies"
+            sequence="5"/>
+
+    </data>
+</odoo>

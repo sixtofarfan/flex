@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="main_parameter_wizard_form" model="ir.ui.view">
+		<field name="name">main.parameter.wizard.form</field>
+		<field name="model">main.parameter.wizard</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<group>
+						<field name="company_ids" widget="many2many_tags" required="1"/>
+					</group>
+				</group>
+				<footer>
+					<button string="Generar" name="generate_parameters" type="object" class="oe_highlight"/>
+					<button string="Cancel" class="oe_link" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+</odoo>

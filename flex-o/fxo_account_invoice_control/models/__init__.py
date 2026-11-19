@@ -1,0 +1,1 @@
+from . import fxo_payment_request

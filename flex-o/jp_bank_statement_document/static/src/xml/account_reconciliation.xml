@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-extend="reconciliation.line">
+        <t t-jquery=".accounting_view .cell_label" t-operation="append">
+            <td class="cell_label2"><t t-if="state.st_line.ref" t-esc="state.st_line.ref"/></td>
+        </t>
+    </t>
+
+    <t t-extend="reconciliation.line.mv_line">
+        <t t-jquery="td.cell_label" t-operation="after">
+            <td class="cell_label">
+                <t t-esc="line.ref"/>
+            </td>
+        </t>
+    </t>
+
+</templates>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fxo_registro_indeci_fxo_registro_indeci,fxo_registro_indeci.fxo_registro_indeci,model_fxo_registro_indeci_fxo_registro_indeci,,1,0,0,0

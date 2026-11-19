@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_table_34,jp_inventories_and_balances.table_34,model_table_34,base.group_user,1,1,1,1
+access_table_03,jp_inventories_and_balances.table_03,model_table_03,base.group_user,1,1,1,1
+access_sector,jp_inventories_and_balances.sector,model_table_34_sector,base.group_user,1,1,1,1
+access_item,jp_inventories_and_balances.item,model_table_34_item,base.group_user,1,1,1,1

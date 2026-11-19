@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="action_report_closure"
+            string="Closure Report"
+            model="closing.period" 
+            report_type="qweb-pdf"
+            file="jp_kardex_sunat.report_closing_period" 
+            name="jp_kardex_sunat.report_closing_period"
+            print_report_name="(object.state in ('draft', 'done') and 'Closure - %s' % (object.name))"
+        />
+
+    </data>
+</odoo>

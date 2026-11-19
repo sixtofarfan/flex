@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_am_detraction_payment_form" model="ir.ui.view">
+		<field name="name">am.detraction.payment.form</field>
+		<field name="model">am.detraction.payment</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="get_am_wizard" string="Obtener Lineas" type="object" class="oe_highlight" states="draft"/>
+					<button name="turn_draft" string="Volver a Borrador" type="object" class="oe_highlight" states="txt"/>
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<group>
+						<group>
+							<field name="journal_id"/>
+						</group>
+						<group>
+						</group>
+					</group>
+					<field name="payment_line_ids">
+						<tree editable="bottom" create="0">
+							<field name="move_line_id" invisible="1"/>
+							<field name="doc_type"/>
+							<field name="doc_number"/>
+							<field name="name"/>
+							<field name="code_operation"/>
+							<field name="amount"/>
+							<field name="operation_type"/>
+							<field name="period"/>
+							<field name="move_type"/>
+							<field name="move_serie"/>
+							<field name="move_number"/>
+						</tree>
+					</field>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="view_am_detraction_payment_tree" model="ir.ui.view">
+		<field name="name">am.detraction.payment.tree</field>
+		<field name="model">am.detraction.payment</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="journal_id"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+	<record id="action_am_detraction_payment" model="ir.actions.act_window">
+		<field name="name">Pagos Masivos de Apuntes Contables de Detraccion</field>
+		<field name="res_model">am.detraction.payment</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+		  <p class="o_view_nocontent_smiling_face">
+			Crea tu primera tabla de Pagos de Apuntes Contables aqui
+		  </p>
+		</field>
+	</record>
+	
+	<menuitem
+		action="action_am_detraction_payment"
+		id="menu_am_detraction_payment"
+		parent="account.menu_finance_entries_accounting_miscellaneous"
+		sequence="2"
+		groups="account.group_account_manager"/>
+
+	<record id="get_move_line_txt" model="ir.actions.server">
+		<field name="name">Generar txt</field>
+		<field name="model_id" ref="fxo_account_detraction_payment_multi.model_am_detraction_payment"/>
+		<field name="binding_model_id" ref="fxo_account_detraction_payment_multi.model_am_detraction_payment"/>
+		<field name="state">code</field>
+		<field name="code">action = records.get_move_line_txt()</field>
+	</record>
+</odoo>

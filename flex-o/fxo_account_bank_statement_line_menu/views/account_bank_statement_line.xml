@@ -1,0 +1,5 @@
+<odoo>
+	<data>
+		<menuitem action="account.action_bank_statement_line" id="menu_bank_statement_line" name="Lineas de Extractos Bancarios" parent="account_base_it.menu_treasury" sequence="1" groups="account.group_account_manager"/>
+	</data>
+</odoo>

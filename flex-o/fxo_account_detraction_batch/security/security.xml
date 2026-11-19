@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="group_detraction_batch" model="res.groups">
+		<field name="name">Acceso a Generacion de Detracciones Masivas</field>
+	</record>
+</odoo>

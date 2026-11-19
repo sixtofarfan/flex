@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="template_bill">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="jp_account_bills_of_exchange.report_bill" t-lang="o.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_bill">
+            <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+            <div class="page">
+                <style type="text/css">
+                    td {                      
+                        padding-left: 2px;
+                    }
+                    div.recuadro_cuerpo{
+                        border-top: 1px solid black;
+                        border-left: 1px solid black;
+                        border-bottom: 1px solid black;
+                        border-right: 1px solid black;
+                        width: 100%;
+                    }
+                    div.recuadro_clausulas{
+                        margin-left: -165px;
+                        padding-top: 150px;
+                        padding-right: 0px;
+                        -webkit-transform: rotate(-90deg);
+                    }
+                    div.texto_clausulas{
+                        font-size: 10px;
+                        text-align: justify;
+                        text-justify: inter-word;
+                        width: 400px;
+                        height: 110px;
+                    }
+                    div.titulo_clausulas{
+                        font-size: 13px;
+                    }
+                    div.firmante{
+                        font-size: 10px;
+                        border-top: 1px solid black;
+                        text-align: center;
+                    }
+                    div.firmante_2_text{
+                        font-size: 14px;
+                        border-top: 1px solid black;
+                        text-align: center;
+                    }
+                    div.firmante_text{
+                        font-size: 13px;
+                    }
+                    div.detalle_text{
+                        font-size: 14px;
+                        text-align: center;
+                        vertical-align: middle;
+                    }
+                    div.detalle_2_text{
+                        font-size: 13px;
+                        text-align: center;
+                        vertical-align: middle;
+                    }
+                    .detalle_3_text{
+                        font-size: 13px;
+                        text-align: left;
+                        vertical-align: middle;
+                        padding-top: 10px;
+                        padding-left: 5px;
+                    }
+                    .detalle_4_text{
+                        font-size: 13px;
+                        text-align: left;
+                        vertical-align: middle;
+                    }
+                    .detalle_5_text{
+                        font-size: 13px;
+                        text-align: left;
+                        vertical-align: text-top;
+                    }
+                    .text_tipo_1{
+                        font-size: 14px;
+                        #text-decoration: underline;
+                        font-weight: bold;
+                        padding-left: 5px;
+                    }
+                    .text_titulo{
+                        font-size: 28px;
+                        font-weight: bold;
+                    }
+                    .bordes_text{
+                        padding-top: 5px;
+                        padding-bottom: 5px;
+                        padding-left: 5px;
+                    }
+                </style>
+
+                <div>
+                    <t t-set="contador" t-value="0"/>
+                    <div t-foreach="o.bill_ids" t-as="l" class="recuadro_total">
+                        <div class="recuadro_cuerpo">
+                            <table style="border-collapse: collapse;" width="100%">
+                                <tr>
+                                    <td style="border-bottom: 1px solid black; padding: 8px; vertical-align: middle; align: middle;" >
+                                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" class="float-left" alt="Logo" style="max-height: 40; max-width:120px;"/>
+                                    </td>
+                                    <td style="border-bottom: 1px solid black;border-left: 1px solid black; vertical-align: middle;" colspan="10"><span class="text_titulo" t-field="o.company_id.partner_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="7" width="200">
+                                        <div class="recuadro_clausulas">
+                                            <table>
+                                                <tr>
+                                                    <td colspan="3">
+                                                    <div class="titulo_clausulas">CLAUSULAS:</div>
+                                                    <div class="texto_clausulas">
+                                                        <div>(1) A partir del día siguiente de su vencimiento el importe de ésta letra de cambio generará interes moratorios cuya tasa será la más alta que fije el BCR del Perú, para intereses convencionales moratoritos, de acuerdo al art. 1243o del Codigo Civil peruano.</div>
+                                                        <div>(2) El importe de esta letra de cambio debe ser pagada en la misma moneda que expresa este titulo valor.</div>
+                                                        <div>(3) Esta letra de cambio no requiere ser protestada por falta de pago.</div>
+                                                        <div>(4) El plazo de su vencimiento podrá ser prorrogado por el tenedor, por el plazo que ésta señala, sin que sea necesaria la intervención del obligado principal ni de los solidarios. </div>
+                                                        <div>(5) Para el ejercicio de las acciones que se deriben de esta letra de cambio, los intervinientesse someten a la competencia</div>
+                                                    </div>
+                                                    </td>
+                                                </tr>
+                                                <tr><td/></tr>
+                                                <tr><td/></tr>
+                                                <tr><td/></tr>
+                                                <tr><td/></tr>
+                                                <tr><td/></tr>
+                                                <tr><td/></tr>
+                                                <tr><td/></tr>
+                                                <tr><td/></tr>
+                                                <tr><td/></tr>
+                                                <tr><td/></tr>
+                                                <tr><td/></tr>
+                                                <tr>
+                                                <td width="45%"><div class="firmante">ACEPTANTE</div></td>
+                                                <td width="10%"></td>
+                                                <td width="45%"><div class="firmante">ACEPTANTE</div></td>
+                                                </tr>
+                                                <tr>
+                                                <td><div class="firmante_text">Nombre Representante:</div></td>
+                                                <td></td>
+                                                <td><div class="firmante_text">Nombre Representante:</div></td>
+                                                </tr>
+                                                <tr>
+                                                <td><div class="firmante_text">D.O.I.</div></td>
+                                                <td></td>
+                                                <td><div class="firmante_text">D.O.I.</div></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <div class="detalle_text">NÚMERO DE LETRA</div>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <div class="detalle_text">REF.GIRADOR</div>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <div class="detalle_text">LUGAR DE GIRO</div>
+                                    </td>
+                                    <td colspan="3" style="border: 1px solid black;">
+                                        <div class="detalle_text">FECHA DE GIRO</div>
+                                    </td>
+                                    <td colspan="3" style="border: 1px solid black;">
+                                        <div class="detalle_text">FECHA DE VENCIMIENTO</div>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <div class="detalle_text">MONEDA E IMPORTE</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid black; vertical-align: middle;" rowspan="2"><div class="detalle_2_text"><span t-field="l.bill_number"/></div></td>
+                                    <td style="border: 1px solid black; vertical-align: middle;" rowspan="2">
+                                        <!-- Si se quiere se puede poner cada una de las facturas, pero descuadra 
+                                        toda la letra, se debe hacer dinamicamente -->
+                                        <!-- <div t-foreach="o.invoice_ids" t-as="n" class="detalle_2_text">
+                                            <span t-field="n.name"/>
+                                        </div> -->
+                                        <div class="detalle_2_text"><span t-field="o.name"/></div>
+                                    </td>
+                                    <td style="border: 1px solid black; vertical-align: middle;" rowspan="2"><div class="detalle_2_text"><span t-field="o.company_id.partner_id.state_id.name"/></div></td>
+                                    <td style="border: 1px solid black;"><div class="detalle_text">DIA</div></td>
+                                    <td style="border: 1px solid black;"><div class="detalle_text">MES</div></td>
+                                    <td style="border: 1px solid black;"><div class="detalle_text">AÑO</div></td>
+                                    <td style="border: 1px solid black;"><div class="detalle_text">DIA</div></td>
+                                    <td style="border: 1px solid black;"><div class="detalle_text">MES</div></td>
+                                    <td style="border: 1px solid black;"><div class="detalle_text">AÑO</div></td>
+                                    <!-- <td style="vertical-align: middle;" rowspan="2"><div class="detalle_2_text"><span t-if="l.bill_currency_id.name != 'PEN'" t-field="l.bill_currency_id.name"/>  <span t-field="l.bill_currency_id.symbol"/> <span t-esc="'%.2f'%(l.bill_amount_total)" /></div></td> -->
+                                    <td style="vertical-align: middle;" rowspan="2"><div class="detalle_2_text"><span t-field="l.bill_currency_id.name"/> <span t-field="l.bill_amount_total" /></div></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid black;"><div class="detalle_2_text"><span t-field="o.exchange_date" t-options='{"format": "dd"}'/></div></td>
+                                    <td style="border: 1px solid black;"><div class="detalle_2_text"><span t-field="o.exchange_date" t-options='{"format": "MM"}'/></div></td>
+                                    <td style="border: 1px solid black;"><div class="detalle_2_text"><span t-field="o.exchange_date" t-options='{"format": "yyyy"}'/></div></td>
+                                    <td style="border: 1px solid black;"><div class="detalle_2_text"><span t-field="l.bill_date_due" t-options='{"format": "dd"}'/></div></td>
+                                    <td style="border: 1px solid black;"><div class="detalle_2_text"><span t-field="l.bill_date_due" t-options='{"format": "MM"}'/></div></td>
+                                    <td style="border: 1px solid black;"><div class="detalle_2_text"><span t-field="l.bill_date_due" t-options='{"format": "yyyy"}'/></div></td>
+                                </tr>
+                                <tr/>
+                                <tr style="width:100%;">
+                                    <td style="border: 1px solid black;" colspan="10">
+                                        <div class="bordes_text">
+                                            <div class="detalle_4_text">Por esta LETRA DE CAMBIO, se servirá(n) pagar a la orden de:<span class="text_tipo_1" t-field="o.company_id.partner_id.name"/></div>
+                                            <div class="detalle_4_text">LA CANTIDAD DE:<span class="text_tipo_1" t-field="l.amount_text"/></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid black;" colspan="10">
+                                        <div class="bordes_text">
+                                            <div class="detalle_4_text">Valor que se sentará(n) en cuenta según aviso de S.s. S.s en el siguiente lugar de pago:</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid black;" colspan="5" width="45%">
+                                        <table width="100%" style="width: 100%; border-bottom: 1px solid black;">
+                                            <tr>
+                                                <td>
+                                                    <div class="detalle_5_text">GIRADO A:</div>
+                                                </td>
+                                                <td style="text-align: left;" >
+                                                    <div class="bordes_text">
+                                                        <div class="detalle_4_text"><span t-field="o.partner_id.name"/></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="detalle_5_text">D.I/RUC:</div></td>
+                                                <td><div class="detalle_4_text"><span t-field="o.partner_id.vat"/></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="detalle_5_text">DIRECCIÓN:</div></td>
+                                                <td><div class="detalle_4_text"><span t-field="o.partner_id.street"/></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="detalle_5_text">LOCALIDAD:</div></td>
+                                                <td><div class="detalle_4_text"><span t-field="o.partner_id.state_id.name"/>-<span t-field="o.partner_id.city_id.name"/>-<span t-field="o.partner_id.l10n_pe_district.name"/></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="detalle_5_text">TELÉFONO:</div></td>
+                                                <td><div class="detalle_4_text"><span t-field="o.partner_id.phone"/> / <span t-field="o.partner_id.mobile"/></div></td>
+                                            </tr>
+                                        </table>
+                                        <table width="100%">
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="detalle_5_text">FIADOR:</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="detalle_5_text">AVAL PERMANENTE:</div>
+                                                </td>
+                                                <td colspan="2">
+                                                    <div class="bordes_text">
+                                                        <div class="detalle_4_text"><span t-field="l.guarantee_id.name"/></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="detalle_5_text">D.N.I./R.U.C.:</div></td>
+                                                <td><div class="bordes_text"><div class="detalle_4_text"><span t-field="l.guarantee_id.vat"/></div></div></td>
+
+                                                <td><div class="detalle_5_text">TELÉFONO:</div></td>
+                                                <td><div class="bordes_text"><div class="detalle_4_text"><span t-field="l.guarantee_id.phone"/> / <span t-field="l.guarantee_id.mobile"/></div></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><div class="detalle_5_text">DIRECCIÓN:</div></td>
+                                                <td align="left;"><div class="bordes_text"><div class="detalle_4_text"><span t-field="l.guarantee_id.street"/></div></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><div class="detalle_5_text">LOCALIDAD:</div></td>
+                                                <td><div class="bordes_text"><div class="detalle_4_text"><span t-field="l.guarantee_id.state_id.name"/>-<span t-field="l.guarantee_id.city_id.name"/>-<span t-field="l.guarantee_id.l10n_pe_district.name"/></div></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td/>
+                                                <td colspan="2">
+                                                    <div class="firmante_2_text">FIRMA</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <!-- <td colspan="5" rowspan="2"> -->
+                                    <td style="border: 1px solid black;" colspan="5">
+                                        <div class="bordes_text">
+                                            <p class="detalle_5_text">IMPORTE A DEBITAR EN CUENTA DEL ACEPTANTE DEL BANCO</p>
+                                        </div>
+                                        <table width="100%" style="border: 1px solid black;border-collapse: collapse;">
+                                            <tr>
+                                                <td style="border: 1px solid black;"><div class="detalle_2_text">BANCO</div></td>
+                                                <td style="border: 1px solid black;"><div class="detalle_2_text">OFICINA</div></td>
+                                                <td style="border: 1px solid black;"><div class="detalle_2_text">NÚMERO DE CUENTA</div></td>
+                                                <td style="border: 1px solid black;"><div class="detalle_2_text">D.C.</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 1px solid black;"><div class="detalle_2_text"></div></td>
+                                                <td style="border: 1px solid black;"><div class="detalle_2_text"><br/></div></td>
+                                                <td style="border: 1px solid black;"><div class="detalle_2_text"></div></td>
+                                                <td style="border: 1px solid black;"><div class="detalle_2_text"></div></td>
+                                            </tr>
+                                        </table>
+                                         <div class="detalle_3_text">
+                                             <div class="text_tipo_2">
+                                                NOMBRE/RAZÓN SOCIAL DEL GIRADOR
+                                             </div>
+                                            <div class="text_tipo_1"><span t-field="o.company_id.partner_id.name"/></div>
+                                            <div class="detalle_3_text">RUC: <span class="text_tipo_1" t-field="o.company_id.partner_id.vat"/></div>
+                                         </div>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <table width="100%">
+                                            <tr>
+                                                <td width="20%"/>
+                                                <td><div class="firmante_2_text">FIRMA</div></td>
+                                                <td width="20%"/>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="10" style="border-top: 1px solid black;" height="30" class="detalle_3_text">NO ESCRIBIR NI FIRMAR DEBAJO DE ESTA LINEA</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <t t-set="contador" t-value="contador + 1" />
+                        <t t-if="contador == 1">
+                            <br/>
+                            <br/>
+                        </t>
+                        <t t-if="contador == 2">
+                            <p style="page-break-before:always;"> </p>
+                            <t t-set="contador" t-value="0" />
+                        </t>
+                    </div>
+
+                </div>
+            </div>
+        </template>
+    </data>
+</odoo>

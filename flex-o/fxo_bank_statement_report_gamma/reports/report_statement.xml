@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="paperformat_bank_statement" model="report.paperformat">
+            <field name="name">Formato Gamma Extractos Bancarios</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">297</field>
+            <field name="page_width">210</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">32</field>
+            <field name="margin_left">15</field>
+            <field name="margin_right">15</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">80</field>
+        </record>
+        <report
+            id="account.action_report_account_statement" 
+            model="account.bank.statement"
+            string="Statement"
+            name="fxo_bank_statement_report_gamma.report_statement_gamma"
+            file="fxo_bank_statement_report_gamma.report_statement_gamma"
+            report_type="qweb-pdf"
+            paperformat="paperformat_bank_statement"
+        />
+        <!--<template id="statement_header_gamma">
+            <div class="row">
+                <table width="100%" style="font-size:14px; font-family: 'Times New Roman', Times, serif;">
+                    <colgroup>
+                        <col width="20%"/>
+                        <col width="60%"/>
+                        <col width="20%"/>
+                    </colgroup>
+                    <tr>
+                        <td style=" text-align: left; font-weight: bold;">
+                            <span t-field="o.company_id.name"/>
+                        </td>
+                        <td style=" text-align: left;">
+                        </td>
+                        <td style=" text-align: right; font-weight: bold;">
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style=" text-align: center; font-weight: bold;">
+                            <strong>CONCILIACION BANCARIA AL:</strong> <span t-field="o.date"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <table width="100%" style="font-size:14px; font-family: 'Times New Roman', Times, serif;">
+                    <colgroup>
+                        <col width="35%"/>
+                        <col width="30%"/>
+                        <col width="35%"/>
+                    </colgroup>
+                    <tr>
+                        <td style=" text-align: center; font-weight: bold;">
+                            BANCO: <span t-field="o.name"/>
+                        </td>
+                        <td style=" text-align: center; font-weight: bold;">
+                            CTA: <span t-field="o.journal_id.bank_account_id.acc_number"/>
+                        </td>
+                        <td style=" text-align: right; font-weight: bold;">
+                            <t t-if="o.journal_id.currency_id">
+                                MONEDA: <span t-field="o.journal_id.currency_id.name"/>
+                            </t>
+                            <t t-else="">
+                                MONEDA: SOLES
+                            </t>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </template>-->
+        <!--<template id="statement_footer_gamma">
+            Resumen de Conciliación
+            <div class="row" style="border: 1px solid black">
+                <table width="100%" style="font-size:14px; font-family: 'Times New Roman', Times, serif;">
+                    <colgroup>
+                        <col width="35%"/>
+                        <col width="15%"/>
+                        <col width="35%"/>
+                        <col width="15%"/>
+                    </colgroup>
+                    <tr>
+                        <td style=" text-align: left;">
+                            CARGOS SEGUN LIBROS (+)
+                        </td>
+                        <td style=" text-align: center; font-weight: bold;">
+                            0.00
+                        </td>
+                        <td style=" text-align: left;">
+                            CARGOS SEGUN ESTADO DE CUENTA (+) 
+                        </td>
+                        <td style=" text-align: center; font-weight: bold;">
+                            0.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style=" text-align: left;">
+                            ABONOS SEGUN LIBROS (-)
+                        </td>
+                        <td style=" text-align: center; font-weight: bold;">
+                            0.00
+                        </td>
+                        <td style=" text-align: left;">
+                            ABONOS SEGUN ESTADO DE CUENTA (-) 
+                        </td>
+                        <td style=" text-align: center; font-weight: bold;">
+                            0.00
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <table width="100%" style="font-size:14px; font-family: 'Times New Roman', Times, serif;">
+                    <colgroup>
+                        <col width="50%"/>
+                        <col width="50%"/>
+                    </colgroup>
+                    <tr>
+                        <td style=" text-align: left; font-weight: bold;">
+                            SALDOS EN BANCOS:
+                        </td>
+                        <td style=" text-align: right; font-weight: bold;">
+                            0.00
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </template>-->
+
+        <!--<template id="statement_layout_gamma">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+
+            <t t-if="not company">
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>
+
+            <t t-esc="company.update_scss()"/>
+            <t t-call="fxo_bank_statement_report_gamma.statement_header_gamma"/>
+            <t t-raw="0"/>
+            <t t-call="fxo_bank_statement_report_gamma.statement_footer_gamma"/>
+        </template>-->
+        <template id="report_statement_gamma">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <div class="oe-structure"/>
+                        <div class="row">
+                            <table width="100%" style="font-size:14px; font-family: 'Times New Roman', Times, serif;">
+                                <colgroup>
+                                    <col width="20%"/>
+                                    <col width="60%"/>
+                                    <col width="20%"/>
+                                </colgroup>
+                                <tr>
+                                    <td style=" text-align: left; font-weight: bold;">
+                                        <span t-field="o.company_id.name"/>
+                                    </td>
+                                    <td style=" text-align: left;">
+                                    </td>
+                                    <td style=" text-align: right; font-weight: bold;">
+                                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style=" text-align: center; font-weight: bold;">
+                                        <strong>CONCILIACION BANCARIA AL:</strong> <span t-field="o.date"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table width="100%" style="font-size:14px; font-family: 'Times New Roman', Times, serif;">
+                                <colgroup>
+                                    <col width="35%"/>
+                                    <col width="30%"/>
+                                    <col width="35%"/>
+                                </colgroup>
+                                <tr>
+                                    <td style=" text-align: center; font-weight: bold;">
+                                        BANCO: <span t-field="o.name"/>
+                                    </td>
+                                    <td style=" text-align: center; font-weight: bold;">
+                                        CTA: <span t-field="o.journal_id.bank_account_id.acc_number"/>
+                                    </td>
+                                    <td style=" text-align: right; font-weight: bold;">
+                                        <t t-if="o.journal_id.currency_id">
+                                            MONEDA: <span t-field="o.journal_id.currency_id.name"/>
+                                        </t>
+                                        <t t-else="">
+                                            MONEDA: SOLES
+                                        </t>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <table width="100%" style="font-size:14px; font-family: 'Times New Roman', Times, serif;">
+                                <colgroup>
+                                    <col width="60%"/>
+                                    <col width="20%"/>
+                                    <col width="20%"/>
+                                </colgroup>
+                                <tr>
+                                    <td style=" text-align: left; ">
+                                        SALDOS EN LIBROS AL <span t-field="o.date"/>
+                                    </td>
+                                    <td style=" text-align: center; ">
+                                    </td>
+                                    <td style=" text-align: right; ">
+                                        <span t-field="o.balance_start"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style=" text-align: center; ">
+                                        TOTAL ABONO 
+                                    </td>
+                                    <td style=" text-align: right; ">
+                                        <span t-esc="custom['income']"/>
+                                    </td>
+                                    <td style=" text-align: right; ">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style=" text-align: center; ">
+                                        TOTAL CARGO
+                                    </td>
+                                    <td style=" text-align: right; ">
+                                        <span t-esc="custom['charge']"/>
+                                    </td>
+                                    <td style=" text-align: right; ">
+                                        <span t-esc="custom['difference']"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style=" text-align: left; font-weight: bold;">
+                                        SALDOS EN LIBROS AL <span t-field="o.date"/>
+                                    </td>
+                                    <td style=" text-align: right; font-weight: bold;">
+                                    </td>
+                                    <td style=" text-align: right; font-weight: bold;">
+                                        <hr/>
+                                        <t t-set="balance" t-esc="custom['difference'] + o.balance_start"/>
+                                        <span t-esc="balance"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <table width="100%" style="font-size:14px; font-family: 'Times New Roman', Times, serif;">
+                            <tbody>
+                                <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
+                                    <th>
+                                        <center><strong>FECHA</strong></center>
+                                    </th>
+                                    <th>
+                                        <center><strong>DOCUMENTO</strong></center>
+                                    </th>
+                                    <th>
+                                        <center><strong>DESCRIPCION</strong></center>
+                                    </th>
+                                    <th>
+                                        <center><strong>IMPORTE</strong></center>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><strong>CARGOS SEGUN LIBROS</strong></td>
+                                </tr>
+                                <t t-foreach="o.line_ids" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <center><span t-field="line.date"/></center>
+                                        </td>
+                                        <td>
+                                            <center><span t-field="line.ref"/></center>
+                                        </td>
+                                        <td>
+                                            <center><span t-field="line.name"/></center>
+                                        </td>
+                                        <td>
+                                            <center><span t-field="line.amount"/></center>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <hr/>
+                        <div>
+                            Resumen de Conciliación
+                            <div class="row" style="border: 1px solid black">
+                                <table width="100%" style="font-size:14px; font-family: 'Times New Roman', Times, serif;">
+                                    <colgroup>
+                                        <col width="35%"/>
+                                        <col width="15%"/>
+                                        <col width="35%"/>
+                                        <col width="15%"/>
+                                    </colgroup>
+                                    <tr>
+                                        <td style=" text-align: left;">
+                                            CARGOS SEGUN LIBROS (+)
+                                        </td>
+                                        <td style=" text-align: center; font-weight: bold;">
+                                            0.00
+                                        </td>
+                                        <td style=" text-align: left;">
+                                            CARGOS SEGUN ESTADO DE CUENTA (+) 
+                                        </td>
+                                        <td style=" text-align: center; font-weight: bold;">
+                                            0.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style=" text-align: left;">
+                                            ABONOS SEGUN LIBROS (-)
+                                        </td>
+                                        <td style=" text-align: center; font-weight: bold;">
+                                            0.00
+                                        </td>
+                                        <td style=" text-align: left;">
+                                            ABONOS SEGUN ESTADO DE CUENTA (-) 
+                                        </td>
+                                        <td style=" text-align: center; font-weight: bold;">
+                                            0.00
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <table width="100%" style="font-size:14px; font-family: 'Times New Roman', Times, serif;">
+                                    <colgroup>
+                                        <col width="50%"/>
+                                        <col width="50%"/>
+                                    </colgroup>
+                                    <tr>
+                                        <td style=" text-align: left; font-weight: bold;">
+                                            SALDOS EN BANCOS:
+                                        </td>
+                                        <td style=" text-align: right; font-weight: bold;">
+                                            0.00
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

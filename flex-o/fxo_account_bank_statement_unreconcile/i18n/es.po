@@ -1,0 +1,51 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* fxo_account_bank_statement_unreconcile
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fxo_account_bank_statement_unreconcile
+#: model_terms:ir.ui.view,arch_db:fxo_account_bank_statement_unreconcile.view_bank_statement_form_fxo_unreconcile
+msgid "Unreconcile all"
+msgstr "Desconciliar todo"
+
+#. module: fxo_account_bank_statement_unreconcile
+#: model_terms:ir.ui.view,arch_db:fxo_account_bank_statement_unreconcile.view_bank_statement_form_fxo_unreconcile
+msgid "Delete statement"
+msgstr "Eliminar extracto"
+
+#. module: fxo_account_bank_statement_unreconcile
+#: model_terms:ir.ui.view,arch_db:fxo_account_bank_statement_unreconcile.view_bank_statement_form_fxo_unreconcile
+msgid "Unreconcile and delete line"
+msgstr "Desconciliar y eliminar línea"
+
+#. module: fxo_account_bank_statement_unreconcile
+#: model_terms:ir.ui.view,arch_db:fxo_account_bank_statement_unreconcile.view_bank_statement_form_fxo_unreconcile
+msgid "The reconciliation of ALL the lines of this statement will be reverted. The journal entries created by the reconciliation will be deleted. Do you want to continue?"
+msgstr "Se revertirá la conciliación de TODAS las líneas de este extracto. Los asientos generados por la conciliación se eliminarán. ¿Desea continuar?"
+
+#. module: fxo_account_bank_statement_unreconcile
+#: model_terms:ir.ui.view,arch_db:fxo_account_bank_statement_unreconcile.view_bank_statement_form_fxo_unreconcile
+msgid "The whole statement will be DELETED: all its reconciliations will be reverted and all its lines removed. This cannot be undone. Do you want to continue?"
+msgstr "Se ELIMINARÁ el extracto completo: se revertirán todas sus conciliaciones y se borrarán todas sus líneas. Esta acción no se puede deshacer. ¿Desea continuar?"
+
+#. module: fxo_account_bank_statement_unreconcile
+#: model_terms:ir.ui.view,arch_db:fxo_account_bank_statement_unreconcile.view_bank_statement_form_fxo_unreconcile
+msgid "This line will be deleted. If it is reconciled, the reconciliation will be reverted first. Do you want to continue?"
+msgstr "Se eliminará esta línea. Si está conciliada, primero se revertirá la conciliación. ¿Desea continuar?"
+
+#. module: fxo_account_bank_statement_unreconcile
+#: code:addons/fxo_account_bank_statement_unreconcile/models/account_bank_statement.py:0
+#, python-format
+msgid "The statement \"%s\" is validated. Reset it to New before reverting or deleting its lines."
+msgstr "El extracto \"%s\" está validado. Regréselo a Nuevo antes de revertir o eliminar sus líneas."

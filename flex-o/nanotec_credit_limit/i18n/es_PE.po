@@ -1,0 +1,301 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* control_credit_limit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-15 23:37+0000\n"
+"PO-Revision-Date: 2018-03-19 18:12-0500\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es_PE\n"
+"X-Generator: Poedit 2.0.3\n"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.my_credit_limit_wizard
+msgid "<span>The following customer is about or exceeded their credit limit. This operation needs an Authorized Employee to approve the sale order:</span>"
+msgstr "<span>El siguiente cliente está a punto o excedió su límite de crédito. Esta operación necesita un empleado autorizado para aprobar la orden de venta:</span>"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.my_credit_limit_confirm_wizard
+msgid "<span>The following customer is about or exceeded their credit limit. You need to confirm their Sale Order or Increase their Credit Limit:</span>"
+msgstr "<span>El siguiente cliente está a punto o excedió su límite de crédito. Debe confirmar su orden de venta o aumentar su límite de crédito:</span>"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_res_partner_my_credit_agent_change
+#: model:ir.model.fields,field_description:control_credit_limit.field_res_users_my_credit_agent_change
+msgid "Allow Sale Managers to modify this limit ?"
+msgstr "Permitir que los gerentes de venta modifiquen este límite?"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_due_not_invoiced
+msgid "Amount Due for Sale Orders not yet Invoiced"
+msgstr "Importe pendiente de venta Órdenes aún no facturadas"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.credit_limit_settings
+msgid "Apply"
+msgstr "Aplicar"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_credit_limit_config_force_limit_fresh_orders
+msgid "Apply the Credit limit even for customers without Unpaid Invoices"
+msgstr "Aplicar el límite de crédito incluso para clientes sin facturas pendientes de pago"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.my_credit_limit_confirm_wizard
+msgid "Approve Sale Order"
+msgstr "Aprobar orden de venta"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.credit_limit_settings
+#: model:ir.ui.view,arch_db:control_credit_limit.my_credit_limit_confirm_wizard
+#: model:ir.ui.view,arch_db:control_credit_limit.my_credit_limit_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_credit_limit_config_include_not_invoiced
+msgid "Consider including Sale Orders not invoiced yet"
+msgstr "Considere incluir órdenes de venta aún no facturadas"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_credit_limit_config_create_uid
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_credit_limit_config_create_date
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: control_credit_limit
+#: model:ir.ui.menu,name:control_credit_limit.my_credit_limit_menu
+#: model:ir.ui.view,arch_db:control_credit_limit.sale_order_to_approve
+#: model:ir.ui.view,arch_db:control_credit_limit.view_customer_over_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.view_partner_change_credit
+msgid "Credit Limit"
+msgstr "Límite de Crédito"
+
+#. module: control_credit_limit
+#: model:ir.actions.act_window,name:control_credit_limit.action_list_credit_limit_settings
+#: model:ir.ui.menu,name:control_credit_limit.menu_credit_limit_config
+#: model:ir.ui.view,arch_db:control_credit_limit.credit_limit_settings
+msgid "Credit Limit Settings"
+msgstr "Configuración de límite de crédito"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_order_credit_limit
+msgid "Customer Credit Limit"
+msgstr "Límite de crédito del cliente"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_order_customer_balance
+msgid "Customer Total Balance"
+msgstr "Límite de crédito del cliente"
+
+#. module: control_credit_limit
+#: model:ir.actions.act_window,name:control_credit_limit.action_list_customer_over_credit_limit
+msgid "Customers over Credit Limit"
+msgstr "Clientes con límite de crédito"
+
+#. module: control_credit_limit
+#: model:ir.ui.menu,name:control_credit_limit.menu_credit_limit_customers_over
+msgid "Customers over Limit"
+msgstr "Clientes por encima del límite"
+
+#. module: control_credit_limit
+#: model:ir.actions.act_window,name:control_credit_limit.action_list_customer_without_limit
+msgid "Customers without Credit Limit"
+msgstr "Clientes sin límite de crédito"
+
+#. module: control_credit_limit
+#: model:ir.ui.menu,name:control_credit_limit.menu_credit_limit_customers_without
+msgid "Customers without Limit"
+msgstr "Clientes sin límite"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_res_partner_over_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_res_users_over_limit
+msgid "Debt over Limit"
+msgstr "Deuda sobre Límite"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_credit_limit_config_default_my_credit_limit
+msgid "Default my credit limit"
+msgstr "Predeterminado mi límite de crédito"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_credit_limit_config_display_name
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_res_partner_check_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_res_users_check_credit_limit
+msgid "Enforce the Credit Limit for Sale orders"
+msgstr "Hacer cumplir el límite de crédito para pedidos de venta"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_debt
+msgid "Existing Invoiced Debts"
+msgstr "Deudas facturadas existentes"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_credit_limit_config_id
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_id
+msgid "ID"
+msgstr "ID"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_invoice_amount
+msgid "Invoice Amount"
+msgstr "Importe de Pedido"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.view_customer_over_limit
+msgid "Invoiced Debt"
+msgstr "Deuda facturada"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_credit_limit_config___last_update
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard___last_update
+msgid "Last Modified on"
+msgstr "Ultima Modificación en"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_credit_limit_config_write_uid
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Actualizado última vez por"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_credit_limit_config_write_date
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_write_date
+msgid "Last Updated on"
+msgstr "Ultima Actualización"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.view_customer_over_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.view_customer_without_limit
+msgid "Name"
+msgstr "Nombre"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_new_balance
+msgid "New Balance "
+msgstr "Crédito Comprometido"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.sale_order_to_approve
+msgid "Order Number"
+msgstr "Número de pedido"
+
+#. module: control_credit_limit
+#: model:ir.actions.act_window,name:control_credit_limit.action_list_sale_to_approve
+msgid "Orders to Approve : Credit Limit Issues"
+msgstr "Órdenes para aprobar: problemas de límite de crédito"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.view_customer_over_limit
+msgid "Over Limit"
+msgstr "Sobre el limite"
+
+#. module: control_credit_limit
+#: model:ir.model,name:control_credit_limit.model_res_partner
+msgid "Partner"
+msgstr "Partner"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.view_partner_change_credit
+msgid "Partner Actual Credit:"
+msgstr "Crédito real de socio:"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_my_credit_limit
+msgid "Partner Credit Limit"
+msgstr "Linea de Crédito del Partner"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_order_need_approval
+#: model:ir.ui.view,arch_db:control_credit_limit.credit_limit_sale_order_add_pending
+msgid "Pending Manager's Approval"
+msgstr "Pendiente de aprobación del gerente"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.my_credit_limit_wizard
+msgid "Request Manager to Approve Sale"
+msgstr "Solicitar al gerente que apruebe la venta"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.credit_limit_settings
+msgid "Sale Orders"
+msgstr "Pedido de Venta"
+
+#. module: control_credit_limit
+#: model:ir.ui.menu,name:control_credit_limit.menu_list_sale_to_approve
+msgid "Sale Orders to Approve"
+msgstr "Pedidos de venta para aprobar"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_sale_control_limit_wizard_sale_order
+msgid "Sale order"
+msgstr "Orden de venta"
+
+#. module: control_credit_limit
+#: model:ir.model,name:control_credit_limit.model_sale_order
+msgid "Sales Order"
+msgstr "Pedidos de Venta"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_res_partner_my_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_res_users_my_credit_limit
+msgid "The Credit Limit :"
+msgstr "El límite de crédito:"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.sale_order_to_approve
+msgid "Total Debt"
+msgstr "Deuda total"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.sale_order_to_approve
+#: model:ir.ui.view,arch_db:control_credit_limit.view_customer_over_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.view_customer_without_limit
+msgid "Total Tax Included"
+msgstr "Total impuestos incluidos"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,help:control_credit_limit.field_sale_order_customer_balance
+msgid "Total amount this customer owes you."
+msgstr "Importe total que le debe el cliente."
+
+#. module: control_credit_limit
+#: model:ir.model,name:control_credit_limit.model_credit_limit_config
+msgid "credit.limit.config"
+msgstr "credit.limit.config"
+
+#. module: control_credit_limit
+#: model:ir.model.fields,field_description:control_credit_limit.field_res_partner_my_credit_is_over
+#: model:ir.model.fields,field_description:control_credit_limit.field_res_users_my_credit_is_over
+msgid "is over credit ?"
+msgstr "Está por encima del crédito?"
+
+#. module: control_credit_limit
+#: model:ir.ui.view,arch_db:control_credit_limit.credit_limit_settings
+msgid "or"
+msgstr "o"
+
+#. module: control_credit_limit
+#: model:ir.model,name:control_credit_limit.model_sale_control_limit_wizard
+msgid "sale.control.limit.wizard"
+msgstr "sale.control.limit.wizard"

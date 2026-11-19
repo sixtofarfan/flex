@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="portal_my_details_fields_extend" inherit_id="website_sale.address" name="Address Mapbox">
+            <xpath expr="//div[@class='w-100'][last()]"  position="after">
+                <div class="col-lg-12">
+                    <div id="map" style="height: 400px;"></div>
+                </div>
+                <div class="form-group  col-lg-6">
+                    <label class="control-label" for="lng">lng <b style="color:red">(*)</b></label>
+                    <input type="text" id="lng" name="longitud" readonly="true" class="form-control" required="required" t-att-value="'longitud' in checkout and checkout['longitud']"/>
+                </div>
+                <div class="form-group  col-lg-6">
+                    <label class="control-label" for="lat">lat <b style="color:red">(*)</b></label>
+                    <input type="text" id="lat" name="latitud" readonly="true" class="form-control"   required="required" t-att-value="'latitud' in checkout and checkout['latitud']" />
+                </div>
+            </xpath>
+        </template>
+         <template id="sale_order_portal_template_extend" inherit_id="sale.sale_order_portal_template" name="Mapbox Sale Order">
+            <xpath expr="//ul[1]" position="after">
+                <h1 class="text-center">Map</h1>
+                <div class="col-lg-12">
+                    <div id="map" style="height: 400px;"/>
+                </div>
+                <div class="form-group  col-lg-6 d-none">
+                    <label class="control-label" for="lng">lng <b style="color:red">(*)</b>
+                    </label>
+                    <input type="text" id="lng" name="longitud" readonly="true" class="form-control" required="required" t-att-value="sale_order.partner_shipping_id.longitud"/>
+                </div>
+                <div class="form-group  col-lg-6 d-none">
+                    <label class="control-label" for="lat">lat <b style="color:red">(*)</b>
+                    </label>
+                    <input type="text" id="lat" name="latitud" readonly="true" class="form-control" required="required" t-att-value="sale_order.partner_shipping_id.latitud"/>
+                </div>
+                
+            </xpath>
+        </template>
+       
+    </data>
+</odoo>

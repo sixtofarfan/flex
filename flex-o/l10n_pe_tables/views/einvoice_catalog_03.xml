@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+        <!-- Add you code here -->
+        <!-- einvoice.catalog.03 form view -->
+        <record id="einvoice_catalog_03_view_form" model="ir.ui.view">
+            <field name="name">einvoice.catalog.03.view.form</field>
+            <field name="model">einvoice.catalog.03</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here -->
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="desc"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- einvoice.catalog.03 tree view -->
+        <record id="einvoice_catalog_03_view_tree" model="ir.ui.view">
+            <field name="name">einvoice.catalog.03.view.tree</field>
+            <field name="model">einvoice.catalog.03</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="desc"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="einvoice_catalog_03_action" model="ir.actions.act_window">
+            <field name="name">Catalogo 03 -  Tipo de Via </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">einvoice.catalog.03</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem   id="menu_einvoice_catalog_03" 
+                    name="Catalogo 03 -  Tipo de Zona" 
+                    parent="account_base_it.menu_account_base_it"
+                    action="einvoice_catalog_03_action"/>
+    </data>
+</odoo>

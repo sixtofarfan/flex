@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.module.category" id="factibility_module_category">
+            <field name="name">Para Factibilidad de Ventas</field>
+            <field name="description">Para Factibilidad de Ventas</field>
+            <field name="sequence">1</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<template id="icon_section_1" name="Top Header Section">
+		<section class="header-content"
+			style="background: url('/theme_plus/static/src/img/header-background.jpg')center center no-repeat;background-size: cover; ">
+			<!-- <div class="header-content" style="background: url('/theme_plus/static/src/img/header-background.jpg')center 
+				center no-repeat"> -->
+			<div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="text-container">
+								<h1>
+									<span class="turquoise">StartUp Landing</span>
+									Page Template
+								</h1>
+								<p class="p-large">Use Plus landing page template to promote
+									your
+									business startup and generate leads for the offered
+									services
+								</p>
+								<a class="btn-solid-lg page-scroll" href="#services">DISCOVER</a>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="image-container">
+								<img class="img-fluid" src="/theme_plus/static/src/img/header-teamwork.svg"
+									alt="alternative" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="icon_section_2" name="Trusted By Section">
+		<section>
+			<!-- Customers -->
+			<div class="slider-1">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<h5>Trusted By</h5>
+
+							<!-- Image Slider -->
+							<div class="slider-container">
+								<div class="swiper-container image-slider">
+									<div class="swiper-wrapper">
+										<t t-foreach="request.env['reliable.partners'].sudo().search([])"
+											t-as="i">
+											<div class="swiper-slide">
+												<div class="image-container">
+													<img class="img-responsive"
+														t-attf-src="/website/image/reliable.partners/{{i.id}}/image"
+														alt="alternative" />
+												</div>
+											</div>
+										</t>
+									</div> <!-- end of swiper-wrapper -->
+								</div> <!-- end of swiper container -->
+							</div> <!-- end of slider-container -->
+							<!-- end of image slider -->
+
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of slider-1 -->
+			<!-- end of customers -->
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="icon_section_3" name="Service Section">
+		<section>
+			<!-- Services -->
+			<div id="services" class="cards-1">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<h2>Business Growth Services</h2>
+							<p class="p-heading p-large">We serve small and medium sized companies in all
+								tech
+								related industries with high quality growth services
+								which are
+								presented below
+							</p>
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+					<div class="row">
+						<div class="col-lg-12">
+							<!-- Card -->
+							<div class="card">
+								<img class="card-image" src="/theme_plus/static/src/img/services-icon-1.svg"
+									alt="alternative" />
+								<div class="card-body">
+									<h4 class="card-title">Market Analysis</h4>
+									<p>Our team of enthusiastic marketers will analyse and
+										evaluate
+										how your company stacks against the closest
+										competitors
+									</p>
+								</div>
+							</div>
+							<!-- end of card -->
+
+							<!-- Card -->
+							<div class="card">
+								<img class="card-image" src="/theme_plus/static/src/img/services-icon-2.svg"
+									alt="alternative" />
+								<div class="card-body">
+									<h4 class="card-title">Opportunity Scan</h4>
+									<p>Once the market analysis process is completed our staff
+										will
+										search for opportunities that are in reach
+									</p>
+								</div>
+							</div>
+							<!-- end of card -->
+
+							<!-- Card -->
+							<div class="card">
+								<img class="card-image" src="/theme_plus/static/src/img/services-icon-3.svg"
+									alt="alternative" />
+								<div class="card-body">
+									<h4 class="card-title">Action Plan</h4>
+									<p>With all the information in place you will be presented
+										with
+										an action plan that your company needs to follow
+									</p>
+								</div>
+							</div>
+							<!-- end of card -->
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of cards-1 -->
+			<!-- end of services -->
+
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="icon_section_4" name="Future Section 1">
+		<section>
+			<!-- Details 1 -->
+			<div class="basic-1">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="text-container">
+								<h2>Design And Plan Your Business Growth Steps</h2>
+								<p>Use our staff and our expertise to design and plan your
+									business growth strategy. Plus team is eager to advise you
+									on
+									the best opportunities that you should look into
+								</p>
+								<a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-1">LIGHTBOX
+								</a>
+							</div> <!-- end of text-container -->
+						</div> <!-- end of col -->
+						<div class="col-lg-6">
+							<div class="image-container">
+								<img class="img-fluid"
+									src="/theme_plus/static/src/img/details-1-office-worker.svg"
+									alt="alternative" />
+							</div> <!-- end of image-container -->
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of basic-1 -->
+			<!-- end of details 1 -->
+			<!-- Details Lightbox 1 -->
+			<div id="details-lightbox-1" class="lightbox-basic zoom-anim-dialog mfp-hide">
+				<div class="container">
+					<div class="row">
+						<button title="Close (Esc)" type="button" class="mfp-close x-button">×
+						</button>
+						<div class="col-lg-8">
+							<div class="image-container">
+								<img src="/theme_plus/static/src/img/details-lightbox-2.svg"
+									alt="alternative" />
+							</div> <!-- end of image-container -->
+						</div> <!-- end of col -->
+						<div class="col-lg-4">
+							<h3>Emailing Module</h3>
+							<hr />
+							<h5>Core feature</h5>
+							<p>The emailing module basically will speed up your email
+								marketing operations while offering more subscriber control.
+							</p>
+							<p>Do you need to build lists for your email campaigns? It
+								just
+								got easier with Plus.
+							</p>
+							<ul class="list-unstyled li-space-lg">
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">List building framework</div>
+								</li>
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">Easy database browsing</div>
+								</li>
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">User administration</div>
+								</li>
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">Automate user signup</div>
+								</li>
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">Quick formatting tools</div>
+								</li>
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">Fast email checking</div>
+								</li>
+							</ul>
+							<a class="btn-solid-reg mfp-close page-scroll" href="#request">REQUEST
+							</a>
+							<a class="btn-outline-reg mfp-close as-button" href="#screenshots">BACK</a>
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of lightbox-basic -->
+			<!-- end of details lightbox 1 -->
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="icon_section_5" name="Future Section 2">
+		<section>
+			<!-- Details 2 -->
+			<div class="basic-2">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="image-container">
+								<img class="img-fluid"
+									src="/theme_plus/static/src/img/details-2-office-team-work.svg"
+									alt="alternative" />
+							</div> <!-- end of image-container -->
+						</div> <!-- end of col -->
+						<div class="col-lg-6">
+							<div class="text-container">
+								<h2>Search For Optimization Wherever Is Possible</h2>
+								<ul class="list-unstyled li-space-lg">
+									<li class="media">
+										<i class="fas fa-check"></i>
+										<div class="media-body">Basically we'll teach you step by step what
+											you
+											need to do
+										</div>
+									</li>
+									<li class="media">
+										<i class="fas fa-check"></i>
+										<div class="media-body">In order to develop your company and reach
+											new
+											heights
+										</div>
+									</li>
+									<li class="media">
+										<i class="fas fa-check"></i>
+										<div class="media-body">Everyone will be pleased from stakeholders to
+											employees
+										</div>
+									</li>
+								</ul>
+								<a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-2">LIGHTBOX
+								</a>
+							</div> <!-- end of text-container -->
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of basic-2 -->
+			<!-- end of details 2 -->
+			<!-- Details Lightbox 2 -->
+			<div id="details-lightbox-2" class="lightbox-basic zoom-anim-dialog mfp-hide">
+				<div class="container">
+					<div class="row">
+						<button title="Close (Esc)" type="button" class="mfp-close x-button">×
+						</button>
+						<div class="col-lg-8">
+							<div class="image-container">
+								<img src="/theme_plus/static/src/img/details-lightbox-2.svg"
+									alt="alternative" />
+							</div> <!-- end of image-container -->
+						</div> <!-- end of col -->
+						<div class="col-lg-4">
+							<h3>Emailing Module</h3>
+							<hr />
+							<h5>Core feature</h5>
+							<p>The emailing module basically will speed up your email
+								marketing operations while offering more subscriber control.
+							</p>
+							<p>Do you need to build lists for your email campaigns? It
+								just
+								got easier with Plus.
+							</p>
+							<ul class="list-unstyled li-space-lg">
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">List building framework</div>
+								</li>
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">Easy database browsing</div>
+								</li>
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">User administration</div>
+								</li>
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">Automate user signup</div>
+								</li>
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">Quick formatting tools</div>
+								</li>
+								<li class="media">
+									<i class="fas fa-check"></i>
+									<div class="media-body">Fast email checking</div>
+								</li>
+							</ul>
+							<a class="btn-solid-reg mfp-close page-scroll" href="#request">REQUEST
+							</a>
+							<a class="btn-outline-reg mfp-close as-button" href="#screenshots">BACK</a>
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of lightbox-basic -->
+			<!-- end of details lightbox 2 -->
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="icon_section_6" name="Price table Section">
+		<section>
+			<!-- Pricing -->
+			<div id="pricing" class="cards-2">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<h2>Multiple Pricing Options</h2>
+							<p class="p-heading p-large">We've prepared pricing plans for all budgets so you
+								can get started right away. They're great for small companies
+								and large organizations
+							</p>
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+					<div class="row">
+						<div class="col-lg-12">
+
+							<!-- Card -->
+							<div class="card">
+								<div class="card-body">
+									<div class="card-title">STARTER</div>
+									<div class="card-subtitle">Just to see what can be achieved</div>
+									<hr class="cell-divide-hr" />
+									<div class="price">
+										<span class="currency">$</span>
+										<span class="value">199</span>
+										<div class="frequency">monthly</div>
+									</div>
+									<hr class="cell-divide-hr" />
+									<ul class="list-unstyled li-space-lg">
+										<li class="media">
+											<i class="fas fa-check"></i>
+											<div class="media-body">Improve Your Email Marketing</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-check"></i>
+											<div class="media-body">User And Admin Rights Control</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-times"></i>
+											<div class="media-body">List Building And Cleaning</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-times"></i>
+											<div class="media-body">Collected Data Management</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-times"></i>
+											<div class="media-body">More Planning And Evaluation</div>
+										</li>
+									</ul>
+									<div class="button-wrapper">
+										<a class="btn-solid-reg page-scroll" href="#request">REQUEST</a>
+									</div>
+								</div>
+							</div> <!-- end of card -->
+							<!-- end of card -->
+
+							<!-- Card -->
+							<div class="card">
+								<div class="card-body">
+									<div class="card-title">MEDIUM</div>
+									<div class="card-subtitle">Very appropriate for the short term</div>
+									<hr class="cell-divide-hr" />
+									<div class="price">
+										<span class="currency">$</span>
+										<span class="value">299</span>
+										<div class="frequency">monthly</div>
+									</div>
+									<hr class="cell-divide-hr" />
+									<ul class="list-unstyled li-space-lg">
+										<li class="media">
+											<i class="fas fa-check"></i>
+											<div class="media-body">Improve Your Email Marketing</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-check"></i>
+											<div class="media-body">User And Admin Rights Control</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-check"></i>
+											<div class="media-body">List Building And Cleaning</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-check"></i>
+											<div class="media-body">Collected Data Management</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-times"></i>
+											<div class="media-body">More Planning And Evaluation</div>
+										</li>
+									</ul>
+									<div class="button-wrapper">
+										<a class="btn-solid-reg page-scroll" href="#request">REQUEST</a>
+									</div>
+								</div>
+							</div> <!-- end of card -->
+							<!-- end of card -->
+
+							<!-- Card -->
+							<div class="card">
+								<div class="label">
+									<p class="best-value">Best Value</p>
+								</div>
+								<div class="card-body">
+									<div class="card-title">COMPLETE</div>
+									<div class="card-subtitle">Must have for large companies</div>
+									<hr class="cell-divide-hr" />
+									<div class="price">
+										<span class="currency">$</span>
+										<span class="value">399</span>
+										<div class="frequency">monthly</div>
+									</div>
+									<hr class="cell-divide-hr" />
+									<ul class="list-unstyled li-space-lg">
+										<li class="media">
+											<i class="fas fa-check"></i>
+											<div class="media-body">Improve Your Email Marketing</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-check"></i>
+											<div class="media-body">User And Admin Rights Control</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-check"></i>
+											<div class="media-body">List Building And Cleaning</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-check"></i>
+											<div class="media-body">Collected Data Management</div>
+										</li>
+										<li class="media">
+											<i class="fas fa-check"></i>
+											<div class="media-body">More Planning And Evaluation</div>
+										</li>
+									</ul>
+									<div class="button-wrapper">
+										<a class="btn-solid-reg page-scroll" href="#request">REQUEST</a>
+									</div>
+								</div>
+							</div> <!-- end of card -->
+							<!-- end of card -->
+
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of cards-2 -->
+			<!-- end of pricing -->
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="icon_section_7" name="Meeting Section">
+		<section>
+			<!-- Request -->
+			<div id="request" class="form-1">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="text-container">
+								<h2>Fill The Following Form To Request A Meeting</h2>
+								<p>Plus is one of the easiest and feature packed marketing
+									automation apps in the market. Discover what it can do for
+									your
+									business organization right away.
+								</p>
+								<ul class="list-unstyled li-space-lg">
+									<li class="media">
+										<i class="fas fa-check"></i>
+										<div class="media-body">
+											<strong class="blue">Automate your marketing</strong>
+											activities and get results today
+										</div>
+									</li>
+									<li class="media">
+										<i class="fas fa-check"></i>
+										<div class="media-body">
+											<strong class="blue">Interact with all your</strong>
+											targeted customers at a personal level
+										</div>
+									</li>
+									<li class="media">
+										<i class="fas fa-check"></i>
+										<div class="media-body">
+											<strong class="blue">Convince them to buy</strong>
+											your company's awesome products
+										</div>
+									</li>
+									<li class="media">
+										<i class="fas fa-check"></i>
+										<div class="media-body">
+											<strong class="blue">Save precious time</strong>
+											and invest it where you need it the most
+										</div>
+									</li>
+								</ul>
+							</div> <!-- end of text-container -->
+						</div> <!-- end of col -->
+						<div class="col-lg-6">
+
+							<!-- Request Form -->
+							<div class="form-container">
+								<form id="requestForm" data-toggle="validator" data-focus="false"
+									action="/meeting_form/" method="post" data-model_name="website.meeting.info"
+									class="s_website_form" enctype="multipart/form-data"
+									data-editable-form="false" data-success_page="/contactus_thank_you">
+
+									<div class="form-group form-field o_website_form_required_custom">
+										<input type="text" class="form-control-input o_website_form_input"
+											id="rname" name="name" t-att-value="request.params.get('name', '')"
+											required="" />
+										<label class="label-control" for="name">Full name</label>
+										<div class="help-block with-errors"></div>
+									</div>
+
+									<div class="form-group form-field o_website_form_required_custom">
+										<input type="email" class="form-control-input o_website_form_input"
+											id="remail" name="email" t-att-value="request.params.get('email', '')"
+											required="" />
+										<label class="label-control" for="email">Email</label>
+										<div class="help-block with-errors"></div>
+									</div>
+
+									<div class="form-group form-field o_website_form_required_custom">
+										<input type="text" class="form-control-input o_website_form_input"
+											id="rphone" name="phone" t-att-value="request.params.get('phone', '')"
+											required="" />
+										<label class="label-control" for="phone">Phone</label>
+										<div class="help-block with-errors"></div>
+									</div>
+
+									<div class="form-group form-field o_website_form_required_custom">
+										<input type="date" class="form-control-input o_website_form_input"
+											id="rdate2" name="meeting_datetime" t-att-value="request.params.get('meeting_datetime', '')"
+											required="" placeholder="DD-MM-YYYY"></input>
+										<label class="label-control" for="meeting_datetime">Meeting Date</label>
+										<div class="help-block with-errors"></div>
+									</div>
+
+									<div class="form-group form-field o_website_form_required_custom">
+										<input type="time" class="form-control-input o_website_form_input"
+											id="rtime" name="mtime" t-att-value="request.params.get('mtime', '')"
+											required=""></input>
+										<label class="label-control" for="mtime">Meeting Time</label>
+										<div class="help-block with-errors"></div>
+									</div>
+
+									<div class="form-group form-field o_website_form_required_custom">
+										<textarea class="form-control-textarea o_website_form_input"
+											id="rmessage" name="question" required="">
+											<t t-esc="request.params.get('question', '')" />
+										</textarea>
+										<label class="label-control" for="question">Interested In</label>
+										<div class="help-block with-errors"></div>
+									</div>
+
+									<div class="form-group">
+										<button type="button"
+											class="form-control-submit-button o_website_form_send">REQUEST</button>
+										<span id="o_website_form_result"></span>
+									</div>
+
+								</form>
+							</div> <!-- end of form-container -->
+							<!-- end of request form -->
+
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of form-1 -->
+			<!-- end of request -->
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="icon_section_8" name="Video Section">
+		<section>
+			<!-- Video -->
+			<div class="basic-3">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<h2>Check Out The Video</h2>
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+					<div class="row">
+						<div class="col-lg-12">
+
+							<!-- Video Preview -->
+							<div class="image-container">
+								<div class="video-wrapper">
+									<a class="popup-youtube" href="https://www.youtube.com/watch?v=fLCjQJCekTs"
+										data-effect="fadeIn">
+										<img class="img-fluid" src="/theme_plus/static/src/img/video-frame.svg"
+											alt="alternative" />
+										<span class="video-play-button">
+											<span></span>
+										</span>
+									</a>
+								</div> <!-- end of video-wrapper -->
+							</div> <!-- end of image-container -->
+							<!-- end of video preview -->
+
+							<p>
+								This video will show you a case study for one of our
+								<strong>Major Customers</strong>
+								and will help you understand why your startup needs Plus in
+								this
+								highly competitive market
+							</p>
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of basic-3 -->
+			<!-- end of video -->
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="icon_section_9" name="Testimonials Section">
+		<section class="slider-2"
+			style="background: url('/theme_plus/static/src/img/testimonials-background.jpg') center center no-repeat;background-size: cover; ">
+			<!-- Testimonials -->
+			<div>
+				<!-- <div class="slider-2" style="background: url('/theme_plus/static/src/img/testimonials-background.jpg') 
+					center center no-repeat;"> -->
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="image-container">
+								<img class="img-fluid"
+									src="/theme_plus/static/src/img/testimonials-2-men-talking.svg"
+									alt="alternative" />
+							</div> <!-- end of image-container -->
+						</div> <!-- end of col -->
+						<div class="col-lg-6">
+							<h2>Testimonials</h2>
+
+							<!-- Card Slider -->
+							<div class="slider-container">
+								<div class="swiper-container card-slider">
+									<div class="swiper-wrapper">
+										<t t-foreach="request.env['customers.reviews'].sudo().search([])"
+											t-as="i">
+											<!-- Slide -->
+											<div class="swiper-slide">
+												<div class="card">
+													<img class="card-image"
+														t-attf-src="/website/image/customers.reviews/{{i.id}}/image"
+														alt="alternative" />
+													<div class="card-body">
+														<p class="testimonial-text">
+															<t t-esc="i.review" />
+														</p>
+														<t t-if="i.customer_id.company_type == 'person'">
+															<p class="testimonial-author">
+																<t t-esc="i.customer_id.name" />
+																<t t-if="i.customer_id.function">
+																	-
+																	<t t-esc="i.customer_id.function" />
+																</t>
+															</p>
+														</t>
+														<t t-if="i.customer_id.company_type == 'company'">
+															<p class="testimonial-author">
+																<t t-esc="i.customer_id.name" />
+															</p>
+														</t>
+													</div>
+												</div>
+											</div> <!-- end of swiper-slide -->
+											<!-- end of slide -->
+										</t>
+									</div> <!-- end of swiper-wrapper -->
+
+									<!-- Add Arrows -->
+									<div class="swiper-button-next"></div>
+									<div class="swiper-button-prev"></div>
+									<!-- end of add arrows -->
+
+								</div> <!-- end of swiper-container -->
+							</div> <!-- end of slider-container -->
+							<!-- end of card slider -->
+
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of slider-2 -->
+			<!-- end of testimonials -->
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="icon_section_10" name="Team Section">
+		<section>
+			<!-- About -->
+			<div id="about" class="basic-4">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<h2>About The Team</h2>
+							<p class="p-heading p-large">Meat our team of specialized marketers and business
+								developers which will help you research new products and
+								launch
+								them in new emerging markets
+							</p>
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+					<div class="row">
+						<div class="col-lg-12">
+
+							<!-- Team Member -->
+							<div class="team-member">
+								<div class="image-wrapper">
+									<img class="img-fluid" src="/theme_plus/static/src/img/team-member-1.svg"
+										alt="alternative" />
+								</div> <!-- end of image-wrapper -->
+								<p class="p-large">
+									<strong>Lacy Whitelong</strong>
+								</p>
+								<p class="job-title">Business Developer</p>
+								<div class="o_sharing_links">
+									<a href="#your-link" aria-label="Facebook" title="Facebook"
+										target="_blank">
+										<i class="fab fa-facebook-f"></i>
+									</a>
+									<a href="#your-link" aria-label="Twitter" title="Twitter"
+										target="_blank">
+										<i class="fab fa-twitter"></i>
+									</a>
+								</div>
+							</div> <!-- end of team-member -->
+							<!-- end of team member -->
+
+							<!-- Team Member -->
+							<div class="team-member">
+								<div class="image-wrapper">
+									<img class="img-fluid" src="/theme_plus/static/src/img/team-member-2.svg"
+										alt="alternative" />
+								</div> <!-- end of image wrapper -->
+								<p class="p-large">
+									<strong>Chris Brown</strong>
+								</p>
+								<p class="job-title">Online Marketer</p>
+								<div class="o_sharing_links">
+									<a href="#your-link" aria-label="Facebook" title="Facebook"
+										target="_blank">
+										<i class="fab fa-facebook-f"></i>
+									</a>
+									<a href="#your-link" aria-label="Twitter" title="Twitter"
+										target="_blank">
+										<i class="fab fa-twitter"></i>
+									</a>
+								</div>
+							</div> <!-- end of team-member -->
+							<!-- end of team member -->
+
+							<!-- Team Member -->
+							<div class="team-member">
+								<div class="image-wrapper">
+									<img class="img-fluid" src="/theme_plus/static/src/img/team-member-3.svg"
+										alt="alternative" />
+								</div> <!-- end of image wrapper -->
+								<p class="p-large">
+									<strong>Sheila Zimerman</strong>
+								</p>
+								<p class="job-title">Software Engineer</p>
+								<div class="o_sharing_links">
+									<a href="#your-link" aria-label="Facebook" title="Facebook"
+										target="_blank">
+										<i class="fab fa-facebook-f"></i>
+									</a>
+									<a href="#your-link" aria-label="Twitter" title="Twitter"
+										target="_blank">
+										<i class="fab fa-twitter"></i>
+									</a>
+								</div>
+							</div> <!-- end of team-member -->
+							<!-- end of team member -->
+
+							<!-- Team Member -->
+							<div class="team-member">
+								<div class="image-wrapper">
+									<img class="img-fluid" src="/theme_plus/static/src/img/team-member-4.svg"
+										alt="alternative" />
+								</div> <!-- end of image wrapper -->
+								<p class="p-large">
+									<strong>Mary Villalonga</strong>
+								</p>
+								<p class="job-title">Product Manager</p>
+								<div class="o_sharing_links">
+									<a href="#your-link" aria-label="Facebook" title="Facebook"
+										target="_blank">
+										<i class="fab fa-facebook-f"></i>
+									</a>
+									<a href="#your-link" aria-label="Twitter" title="Twitter"
+										target="_blank">
+										<i class="fab fa-twitter"></i>
+									</a>
+								</div>
+							</div> <!-- end of team-member -->
+							<!-- end of team member -->
+
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+				<!-- === Snippets' area === -->
+				<div class="oe_structure" />
+			</div> <!-- end of basic-4 -->
+			<!-- end of about -->
+
+		</section>
+	</template>
+	<template id="icon_section_11" name="Contact Us">
+		<section>
+			<div id="contact" class="form-2">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<h2>Contact Information</h2>
+							<ul class="list-unstyled li-space-lg">
+								<li class="address">Don't hesitate to give us a call or send us a
+									contact form message
+								</li>
+								<li>
+									<i class="fas fa-map-marker-alt"></i>
+									Gondal Road, Rajkot, GJ, India
+								</li>
+								<li>
+									<i class="fas fa-phone"></i>
+									<a class="turquoise" href="tel:003024630820">+91 0281 236 5009</a>
+								</li>
+								<li>
+									<i class="fas fa-envelope"></i>
+									<a class="turquoise" href="mailto:team@icontechnology.in">team@icontechnology.in</a>
+								</li>
+							</ul>
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="map-responsive">
+								<t t-set="iframe" t-value="res_company.website_iframe" />
+								<iframe t-att-src="iframe" allowfullscreen="allowfullscreen"></iframe>
+
+							</div>
+						</div> <!-- end of col -->
+						<div class="col-lg-6">
+
+							<!-- Contact Form -->
+							<form id="contactForm" data-toggle="validator" data-focus="false"
+								action="/contact_form/" method="post" data-model_name="website.contact.info"
+								class="s_website_form" enctype="multipart/form-data"
+								data-editable-form="false" data-success_page="/contactus_thank_you">
+
+								<div class="form-group form-field o_website_form_required_custom">
+									<input type="text" class="form-control-input o_website_form_input"
+										id="cname" name="name" t-att-value="request.params.get('name', '')"
+										required="" />
+									<label class="label-control" for="name">Name</label>
+									<div class="help-block with-errors"></div>
+								</div>
+
+								<div class="form-group form-field o_website_form_required_custom">
+									<input type="email" class="form-control-input o_website_form_input"
+										id="cemail" name="email" t-att-value="request.params.get('email', '')"
+										required="" />
+									<label class="label-control" for="email">Email</label>
+									<div class="help-block with-errors"></div>
+								</div>
+
+								<div class="form-group form-field o_website_form_required">
+									<input type="text" class="form-control-input o_website_form_input"
+										id="csubject" name="subject" t-att-value="request.params.get('subject', '')"
+										required="" />
+									<label class="label-control" for="subject">Subject</label>
+									<div class="help-block with-errors"></div>
+								</div>
+
+								<div class="form-group form-field o_website_form_required">
+									<textarea class="form-control-textarea o_website_form_input"
+										id="cmessage" name="question" required="">
+										<t t-esc="request.params.get('question', '')" />
+									</textarea>
+									<label class="label-control" for="question">Your message</label>
+									<div class="help-block with-errors"></div>
+								</div>
+
+								<div class="form-group">
+									<button type="button"
+										class="form-control-submit-button o_website_form_send">SUBMIT MESSAGE</button>
+									<span id="o_website_form_result"></span>
+								</div>
+
+							</form>
+							<!-- end of contact form -->
+
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of form-2 -->
+			<!-- end of contact -->
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="icon_terms_conditions_section_1" name="Title &amp; Image">
+		<section>
+			<div class="ex-header-content">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<h1>Add Title</h1>
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div><!-- end of ex-header-content -->
+
+			<!-- Breadcrumbs -->
+			<div class="ex-basic-1">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="breadcrumbs">
+								<a href="/#header">Home</a>
+								<i class="fa fa-angle-double-right"></i>
+								<span>Terms &amp; Conditions</span>
+							</div> <!-- end of breadcrumbs -->
+						</div> <!-- end of col -->
+					</div> <!-- end of row -->
+				</div> <!-- end of container -->
+			</div> <!-- end of ex-basic-1 -->
+			<!-- end of breadcrumbs -->
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="icon_terms_conditions_section_3" name="Content">
+		<section>
+			<!-- Terms Content -->
+			It is a long established fact that a reader will be distracted by the
+			readable content of a page when looking at its layout. The point of
+			using Lorem Ipsum is that it has a more-or-less normal distribution
+			of letters, as opposed to using 'Content here, content here', making
+			it look like readable English. Many desktop publishing packages and
+			web page editors now use Lorem Ipsum as their default model text, and
+			a search for 'lorem ipsum' will uncover many web sites still in their
+			infancy. Various versions have evolved over the years, sometimes by
+			accident, sometimes on purpose (injected humour and the like).
+
+			<!-- end of terms content -->
+			<!-- === Snippets' area === -->
+			<div class="oe_structure" />
+		</section>
+	</template>
+
+	<template id="theme_plus_snippets" inherit_id="website.snippets">
+		<xpath expr="//div[@id='snippet_structure']" position="before">
+			<div id="snippet_custom" class="o_panel">
+				<div class="o_panel_header">
+					<span class="fa-stack">
+						<i class="fa fa-mercury fa-stack-1x"></i>
+					</span>
+					Plus Snippets
+				</div>
+				<div class="o_panel_body">
+					<t t-snippet="theme_plus.icon_section_1"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-1&amp;4.jpg" />
+
+					<t t-snippet="theme_plus.icon_section_2"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-2.jpg" />
+
+					<t t-snippet="theme_plus.icon_section_3"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-3.jpg" />
+
+					<t t-snippet="theme_plus.icon_section_4"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-1&amp;4.jpg" />
+
+					<t t-snippet="theme_plus.icon_section_5"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-5.jpg" />
+
+					<t t-snippet="theme_plus.icon_section_6"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-6.jpg" />
+
+					<t t-snippet="theme_plus.icon_section_7"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-7.jpg" />
+
+					<t t-snippet="theme_plus.icon_section_8"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-8.jpg" />
+
+					<t t-snippet="theme_plus.icon_section_9"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-9.jpg" />
+
+					<t t-snippet="theme_plus.icon_section_10"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-10.jpg" />
+						
+					<t t-snippet="theme_plus.icon_section_11"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/contact.jpg" />
+						
+					<t t-snippet="theme_plus.icon_terms_conditions_section_1"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-14.jpg" />
+
+					<t t-snippet="theme_plus.icon_terms_conditions_section_3"
+						t-thumbnail="/theme_plus/static/src/img/snippets_thumbs/section-13.jpg" />
+
+				</div>
+			</div>
+		</xpath>
+	</template>
+</odoo>

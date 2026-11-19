@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_move_form_inherit" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="ebill.view_move_form_inherit"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="after">
+                    <field name="circuit_number" />
+                    <field name="service_id"/>
+                    <field name="partner_street_destination_header" optional="show"/>
+                </xpath>
+
+                <xpath expr="//page[9]/group" position="inside">
+                    <group>
+                        <field name="extra_lines_ids" readonly="1">
+                            <tree editable="bottom">
+                                <field name="product_id" />
+                                <field name="name" />
+                                <field name="product_uom" />
+                                <field name="qty" />
+                                <field name="price_unit" />
+                                <field name="price_subtotal" />    
+                            </tree>
+                        </field>
+                    </group>
+                </xpath>
+                <page id="invoice_tab" position="after">
+                    <page id="invoice_tab_custom" string="Detalle Personalizado">
+                        <field name="custom_line_ids">
+                            <tree>
+                                <field name="product_id"/>
+                                <field name="name"/>
+                                <field name="account_id"/>
+                                <field name="quantity"/>
+                                <field name="product_uom_id"/>
+                                <field name="price_unit"/>
+                                <field name="discount"/>
+                                <field name="tax_ids" widget="many2many_tags"/>
+                                <field name="price_subtotal"/>
+                                <field name="circuit_number"/>
+                            </tree>
+                        </field>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="sale_subscription_view_form" model="ir.ui.view">
+            <field name="name">sale.subscription.form</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+            <field name="arch" type="xml">
+                <field name="payment_token_id" position="after">
+                    <field name="type_document_id" required="1"/>
+                    <field name="serie_id" required="1"/>
+                    <field name="journal_id" required="1"/>
+                    <field name="client_order_ref" required="0"/>
+                    <field name="user2_id"/>
+                </field>
+                <field name="date" position="after">
+                    <field name="date_due" />
+                </field>
+
+                <field name="in_progress" position="after">
+                    <field name="minutes_adds" />
+                </field>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='price_subtotal']" position="after">
+                    <field name="circuit_number" optional="show"/>
+                    <field name="qty_months" optional="show"/>
+                    <field name="stop_date" optional="show"/>
+                    <field name="date_prom_stop" optional="show"/>
+                    <field name="fees_number" optional="show"/>
+                    <field name="invoiced_fees" optional="show"/>
+                    <field name="fees_to_invoice" optional="show"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Minutos Adicionales">
+                        <group>
+                            <field name="time_lines_ids" nolabel="1" readonly="1">
+                                <tree editable="bottom">
+                                    <field name="product_id" />
+                                    <field name="name" />
+                                    <field name="qty" />
+                                    <field name="uom_id" />
+                                    <field name="price_unit" />
+                                    <field name="price_subtotal" />
+                                    <field name="invoice_date" />
+                                    <field name="state" />
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+                <page id="lines" position="after">
+                    <page string="Apuntes de asientos personalizados" id="custom">
+                        <field name="custom_invoice_line_ids">
+                            <tree editable="bottom">
+                                <field name="product_id" domain="[('recurring_invoice', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" context="{'default_recurring_invoice': True}"/>
+                                <field name="name" optional="show"/>
+                                <field name="quantity"/>
+                                <field name="product_uom_category_id" invisible="1"/>
+                                <field name="uom_id" string="UoM" groups="uom.group_uom" optional="show"/>
+                                <field name="price_unit"/>
+                                <field name="discount" string="Disc.%" groups="product.group_discount_per_so_line" optional="show"/>
+                                <field name="price_subtotal"/>
+                                <field name="circuit_number" optional="hide"/>
+                            </tree>
+                            <form string="Subscription Lines">
+                                <group>
+                                    <group>
+                                        <field name="product_id" domain="[('recurring_invoice', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" context="{'default_recurring_invoice': True}"/>
+                                        <field name="name"/>
+                                        <label for="quantity"/>
+                                        <field name="product_uom_category_id" invisible="1"/>
+                                        <div class="o_row">
+                                            <field name="quantity"/>
+                                            <field name="uom_id"/>
+                                        </div>
+                                        <field name="price_unit"/>
+                                        <field name="discount" groups="product.group_discount_per_so_line"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="sale_subscription_template_view_form" model="ir.ui.view">
+            <field name="name">sale.subscription.template.form</field>
+            <field name="model">sale.subscription.template</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_template_view_form"/>
+            <field name="arch" type="xml">
+                <field name="journal_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="user_closable" position="after">
+                    <field name="calculate_upsell"/>
+                    <field name="custom_template"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="property_account_payable_id" position="after">
+                        <field name="type_document_default" />
+                    </field>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+		<record model="contract.main.parameter" id="MAIN_CONTRACT"/>
+		<record model="formula.variables.line" id="TM_VAR">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">TM</field>
+			<field name="description">Tarifa Mensual del servicio</field>
+		</record>
+		<record model="formula.variables.line" id="FAt_VAR">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">(FA)t</field>
+			<field name="description">Factor acumulado del dia del descuento (según SBS)</field>
+		</record>
+		<record model="formula.variables.line" id="FAtn_VAR">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">(FA)t-n</field>
+			<field name="description">Factor acumulado del dia de la avería (según SBS)</field>
+		</record>
+		<record model="formula.variables.line" id="DAY_VAR">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Dias del mes de la avería</field>
+			<field name="description">Puede ser 30 o 31 dependiendo del mes de ocurrencia de la averia</field>
+		</record>
+		<record model="formula.variables.line" id="TIME_VAR">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Tiempo de la avería</field>
+			<field name="description">Expresado en minutos</field>
+		</record>
+		<record model="service.information.line" id="TYPE_SERV">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Tipo de servicio (Internet, Transmisión de Datos, Seguridad Perimetral Gestionada, Telefonía IP, Wifi Gestionado).</field>
+		</record>
+		<record model="service.information.line" id="COMPANY_NAME_SERV">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Nombre de la Empresa.</field>
+		</record>
+		<record model="service.information.line" id="CLIENT_CODE_SERV">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Código del Cliente.</field>
+		</record>
+		<record model="service.information.line" id="CONTACT_NAME_SERV">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Nombre del contacto, teléfono y correo.</field>
+		</record>
+		<record model="service.information.line" id="HOUR_SERV">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Hora de inicio de la incidencia.</field>
+		</record>
+		<record model="service.information.line" id="DESCRIPTION_SERV">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Descripción detallada de la incidencia, incluyendo mensajes de error, preferiblemente por correo electrónico.</field>
+		</record>
+		<record model="contact.support.line" id="CONTACT_WIFI">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Servicio de Transmisión de Datos, Fibra Oscura, Wifi Gestionado, Internet Dedicado</field>
+			<field name="email">noc@flx.com.pe</field>
+			<field name="contact">748-0600 Opción 1</field>
+		</record>
+		<record model="contact.support.line" id="CONTACT_PHONE">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Servicio de Telefonía</field>
+			<field name="email">telefoniaip@flx.com.pe</field>
+			<field name="contact">748-0600 Opción 2</field>
+		</record>
+		<record model="contact.support.line" id="CONTACT_SECURITY">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Servicio de Seguridad Gestionada</field>
+			<field name="email">soc@flx.com.pe</field>
+			<field name="contact">748-0600 Opción 3</field>
+		</record>
+		<record model="escalation.level.line" id="ESC_LEVEL1">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Nivel 1</field>
+			<field name="description">
+El operador del Área Especializada de Soporte Técnico, apertura un ticket para iniciar el proceso de solución de incidencias y solicitudes.
+Tiempo de solución de la incidencia hasta 2 horas después de la apertura del ticket.
+			</field>
+		</record>
+		<record model="escalation.level.line" id="ESC_LEVEL2">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Nivel 2</field>
+			<field name="description">
+Si la avería no ha sido resuelta con el soporte del Nivel 1, el cliente escalará al Jefe Inmediato, el mismo que se pondrá en contacto con el cliente. 
+Tiempo de solución de la incidencia hasta 3 horas después de la apertura del ticket.
+			</field>
+		</record>
+		<record model="escalation.level.line" id="ESC_LEVEL3">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Nivel 3</field>
+			<field name="description">
+Si no está conforme con el Nivel 2, el cliente se contactará con el Gerente de Tecnología y Operaciones, el mismo que se pondrá en contacto con el cliente. 
+Tiempo de solución de la incidencia hasta 4 horas después de la apertura del ticket.
+			</field>
+		</record>
+		<record model="escalation.level.line" id="ESC_LEVEL4">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Nivel 4</field>
+			<field name="description">
+Si no está conforme con el soporte del Nivel 3, el cliente contactará al Gerente General, el mismo que se pondrá en contacto con el cliente.
+			</field>
+		</record>
+		<record model="contact.phone.line" id="PHONE_1">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Nivel 1</field>
+			<field name="noc">
+Teléfono NOC: 748-0600 Opción 1
+Móvil: 942 472 792
+Correo Electrónico: noc@flx.com.pe
+			</field>
+			<field name="telephony">
+Teléfono: 748-0600 Opción 2
+Móvil: 942 472 792
+Correo Electrónico: telefoniaip@flx.com.pe 
+			</field>
+			<field name="soc">
+Teléfono: 748-0600 Opción 3
+Móvil: 942 472 792
+Correo Electrónico: soc@flx.com.pe 
+			</field>
+		</record>
+		<record model="contact.phone.line" id="PHONE_2">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Nivel 2</field>
+			<field name="noc">
+Jefe del NOC: Juan Carlos Felix
+Móvil: 990 424 332
+Correo Electrónico: jfelix@flx.com.pe
+			</field>
+			<field name="telephony">
+Jefe Inmediato: Kenny Goytendia
+Móvil: 920 195 720
+Correo Electrónico: kgoytendia@flx.com.pe 
+			</field>
+			<field name="soc">
+Jefe Inmediato: Felipe Vásquez
+Móvil: 941 964 691
+Correo Electrónico: fvasquez@flx.com.pe 
+			</field>
+		</record>
+		<record model="contact.phone.line" id="PHONE_3">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Nivel 3</field>
+			<field name="noc">
+Gerente de Tecnología y Operaciones: Javier Ternero
+Móvil: 942 492 675
+Correo Electrónico: jternero@flx.com.pe
+			</field>
+			<field name="telephony">
+Gerente de Tecnología y Operaciones: Javier Ternero
+Móvil: 942 492 675
+Correo Electrónico: jternero@flx.com.pe
+			</field>
+			<field name="soc">
+Gerente de Tecnología y Operaciones: Javier Ternero
+Móvil: 942 492 675
+Correo Electrónico: jternero@flx.com.pe 
+			</field>
+		</record>
+		<record model="contact.phone.line" id="PHONE_4">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Nivel 4</field>
+			<field name="noc">
+Gerente General: Alex Ternero
+Móvil: 999 901 884
+Correo Electrónico: aternero@flx.com.pe
+			</field>
+			<field name="telephony">
+Gerente General: Alex Ternero
+Móvil: 999 901 884
+Correo Electrónico: aternero@flx.com.pe
+			</field>
+			<field name="soc">
+Gerente General: Alex Ternero
+Móvil: 999 901 884
+Correo Electrónico: aternero@flx.com.pe
+			</field>
+		</record>
+		<record model="glossary.line" id="GLOSSARY_1">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">NOC</field>
+			<field name="description">
+Centro de Control de la Red: Área responsable de proporcionar soporte técnico, generar tickets, seguimiento y solución de incidencias que reportan nuestros clientes, usando cualquier canal disponible (Vía telefónica, E-mail, Web).
+			</field>
+		</record>
+		<record model="glossary.line" id="GLOSSARY_2">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Incidencia</field>
+			<field name="description">
+Cualquier evento o avería que no forma parte de la operación estándar de un servicio y que causa, o puede causar, una interrupción o una reducción de calidad del mismo.
+			</field>
+		</record>
+		<record model="glossary.line" id="GLOSSARY_3">
+			<field name="parameter_id" ref="MAIN_CONTRACT"/>
+			<field name="name">Apertura de Tickets</field>
+			<field name="description">
+Los reportes referentes a incidencias o problemas que son reportados al NOC de FIBERLUX, al registrar la incidencia el operador del NOC otorgará al cliente un número. El Ticket solamente será considerado cerrado previa autorización del Cliente.
+			</field>
+		</record>
+	</data>
+</odoo>

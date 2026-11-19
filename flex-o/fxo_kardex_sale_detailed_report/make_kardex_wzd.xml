@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_make_kardex_valoradoc_report" model="ir.ui.view">
+            <field name="name">sale.detailed.report.form</field>
+            <field name="model">sale.detailed.report</field>
+            <field name="arch" type="xml">
+                <form string="Kardex Valorado">
+                    <group>
+                        <group>
+                            <field name="fini" invisible="1"/>
+                            <field name="ffin" invisible="1"/>
+                            <field name="fecha_ini_mod" attrs="{'readonly':[('check_fecha', '=', False)],'required':[('check_fecha', '=', True)]}"/>
+                            <field name="fecha_fin_mod" attrs="{'readonly':[('check_fecha', '=', False)],'required':[('check_fecha', '=', True)]}"/>
+                             <field name="check_fecha" />
+                        </group>
+                        <group>
+                            <field name="allproducts" />
+                            <field name="alllocations" />
+                            <field name="all_clientes" />
+                            <field name="all_users" />
+                            <field name="all_type_operation" />
+                            <field name="all_type_operation_sunat" />
+                            <field name="analizador" invisible="1" />
+                        </group>
+                    </group>
+                     <notebook>
+                            <page string="-">
+                                <field name="location_ids" string="Ubicaciones" domain="[('usage','in',['internal'])]" attrs="{'invisible':[('alllocations', '=', True)]}"/>
+                                <field name="products_ids" nolabel="True" domain="[('type','=',context['type_product'])]"
+                                       attrs="{'invisible':[('allproducts', '=', True)]}"/>
+                                <field name="clientes" nolabel="True"
+                                       attrs="{'invisible':[('all_clientes', '=', True)]}"/>
+                                <field name="user_ids" nolabel="True"
+                                       attrs="{'invisible':[('all_users', '=', True)]}"/>
+                                <field name="type_pickings_id" nolabel="True"
+                                       attrs="{'invisible':[('all_type_operation', '=', True)]}"/>
+                                <field name="type_pickings_sunat_id" nolabel="True"
+                                       attrs="{'invisible':[('all_type_operation_sunat', '=', True)]}"/>
+                            </page>
+                        </notebook>
+                    <footer>
+
+<!--                        <button name="view_odoo" string="Vista Odoo" type="object" class="oe_highlight"/>-->
+
+                                             <button name="do_csvtoexcel_two2" string="Exportar a Excel" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                 </form>
+             </field>
+        </record>
+
+    <record id="make_kardex_action_valoradoc_report" model="ir.actions.act_window">
+            <field name="name">Reporte Detallado Ventas (Excell)</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.detailed.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_make_kardex_valoradoc_report"/>
+            <field name="target">new</field>
+        </record>
+
+
+
+    <menuitem id="wizard_detallado_report"
+                 parent="kardex_fisico_it.kardex_main_menu_stock" action="make_kardex_action_valoradoc_report"
+                 sequence="4" />
+</odoo>

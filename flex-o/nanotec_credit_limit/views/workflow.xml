@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Workflow -->
+        
+    <!--
+        <record id="res_partner_credit_detail" model="workflow">
+            <field name="name">Solicitud de crédito workflow</field>
+            <field name="osv">res.partner.credit.detail</field>
+            <field name="on_create">True</field>
+        </record>
+    -->
+        <!-- Activity -->
+    <!--
+        <record id="activity_draft" model="workflow.activity">
+            <field name="wkf_id" ref="res_partner_credit_detail"/>
+            <field name="name">Draft</field>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">write({"state": "draft"})</field>
+        </record>
+        <record id="act_confirmed" model="workflow.activity">
+            <field name="wkf_id" ref="res_partner_credit_detail"/>
+            <field name="name">Confirm</field>
+            <field name="kind">function</field>
+            <field name="action">fconfirm()</field>
+        </record>
+        <record id="act_cancel" model="workflow.activity">
+            <field name="wkf_id" ref="res_partner_credit_detail"/>
+            <field name="name">Cancel</field>
+            <field name="kind">function</field>
+            <field name="action">write({"state": "cancel"})</field>
+        </record>
+        <record id="act_approve" model="workflow.activity">
+            <field name="wkf_id" ref="res_partner_credit_detail"/>
+            <field name="name">Approve</field>
+            <field name="flow_stop">True</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state':'approve'})</field>
+        </record>
+        <record id="act_rejected" model="workflow.activity">
+            <field name="wkf_id" ref="res_partner_credit_detail"/>
+            <field name="name">Rejected</field>
+            <field name="flow_stop">True</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state':'rejected'})</field>
+        </record>
+    -->
+        <!-- Transition -->
+    <!--
+        <record id="trans_draft_to_confirmed" model="workflow.transition">
+            <field name="act_from" ref="activity_draft"/>
+            <field name="act_to" ref="act_confirmed"/>
+            <field name="signal">credit_confirm</field>
+        </record>
+        <record id="trans_confirmed_to_cancel" model="workflow.transition">
+            <field name="act_from" ref="act_confirmed"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">credit_cancel</field>
+        </record>
+        <record id="trans_cancel_to_draft" model="workflow.transition">
+            <field name="act_from" ref="act_cancel"/>
+            <field name="act_to" ref="activity_draft"/>
+            <field name="signal">credit_draft</field>
+        </record>
+        <record id="trans_confirmed_to_rejected" model="workflow.transition">
+            <field name="act_from" ref="act_confirmed"/>
+            <field name="act_to" ref="act_rejected"/>
+            <field name="signal">credit_rejected</field>
+        </record>
+        <record id="trans_confirmed_to_approve" model="workflow.transition">
+            <field name="act_from" ref="act_confirmed"/>
+            <field name="act_to" ref="act_approve"/>
+            <field name="signal">credit_approve</field>
+            <field name="condition">verify_approv()</field>
+        </record>
+    -->
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_it_invoice_serie_form_inherit_l10n_pe_invoice">
+        <field name="name">it.invoice.serie.form.inherit.l10n.pe.invoice</field>
+        <field name="model">it.invoice.serie</field>
+        <field name="inherit_id" ref="account_base_it.view_it_invoice_serie_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group[1]/group[2]" position="after">
+                <group name="peruvian_settings" string="Peruvian Settings">
+                    <!-- <group> -->
+                        <field name="pe_invoice_code"/> <!-- attrs="{'invisible':[('type','not in',['sale', 'purchase'])]}" /> -->
+                        <field name="credit_note_id"/> <!-- attrs="{'invisible':[('type','not in',['sale', 'purchase'])]}" /> -->
+                        <field name="dedit_note_id"/> <!-- attrs="{'invisible':[('type','not in',['sale', 'purchase'])]}" /> -->
+                        <!-- <field name="pe_payment_method" attrs="{'invisible':[('type','not in',['cash', 'bank'])]}" /> -->
+                    <!-- </group> -->
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

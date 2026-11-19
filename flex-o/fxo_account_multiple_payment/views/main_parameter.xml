@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_main_parameter_form_inherit" model="ir.ui.view">
+		<field name="name">main.parameter.form.inherit</field>
+		<field name="model">main.parameter</field>
+		<field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page name="bank_payments" string="Pagos a Bancos">
+					<group>
+						<group>
+							<field name="bbva_bank"/>
+							<field name="bcp_bank"/>
+						</group>
+						<group>
+							<field name="interbank_bank"/>
+							<field name="scotiabank_bank"/>
+						</group>
+					</group>
+				</page>
+			</xpath>
+		</field>
+	</record>
+</odoo>

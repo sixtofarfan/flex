@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+
+        <record id="view_partner_bank_form_inherit_detraction" model="ir.ui.view">
+            <field name="name">res.partner.bank.form.inherit.detraction</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='bank_id']" position="after">
+                    <field name="currency_id"/>
+                    <field name="type_of_account"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_bank_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.bank.form.inherit</field>
+            <field name="model">res.partner.bank</field>
+            <field name="inherit_id" ref="base.view_partner_bank_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='acc_number']" position="after">
+                    <field name="type_of_account"/>
+                </xpath>
+            </field>
+        </record>
+
+  </data>
+</odoo>

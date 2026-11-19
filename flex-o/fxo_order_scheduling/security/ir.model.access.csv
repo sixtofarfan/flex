@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_order_scheduling,sale.order.scheduling,model_sale_order_scheduling,sales_team.group_sale_manager,1,1,1,1
+access_sale_order_scheduling_line,sale.order.scheduling.line,model_sale_order_scheduling_line,sales_team.group_sale_manager,1,1,1,1
+access_period_date,period.date,model_period_date,sales_team.group_sale_manager,1,1,1,1
+access_sale_order_scheduling_group,sale.order.scheduling.group,model_sale_order_scheduling_group,sales_team.group_sale_manager,1,1,1,1
+access_sale_order_scheduling_order,sale.order.scheduling.order,model_sale_order_scheduling_order,sales_team.group_sale_manager,1,1,1,1
+access_sale_subscription_order_additional,sale.subscription.order.additional,model_sale_subscription_order_additional,sales_team.group_sale_manager,1,1,1,1
+access_sale_subscription_address,sale.subscription.address,model_sale_subscription_address,sales_team.group_sale_manager,1,1,1,1
+access_sale_subscription_order_scheduling,sale.subscription.order.scheduling,model_sale_subscription_order_scheduling,sales_team.group_sale_manager,1,1,1,1
+access_sale_order_scheduling_wizard,sale.order.scheduling.wizard,model_sale_order_scheduling_wizard,sales_team.group_sale_manager,1,1,1,1
+access_order.scheduling_report,order.scheduling.report,model_order_scheduling_report,sales_team.group_sale_manager,1,1,1,1
+access_order.scheduling_report_line,order.scheduling.report,model_order_scheduling_report_line,sales_team.group_sale_manager,1,1,1,1
+access_order_scheduling_report_wizard,order.scheduling.report.wizard,model_order_scheduling_report_wizard,sales_team.group_sale_manager,1,1,1,1
+access_order_scheduling_report_subcription,order.scheduling.report.subcription,model_order_scheduling_report_subcription,sales_team.group_sale_manager,1,1,1,1
+access_order_report_product,order.report.product,model_order_report_product,sales_team.group_sale_manager,1,1,1,1

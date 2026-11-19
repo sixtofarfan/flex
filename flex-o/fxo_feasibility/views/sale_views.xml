@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="sale_order_form_inherit_permission" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="finish_facibility" invisible="1"/>
+                </field>
+                <xpath expr="//page[@name='customer_signature']" position="after">
+                    <page string="Aprobación Proyecto" name="approval" invisible="1">
+                        <field name="approval_id"/>
+                    </page>
+                    <page string="Aprobación Cotizacion" name="approval_category"
+                          attrs="{'invisible':[('finish_facibility','=',True)]}">
+                        <field name="approval_sale_id"/>
+                    </page>
+                </xpath>
+                <field name="order_line" position="attributes">
+                    <attribute name="context">{'default_type_rel': type_id,'default_sequence':max_line_sequence}
+                    </attribute>
+                </field>
+                <xpath expr="//notebook" position="inside">
+                    <page string="UDTR">
+                        <field name="historial_udt_ids">
+                            <tree create="false" delete="false" edit="false">
+                                <field name="subscription_id" optional="show"/>
+                                <field name="sale_id" optional="show"/>
+                                <field name="subscription_update_line_id"/>
+                                <field name="product_id" optional="hide"/>
+                                <field name="name"/>
+                                <field name="quantity"/>
+                                <field name="uom_id"/>
+                                <field name="price_unit"/>
+                                <field name="price_subtotal"/>
+                                <field name="type" string="Tipo"/>
+                                <field name="upgrade_date" optional="show"/>
+                                <field name="stop_date"/>
+                                <field name="upgrade_temp_finish_date" optional="hide"/>
+                                <field name="service_id"/>
+                                <field name="state"/>
+                                <field name="is_renovation" optional="hide"/>
+                                <field name="renovation_type" optional="hide"/>
+                                <field name="invoice_status" optional="hide"/>
+                                <field name="from_address" optional="hide"/>
+                                <field name="current_address" optional="hide"/>
+                                <field name="invoice_id" optional="hide"/>
+                                <field name="user_id" optional="hide"/>
+                                <field name="date_confirm" optional="hide"/>
+                                <field name="user_approved_id" optional="hide"/>
+                                <field name="date_approved" optional="hide"/>
+                                <field name="user_finish_id" optional="hide"/>
+                                <field name="date_finish" optional="hide"/>
+                            </tree>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="subscription_id" invisible="1"/>
+                                            <field name="sale_id"/>
+                                            <field name="subscription_update_line_id"/>
+                                            <field name="product_id"/>
+                                            <field name="name"/>
+                                            <field name="quantity"
+                                                   attrs="{'invisible':[('type','not in',['down_same','down_reduction','down_add','up_same','up_reduction','up_add'])]}"/>
+                                            <field name="uom_id"/>
+                                            <field name="price_unit"
+                                                   attrs="{'invisible':[('type','not in',['down_same','down_reduction','down_add','up_same','up_reduction','up_add'])]}"/>
+                                            <field name="price_subtotal"
+                                                   attrs="{'invisible':[('type','not in',['down_same','down_reduction','down_add','up_same','up_reduction','up_add'])]}"/>
+                                            <field name="user_id"/>
+                                            <field name="date_confirm"/>
+                                            <field name="user_finish_id"/>
+                                            <field name="date_finish"/>
+
+                                        </group>
+                                        <group>
+                                            <field name="type"/>
+                                            <field name="upgrade_date"/>
+                                            <field name="stop_date"/>
+                                            <field name="service_id"/>
+                                            <field name="state"/>
+                                            <field name="invoice_status"
+                                                   attrs="{'invisible':[('type','not in',['up_same','up_reduction','up_add'])]}"/>
+                                            <field name="from_address"
+                                                   attrs="{'invisible':[('type','not in',['migration'])]}"/>
+                                            <field name="current_address"
+                                                   attrs="{'invisible':[('type','not in',['migration'])]}"/>
+                                            <field name="invoice_id"
+                                                   attrs="{'invisible':[('invoice_status','not in',['invoiced'])]}"/>
+                                            <field name="user_approved_id"/>
+                                            <field name="date_approved"/>
+                                            <field name="is_renovation"/>
+                                            <field name="renovation_type"/>
+                                            <field name="upgrade_temp_finish_date"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_order_form_extend2" model="ir.ui.view">
+            <field name="name">sale.order.inherit.view.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/form/group/group[1]/div[@name='discount']" position="after">
+                    <field name="up_down_type" invisible="1"/>
+                    <field name="subscription_update_id" invisible="1"/>
+                    <field name="is_renovation" invisible="1"/>
+                    <field name="type_id_select" force_save="1" invisible="1"/>
+                    <field name="subscription_update_line_id"
+                           domain="[('analytic_account_id', '=', subscription_update_id)]"
+                           attrs="{'required': [('type_id_select', '=', 'upgrade_temp')]}"
+                    />
+                    <field name="subscription_qty"/>
+                    <field name="subscription_qty_total" readonly="1" force_save="1" invisible="1"/>
+                    <field name="subscription_price_unit"/>
+                    <field name="subscription_price_unit_total" readonly="1" force_save="1" invisible="1"/>
+                    <field name="subscription_price_subtotal"/>
+                    <field name="subscription_price_subtotal_total" readonly="1" force_save="1" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                    <attribute name="editable"></attribute>
+                </xpath>
+
+
+                <xpath expr="//field[@name='order_line']/form" position="inside">
+                    <group attrs="{'invisible': [('display_type', '!=', False)]}">
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/form/group/group[2]/field[@name='analytic_tag_ids']"
+                       position="after">
+                    <field name="bool_qty_street" invisible="1"/>
+                    <field name="bool_is_factibility" invisible="1"/>
+                    <field name="install_type" invisible="1"/>
+                    <field name="order_partner_street_id" invisible="1"/>
+                    <field name="sale_order_head_id"
+                           domain="[('partner_street_destination','=',order_partner_street_id),('type_item','=','Cabecera')]"
+                           invisible="1"/>
+
+                    <field name="item_origin"
+                           attrs="{'invisible': [('install_type', '=', 'none')], 'required':[('bool_is_factibility','=',True)]}"/>
+                    <field name="partner_street_destination_replace" string="Direccion Anterior"
+                           attrs="{'required': [('is_migration', '=', True)], 'invisible': [('is_migration', '!=', True)]}"
+                           domain="['|',('id', '=', order_partner_street_id),('parent_id', '=', order_partner_street_id)]"/>
+                    <field name="partner_street_destination" attrs="{'required': [('bool_qty_street', '=', True)]}"
+                           domain="['|',('id', '=', order_partner_street_id),('parent_id', '=', order_partner_street_id)]"/>
+                    <field name="partner_street_destination_header"/>
+                    <!--<field name="partner_order_id" attrs="{'required': [('bool_qty_street', '=', True)]}" domain="['|',('id', '=', order_partner_street_id),('parent_id', '=', order_partner_street_id)]" /> -->
+                    <field name="partner_contact_id" attrs="{'required': [('bool_qty_street', '=', True)]}"
+                           domain="['|',('id', '=', order_partner_street_id),('parent_id', '=', order_partner_street_id)]"/>
+
+                    <field name="service_id_2" readonly="1" force_save="1"/>
+                    <field name="type_rel" invisible="1"/>
+                    <field name="is_migration" invisible="1"/>
+                    <field name="type_item"/>
+                    <field name="transport_physic_relation" readonly="0"/>
+                    <field name="type_conection"/>
+                    <field name="type_conection_relation"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/form//field[@name='name']" position="after">
+                    <group>
+                        <field name="type_category"
+                               attrs="{'invisible': [('display_type', '=', False)], 'required': [('display_type', '!=', False)]}"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/form/group/group[1]/field[@name='price_unit']"
+                       position="replace">
+                    <field name="price_unit1" attrs="{'invisible': ['|',('bool_is_factibility', '=', True)] }"/>
+                    <field name="price_unit1_invisible" attrs="{'invisible': [('bool_is_factibility', '=', False)] }"
+                           readonly="1"/>
+                    <field name="price_unit" invisible="1"/>
+                    <field name="price_subtotal1" readonly="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/form/field[@name='name']" position="before">
+                    <group string="Condiciones Generales">
+                        <group>
+                            <field name="way_to_pay_id"/>
+                            <field name="nro_quotes"/>
+                            <field name="grace_period"/>
+                            <field name="grace_period_time"/>
+                        </group>
+                        <group>
+                            <field name="type_term"/>
+                            <field name="type_term_qty"/>
+                            <field name="type_term_time"/>
+                        </group>
+
+                    </group>
+                    <group string="Telefonia">
+                        <group>
+                            <field name="type_cut"/>
+                        </group>
+                    </group>
+                    <group string="Calculo Automatico" attrs="{'invisible': [('display_type', '!=', False)]}">
+                        <field name="price_unit" invisible="1"/>
+                        <field name="price_unit_invisible" readonly="1"/>
+                        <field name="product_uom_qty"/>
+                        <field name="product_uom"/>
+                        <field name="price_subtotal"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/form/group/group[1]/div[1]/field[@name='product_uom_qty']"
+                       position="replace">
+                    <field context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'uom_qty_change':True, 'company_id': parent.company_id}"
+                           name="product_uom_qty1"/>
+                    <field name="product_uom_qty" invisible="1"/>
+
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form/group/group[1]/div[1]/field[@name='product_uom']"
+                       position="replace">
+                    <field name="product_uom1" force_save="1" groups="uom.group_uom" class="oe_no_button"
+                           attrs="{'readonly': [('state', 'in', ('sale', 'done','cancel'))],'required': [('display_type', '=', False)],}"/>
+                    <field name="product_uom" invisible="1"/>
+                </xpath>
+
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+                    <field name="bool_qty_street" invisible="1"/>
+                    <field name="bool_is_factibility" invisible="1"/>
+                    <field name="install_type" invisible="1"/>
+                    <field name="order_partner_street_id" invisible="1"/>
+                    <field name="item_origin" attrs="{'invisible': [('install_type', '=', 'none')]}"/>
+                    <field name="partner_street_destination"
+                           domain="['|',('id', '=', order_partner_street_id),('parent_id', '=', order_partner_street_id)]"/>
+                    <field name="partner_street_destination_header"/>
+                    <field name="service_id_2" readonly="1" force_save="1"/>
+                    <field name='transport_physic_relation' readonly="1"/>
+                    <field name='type_conection'/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="replace">
+                    <field name="price_unit1" invisible="1"/>
+                    <field name="price_unit" invisible="0"/>
+
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="replace">
+                    <field name="product_uom_qty1"/>
+                    <field name="product_uom_qty" invisible="1"/>
+
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom']" position="replace">
+                    <field name="product_uom1"/>
+                    <field name="product_uom" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="replace">
+                    <field name="price_subtotal1" invisible="1"/>
+                    <field name="price_subtotal" invisible="0"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_order_form_extend_boton" model="ir.ui.view">
+            <field name="name">sale.order.inherit.view.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <button name="payment_action_capture" position="before">
+                    <field name="check_complete_confirm" invisible="1"/>
+                    <field name="check_temporary_factibility" invisible="1"/>
+                </button>
+
+
+                <xpath expr="//button[@name='action_quotation_send'][1]" position="after">
+                    <button name="action_quotation_send" string="Send by Email" type="object"
+                            attrs="{'invisible': ['|',('check_complete_confirm', '=', True), ('state', '!=', 'draft'), ('check_temporary_factibility', '=', False)]}"
+                            class="btn-primary"/>
+                    <button name="open_auto_linea" string="Generar Lineas Con Contactos" type="object" states='draft'
+                            class="oe_edit_only"/>
+                    <button name="validar_factibilidades" string="Generar Factibilidades Faltantes" type="object"
+                            states='draft'/>
+                </xpath>
+
+                <xpath expr="//button[@name='action_quotation_send'][2]" position="after">
+                    <button name="action_quotation_send" type="object" string="Send PRO-FORMA Invoice"
+                            groups="sale.group_proforma_sales" class="btn-primary"
+                            attrs="{'invisible': ['|','|',('check_complete_confirm', '=', True), ('state', '!=', 'draft'), ('invoice_count','&gt;=',1)]}"
+                            context="{'proforma': True}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='sequence2']" position="before">
+                    <field name='bool_is_factibility' invisible="1"/>
+                    <field name='bool_is_study_economic' invisible="1"/>
+                    <button name="action_mapa" type="object" icon="fa-map" width="0.1" role="img" title="Mapa"/>
+                    <button name="action_factibility" type="object" icon="fa-address-card" width="0.1" role="img"
+                            title="Addresses" invisible="1"/>
+                    <button name="action_qty_street" type="object" icon="fa-list" width="0.1" role="img"
+                            title="Factibility" attrs="{'invisible': [('bool_is_study_economic', '=', False)]}"/>
+                    <field name="compute_have_factibility" invisible="1"/>
+                    <button name="test" icon="fa-thumbs-o-up" width="0.1" role="img" title="Tiene Factibilidad"
+                            attrs="{'invisible': ['|',('bool_is_factibility', '=', False),('compute_have_factibility', '=', False)]}"/>
+                    <button name="test" icon="fa-times-circle" width="0.1" role="img"
+                            title="Falta Factibilidad o estado Borrador"
+                            attrs="{'invisible': ['|',('bool_is_factibility', '=', False),('compute_have_factibility', '=', True)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_order_form_view_v2" model="ir.ui.view">
+            <field name="name">sale.order.inherit.view.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="partner_shipping_id" position="after">
+                    <field name="install_type" invisible="1"/>
+                </field>
+            </field>
+        </record>
+
+
+        <record id="view_sales_order_filter_feasibility" model="ir.ui.view">
+            <field name="name">sale.order.list.select</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <search position="inside">
+                    <field name="order_line" string="Tipo de Upgrade o Downgrade"
+                           filter_domain="[('order_line.up_down_type', 'ilike', self)]"/>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="account_invoice_confirm_view" model="ir.ui.view">
+            <field name="name">sale.order.confirm.form</field>
+            <field name="model">sale.order.confirm</field>
+            <field name="arch" type="xml">
+                <form string="Confirm Draft Order">
+                    <p class="oe_grey">
+                        Once draft order are confirmed, you will not be able
+                        to modify them.
+                    </p>
+                    <footer>
+                        <button string="Confirm Order" name="invoice_confirm" type="object" default_focus="1" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_sale_order_confirm_link" model="ir.actions.act_window">
+            <field name="name">Confirm</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.confirm</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="sale.model_sale_order" />
+            <field name="binding_view_types">list</field>
+        </record>
+    </data>
+</odoo>

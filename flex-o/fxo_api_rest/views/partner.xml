@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- res.partner inherit form view -->
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.inherit.view.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <field name="function" position="after">
+                <field name="id_loges"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- res.partner inherit form view -->
+    <record id="l10n_pe_vat_view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.inherit.view.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="l10n_pe_vat.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <button name="update_document" position="after" >
+                <button name="registro_loges" type="object" string="Registrar Loges"/>
+            </button>
+
+        </field>
+    </record>
+
+    <record id="view_tax_form" model="ir.ui.view">
+        <field name="name">account.tax.inherit.view.form</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <field name="analytic" position="after">
+                <field name="code_loges"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.view.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <button name="action_post" position="after">
+                <button name="get_api_aplicaciones" string="Enviar Loges" class="oe_highlight" type="object"  />
+            </button>
+            
+            <field name="company_id" position="after">
+                <field name="api_aplicaciones" invisible="1"/>
+                <field name="bill_to_numberdocument"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

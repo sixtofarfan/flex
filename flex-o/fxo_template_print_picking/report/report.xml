@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+     <report    id="fxo_template_print_picking"
+                model="stock.picking"
+                string="Reporte"
+                report_type="qweb-pdf"
+                name="fxo_template_print_picking.report_guide_template"
+                file="fxo_template_print_picking.report_guide_template"
+                attachment_use="False"
+            />
+    <!-- <record id="fxo_template_print_picking" model="ir.actions.report.xml">
+        <field name="paperformat_id" ref="fxo_template_print_picking.paperformat_guia_rem_ferco"/>
+    </record> -->
+ 
+    <template id="report_guide_template">
+         <div class="header">
+        </div> 
+        <div class="footer">
+        </div>
+         <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                       
+                        <div class="page">
+                            <div class="row">
+                                <table width="100%" style="font-size:12px; margin-top: 15px; font-family: 'Times New Roman', Times, serif;">
+                                    <colgroup>
+                                        <col width="80%"/>
+                                        <col width="20%"/>
+                                    </colgroup>
+
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="1">
+                                                <colgroup>
+                                                    <col width="10%"/>
+                                                    <col width="30%"/>
+                                                    <col width="60%"/>
+                                                </colgroup>
+        
+                                                <tr>
+                                                    <td height="30"/>
+                                                    <td colspan="2">
+                                                        <t t-esc="o.partner_id.name"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="10"/>
+                                                    <td colspan="2">
+                                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<t t-esc="o.partner_id.street"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style=" text-align: right;">
+                                            <table width="100%" border="1">
+
+                                                <colgroup>
+                                                    <col width="20%"/>
+                                                    <col width="70%"/>
+                                                </colgroup>
+
+                                                <tr>
+                                                    <td height="30"/>
+                                                    <td colspan="2">
+                                                        <td>.</td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="30"/>
+                                                    <td style=" text-align: right;">
+                                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<t t-esc="o.partner_id.vat"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="10"/>
+                                                    <td style=" text-align: right;">
+                                                        <t t-esc="o.origin"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table> 
+                            </div>
+                            <div class="row">
+                                <table width="100%" style="font-size:12px">
+                                    <colgroup>
+                                        <col width="15%"/>
+                                        <col width="5%"/>
+                                        <col width="10%"/>
+                                        <col width="70%"/>
+                                    </colgroup>
+                                    <br/>
+                                    <br/>
+                                        <tr t-foreach="o.move_line_ids_without_package" t-as="p">
+                                            <td style=" text-align: left;" height="30">
+                                                <t t-esc="p.product_id.default_code"/>
+                                            </td>
+                                            <td style=" text-align: left;">
+                                                <t t-esc="'%.2f'%(p.product_qty)"/>
+                                            </td>
+                                            <td style=" text-align: center;">
+                                                <t t-esc="p.product_uom_id.name"/>
+                                            </td>
+                                            <td style=" text-align: left;">
+                                                <span>
+                                                    <t t-esc="p.product_id.name"/> <t t-if="p.lot_id"> <br/> Lote: <t t-esc="p.lot_id.name"/> F.V: <t t-esc="p.lot_id.life_date"/> </t>
+                                                </span>
+                                                <!-- <t t-if="p.lot_id">
+                                                    <br/>
+                                                    <div style="text-align: center;">
+                                                        <table width="100%">
+                                                            <colgroup>
+                                                                <col width="15%"/>
+                                                                <col width="15%"/>
+                                                                <col width="20%"/>
+                                                                <col width="25%"/>
+                                                                <col width="25%"/>
+                                                            </colgroup>
+                                                            <tr style="text-align: left;">
+                                                                <td>Lote</td>
+                                                                <td>Cant.</td>
+                                                                <td>F.V</td>
+                                                            </tr>
+                                                            <tr t-foreach="p.lot_id" t-as="lot">
+                                                                <td style="text-align: left;">
+                                                                    <t t-esc="lot.lot_id.name"/>
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                    <t t-esc="lot.qty"/>
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                    <t t-if="lot.lot_id.life_date">
+                                                                        <t t-esc="lot.lot_id.life_date[0:10]"/>
+                                                                    </t>
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </t> -->
+                                            </td>
+                                        </tr>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo> 

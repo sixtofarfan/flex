@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_hr_salary_rule_wizard_form">
+			<field name="name">hr.salary.rule.wizard.form</field>
+			<field name="model">hr.salary.rule.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<group>
+							<field name="sequence" required="1" widget="integer"/>
+						</group>
+					</group>
+					<footer>
+						<button string="Aumentar" name="add_sequence" type="object" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

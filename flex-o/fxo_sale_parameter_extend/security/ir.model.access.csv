@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fxo_sale_main_parameter_root,fxo.sale.main.parameter.root,fxo_sale_parameter_extend.model_fxo_sale_main_parameter,group_fxo_parameter_feasibility,1,1,1,1
+access_fxo_sale_main_parameter_egreso_root,fxo.sale.main.parameter.egreso.root,fxo_sale_parameter_extend.model_fxo_sale_main_parameter_egreso,group_fxo_parameter_feasibility,1,1,1,1
+access_fxo_sale_main_parameter_ingreso_root,fxo.sale.main.parameter.ingreso.root,fxo_sale_parameter_extend.model_fxo_sale_main_parameter_ingreso,group_fxo_parameter_feasibility,1,1,1,1

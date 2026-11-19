@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="template_planilla_bcp">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="jp_account_bills_of_exchange.report_planilla_bcp" t-lang="o.company_id.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_planilla_bcp">
+            <t t-set="o" t-value="o.with_context({'lang':o.company_id.partner_id.lang})"/>
+            <style type="text/css">
+
+span.cls_003{font-family:Arial,serif;font-size:15.1px;color:rgb(28,28,27);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_003{font-family:Arial,serif;font-size:15.1px;color:rgb(28,28,27);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_004{font-family:Arial,serif;font-size:10.2px;color:rgb(28,28,27);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_004{font-family:Arial,serif;font-size:10.2px;color:rgb(28,28,27);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_005{font-family:Arial,serif;font-size:10.2px;color:rgb(28,28,27);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_005{font-family:Arial,serif;font-size:10.2px;color:rgb(28,28,27);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_002{font-family:Arial,serif;font-size:11.1px;color:rgb(255,254,255);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_002{font-family:Arial,serif;font-size:11.1px;color:rgb(255,254,255);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_006{font-family:Arial,serif;font-size:10.2px;color:rgb(28,28,27);font-weight:normal;font-style:italic;text-decoration: none}
+div.cls_006{font-family:Arial,serif;font-size:10.2px;color:rgb(28,28,27);font-weight:normal;font-style:italic;text-decoration: none}
+span.cls_007{font-family:Arial,serif;font-size:11.6px;color:rgb(28,28,27);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_007{font-family:Arial,serif;font-size:11.6px;color:rgb(28,28,27);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_009{font-family:Arial,serif;font-size:10.2px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_009{font-family:Arial,serif;font-size:10.2px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+
+</style>
+<div style="position:absolute;left:0px;top:0px">
+<img src="/jp_account_bills_of_exchange/static/src/img/background1.jpg" width="850" height="1200"/></div>
+<div style="position:absolute;left:25.02px;top:212.94px" class="cls_003"><span class="cls_003">Planilla de Letras o Facturas</span></div>
+<div style="position:absolute;left:25.01px;top:145.25px" class="cls_004"><span class="cls_004">Instrucciones de llenado</span></div>
+<div style="position:absolute;left:25.02px;top:157.34px" class="cls_005"><span class="cls_005">1 Presentar un formulario por moneda, plazo, producto y tipo de documento, y condiciones de cobranza libre.</span></div>
+<div style="position:absolute;left:25.02px;top:167.34px" class="cls_005"><span class="cls_005">2 Marcar con un aspa (x), el casillero que corresponda.</span></div>
+<div style="position:absolute;left:319.28px;top:189.00px" class="cls_004"><span class="cls_004">Tipo de documento</span></div>
+<div style="position:absolute;left:433.43px;top:189.01px" class="cls_005"><span class="cls_005">Letras</span></div>
+<div style="position:absolute;left:519.07px;top:189.01px" class="cls_005"><span class="cls_005">Facturas</span></div>
+<div style="position:absolute;left:24.26px;top:212.74px" class="cls_005"><span class="cls_005">Funcionario de Negocios</span></div>
+<div style="position:absolute;left:24.30px;top:234.96px" class="cls_004"><span class="cls_004">Moneda</span></div>
+<div style="position:absolute;left:99.27px;top:234.96px" class="cls_005"><span class="cls_005">MN</span></div>
+<div style="position:absolute;left:141.24px;top:234.91px" class="cls_005"><span class="cls_005">ME</span></div>
+<div style="position:absolute;left:24.36px;top:255.24px" class="cls_004"><span class="cls_004">Plazo</span><span class="cls_005"> (solo para descuentos y cobranza garantía)</span></div>
+<div style="position:absolute;left:231.80px;top:254.22px" class="cls_005"><span class="cls_005">Corto plazo (vencimiento hasta 1 año)</span></div>
+<div style="position:absolute;left:231.80px;top:268.78px" class="cls_005"><span class="cls_005">Mediano plazo (más de 1 año)</span></div>
+<div style="position:absolute;left:32.39px;top:293.82px" class="cls_002"><span class="cls_002">Producto</span></div>
+<div style="position:absolute;left:36.00px;top:315.00px" class="cls_004"><span class="cls_004">Descuento</span></div>
+<div style="position:absolute;left:134.95px;top:314.94px" class="cls_004"><span class="cls_004">Cobranza Garantía</span></div>
+<div style="position:absolute;left:279.09px;top:314.58px" class="cls_004"><span class="cls_004">Cobranza Libre</span></div>
+<div style="position:absolute;left:278.38px;top:327.95px" class="cls_005"><span class="cls_005">No protestar</span></div>
+<div style="position:absolute;left:278.38px;top:341.95px" class="cls_005"><span class="cls_005">Realizar gestión de aceptación</span></div>
+<div style="position:absolute;left:290.05px;top:357.15px" class="cls_005"><span class="cls_005">Interés moratorio</span></div>
+<div style="position:absolute;left:411.55px;top:357.22px" class="cls_005"><span class="cls_005">Interés compensatorio</span></div>
+<div style="position:absolute;left:290.20px;top:372.08px" class="cls_005"><span class="cls_005">Ambos</span></div>
+<div style="position:absolute;left:411.99px;top:371.96px" class="cls_005"><span class="cls_005">Sin interés</span></div>
+<div style="position:absolute;left:32.39px;top:396.10px" class="cls_002"><span class="cls_002">Datos del cliente</span></div>
+<div style="position:absolute;left:37.68px;top:418.24px" class="cls_005"><span class="cls_005">DNI</span></div>
+<div style="position:absolute;left:91.65px;top:418.24px" class="cls_005"><span class="cls_005">RUC</span></div>
+<div style="position:absolute;left:136.51px;top:418.24px" class="cls_005"><span class="cls_005">Nº</span></div>
+<div style="position:absolute;left:33.12px;top:438.33px" class="cls_004"><span class="cls_004">Cuenta corriente de cargo/abono</span></div>
+<div style="position:absolute;left:33.07px;top:455.56px" class="cls_004"><span class="cls_004">Nombre/Razón Social</span></div>
+<div style="position:absolute;left:33.09px;top:466.23px" class="cls_006"><span class="cls_006">(escribir claramente la Razón Social o nombre completo del cedente)</span></div>
+<div style="position:absolute;left:33.12px;top:502.19px" class="cls_005"><span class="cls_005">Domicilio</span></div>
+<div style="position:absolute;left:294.08px;top:502.19px" class="cls_005"><span class="cls_005">Teléfono</span></div>
+<div style="position:absolute;left:426.54px;top:502.19px" class="cls_005"><span class="cls_005">Contacto</span></div>
+<div style="position:absolute;left:32.39px;top:542.39px" class="cls_002"><span class="cls_002">Detalle de las Letras o Facturas</span></div>
+<div style="position:absolute;left:33.07px;top:562.00px" class="cls_005"><span class="cls_005">Si su empresa desea presentar el detalle de sus Letras o Facturas en un listado adjunto, el número máximo permitido será de 90 letras por formulario.</span></div>
+<div style="position:absolute;left:29.11px;top:580.98px" class="cls_004"><span class="cls_004">Nº</span></div>
+<div style="position:absolute;left:54.02px;top:580.98px" class="cls_004"><span class="cls_004">Aceptante/Girado</span></div>
+<div style="position:absolute;left:194.80px;top:581.16px" class="cls_004"><span class="cls_004">Plaza</span></div>
+<div style="position:absolute;left:257.83px;top:581.16px" class="cls_004"><span class="cls_004">RUC/DNI</span></div>
+<div style="position:absolute;left:377.85px;top:581.16px" class="cls_004"><span class="cls_004">Vencimiento</span></div>
+<div style="position:absolute;left:495.24px;top:581.16px" class="cls_004"><span class="cls_004">Importe</span></div>
+<div style="position:absolute;left:27.39px;top:596.95px" class="cls_005"><span class="cls_005">1</span></div>
+<div style="position:absolute;left:27.39px;top:615.58px" class="cls_005"><span class="cls_005">2</span></div>
+<div style="position:absolute;left:27.39px;top:634.22px" class="cls_005"><span class="cls_005">3</span></div>
+<div style="position:absolute;left:27.39px;top:652.85px" class="cls_005"><span class="cls_005">4</span></div>
+<div style="position:absolute;left:27.39px;top:671.48px" class="cls_005"><span class="cls_005">5</span></div>
+<div style="position:absolute;left:27.39px;top:690.11px" class="cls_005"><span class="cls_005">6</span></div>
+<div style="position:absolute;left:27.39px;top:708.74px" class="cls_005"><span class="cls_005">7</span></div>
+<div style="position:absolute;left:27.39px;top:727.37px" class="cls_005"><span class="cls_005">8</span></div>
+<div style="position:absolute;left:27.39px;top:746.01px" class="cls_005"><span class="cls_005">9</span></div>
+<div style="position:absolute;left:25.88px;top:764.64px" class="cls_005"><span class="cls_005">10</span></div>
+<div style="position:absolute;left:435.15px;top:786.72px" class="cls_004"><span class="cls_004">Importe total</span></div>
+<div style="position:absolute;left:564.98px;top:812.20px" class="cls_007"><span class="cls_007">1</span></div>
+
+        </template>
+    </data>
+</odoo>

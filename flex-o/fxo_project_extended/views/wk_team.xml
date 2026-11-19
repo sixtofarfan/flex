@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="wk_team_view_inherit_design" model="ir.ui.view">
+        <field name="name">wk_team_view_inherit_design</field>
+        <field name="model">wk.team</field>
+        <field name="inherit_id" ref="project_advance_team.wk_team_view"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="is_design_team"/>
+            </field>
+        </field>
+    </record>
+</odoo>

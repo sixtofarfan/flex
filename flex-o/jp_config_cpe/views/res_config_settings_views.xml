@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_cpe" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.cpe</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="CPE" string="CPE" data-key="l10n_pe_cpe" groups="l10n_pe_cpe.group_pe_cpe_accountant">
+                    <h2>Facturación Electrónica</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box" id="cpe_certificate">
+                            <!-- attrs="{'invisible': [('portal_confirmation_pay', '=', False) , ('portal_confirmation_sign', '=', False)]}" groups="base.group_no_one" -->
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Electronic Server and Certificate</span>
+                                <div class="text-muted">
+                                    Select from the list the server and certificate for this company to send electronic documents
+                                </div>
+                                <div class="row mt16">
+                                    <label for="pe_certificate" string="Certificate" class="col-lg-4 o_light_label"/>
+                                    <field name="pe_certificate" class="oe_inline" attrs="{'required':('')}"/>
+                                </div>
+                                <div class="row mt16">
+                                    <label for="pe_server" string="Server" class="col-lg-4 o_light_label"/>
+                                    <field name="pe_server" class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" id="cpe_server">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Resolution Type and Number</span>
+                                <div class="text-muted">
+                                    Enter the sunat resolution type and number to be printed on the invoice
+                                </div>
+                                <div class="row mt16">
+                                    <label for="sunat_resolution_type" string="Resolution Type" class="col-lg-4 o_light_label"/>
+                                    <field name="sunat_resolution_type" class="oe_inline"/>
+                                </div>
+                                <div class="row mt16">
+                                    <label for="sunat_resolution_number" string="Resolution Number" class="col-lg-4 o_light_label"/>
+                                    <field name="sunat_resolution_number" class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="module_jp_account_invoice_detraction"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="module_jp_account_invoice_detraction"/>
+                                <div class="text-muted">
+                                    Use if company sell or purchase services and is subject to detractions
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('module_jp_account_invoice_detraction', '=', False)]}">
+                            <div class="o_setting_right_pane">
+                                <label for="sunat_amount"/>
+                                <field name="sunat_amount"/>
+                                <div class="text-muted">
+                                    Enter the minimum invoice amount subject to detraction
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('module_jp_account_invoice_detraction', '=', False)]}">
+                            <div class="o_setting_right_pane">
+                                <label for="det_percent_by"/>
+                                <div class="text-muted">
+                                    Select detraction percent method to be used
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="det_percent_by" class="o_light_label" widget="radio"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': ['|',('module_jp_account_invoice_detraction', '=', False),('det_percent_by', 'in', ['1','2'])]}">
+                            <div class="o_setting_right_pane">
+                                <label for="det_percent"/>
+                                <field name="det_percent"/>
+                                <div class="text-muted">
+                                    Enter the the percentage to be used as default for detraction
+                                </div>
+                                <label for="type_operation" string="Operation Type" class="col-lg-4 o_light_label"/>
+                                <field name="type_operation" options="{'no_create': True}"/>
+                                <label for="type_good_service" string="Good and Services" class="col-lg-4 o_light_label"/>
+                                <field name="type_good_service" options="{'no_create': True}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_cpe_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="base.res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'l10n_pe_cpe'}</field>
+    </record>
+
+    <menuitem id="menu_cpe_general_settings"
+        name="Settings"
+        parent="l10n_pe_cpe.pe_cpe_configuration_menu"
+        sequence="0"
+        action="action_cpe_config_settings"
+        groups="base.group_system"/>
+
+</odoo>

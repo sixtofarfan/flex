@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_move_ref_tree_view" model="ir.ui.view">
+        <field name="name">view.account.move.ref.tree.view</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_move_filter"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="ref"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="account_move_line_errors_view_tree" model="ir.ui.view">
+        <field name="name">account.move.line.errors.view.tree</field>
+        <field name="model">account.move.line</field>
+        <field name="arch" type="xml">
+            <tree delete="0" create="0">
+                <field name="id" />
+                <field name="move_id" />
+                <field name="partner_id" />
+                <field name="account_id" />
+                <field name="currency_id" />
+                <field name="balance" sum="Total"/>
+                <field name="debit" sum="Total" optional="show"/>
+                <field name="credit" sum="Total" optional="show"/>
+                <field name="amount_currency" sum="Total"/>
+                <field name="tc" />
+            </tree>
+        </field>
+    </record>
+
+</odoo>

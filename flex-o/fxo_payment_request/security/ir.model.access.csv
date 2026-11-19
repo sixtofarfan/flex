@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fxo_payment_request_user,fxo.payment.request.user,model_fxo_payment_request,fxo_payment_request.group_fxo_payment_request,1,1,1,1
+access_fxo_payment_request_line_user,fxo.payment.request.line.user,model_fxo_payment_request_line,fxo_payment_request.group_fxo_payment_request,1,1,1,1

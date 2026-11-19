@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_range_wizard_user,range_wizard_user,model_range_wizard,,1,1,1,0
+access_manual_wizard_user,manual_wizard_user,model_manual_wizard,,1,1,1,0
+access_res_currency_rate_account_user_fx_currency_rate_live,access res.currency.rate account user fx.currency.rate.live,base.model_res_currency_rate,account.group_account_user,1,1,1,1
+access_res_currency_rate_base_group_user_fx_currency_rate_live,access res.currency.rate base group user fx.currency.rate.live,base.model_res_currency_rate,base.group_user,1,1,0,0

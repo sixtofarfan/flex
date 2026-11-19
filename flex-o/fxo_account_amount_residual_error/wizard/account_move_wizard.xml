@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.ui.view" id="account_move_wizard_form">
+		<field name="name">account.move.wizard.form</field>
+		<field name="model">account.move.wizard</field>
+		<field name="arch" type="xml">
+			<form>
+				<h3>¿El siguiente proceso Actualizara Consistencia de Saldo de Facturas de Dolares, Esta seguro que desea realizar esta operacion?</h3>
+				<footer>
+					<button string="Actualizar" name="update_amount_residual_signed" type="object" class="oe_highlight"/>
+					<button string="Cancel" class="oe_link" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+</odoo>

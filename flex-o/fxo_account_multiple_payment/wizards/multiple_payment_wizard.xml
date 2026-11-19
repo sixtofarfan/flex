@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_multiple_payment_wizard_form" model="ir.ui.view">
+		<field name="name">multiple.payment.wizard.form</field>
+		<field name="model">multiple.payment.wizard</field>
+		<field name="arch" type="xml">
+			<form>
+				<field name="move_ids" invisible="context.get('bank_type') not in ['bbva', 'bcp', 'interbank', 'scotiabank']"/>
+				<field name="cts_ids" invisible="context.get('bank_type') not in ['bbva_cts', 'bcp_cts', 'interbank_cts', 'scotiabank_cts']">
+					<tree>
+						<field name="employee_id"/>
+						<field name="total_cts"/>
+						<field name="cts_dollars"/>
+					</tree>
+				</field>
+				<field name="slip_ids" invisible="context.get('bank_type') not in ['bbva_slip', 'bcp_slip', 'interbank_slip', 'scotiabank_slip']"/>
+				<footer>
+					<button string="Agregar" name="get_function" type="object" class="oe_highlight"/> 
+					<button string="Cancel" class="oe_link" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+</odoo>

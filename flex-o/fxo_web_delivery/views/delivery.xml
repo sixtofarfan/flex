@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+
+        <!-- model.name inherit form view -->
+        <record id="view_delivery_carrier_form" model="ir.ui.view">
+            <field name="name">delivery.carrier.inherit.view.form</field>
+            <field name="model">delivery.carrier</field>
+            <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <xpath expr="//group[@name='country_details']" position="replace">
+                    <group>
+                        <field name="show_web"/>
+                        <field name="state_ids" domain="[('country_id','=',173),('state_id', '=', False),('province_id','=', False)]" options='{"no_create": True}' />
+                        <field name="province_id" domain="[('state_id', '=', state_ids),('province_id','=', False)]" options='{"no_create": True}' />
+                        <field name="district_id" domain="[('country_id','=',173),('state_id', '=', state_ids),('province_id','=', province_id)]" options='{"no_create": True}'/>
+                    </group>
+   
+                </xpath>
+            </field>
+        </record>
+
+        <template id="fxo_web_delivery.cart_delivery" inherit_id="website_sale_delivery.cart_delivery" name="Cost delivery Extend">
+            <xpath expr="//tr[@id='order_delivery']/td[1]" position="replace">
+                <td class="text-right border-0 text-muted" title="La entrega se actualizará después de elegir un nuevo método de entrega">Costo de Entrega:</td>
+            </xpath>
+        </template>
+        
+         <template id="fxo_web_delivery.payment_delivery" inherit_id="website_sale_delivery.payment_delivery" name=" Delivery  Cost Extend">
+            <xpath expr="//div[@t-if='deliveries']" position="replace">
+             <div t-if="deliveries" id="delivery_carrier">
+                <t t-set="delivery_nb" t-value="len(deliveries)"/>
+                <h3 t-if="delivery_nb &gt; 1" class="mb24">Metodos de Envio</h3>
+                <div t-if="delivery_nb &gt; 1" class="card border-0" id="delivery_method">
+                    <ul class="list-group">
+                    <t t-foreach="deliveries" t-as="delivery">
+                        <t t-if="website_sale_order.partner_shipping_id.property_delivery_carrier_id.id == delivery.id or delivery.show_web ">
+                            <li class="list-group-item o_delivery_carrier_select">
+                                <t t-call="website_sale_delivery.payment_delivery_methods"/>
+                            </li>
+                        </t>
+                    </t>
+                    </ul>
+                </div>
+            </div>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

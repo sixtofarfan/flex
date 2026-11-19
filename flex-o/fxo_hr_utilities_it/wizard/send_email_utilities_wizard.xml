@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_send_email_utilities_wizard_form">
+            <field name="name">send.email.utilities.wizard.form</field>
+            <field name="model">send.email.utilities.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="template_id"/>
+                        </group>
+                        <group>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Empleados">
+                            <field name="line_ids" options="{'no_create':True}">
+                                <tree>
+                                    <field name="employee_document"/>
+                                    <field name="employee"/>
+                                    <field name="distribution_id"/>
+                                    <field name="salary" sum="salary"/>
+                                    <field name="number_of_days" sum="number_of_days"/>
+                                    <field name="for_salary" sum="for_salary"/>
+                                    <field name="for_number_of_days" sum="for_number_of_days"/>
+                                    <field name="total_utilities" sum="total_utilities"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                    <footer>
+                        <button string="Enviar" icon="fa-envelope" name="send_email" type="object"
+                                confirm="¿Está seguro de realizar la operación?"
+                                class="oe_highlight"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

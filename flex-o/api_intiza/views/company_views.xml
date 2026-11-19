@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="uei_view_company_form_intiza" model="ir.ui.view">
+            <field name="name">res.company.inherit.intiza</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page groups="base.group_user" string="Integración INTIZA">
+                        <group>
+                            <group string="Información servidor">
+                                <field name="bd_param_url"/>
+                                <field name="bd_param_db"/>
+                            </group>
+                            <group string="Información conexión">
+                                <field name="bd_param_username"/>
+                                <field name="bd_param_password" password="True"/>
+                            </group>
+                            <group>
+                                <field name='path_local_api'/>
+                            </group>
+                            <group string="Información FTP">
+                                <field name="intiza_server"/>
+                                <field name="intiza_port"/>
+                                <field name="intiza_user"/>
+                                <field name="intiza_clave" password="True"/>
+                                <field name="intiza_directory_partner"/>
+                                <field name="intiza_directory_partner_b"/>
+                                <field name="intiza_directory_invoice"/>
+                                <field name="intiza_directory_invoice_b"/>
+                                <field name="intiza_directory_partner2"/>
+                                <field name="intiza_directory_partner2_b"/>
+                                <field name="intiza_directory_invoice2"/>
+                                <field name="intiza_directory_invoice2_b"/>
+                                <field name="intiza_directory_partner3"/>
+                                <field name="intiza_directory_partner3_b"/>
+                                <field name="intiza_directory_invoice3"/>
+                                <field name="intiza_directory_invoice3_b"/>
+                                <field name="intiza_directory_partner4"/>
+                                <field name="intiza_directory_partner4_b"/>
+                                <field name="intiza_directory_invoice4"/>
+                                <field name="intiza_directory_invoice4_b"/>
+
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

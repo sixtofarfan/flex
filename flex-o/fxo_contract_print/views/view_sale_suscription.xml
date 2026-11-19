@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="sale_subscription_view_form" model="ir.ui.view">
+            <field name="name">sale.subscription</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="payment_token_id" position="after">
+                        <field name="description_contract_id"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+
+
+
+            <record id="view_template_contract_subscription_form" model="ir.ui.view">
+        <field name="name">contract.template.form</field>
+        <field name="model">contract.template</field>
+        <field name="arch" type="xml">
+            <form string="Plantilla para Contratos">
+                <group>
+                    <field name="name" required="1"/>
+                    <field name="description_contract" required="1" />
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="view_template_contract_subscription" model="ir.ui.view">
+        <field name="name">contract.template.list</field>
+        <field name="model">contract.template</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description_contract" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_template_contract_subscription" model="ir.actions.act_window">
+        <field name="name">Plantilla de Contrato</field>
+        <field name="res_model">contract.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_template_contract_subscription"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Crea tu primer registro de Plantilla para Contratos aqui
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_template_contract_subscription"
+              action="action_template_contract_subscription"
+              parent="sale.menu_sales_config" sequence="100"/>
+
+    </data>
+</odoo>

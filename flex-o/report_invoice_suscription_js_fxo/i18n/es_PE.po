@@ -1,0 +1,238 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_invoice_suscription_js_fxo
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-06 07:17+0000\n"
+"PO-Revision-Date: 2021-11-06 03:18-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: report_invoice_suscription_js_fxo
+#: code:addons/report_invoice_suscription_js_fxo/generate_invoices_wizard.py:0
+#, python-format
+msgid " - Corresponding to period: %s"
+msgstr "- Correspondiente al período: %s"
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.view_generate_invoices_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.wizard_report_suscrip
+msgid "Cancelar"
+msgstr ""
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_generate_invoices_wizard__create_uid
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_generate_invoices_wizard__create_date
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.sale_subscription_line_search
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.sale_subscription_line_search
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_generate_invoices_wizard__display_name
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip__display_name
+msgid "Display Name"
+msgstr "Nombre a Mostrar"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip__date_end
+msgid "End date"
+msgstr "Fecha final"
+
+#. module: report_invoice_suscription_js_fxo
+#: code:addons/report_invoice_suscription_js_fxo/generate_invoices_wizard.py:0
+#, python-format
+msgid "Facturas"
+msgstr ""
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip__fiscal_year_id
+msgid "Fiscal Year"
+msgstr "Año fiscal"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.actions.act_window,name:report_invoice_suscription_js_fxo.generate_invoices_wizard_menu_action
+msgid "Generates Invoices"
+msgstr "Generar Facturas"
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.sale_subscription_line_search
+msgid "Group By"
+msgstr "Agrupado por"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:res.groups,name:report_invoice_suscription_js_fxo.group_access_not_invoiced_service
+msgid "I access not invoiced services"
+msgstr "Acceso a servicios no facturados"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_generate_invoices_wizard__id
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip__id
+msgid "ID"
+msgstr ""
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_sale_subscription_line__invoice_lines
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.wizard_report_suscrip
+msgid "Kardex Valorado"
+msgstr ""
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_generate_invoices_wizard____last_update
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip____last_update
+msgid "Last Modified on"
+msgstr "Ultima Modificación en"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_generate_invoices_wizard__write_uid
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado última vez por"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_generate_invoices_wizard__write_date
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_sale_subscription_line__monto_facturado
+msgid "Monto Facturado"
+msgstr ""
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_sale_subscription_line__monto_facturado_total
+msgid "Monto Total Facturado "
+msgstr ""
+
+#. module: report_invoice_suscription_js_fxo
+#: code:addons/report_invoice_suscription_js_fxo/models.py:0
+#, python-format
+msgid "No tiene una supscripciòn"
+msgstr "No tiene una suscripción"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_sale_subscription_line__name_period
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_sale_subscription_line__period_report_id
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip__period_id
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.sale_subscription_line_search
+msgid "Period"
+msgstr "Período"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip__name
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.sale_subscription_line_search
+msgid "Period Name"
+msgstr "Nombre del período"
+
+#. module: report_invoice_suscription_js_fxo
+#: code:addons/report_invoice_suscription_js_fxo/wizard_report.py:0
+#: model:ir.actions.act_window,name:report_invoice_suscription_js_fxo.action_wizard_susp
+#: model:ir.ui.menu,name:report_invoice_suscription_js_fxo.main_reporte_suscripcion
+#, python-format
+msgid "Reporte Suscripcion - Facturaciòn"
+msgstr "Reporte Suscripción - Facturación"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_wizard_report_suscrip__date_start
+msgid "Start date"
+msgstr "Fecha inicial"
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.sale_subscription_line_search
+msgid "Stop date"
+msgstr "Fecha de finalización"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model,name:report_invoice_suscription_js_fxo.model_sale_subscription_line
+msgid "Subscription Line"
+msgstr "Línea de suscripción"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model.fields,field_description:report_invoice_suscription_js_fxo.field_generate_invoices_wizard__subscription_line_ids
+msgid "Subscription Lines"
+msgstr "Apuntes de asientos periódicos"
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.view_generate_invoices_wizard
+msgid "Subscriptions Lines"
+msgstr "Líneas de suscripción"
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.sale_subscription_line_search
+msgid "Suscripcion"
+msgstr "Suscripción"
+
+#. module: report_invoice_suscription_js_fxo
+#: code:addons/report_invoice_suscription_js_fxo/generate_invoices_wizard.py:0
+#, python-format
+msgid "This invoice covers the following period: %s - %s"
+msgstr "Esta factura cubre el siguiente período: %s - %s"
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.view_generate_invoices_wizard
+msgid "To Invoice"
+msgstr "A facturar"
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.wizard_report_suscrip
+msgid "Ver"
+msgstr ""
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.view_generate_invoices_wizard
+msgid "You this sure that do you wish to invoice these lines of subscription?"
+msgstr "¿Usted está seguro de facturar las líneas de suscripción seleccionadas?"
+
+#. module: report_invoice_suscription_js_fxo
+#: code:addons/report_invoice_suscription_js_fxo/models.py:0
+#, python-format
+msgid "crea el registro primero"
+msgstr "Crea el registro primero"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model,name:report_invoice_suscription_js_fxo.model_generate_invoices_wizard
+msgid "generate.invoices.wizard"
+msgstr ""
+
+#. module: report_invoice_suscription_js_fxo
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.view_generate_invoices_wizard
+#: model_terms:ir.ui.view,arch_db:report_invoice_suscription_js_fxo.wizard_report_suscrip
+msgid "or"
+msgstr "o"
+
+#. module: report_invoice_suscription_js_fxo
+#: model:ir.model,name:report_invoice_suscription_js_fxo.model_wizard_report_suscrip
+msgid "wizard.report.suscrip"
+msgstr ""

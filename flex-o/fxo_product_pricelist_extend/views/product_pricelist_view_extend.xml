@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+        <!-- Add you code here -->
+        <!-- product.pricelist inherit form view -->
+        <record id="product_pricelist_view_extend" model="ir.ui.view">
+            <field name="name">product.pricelist.inherit.view.form</field>
+            <field name="model">product.pricelist</field>
+            <field name="inherit_id" ref="product.product_pricelist_view"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <page name="pricelist_config" position="after">
+                    <page name="location" string="Location">
+                        <group>
+                            <field name="country_id" />
+                            <field name="state_id" options='{"no_open": True, "no_create": True}' domain="[('country_id','=',country_id),('state_id', '=', False),('province_id','=', False)]">
+                                <tree>
+                                    <field name="country_id"/>
+                                    <field name="name"/>
+                                    <field name="province_id"/>
+                                    <field name="pricelist_province_id"/>
+                                 <!--    <button name="add_province_ids" 
+                                    type="object" 
+                                    icon="fa-plus-square" 
+                                    width="0.1" role="img" 
+                                    title="Add Province"
+                                        /> -->
+                                </tree>
+                            </field>
+                        </group>
+                        <button name="add_province_ids"  type="object"  string="Add Province"/>
+                        <group>
+                            <field name="province_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="state_id"/>
+                                    <!-- <button name="add_district_ids" type="object" icon="fa-plus-square" width="0.1" role="img" title="Add Province" /> -->
+                                </tree>
+                            </field>
+                        </group>
+                        <button name="add_district_ids"  type="object"  string="Add District"/>
+                        <group>
+                            <field name="district_ids"  options='{"no_open": True, "no_create": True}' domain="[('country_id','=',country_id),('state_id', 'in', state_id),('province_id','in', province_ids)]"/>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+</odoo>

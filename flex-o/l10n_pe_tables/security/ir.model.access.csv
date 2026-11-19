@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_einvoice_catalog_04_user,einvoice.catalog.04.user,model_einvoice_catalog_04,account_base_it.group_account_tables_user,1,1,0,0
+access_einvoice_catalog_03_user,einvoice.catalog.03.user,model_einvoice_catalog_03,account_base_it.group_account_tables_user,1,1,0,0

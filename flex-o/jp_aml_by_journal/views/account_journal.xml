@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_account_journal_form_inherited_aml">
+            <field name="name">account.journal.form.inherited.aml</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='advanced_settings']" position="after">
+                    <page name="aml_by_currency" string="Invoice Settings" attrs="{'invisible': [('type', 'not in', ('sale','purchase'))]}">
+                        <group>
+                            <field name="currency_item_ids" nolabel="1">
+								<tree editable="bottom">
+									<field name="currency_id" required="1"/>
+									<!-- <field name="debit_account_id" required="1"/> -->
+									<field name="account_id" required="1"/>
+								</tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

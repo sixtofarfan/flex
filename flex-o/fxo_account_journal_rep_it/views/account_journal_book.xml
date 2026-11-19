@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_account_journal_book_tree_inherit" model="ir.ui.view">
+        <field name="name">account.journal.book.tree.inherit</field>
+        <field name="model">account.journal.book</field>
+        <field name="inherit_id" ref="account_journal_rep_it.view_account_journal_book_tree"/>
+        <field name="arch" type="xml">
+        	<field name="glosa" position="after">
+        		<field name="description" optional="show"/>
+        		<field name="circular" optional="show"/>
+        	</field>
+        </field>
+    </record>
+</odoo>

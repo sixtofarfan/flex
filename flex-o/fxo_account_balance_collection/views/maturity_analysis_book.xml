@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+        <record id="view_maturity_analysis_book_tree_inherit" model="ir.ui.view">
+            <field name="name">maturity.analysis.book.tree.inherit</field>
+            <field name="model">maturity.analysis.book</field>
+            <field name="inherit_id" ref="maturity_analysis_rep_it.view_maturity_analysis_book_tree"/>
+            <field name="arch" type="xml">
+                <field name="partner" position="after">
+                    <field name="collection"/>
+                    <field name="invoice_user_id"/>
+                    <field name="invoice_expo_user_id"/>
+                    <field name="invoice_period"/>
+                </field>
+            </field>
+        </record>
+        <record id="maturity_analysis_book_search_inherit" model="ir.ui.view">
+            <field name="name">maturity.analysis.book.search.inherit</field>
+            <field name="model">maturity.analysis.book</field>
+            <field name="inherit_id" ref="maturity_analysis_rep_it.maturity_analysis_book_search"/>
+            <field name="arch" type="xml">
+                <field name="partner" position="after">
+                    <field name="collection"/>
+                    <field name="invoice_user_id"/>
+                    <field name="invoice_expo_user_id"/>
+                    <field name="invoice_period"/>
+                </field>
+                <filter name="partner" position="after">
+                    <filter string="Cobrador" name="collection" icon="terp-partner" domain="[]" context="{'group_by':'collection'}"/>
+                    <filter string="Invoice User" name="invoice_user_id" icon="terp-partner" domain="[]" context="{'group_by':'invoice_user_id'}"/>
+                    <filter string="Expo User" name="invoice_expo_user_id" icon="terp-partner" domain="[]" context="{'group_by':'invoice_expo_user_id'}"/>
+                    <filter string="Periodo de Facturacion" name="invoice_period" icon="terp-partner" domain="[]" context="{'group_by':'invoice_period'}"/>
+                </filter>
+            </field>
+        </record>
+    </data>
+</odoo>

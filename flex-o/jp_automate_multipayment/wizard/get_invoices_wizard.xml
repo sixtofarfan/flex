@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_get_invoices_wizard" model="ir.ui.view">
+            <field name="name">get.invoices.wizard.form</field>
+            <field name="model">get.invoices.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Get Invoices Wizard">
+                    <group>
+                        <field name="invoices" nolabel="1" context="{'default_type': 'out_invoice'}"
+                        domain="[('state','=','posted'),('type','=',context.get('invoice_type')),('amount_residual','!=', 0)]"/>
+                    </group>
+                    <footer>
+                        <button string="Get Invoices" name="insert" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="view_get_invoices_detraction_wizard" model="ir.ui.view">
+            <field name="name">get.invoices.wizard.form</field>
+            <field name="model">get.invoices.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Get Invoices Wizard">
+                    <group>
+                        <field name="invoices" nolabel="1" context="{'default_type': 'out_invoice'}"
+                        domain="[
+                            ('state','=','posted'),
+                            ('type','=',context.get('invoice_type')),
+                            ('amount_residual','!=', 0),
+                            ('linked_to_detractions', '=', True),
+                            ('date_detraccion', '=', False),
+                            ('voucher_number', '=', False),
+                        ]" />
+                    </group>
+                    <footer>
+                        <button string="Get Invoices" name="insert" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="view_get_detraction_wizard" model="ir.ui.view">
+            <field name="name">get.invoices.wizard.form</field>
+            <field name="model">get.invoices.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Get Invoices Wizard">
+                    <group invisible="not context.get('detraction')">
+                        <field name="provisions" nolabel="1">
+                            <tree>
+                                <field name="account_id"/>
+                                <field name="name"/>
+                                <field name="debit"/>
+                                <field name="credit"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button string="Get Detractions" name="insert_detractions" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="view_get_provisions_wizard" model="ir.ui.view">
+            <field name="name">get.provisions.wizard.form</field>
+            <field name="model">get.invoices.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Get Provisions Wizard">
+                    <group>
+                        <field name="provisions" nolabel="1">
+                            <tree>
+                                <field name="account_id"/>
+                                <field name="name"/>
+                                <field name="debit"/>
+                                <field name="credit"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button string="Get Provisions" name="insert_provisions" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="view_get_advances_wizard" model="ir.ui.view">
+            <field name="name">get.advances.wizard.form</field>
+            <field name="model">get.invoices.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Get Provisions Wizard">
+                    <group>
+                        <field name="advances" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button string="Get Advances" name="insert_advances" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="view_get_confirmation_wizard" model="ir.ui.view">
+            <field name="name">get.confirmation.wizard.form</field>
+            <field name="model">get.invoices.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <h1><center>¿Esta seguro que desea completar esta accion?, esto ocacionara que las lineas de factura se eliminen</center></h1>
+                    <footer>
+                        <button string="Confirmar" name="delete_lines" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="move_txt_wizard" model="ir.ui.view">
+            <field name="name">move.txt.wizard</field>
+            <field name="model">get.invoices.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="txt_file" widget="file"/>
+                    </group>
+                    <footer>
+                        <button string="Confirmar" name="import_txt_sunat" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

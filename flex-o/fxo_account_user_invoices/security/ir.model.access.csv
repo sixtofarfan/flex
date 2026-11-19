@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_move_users_root,account.move.users.root,account.model_account_move,my_documents_group,1,0,0,0
+access_account_move_line_users_root,account.move.line.users.root,account.model_account_move_line,my_documents_group,1,0,0,0
+access_account_move_line_custom_users_root,account.move.line.custom.users.root,fxo_subscription_invoice_extend.model_account_move_line_custom,my_documents_group,1,0,0,0
+access_account_move_advance_line_users_root,account.move.advance.line.users.root,ebill.model_move_advance_line,my_documents_group,1,0,0,0
+access_account_move_guide_line_users_root,account.move.guide.line.users.root,ebill.model_move_guide_line,my_documents_group,1,0,0,0

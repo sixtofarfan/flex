@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_partner_form">
+        <field name="name">res.partner.view.form.inherit.l10n.pe.vat</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <sheet position="before">
+                <header>
+                    <button string="Update RUC/DNI" type="object" name="update_document" context="{'force_update':True}" />
+                    <field name="state" widget="statusbar" nolabel="1" statusbar_visible="ACTIVO,BAJA DE OFICIO" statusbar_colors="{'ACTIVO':'green','BAJA DE OFICIO':'red','BAJA PROVISIONAL':'red','SUSPENSION TEMPORAL':'red'}" />
+                </header>
+            </sheet>
+            <xpath expr="//div[@name='button_box']" position="after">
+				<widget name="web_ribbon" text="Habido"
+						attrs="{'invisible': ['|','|',('is_company','=',False),('condition','!=','HABIDO'),('active', '=', False)]}"/>
+				<widget name="web_ribbon" text="No Habido"
+						bg_color="bg-danger"
+						attrs="{'invisible': ['|','|','|',('is_company','=',False),('condition','=','HABIDO'),('condition','=',False),('active', '=', False)]}" />
+			         
+	        </xpath>
+            <!-- <xpath expr="//h1" position="after">
+                <div class="o_row">
+	                <field name="doc_type" placeholder="Document Type" colspan="1" nolabel="1" style="width: 70%" invisible="1"/>
+	                <field name="doc_number" placeholder="Document number" colspan="3" nolabel="1" style="width: 29%" invisible="1"/>
+	            </div>            
+	        </xpath> -->
+            <xpath expr="//field[@name='category_id']" position="before">
+                <field name="condition" invisible="1" />
+                <!-- <field name="condition" attrs="{'invisible': ['|',('is_company','=',False),('condition','!=',False),]}" />
+                <field name="condition" style="background-color:palegreen;" attrs="{'invisible': ['|',('is_company','=',False),('condition','!=','HABIDO')]}" />
+                <field name="condition" style="background-color:red;color:white;" attrs="{'invisible': ['|','|',('is_company','=',False),('condition','=','HABIDO'),('condition','=',False)]}" /> -->
+                <field name="vat" invisible="True" />
+                <field name="is_validate" invisible="True" />
+            </xpath>
+            
+            <xpath expr="//page[@name='sales_purchases']" position="after">
+            	<page name="sunat_details" string="SUNAT" attrs="{'invisible': [('is_company','=',False)]}">
+	                <group name="container_sunat_general" attrs="{'invisible': [('is_company','=',False)]}">
+	                    <group string="General information">
+	                        <field name="legal_name" placeholder="Legal Name" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)]}" />
+	                        <field name="commercial_name" placeholder="Tradename" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)]}" />
+	                        <field name="type_taxpayer" attrs="{'invisible': [('is_company','=',False)]}" />
+	                        <field name="emission_system" attrs="{'invisible': [('is_company','=',False)]}" />
+	                        <field name="accounting_system" attrs="{'invisible': [('is_company','=',False)]}" />
+	                        <field name="last_update" attrs="{'invisible': [('is_company','=',False)]}" />
+	                    </group>
+	                    <group string="Retention Agent">
+	                        <field name="retention_agent" attrs="{'invisible': [('is_company','=',False)]}" />
+	                        <field name="retention_agent_from" attrs="{'invisible': [('is_company','=',False)]}" />
+	                        <field name="retention_agent_resolution" attrs="{'invisible': [('is_company','=',False)], 'readonly': [('is_validate','=',True)]}" />
+	                    </group>
+	                    <!--separator string="Aconomic Pctivities" colspan="2" /-->
+	                </group>
+	                <group name="container_sunat_ciiu" string="Aconomic Ectivities" attrs="{'invisible': [('is_company','=',False)]}">
+	                    <field name="main_activity" options="{'no_create_edit': True}" attrs="{'invisible': [('is_company','=',False)]}" />
+	                    <field name="activities_ids" options="{'no_create_edit': True}" widget="many2many_tags" attrs="{'invisible': [('is_company','=',False)]}" />
+	                </group>
+	                <separator string="Representatives"/>
+	                <field name="representative_ids" attrs="{'invisible': [('is_company','=',False)]}" >
+	                    <tree editable="bottom" string="Representatives">
+	                        <field name="doc_type"/>
+	                        <field name="doc_number"/>
+	                        <field name="name"/>
+	                        <field name="position"/>
+	                        <field name="date_from"/>
+	                    </tree>
+	                </field>
+                </page>
+	        </xpath>
+
+			<xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group/group[2]/field[@name='mobile']" position="after">
+				<label for="l10n_latam_identification_type_id" string="Identification Number" attrs="{'invisible': [('type','!=', 'contact')]}"/>
+				<div>
+					<field name="l10n_latam_identification_type_id" options="{'no_open': True, 'no_create': True}" attrs="{'invisible': [('type','!=', 'contact')]}" placeholder="Type" class="oe_inline" domain="country_id and ['|', ('country_id', '=', False), ('country_id', '=', country_id)] or []" context="{'default_l10n_pe_vat_code': '03'}"/>
+					<span class="oe_read_only"> - </span>
+					<field name="vat" placeholder="Number" class="oe_inline" attrs="{'invisible': [('type','!=', 'contact')]}"/>
+				</div>
+					</xpath>
+					<xpath expr="//notebook/page/field[@name='child_ids']/form/sheet" position="before">
+				<header>
+					<button string="Update RUC/DNI" type="object" name="update_document" context="{'force_update':True}" attrs="{'invisible': [('type','!=', 'contact')]}"/>
+				</header>
+			</xpath>
+
+        </field>
+    </record>
+
+	<record id="partner_vat_update_action" model="ir.actions.server">
+		<field name="name">Update VAT</field>
+		<field name="model_id" ref="model_res_partner"/>
+		<field name="binding_model_id" ref="model_res_partner"/>
+		<field name="binding_view_types">list</field>
+		<field name="state">code</field>
+		<field name="code">action = model.action_update()</field>
+	</record>
+	
+
+</odoo>

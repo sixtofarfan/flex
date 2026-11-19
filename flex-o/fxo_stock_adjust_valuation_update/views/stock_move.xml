@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+        <!-- Add you code here -->
+        <!-- stock.inventory inherit form view -->
+        <record id="view_inventory_form" model="ir.ui.view">
+            <field name="name">stock.inventory.inherit.view.form</field>
+            <field name="model">stock.inventory</field>
+            <field name="inherit_id" ref="stock.view_inventory_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <button name="action_cancel_draft" position="before">
+                    <button name="update_cost" states="confirm,done" type="object" string="Actualizar Costo"/>
+                </button>
+            </field>
+        </record>
+
+    </data>
+</odoo>

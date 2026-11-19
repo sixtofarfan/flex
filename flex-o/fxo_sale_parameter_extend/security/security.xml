@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_fxo_parameter_feasibility" model="res.groups">
+            <field name="name">Parametros Factibilidad</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+        <record id="fxo_sale_main_parameter_company_id" model="ir.rule">
+            <field name="name">Fxo Sale Main Parameter Multi-Company</field>
+            <field name="model_id" ref="model_fxo_sale_main_parameter"/>
+
+            <field name="domain_force">['|',('name','=',False),('name', 'in', company_ids)]</field>
+        </record>
+
+        <record id="fxo_sale_main_parameter_ingreso_company_id" model="ir.rule">
+            <field name="name">fxo_sale_main_parameter_ingreso Multi-Company</field>
+            <field name="model_id" ref="model_fxo_sale_main_parameter_ingreso"/>
+
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="fxo_sale_main_parameter_egreso_company_id" model="ir.rule">
+            <field name="name">fxo_sale_main_parameter_egreso Multi-Company</field>
+            <field name="model_id" ref="model_fxo_sale_main_parameter_egreso"/>
+
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+    </data>
+</odoo>

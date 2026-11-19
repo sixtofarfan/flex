@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+        <!-- Add you code here -->
+        <record id="seq_helpdesk_ticket" model="ir.sequence">
+            <field name="name">Secuencia para Tickets</field>
+            <field name="code">helpdesk_ticket_code</field>
+            <field name="prefix">TICK-</field>
+            <field name="padding">5</field>
+        </record>
+    </data>
+    <data>
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'helpdesk'), ('name', '=', 'solved_ticket_request_email_template')]"/>
+            </function>
+            <value eval="{'noupdate': False}" />
+        </function>
+        <record id="helpdesk.solved_ticket_request_email_template" model="mail.template">
+                    <field name="body_html" type="xml">
+<div>
+    Dear ${object.sudo().partner_id.name or 'Madam/Sir'},<br /><br />
+    This automatic message informs you that we have closed your ticket (reference ${object.seq_compute}).
+    We hope that the services provided have met your expectations.
+    If you have any more questions or comments, don't hesitate to reply to this e-mail to re-open your ticket.<br /><br />
+    Thank you for your cooperation.<br />
+    Kind regards,<br /><br />
+    ${object.team_id.name or 'Helpdesk'} Team.
+</div>
+            </field>
+        </record>
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'helpdesk'), ('name', '=', 'solved_ticket_request_email_template')]"/>
+            </function>
+            <value eval="{'noupdate': True}" />
+        </function>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'helpdesk'), ('name', '=', 'new_ticket_request_email_template')]"/>
+            </function>
+            <value eval="{'noupdate': False}" />
+        </function>
+        <record id="helpdesk.new_ticket_request_email_template" model="mail.template">
+            <field name="subject">${object.seq_compute}</field>
+            <field name="body_html" type="xml">
+<div>
+    Dear ${object.sudo().partner_id.name or 'Madam/Sir'},<br /><br />
+    Your request
+    % if object.get_portal_url():
+    <a href="/my/ticket/${object.id}/${object.access_token}">${object.name}</a>
+    % endif
+    has been received and is being reviewed by our ${object.team_id.name or ''} team.
+    The reference of your ticket is ${object.seq_compute}.<br /><br />
+
+    <div style="text-align: center; margin: 16px 0px 16px 0px;">
+        <a style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;" href="${object.get_portal_url()}">View the ticket</a><br/>
+    </div>
+
+    To add additional comments, reply to this email.<br/><br/>
+
+    Thank you,<br/><br/>
+    ${object.team_id.name or 'Helpdesk'} Team.
+</div>
+            </field>
+        </record>
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'helpdesk'), ('name', '=', 'new_ticket_request_email_template')]"/>
+            </function>
+            <value eval="{'noupdate': True}" />
+        </function>
+    </data>
+</odoo>

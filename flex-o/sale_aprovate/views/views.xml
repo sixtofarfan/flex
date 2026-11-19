@@ -1,0 +1,91 @@
+<odoo>
+  <data>
+    <record id="crm_team_form_inherit" model="ir.ui.view">
+      <field name="name">crm.team.form.inherit</field>
+      <field name="model">crm.team</field>
+      <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='members']" position="before">
+          <page string="Level" name="level" invisible="1">
+            <field name="level_id"/>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="sale_order_form_inherit" model="ir.ui.view">
+      <field name="name">sale.order.form.inherit</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='customer_signature']" position="after">
+          <page string="Level" name="level" invisible="1">
+            <field name="level_ids"/>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+
+    <!-- crm.team.level form view -->
+    <record id="crm_team_level_view_form" model="ir.ui.view">
+      <field name="name">crm.team.level.view.form</field>
+      <field name="model">crm.team.level</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+            <notebook>
+              <page name="user" string="Users">
+                <field name="users_id"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- crm.team.level tree view -->
+    <record id="crm_team_level_view_tree" model="ir.ui.view">
+      <field name="name">crm.team.level.view.tree</field>
+      <field name="model">crm.team.level</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- sale.team.level form view -->
+    <record id="sale_team_level_view_form" model="ir.ui.view">
+      <field name="name">sale.team.level.view.form</field>
+      <field name="model">sale.team.level</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="level_id" readonly="1"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- sale.team.level tree view -->
+    <record id="sale_team_level_view_tree" model="ir.ui.view">
+      <field name="name">sale.team.level.view.tree</field>
+      <field name="model">sale.team.level</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="level_id"/>
+        </tree>
+      </field>
+    </record>
+    
+    
+  </data>
+</odoo>

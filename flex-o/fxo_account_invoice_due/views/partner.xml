@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <!-- res.partner inherit form view -->
+        <record id="view_id" model="ir.ui.view">
+            <field name="name">res.partner.inherit.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <xpath expr="//field[@name='property_account_payable_id']" position="after">
+                    <field name="fxo_invoice_date_end"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

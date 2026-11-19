@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_closure,account_closure,model_account_closure,base.group_user,1,1,1,1
+access_account_closure_model,account_closure_model,model_account_closure_model,base.group_user,1,1,1,1
+access_account_closure_stage,account_closure_stage,model_account_closure_stage,base.group_user,1,1,1,1
+access_account_closure_line,account_closure_line,model_account_closure_line,base.group_user,1,1,1,1

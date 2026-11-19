@@ -1,0 +1,2202 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fxo_bi_professional_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-16 02:41+0000\n"
+"PO-Revision-Date: 2020-11-15 22:53-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es_PE\n"
+"X-Generator: Poedit 2.1.1\n"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_layouted
+msgid "&amp;bull;"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_guide_template
+msgid "&amp;nbsp;&amp;nbsp;"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_guide_template
+msgid "&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_subtotal_tem
+msgid "&amp;nbsp;<span>on</span>"
+msgstr "&amp;nbsp;<span>en</span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "(Reload Fonts)"
+msgstr "(recarga fuentes)"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_exclusive_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_incredible_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+msgid ", consulte en"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_incredible_main
+msgid "<b> Referencia de O.C.</b>"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_notes
+msgid "<b>Comment: </b>"
+msgstr "<b>Comentario: </b>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+msgid "<b>Description:</b>"
+msgstr "<b>Descripción:</b>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_exclusive_main
+msgid ""
+"<b>Description:</b>\n"
+"                                            <br/>"
+msgstr ""
+"<b>Descripcion:</b>\n"
+"                                            <br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+msgid ""
+"<b>Description:</b>\n"
+"                                        <br/>"
+msgstr ""
+"<b>Descripcion:</b>\n"
+"                                        <br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_incredible_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+msgid "<b>Due Date:</b>"
+msgstr "<b>F.Vencimiento:</b>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_exclusive_main
+msgid ""
+"<b>Due Date:</b>\n"
+"                                            <br/>"
+msgstr ""
+"<b>F.Vencimiento:</b>\n"
+"                                            <br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+msgid ""
+"<b>Due Date:</b>\n"
+"                                        <br/>"
+msgstr ""
+"<b>F.Vencimiento:</b>\n"
+"                                        <br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+msgid "<b>Factura:</b>"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_notes
+msgid "<b>Fiscal Position Remark: </b>"
+msgstr "<b>Observación de la posición fiscal: </b>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_incredible_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+msgid "<b>Invoice Date:</b>"
+msgstr "<b>Fecha Emisión:</b>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_exclusive_main
+msgid ""
+"<b>Invoice Date:</b>\n"
+"                                            <br/>"
+msgstr ""
+"<b>Fecha Emisión:</b>\n"
+"                                        <br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+msgid ""
+"<b>Invoice Date:</b>\n"
+"                                        <br/>"
+msgstr ""
+"<b>Fecha Emisión:</b>\n"
+"                                        <br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+msgid "<b>Order Date:</b>"
+msgstr "<b>Fecha Pedido:</b>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_exclusive_main
+msgid ""
+"<b>Order Date:</b>\n"
+"                                            <br/>"
+msgstr ""
+"<b>Fecha Pedido:</b>\n"
+"                                            <br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+msgid ""
+"<b>Order Date:</b>\n"
+"                                        <br/>"
+msgstr ""
+"<b>Fecha Pedido:</b>\n"
+"                                        <br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_notes
+msgid "<b>Payment Terms Description: </b>"
+msgstr "<b>Término de pago Descripción: </b>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_notes
+msgid "<b>Payment Terms: </b>"
+msgstr "<b>Plazo de pago: </b>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_incredible_main
+msgid "<b>Cond.Pago:</b>"
+msgstr "<b>Cond.Pago:</b>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+msgid "<b>RUC:</b>"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_guide_template
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t    &amp;nbsp;&amp;nbsp;"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_guide_template
+msgid "<br/> Series:"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid "<font color=\"#fff\">Delivery Note #</font>"
+msgstr "<font color=“#fff”>Nota de Envío #</font>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid "<font color=\"#fff\">Origin:</font>"
+msgstr "<font color=“#fff”>Doc.Origen:</font>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid "<font color=\"#fff\">Scheduled Date:</font>"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "<span class=\"text-left\">Description:</span>"
+msgstr "<span class=\"text-left\">Descripción:</span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "<span class=\"text-left\">Due Date:</span>"
+msgstr "<span class=\"text-left\">F.Vencimiento:</span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "<span class=\"text-left\">Invoice Date:</span>"
+msgstr "<span class=\"text-left\">Fecha Emisión:</span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "<span class=\"text-left\">Order Date:</span>"
+msgstr "<span class=\"text-left\">Fecha orden:</span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_deliveryslip_document
+msgid ""
+"<span style=\"background-color:#3498DB;\">Customer Address</span>\n"
+"                            <br/>"
+msgstr ""
+"<span style=“background-color:#3498DB;”>Dirección de cliente</span>\n"
+"                            <br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_deliveryslip_document
+msgid "<span style=\"background-color:#3498DB;\">Delivery Address</span>"
+msgstr "<span style=“background-color:#3498DB;”>Dirección de envío</span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid ""
+"<span style=\"background-color:#893b74; color:#FFF; font:20px lucida-"
+"console,sans-serif !important;\">\n"
+"                                Customer Address\n"
+"                            </span>\n"
+"                            <br/>"
+msgstr ""
+"<span style=“background-color:#893b74; color:#FFF; font:20px lucida-console,"
+"sans-serif !important;”>\n"
+"                                Dirección de Cliente\n"
+"                            </span>\n"
+"                            <br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid ""
+"<span style=\"background-color:#893b74; color:#FFF; font:20px lucida-"
+"console,sans-serif !important;\">\n"
+"                                Delivery Address\n"
+"                            </span>"
+msgstr ""
+"<span style=“background-color:#893b74; color:#FFF; font:20px lucida-console,"
+"sans-serif !important;”>\n"
+"                               Dirección de envío\n"
+"                            </span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "<span>Disc.%</span>"
+msgstr "<span>Dsto.%</span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "<span>It</span>"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+msgid "<span>Life Date</span>"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "<span>Pro-Forma Invoice # </span>"
+msgstr "<span>Factura Proforma # </span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+msgid "<span>Product</span>"
+msgstr "<span>Producto</span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+msgid "<span>Quantity</span>"
+msgstr "<span>Cant.</span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "<span>Report Extra Content</span>"
+msgstr "<span>Informar contenido extra</span>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+msgid "<span>SN/LN</span>"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchasequotation_document
+msgid "<strong style=\"color:gray !important;\">Shipping address:</strong>"
+msgstr "<strong style=“color:gray !important;”>Dirección de envío:</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_standard_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_purchasequotation_document
+msgid "<strong style=\"color:gray !important;\">Vendor address:</strong><br/>"
+msgstr ""
+"<strong style=“color:gray !important;”>Dirección de Proveedor:</strong><br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "<strong> <span>Payment Term :</span></strong>"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+msgid "<strong><font color=\"#FFF\"><span>Note:</span> </font></strong>"
+msgstr "<strong><font color=“#FFF”><span>Nota:</span> </font></strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_standard_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "<strong><span>Note:</span> </strong>"
+msgstr "<strong><span>Nota:</span> </strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.templates_company_details
+msgid "<strong>Bank: </strong>"
+msgstr "<strong>Banco: </strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+msgid "<strong>Date Req.</strong>"
+msgstr "<strong>Fecha Req.</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_deliveryslip_document
+msgid "<strong>Delivered Quantity</strong>"
+msgstr "<strong>Cant.Entregada</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+msgid "<strong>Description</strong>"
+msgstr "<strong>Descripción</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_templates_customer_details
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_templates_customer_shipping_details
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.templates_company_details
+msgid "<strong>Email: </strong>"
+msgstr "<strong>Correo electrónico: </strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "<strong>Fiscal Position Remark:</strong>"
+msgstr "<strong>Posición fiscal:</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "<strong>Invoicing And Shipping Address</strong>"
+msgstr "<strong>Dirección de facturación y envío</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_templates_customer_details
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_templates_customer_shipping_details
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.templates_company_details
+msgid "<strong>Mobile: </strong>"
+msgstr "<strong>Celular: </strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+msgid "<strong>Net Price</strong>"
+msgstr "<strong>Neto</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_deliveryslip_document
+msgid "<strong>Ordered Quantity</strong>"
+msgstr "<strong>Cant.</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_deliveryslip_document
+msgid "<strong>Product</strong>"
+msgstr "<strong>Producto</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+msgid "<strong>Qty</strong>"
+msgstr "<strong>Cast.</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "<strong>Signature</strong>"
+msgstr "<strong>Firma</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.template_total_amount_word
+msgid "<strong>Son:</strong> <br/>"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_layouted
+msgid "<strong>Subtotal: </strong>"
+msgstr "<strong>Total parcial: </strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_exclusive_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_incredible_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+msgid "<strong>Summary: </strong> <br/>"
+msgstr "<strong>Resumen: </strong> <br/>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+msgid "<strong>Taxes</strong>"
+msgstr "<strong>Ipto</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_standard_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "<strong>Total Without Taxes</strong>"
+msgstr "<strong>Valor Venta</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_standard_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "<strong>Total</strong>"
+msgstr "<strong>Total</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+msgid "<strong>Unit Price</strong>"
+msgstr "<strong>P.Unit.</strong>"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__account_template
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.exclusive_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.res_partner_bank_inherit_form_view
+msgid "Address"
+msgstr "Dirección"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.actions.report,name:fxo_bi_professional_reports.report_invoice_template_advanced
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__standard_template__advanced
+msgid "Advanced"
+msgstr "Avanzado"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid ""
+"All items couldn't be shipped, the remaining ones will be shipped as soon "
+"as they become\n"
+"                            available."
+msgstr ""
+"No se pudieron enviar todos los artículos, los restantes se enviarán tan "
+"pronto como se conviertan en\n"
+"                            disponible."
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_payment_move_line
+msgid "Amount"
+msgstr "Importe"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_subtotal_tem
+msgid "Amount Due"
+msgstr "Importe adeudado"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_extra_content__append_extra_content
+msgid "Append Extra Content"
+msgstr "Agregar contenido adicional"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchasequotation_document
+msgid "Approval Date"
+msgstr "Fecha Aprobación"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+msgid "Att.:"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__bank_account_id
+msgid "Bank Account"
+msgstr "Cta. Bancaria"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_res_partner_bank
+msgid "Bank Accounts"
+msgstr "Cuentas bancarias"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.creative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.template_header
+msgid "Bank:"
+msgstr "Banco:"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__report_bank_id
+msgid "Banks"
+msgstr "Bancos"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_setup_bank_manual_config__branch_name
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_partner_bank__branch_name
+msgid "Branch Name"
+msgstr "Sucursal"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.advanced_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.professional_header
+msgid "Cancelled Invoice"
+msgstr "Factura cancelada"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Cancelled Invoice No:"
+msgstr "Nro. De factura cancelada:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.exclusive_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Cancelled Invoice To:"
+msgstr "Factura cancelada a:"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_setup_bank_manual_config__city
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_partner_bank__city
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.res_partner_bank_inherit_form_view
+msgid "City"
+msgstr "Ciudad"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__account_template__classic
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__purchase_template__classic
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__sale_template__classic
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__stock_template__classic
+msgid "Classic"
+msgstr "Clásico"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__account_template__classic_rindesa
+msgid "Classic Rindesa"
+msgstr "Clasico Rindesa"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.actions.act_window,help:fxo_bi_professional_reports.action_report_extracontent
+msgid "Click to create a Report append extra content."
+msgstr "Haga clic para crear un informe anexar contenido adicional."
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_res_company
+msgid "Companies"
+msgstr "Compañias"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_extra_content__company_id
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_model_search_extracontent
+msgid "Company"
+msgstr "Compañía"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__company_address_color
+msgid "Company Address Color"
+msgstr "Color de dirección de la empresa"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__company_color
+msgid "Company Name Color"
+msgstr "Nombre de la empresa Color"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_deliveryslip_document
+msgid "Contact Address"
+msgstr "Dirección de contacto"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.actions.report,name:fxo_bi_professional_reports.report_invoice_template_contemporary
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__standard_template__custom
+msgid "Contemporary"
+msgstr "Contemporáneo"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_setup_bank_manual_config__country_id
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_partner_bank__country_id
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.res_partner_bank_inherit_form_view
+msgid "Country"
+msgstr "País"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_extra_content__create_uid
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fonts__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_extra_content__create_date
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fonts__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.actions.report,name:fxo_bi_professional_reports.report_invoice_template_creative
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__standard_template__creative
+msgid "Creative"
+msgstr "Creativo"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_subtotal_tem
+msgid "Credit Amount"
+msgstr "Monto de crédito"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_deliveryslip_document
+msgid "Customer Address"
+msgstr "Dirección de Cliente"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__customer_address_color
+msgid "Customer Address Color"
+msgstr "Color dirección de cliente"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__customer_color
+msgid "Customer Name Color"
+msgstr "Color razón social"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_payment_move_line
+msgid "Date"
+msgstr "Fecha"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_standard_report_purchaseorder_document
+msgid "Date Req."
+msgstr "Fecha Req."
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "Default Report Settings"
+msgstr "Configuración de informe predeterminada"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "Default Template Settings"
+msgstr "Configuración de plantilla predeterminada"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_deliveryslip_document
+msgid "Delevery #"
+msgstr "#Guía"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid "Delivered Quantity"
+msgstr "Cant."
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_standard_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_layouted
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_order_lines
+msgid "Description"
+msgstr "Descripción"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_templates_customer_shipping_details
+msgid "Dirección de Envío:"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_templates_customer_details
+msgid "Dirección de facturación y envío:"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_templates_customer_details
+msgid "Dirección de facturación:"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_layouted
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_order_lines
+msgid "Disc.(%)"
+msgstr "Desc.(%)"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__add_amount_in_words
+msgid "Display Amount In Word"
+msgstr "Mostrar monto en letras"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__is_show_bank_details
+msgid "Display Bank Details"
+msgstr "Detalle de banco"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__is_company_bold
+msgid "Display Company Name in Bold"
+msgstr "Mostrar el nombre de la empresa en negrita"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__is_customer_bold
+msgid "Display Customer Name in Bold"
+msgstr "Mostrar el nombre del cliente en negrita"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__is_show_invoice_notes
+msgid "Display Invoice Notes"
+msgstr "Mostrar notas de factura"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_extra_content__display_name
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fonts__display_name
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fxo_bi_professional_reports_report_picking_guia__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__is_show_payment_description
+msgid "Display Payment Description"
+msgstr ""
+"\n"
+"Mostrar descripción de pago"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__is_show_payment_notes
+msgid "Display Payment Term"
+msgstr "Mostrar plazo de pago"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__is_description
+msgid "Display Product Description"
+msgstr "Descripción Producto"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__add_product_image
+msgid "Display Product Image"
+msgstr "Imagen"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__is_show_barcode
+msgid "Display Report Barcode"
+msgstr "Cod.Barra"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__report_footer_selection
+msgid "Display Report Footer"
+msgstr "Pie de pag."
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__is_show_signature
+msgid "Display Signature"
+msgstr "Firma"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__watermark
+msgid "Display Watermark"
+msgstr "Mostrar marca de agua"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__is_show_watermark
+msgid "Display Watermark?"
+msgstr "¿Mostrar marca de agua?"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.advanced_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.professional_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Draft Invoice"
+msgstr "Factura borrador"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.exclusive_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Draft Invoice To:"
+msgstr "Borrador de factura a:"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.actions.report,name:fxo_bi_professional_reports.report_invoice_template_elegant
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__standard_template__elegant
+msgid "Elegant"
+msgstr "Elegante"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.creative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.template_footer
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.template_header
+msgid "Email:"
+msgstr "Correo electrónico:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "Estimado Cliente: <br/>Att.:"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.actions.report,name:fxo_bi_professional_reports.report_invoice_template_exclusive
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__standard_template__exclusive
+msgid "Exclusive"
+msgstr "Exclusivo"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_purchasequotation_document
+msgid "Expected Date"
+msgstr "Fecha esperada"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_report_extra_content
+msgid "Extra Content"
+msgstr "Contenido extra"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__account_template__fency
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__purchase_template__fency
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__sale_template__fency
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__stock_template__fency
+msgid "Fency"
+msgstr "Lujoso"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_extra_content__file_name
+msgid "File name"
+msgstr "Nombre de archivo"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fonts__name
+msgid "Font Name"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fonts__family
+msgid "Font family"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_report_fonts
+msgid "Fonts available"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__picking_guide__modelo3
+msgid "Formato RH Medical"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__picking_guide__modelo1
+msgid "Formato1"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__picking_guide__modelo2
+msgid "Formato2"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__text_color
+msgid "General Text Color"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_model_search_extracontent
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.actions.report,name:fxo_bi_professional_reports.action_report_picking_guia_qweb
+msgid "Guia Impresa"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__picking_guide
+msgid "Guia Remision"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_extra_content__id
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fonts__id
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fxo_bi_professional_reports_report_picking_guia__id
+msgid "ID"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_setup_bank_manual_config__ifsc
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_partner_bank__ifsc
+msgid "IFSC"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_layouted
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_order_lines
+msgid "Image"
+msgstr "Imagen"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_move__amount_to_text
+msgid "In Words"
+msgstr "En letras"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.actions.report,name:fxo_bi_professional_reports.report_invoice_template_incredible
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__standard_template__incredible
+msgid "Incredible"
+msgstr "Increíble"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.actions.report,name:fxo_bi_professional_reports.report_invoice_template_innovative
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__standard_template__innovative
+msgid "Innovative"
+msgstr "Innovador"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Invoice No:"
+msgstr "Factura No:"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_move__report_template_id
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__report_template_id
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_partner__report_template_id
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_users__report_template_id
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_partner_invoice_template
+msgid "Invoice Template"
+msgstr "Plantilla de factura"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_move__report_template_id1
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__report_template_id1
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_partner__report_template_id1
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_users__report_template_id1
+msgid "Invoice Template1"
+msgstr "Plantilla Factura"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.exclusive_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Invoice To:"
+msgstr "Factura a:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+msgid "Invoicing and shipping address"
+msgstr "Dirección de facturación y envío"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_account_move
+msgid "Journal Entries"
+msgstr "Asientos contables"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_extra_content____last_update
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fonts____last_update
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fxo_bi_professional_reports_report_picking_guia____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_extra_content__write_uid
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fonts__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_extra_content__write_date
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fonts__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__watermark__logo
+msgid "Logo"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid "Lot/Serial Number"
+msgstr "Lot/Serie"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_stock_picking__dia
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_stock_picking__nombre_mes
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_stock_picking__years
+msgid "Mes"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_payment_move_line
+msgid "Method"
+msgstr "Método"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.creative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.template_header
+msgid "Mobile:"
+msgstr "Móvil:"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fonts__mode
+msgid "Mode"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_model_search_extracontent
+msgid "Model"
+msgstr "Modelo"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.constraint,message:fxo_bi_professional_reports.constraint_report_extra_content_unique_model_company
+msgid "Model and Company must be unique."
+msgstr "Modelo y empresa deben ser únicas"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__account_template__modern
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__purchase_template__modern
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__sale_template__modern
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__stock_template__modern
+msgid "Modern"
+msgstr "Moderno"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__report_footer_selection__multi_columns
+msgid "Multi Columns Footer"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_standard_report_purchaseorder_document
+msgid "Net Price"
+msgstr "Neto"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__account_template__odoo_person_pie
+msgid "Odoo Hallpa Pie de Pagina"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__account_template__odoo_standard
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__purchase_template__odoo_standard
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__sale_template__odoo_standard
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__stock_template__odoo_standard
+msgid "Odoo Standard"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "Order #"
+msgstr "#Pedido"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchasequotation_document
+msgid "Order Date"
+msgstr "Fecha de Pedido"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "Order Date:"
+msgstr "Fecha de Pedido"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid ""
+"Ordered\n"
+"                                    Quantity"
+msgstr ""
+"Ordenado\n"
+"                                    Cant."
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid "Ordered Quantity"
+msgstr "Cast.Ordenada"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_deliveryslip_document
+msgid "Origin"
+msgstr "Origen"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_exclusive_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_incredible_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "PO:"
+msgstr "CORREOS:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.advanced_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.professional_header
+msgid "PRO-FORMA"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "PRO-FORMA No:"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.exclusive_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "PRO-FORMA To:"
+msgstr "PRO-FORMA Para:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.template_footer
+msgid ""
+"Page: \n"
+"                    <span class=\"page\"/>\n"
+"                    / \n"
+"                    <span class=\"topage\"/>"
+msgstr ""
+"Pag.: \n"
+"                    <span class=“page”/>\n"
+"                    / \n"
+"                    <span class=“topage”/>"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_fonts__path
+msgid "Path"
+msgstr "Ruta"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_payment_move_line
+msgid "Payment Status: Fully Paid"
+msgstr "Estado de pago: totalmente pagado"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_payment_move_line
+msgid "Payment Status: Partial Paid"
+msgstr "Estado de pago: parcial pagado"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_exclusive_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_incredible_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Payment Status: Pending"
+msgstr "Estado de pago: Pendiente"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "Payment Term"
+msgstr "Cond.Pago"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_move__paypal_chk
+msgid "Paypal"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_move__paypal_id
+msgid "Paypal Id"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.template_footer
+msgid "Phone:"
+msgstr "Teléfono:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "Plantilla Compras"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "Plantilla Guia Remision"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "Plantilla Inventario"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "Plantilla Ventas"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__is_show_watermark
+msgid "Please check if want to display watermark"
+msgstr "Comprueba si quieres mostrar la marca de agua."
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__is_show_bank_details
+msgid "Please check it if you want to show Bank details in pdf."
+msgstr "Márquelo si desea mostrar los datos bancarios en pdf."
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__is_company_bold
+msgid "Please check it if you want to show Company Name in Bold."
+msgstr ""
+"Marque esta casilla si desea mostrar el nombre de la empresa en negrita."
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__is_customer_bold
+msgid "Please check it if you want to show Customer Name in Bold."
+msgstr "Márquelo si desea mostrar el nombre del cliente en negrita."
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__is_show_invoice_notes
+msgid "Please check it if you want to show Invoice Notes in pdf."
+msgstr "Márquelo si desea mostrar las notas de la factura en pdf."
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__is_show_payment_description
+msgid "Please check it if you want to show Payment Description in pdf."
+msgstr "Márquelo si desea mostrar la descripción del pago en pdf."
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__is_show_payment_notes
+msgid "Please check it if you want to show Payment Term in pdf."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__add_product_image
+msgid "Please check it if you want to show Product Image in pdf."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__is_description
+msgid "Please check it if you want to show product description in report."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__is_show_barcode
+msgid "Please check it if you want to show report barcode in pdf."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__is_show_signature
+msgid "Please check it if you want to show signature in PDF."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid ""
+"Please click here if you want to get all the fonts of your system. After "
+"click please reload the page."
+msgstr ""
+"Haga clic aquí si desea obtener todas las fuentes de su sistema. Después de "
+"hacer clic, vuelve a cargar la página."
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__font_size
+msgid "Please define report font size"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__watermark_text
+msgid "Please enter watermark text"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: code:addons/fxo_bi_professional_reports/models/res_company.py:0
+#, python-format
+msgid ""
+"Please input font size is greater than 10 and lower than 25, otherwise your "
+"report will very massive."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: code:addons/fxo_bi_professional_reports/models/res_company.py:0
+#, python-format
+msgid ""
+"Please input watermark text font size is greater than 0 and lower than 10, "
+"otherwise your report will very massive."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_account_move__report_template_id
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_account_move__report_template_id1
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__report_template_id
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__report_template_id1
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_partner__report_template_id
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_partner__report_template_id1
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_users__report_template_id
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_users__report_template_id1
+msgid "Please select Template report for Invoice"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__report_bank_id
+msgid "Please select bank account which you want to show Bank details in pdf."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__standard_template
+msgid ""
+"Please select your choice Standard Color Configuration for all Template."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__logo_footer
+msgid "Please set Footer Logo for Report."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__company_address_color
+msgid "Please set Hex color for Company Address."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__company_color
+msgid "Please set Hex color for Company Name."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__customer_address_color
+msgid "Please set Hex color for Customer Address."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__customer_color
+msgid "Please set Hex color for Customer Name."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__text_color
+msgid "Please set Hex color for General Text."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__even_party_color
+msgid "Please set Hex color for Table Even Parity."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__odd_party_color
+msgid "Please set Hex color for Table Odd Parity."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__theme_text_color
+msgid "Please set Hex color for Template Text."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__theme_color
+msgid "Please set Hex color for Template."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__watermark_text_color
+msgid "Please set Hex color for Watermark text."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__watermark_logo
+msgid "Please set Watermark Logo for Report."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__watermark_text_font_size
+msgid "Please set watermark text font size"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__add_amount_in_words
+msgid "Please unchecked if you want to hide amount in words"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_report_extra_content__append_extra_content
+msgid ""
+"Please upload file (You can upload file like jpg, png, pdf, docx, pptx, "
+"xlsx, doc, ppt, xls, txt)"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: code:addons/fxo_bi_professional_reports/models/report_extra_content.py:0
+#, python-format
+msgid "Please upload pdf file only"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__signature
+msgid "Please upload signature image to display in report."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_layouted
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_order_lines
+msgid "Price"
+msgstr "Precio"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid "Product"
+msgstr "Producto"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.actions.report,name:fxo_bi_professional_reports.report_invoice_template_professional
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__standard_template__professional
+msgid "Professional"
+msgstr "Profesional"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__purchase_template
+msgid "Purchase"
+msgstr "Compra"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_purchase_order
+msgid "Purchase Order"
+msgstr "Orden de Compra"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+msgid "Purchase Order #"
+msgstr "# Orden de Compra"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+msgid "Purchase Order:"
+msgstr "Orden de Compra"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_standard_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_purchasequotation_document
+msgid "Qty"
+msgstr "Cant."
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_layouted
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_order_lines
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "Quotation #"
+msgstr "# Cotización"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+msgid "Quotation Date"
+msgstr "Fecha de Cotización"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.advanced_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.exclusive_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.incredible_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.professional_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+msgid "RUC:"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_payment_move_line
+msgid "Ref."
+msgstr "Ref."
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchasequotation_document
+msgid "Reference/Description"
+msgstr "Referencia/Descripción"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.advanced_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.professional_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+msgid "Refund"
+msgstr "Reembolso"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Refund No:"
+msgstr "Reembolso No:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.exclusive_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Refund To:"
+msgstr "Reembolso a:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_model_search_extracontent
+msgid "Report"
+msgstr "Informe"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_ir_actions_report
+msgid "Report Action"
+msgstr "Acción de informe"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_partner_invoice_template
+msgid "Report Configuration"
+msgstr "Configuración de informes"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.actions.act_window,name:fxo_bi_professional_reports.action_report_extracontent
+msgid "Report Extra Content"
+msgstr "Informar contenido adicional"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__font_id
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "Report Font"
+msgstr "Fuente de informe"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__font_size
+msgid "Report Font Size(px)"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "Report Footer"
+msgstr "Pie de página del informe"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__logo_footer
+msgid "Report Footer Logo"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__invoice_logo
+msgid "Report Logo"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_report_extra_content__model_id
+msgid "Report Type"
+msgstr "Tipo de informe"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__watermark_logo
+msgid "Report Watermark Logo"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_exclusive_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_incredible_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+msgid "Representacion impresa de:"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchasequotation_document
+msgid "Request For Quatation #"
+msgstr "# Solicitud de Presupuesto"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_standard_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_purchasequotation_document
+msgid "Request for Quotation"
+msgstr "Solicitud de Presupuesto"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+msgid "Request for Quotation #"
+msgstr "# Solicitud de Presupuesto"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_advanced_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_exclusive_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_incredible_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "SO:"
+msgstr "# Pedido:"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__sale_template
+msgid "Sale"
+msgstr "Venta"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_sale_order
+msgid "Sales Order"
+msgstr "# Pedido"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "SalesPerson"
+msgstr "Vendedor"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchasequotation_document
+msgid "Scheduled Date"
+msgstr "Fecha programada"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__report_footer_selection
+msgid "Select footer style if you want to show in report"
+msgstr ""
+"Seleccione el estilo de pie de página si desea mostrarlo en el informe"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_stock_move__report_series
+msgid "Series"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__font_id
+msgid ""
+"Set the font into the report header, it will be used as default font in the "
+"clever reports of the user company"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchasequotation_document
+msgid "Shipping Address"
+msgstr "Dirección de Envío"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__signature
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "Signature"
+msgstr "Firma"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_layouted
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_order_lines
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_payment_move_line
+msgid "Sr."
+msgstr "It"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__report_footer_selection__standard
+msgid "Standard"
+msgstr "Estándar"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__standard_template
+msgid "Standard Template Configuration"
+msgstr "Configuración de plantilla estándar"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_setup_bank_manual_config__state_id
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_partner_bank__state_id
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.res_partner_bank_inherit_form_view
+msgid "State"
+msgstr "Estado"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__watermark__status
+msgid "Status"
+msgstr "Estatus"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__stock_template
+msgid "Stock"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de Stock"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_setup_bank_manual_config__street
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_partner_bank__street
+msgid "Street"
+msgstr "Dirección"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.res_partner_bank_inherit_form_view
+msgid "Street 2..."
+msgstr "Dirección 2"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.res_partner_bank_inherit_form_view
+msgid "Street..."
+msgstr "Dirección"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_setup_bank_manual_config__street2
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_partner_bank__street2
+msgid "Street2"
+msgstr "Dirección 2"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_subtotal_tem
+msgid "SubTotal"
+msgstr "Total parcial"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_setup_bank_manual_config__swift_code
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_partner_bank__swift_code
+msgid "Swift Code"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__even_party_color
+msgid "Table Even Parity Color"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__odd_party_color
+msgid "Table Odd Parity Color"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_standard_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_layouted
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_order_lines
+msgid "Taxes"
+msgstr "Imp.18%"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__theme_color
+msgid "Template Base Color"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "Template Configuration"
+msgstr "Configuración de plantilla"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__theme_text_color
+msgid "Template Text Color"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields.selection,name:fxo_bi_professional_reports.selection__res_company__watermark__text
+msgid "Text"
+msgstr "Testo"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_account_move__amount_to_text
+msgid "The amount in words"
+msgstr "Monto en letras"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__invoice_logo
+msgid "This field holds the image used as Logo for Invoice template report"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_deliveryslip_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_deliveryslip_document
+msgid "This shipment is a backorder of"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.invoice_subtotal_tem
+msgid "Total"
+msgstr "Total"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "Total Price"
+msgstr "Precio Total"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "Total Value"
+msgstr "Total"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: fxo_bi_professional_reports
+#: code:addons/fxo_bi_professional_reports/models/account_move.py:0
+#, python-format
+msgid "Uncategorized"
+msgstr "Sin Categorizar"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_order_lines
+msgid "Unid. Med."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_standard_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_layouted
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_order_lines
+msgid "Unit Price"
+msgstr "Precio Unit."
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.fency_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "Unit Value"
+msgstr "P.Unit."
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_stock_picking__type_print
+msgid "Usar Lineas para la guia"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.modern_report_purchasequotation_document
+msgid "Vendor"
+msgstr "Proveedor"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.advanced_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.professional_header
+msgid "Vendor Bill"
+msgstr "Factura de proveedor"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Vendor Bill No:"
+msgstr "Factura del proveedor no:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.exclusive_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Vendor Bill To:"
+msgstr "Factura del proveedor a:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.advanced_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.professional_header
+msgid "Vendor Refund"
+msgstr "Reembolso del vendedor"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.innovative_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_creative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_elegant_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_professional_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Vendor Refund No:"
+msgstr "Reembolso del proveedor no:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.exclusive_header
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_innovative_main
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.report_invoice_template_main
+msgid "Vendor Refund To:"
+msgstr "Reembolso del vendedor a:"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "Watermark"
+msgstr "Filigrana"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__watermark_text
+msgid "Watermark Text"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__watermark_text_color
+msgid "Watermark Text Color"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_company__watermark_text_font_size
+msgid "Watermark Text Font Size(em)"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,help:fxo_bi_professional_reports.field_res_company__watermark
+msgid "We can choose watermark for pdf either logo or text or status."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.template_footer
+msgid "Web:"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.actions.act_window,help:fxo_bi_professional_reports.action_report_extracontent
+msgid ""
+"You can append extra content while print report based on model\n"
+"                for eg. if you want to add brochure, while print Quotation."
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.constraint,message:fxo_bi_professional_reports.constraint_report_fonts_name_font_uniq
+msgid "You can not register two fonts with the same name"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.classic_report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.odoo_std_report_saleorder_document
+msgid "Your Reference:"
+msgstr "Referencia"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.res_partner_bank_inherit_form_view
+msgid "ZIP"
+msgstr "Cod.Postal"
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_account_setup_bank_manual_config__zip
+#: model:ir.model.fields,field_description:fxo_bi_professional_reports.field_res_partner_bank__zip
+msgid "Zip"
+msgstr "Cod.Postal"
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "like #2763a1"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "like #2763c1"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "like #2b4e99"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "like #5bb3d2"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "like #5cc2d2"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "like #aea8a8"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "like #aea8aa"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "like #b30000"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "like #b30010"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model_terms:ir.ui.view,arch_db:fxo_bi_professional_reports.view_report_company_invoice_template
+msgid "like #d4d2d2"
+msgstr ""
+
+#. module: fxo_bi_professional_reports
+#: model:ir.model,name:fxo_bi_professional_reports.model_report_fxo_bi_professional_reports_report_picking_guia
+msgid "report.fxo_bi_professional_reports.report_picking_guia"
+msgstr ""

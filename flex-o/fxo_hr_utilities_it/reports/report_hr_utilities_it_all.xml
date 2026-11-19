@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+            id="report_hr_utilities_it_all_id"
+            model="hr.utilities.print.wizard"
+            string="Liquidación de Utilidades"
+            report_type="qweb-pdf"
+            name="fxo_hr_utilities_it.report_hr_utilities_it_all"
+            file="fxo_hr_utilities_it.report_hr_utilities_it_all"
+            attachment_use="False"
+            paperformat="paperformat_hr_utilities_it_form"
+    />
+
+    <template id="report_hr_utilities_it_all">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+<!--                <t t-call="web.external_layout">-->
+                    <t t-set="company" t-value="o.main_id.company_id"></t>
+                    <t t-call="fxo_hr_utilities_it.template_hr_utilities_it_all"/>
+<!--                </t>-->
+            </t>--
+        </t>
+    </template>
+
+    <template id="template_hr_utilities_it_all">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+            <t t-if="not company">
+                <!-- Multicompany -->
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>
+            <div class="header">
+                <div class="row mt32 mb32">
+                    <div class="col-6">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 120px;" />
+                    </div>
+                    <!--<div class="col-6 text-right" style="font:12px lucida-console,sans-serif !important;"> -->
+                    <div class="col-6 text-right" style="font:12px lucida-console,sans-serif !important;">
+                        <span t-field="company.partner_id" />
+                        <br/>
+                        <span t-field="company.partner_id.street" />
+                        <br/>
+                        <span t-field="company.partner_id.street2" /> -
+                        <span t-field="company.partner_id.city" /> -
+                        <span t-field="company.partner_id.country_id" /> -
+                        <br/>
+                        <span t-field="company.partner_id.vat" />
+                    </div>
+                </div>
+            </div>
+      <!--<t t-call="web.external_layout">-->
+            <div class="page">
+            <div class="col-12" style="text-align:center;">
+                <h4>HOJA DE LIQUIDACION DE LA DISTRIBUCION DE LAS UTILIDADES</h4>
+            </div>
+            <div class="col-12 text-justify">
+                <p>
+                    <t t-esc="o.main_id.company_id.name"/>, RUC Nro.<t t-esc="o.main_id.company_id.vat"/>, domiciliado en
+                    <t t-esc="o.main_id.company_id.street"/>
+                    debidamente representado por
+                    <t t-esc="legal_representative"/>, en su calidad de empleador y
+                    en cumplimiento de lo dispuesto por el D. Leg. Nro 892 y el D.S.Nro 099-98-TR, deja constancia de la
+                    determinación,
+                    distribución y pago de la participación en las utilidades del trabajador:
+                    <t t-esc="o.employee"/>
+                    correspondiente al ejercicio
+                    <t t-esc="o.main_id.fiscal_year_id.name"/>.
+                </p>
+            </div>
+            <div class="col-12">
+                <p>
+                    <h4>CALCULO DEL MONTO DE LA PARTICIPACION EN LAS UTILIDADES</h4>
+                </p>
+                <table width="100%">
+                    <tr>
+                        <td colspan="3" width="100%">
+                            1.-Utilidades por distribuir
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            - Renta anual de la empresa antes de Impuestos
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            S./
+                        </td>
+
+                        <td class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+			    <span t-esc="o.main_id.annual_rent" t-options='{"widget": "float", "precision": 2}'/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            - Porcentaje a distribuir
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            %
+                        </td>
+                        <td class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+                            <span t-esc="o.main_id.percentage" t-options='{"widget": "float", "precision": 2}'/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            - Monto a distribuir
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            S./
+                        </td>
+                        <td width="15%" class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+                            <span t-esc="o.main_id.distribution" t-options='{"widget": "float", "precision": 2}'/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="3" width="100%">
+                            2.-Cálculo de la participación
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" width="100%">
+                            2.1.1. Según los días laborados
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            -Número total de días laborados durante el ejercicio
+                            <t t-esc="o.main_id.fiscal_year_id.name"/>
+                            por todos los trabajadores de la empresa con derecho a percibir utilidades
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            
+                        </td>
+                        <td width="15%" class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+			    <!--<span t-esc="'%.2f'% o.main_id.sum_number_of_days_year"/>-->
+                            <span t-esc="o.main_id.sum_number_of_days_year" t-options='{"widget": "float", "precision": 0}'/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            -Número de días laborados durante el ejercicio
+                            <t t-esc="o.main_id.fiscal_year_id.name"/>
+                            por el
+                            trabajador
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            S./
+                        </td>
+                        <td width="15%" class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+                            <span t-esc="o.number_of_days" t-options='{"widget": "float", "precision": 0}'/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            <b>-Participación del trabajador según los días laborados</b>
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            <b>S./</b>
+                        </td>
+                        <td width="15%" class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+                            <b>
+                                <span t-esc="o.for_number_of_days" t-options='{"widget": "float", "precision": 2}'/>
+                            </b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" width="100%">
+                            2.1.2. Según las remuneraciones percibidas
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            -Remuneraciones computable total pagada durante el ejercicio
+                            a todos los trabajadores de la empresa
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            S./
+                        </td>
+                        <td width="15%" class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+                            <span t-esc="o.main_id.sum_salary_year" t-options='{"widget": "float", "precision": 2}'/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            -Remuneraciones computable percibidas durante el ejercicio
+                            <t t-esc="o.main_id.fiscal_year_id.name"/>
+                            por el trabajador
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            S./
+                        </td>
+                        <td width="15%" class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+                            <span t-esc="o.salary" t-options='{"widget": "float", "precision": 2}'/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            <b>-Participación del trabajador según las remuneraciones percibidas</b>
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            <b>S./</b>
+                        </td>
+                        <td width="15%" class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+                            <b>
+                                <span t-esc="o.for_salary" t-options='{"widget": "float", "precision": 2}'/>
+                            </b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" width="100%">
+                            3.-Monto de la participación a percibir por el trabajador
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            -Participación según los días laborados
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            S./
+                        </td>
+                        <td width="15%" class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+                            <span t-esc="o.for_number_of_days" t-options='{"widget": "float", "precision": 2}'/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            -Participación según las remuneraciones percibidas
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            S./
+                        </td>
+                        <td width="15%" class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+                            <span t-esc="o.for_salary" t-options='{"widget": "float", "precision": 2}'/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70%">
+                            <b>-Total a Pagar</b>
+                        </td>
+                        <td width="15%" style="text-align:center;">
+                            <b>S./</b>
+                        </td>
+                        <td width="15%" class="text-right" t-att-style="'padding:5px 8px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; '">
+                            <b>
+                                <span t-esc="o.total_utilities" t-options='{"widget": "float", "precision": 2}'/>
+                            </b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" width="100%">
+                            Lima, <t t-esc="date_current"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="45%" style="text-align:center">
+			    <!--
+                            <t t-if="o.company_id.is_show_bank_details">
+                                <strong t-attf-style="color: #{o.company_id and o.company_id.company_address_color or '#ffffff'};">Bank: </strong>
+                                <span t-attf-style="color: #{o.company_id and o.company_id.company_address_color or '#ffffff'};" t-esc="o.company_id.report_bank_id.acc_number"/>
+                            </t> -->
+                            <p>___________________________</p>
+                            <p>Empleador</p>
+                        </td>
+                        <td width="45%" style="text-align:center">
+                            <p>___________________________</p>
+                            <p>Trabajador</p>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+      <!--</t>-->
+
+    </template>
+
+</odoo>

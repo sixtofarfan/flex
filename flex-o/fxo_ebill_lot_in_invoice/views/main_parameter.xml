@@ -1,0 +1,15 @@
+<odoo>
+    <record id="main_parameter_form_inherit_subs" model="ir.ui.view">
+        <field name="name">main.parameter.form.inherit.subs</field>
+        <field name="model">main.parameter</field>
+        <field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+        <field name="arch" type="xml">
+            <field name="comment_add_check" position="after">
+                <field name="including_lots"/>
+                <field name="including_lots_make"/>
+                <field name="including_lots_in_invoice"/>
+                <field name="including_address_in_invoice"/>
+            </field>
+        </field>
+    </record>
+</odoo>

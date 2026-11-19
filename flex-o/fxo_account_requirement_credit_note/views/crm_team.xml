@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="crm_team_inherit_credit_note" model="ir.ui.view">
+		<field name="name">crm.team.inherit.credit_note</field>
+		<field name="model">crm.team</field>
+		<field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page name="credit_note" string="Confirmacion Solicitud de N.C.">
+					<field name="approval_credit_note_id">
+						<tree>
+							<field name="name"/>
+						</tree>
+					</field>
+				</page>
+			</xpath>
+		</field>
+	</record>
+</odoo>

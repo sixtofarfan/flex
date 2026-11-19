@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_mail_mass_mailing_contact_form">
+        <field name="name">mailing.contact.form.partner</field>
+        <field name="model">mailing.contact</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_contact_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="partner_id"/>
+                <field name="phone_partner"/>
+                <field name="mobile_partner"/>
+                <field name="category_id"/>
+                <field name="state_partner"/>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_mail_mass_mailing_contact_search">
+        <field name="name">Add partner search field and group by</field>
+        <field name="model">mailing.contact</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_contact_search"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="partner_id"/>
+                <field name="category_id"/>
+                <field name="state_partner"/>
+            </field>
+            <filter name="group_create_date" position="after">
+                <filter string="Partner"
+                        name="group_partner_inherit"
+                        context="{'group_by': 'partner_id'}"/>
+                <filter string="Categoría"
+                        name="group_category_inherit"
+                        context="{'group_by': 'category_id'}"/>
+                <filter string="Estado"
+                        name="group_status_inherit"
+                        context="{'group_by': 'state_partner'}"/>
+            </filter>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_mail_mass_mailing_contact_tree">
+        <field name="name">mailing.contact.tree.partner</field>
+        <field name="model">mailing.contact</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_contact_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="partner_id"/>
+                <field name="phone_partner"/>
+                <field name="mobile_partner"/>
+                <field name="category_id"/>
+                <field name="state_partner"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

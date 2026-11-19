@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Secuencia de diario de compensación -->
+        <record id="seq_voucher_compensation_sequence" model="ir.sequence">
+            <field name="name">Voucher Compensation Sequence</field>
+            <field name="implementation">no_gap</field>
+            <field name="code">voucher.compensation</field>
+            <field name="prefix">VC-</field>
+            <field name="padding">7</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

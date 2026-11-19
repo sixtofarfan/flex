@@ -1,0 +1,6 @@
+<odoo>
+    <data>
+        <menuitem id="menu_params" name="Cash Flow Feasibility Parameters" parent="sale.menu_sale_config" action="action_window_params" sequence="31" groups="fxo_feasibility.group_factibility_user"/>
+        <menuitem id="sale_order_line_factibility_menu" name="Factibility" parent="sale.sale_order_menu" action="action_sale_order_line_factibility" sequence="20"/>
+    </data>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_table_25_tree" model="ir.ui.view">
+            <field name="name">table.25.tree</field>
+            <field name="model">table.25</field>
+            <field name="arch" type="xml">
+			    <tree>
+                    <field name="code"/>
+                    <field name="description"/>
+			    </tree>
+            </field>
+        </record>
+
+        <record id="view_table_25_form" model="ir.ui.view">
+            <field name="name">table.25.form</field>
+            <field name="model">table.25</field>
+            <field name="arch" type="xml">
+			    <form string="SUNAT Table 25">
+                    <field name="code"/>
+                    <field name="description"/>
+			    </form>
+            </field>
+        </record>
+    </data>
+</odoo>

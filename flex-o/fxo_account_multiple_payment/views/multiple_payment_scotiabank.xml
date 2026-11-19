@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_multiple_payment_scotiabank_form" model="ir.ui.view">
+		<field name="name">multiple.payment.scotiabank.form</field>
+		<field name="model">multiple.payment.scotiabank</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="get_moves" string="Obtener Facturas" context="{'bank_type': 'scotiabank'}" type="object" class="oe_highlight" states="draft"/>
+					<button name="turn_draft" string="Volver a Borrador" type="object" class="oe_highlight" states="txt"/>
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<group>
+						<field name="charge_currency_id" required="1"/>
+					</group>
+					<field name="line_ids">
+						<tree editable="bottom" create="0">
+							<field name="move_id"/>
+							<field name="partner_doc_number"/>
+							<field name="beneficiary_name"/>
+							<field name="email"/>
+							<field name="doc_number"/>
+							<field name="amount"/>
+							<field name="payment_type"/>
+							<field name="payment_acc_number"/>
+							<field name="payment_inter_acc_number"/>
+						</tree>
+					</field>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="view_multiple_payment_scotiabank_tree" model="ir.ui.view">
+		<field name="name">multiple.payment.scotiabank.tree</field>
+		<field name="model">multiple.payment.scotiabank</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="id"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+	<record id="action_multiple_payment_scotiabank" model="ir.actions.act_window">
+		<field name="name">Pagos Masivos a Proveedores Scotiabank</field>
+		<field name="res_model">multiple.payment.scotiabank</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+		  <p class="o_view_nocontent_smiling_face">
+			Crea tu primera tabla de Pagos Masivos Scotiabank aqui
+		  </p>
+		</field>
+	</record>
+	<record id="get_scotiabank_txt" model="ir.actions.server">
+		<field name="name">Generar txt</field>
+		<field name="model_id" ref="fxo_account_multiple_payment.model_multiple_payment_scotiabank"/>
+		<field name="binding_model_id" ref="fxo_account_multiple_payment.model_multiple_payment_scotiabank"/>
+		<field name="state">code</field>
+		<field name="code">action = records.get_scotiabank_txt()</field>
+	</record>
+</odoo>

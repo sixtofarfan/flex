@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+        <!-- Add you code here -->
+        <!-- sale.order inherit tree view -->
+        <record id="view_quotation_tree" model="ir.ui.view">
+            <field name="name">sale.order.inherit.view.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                 <field name="name" position="after">
+                    <field name="type_id" optional="show" />
+                    <field name="internal_ref" optional="show"/>
+                    <field name="internal_ref_child" optional="show"/>
+                    <field name="date_verify"/>
+				</field>
+            </field>
+        </record>
+        <!-- sale.order inherit search view -->
+        <record id="view_id" model="ir.ui.view">
+            <field name="name">sale.order.inherit.view.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="user_id" position="after">
+                    <field name="type_id" optional="show" />
+                    <field name="internal_ref" optional="show"/>
+                    <field name="internal_ref_child" optional="show"/>
+				</field>
+            </field>
+        </record>
+    </data>
+</odoo>

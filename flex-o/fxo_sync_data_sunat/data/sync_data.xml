@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="data_sync_in" model="ir.sequence">
+            <field name="name">Data Sync In</field>
+            <field name="code">sync.data.in</field>
+            <field name="prefix">DSI-%(year)s%(month)s%(day)s-</field>
+            <field name="implementation">no_gap</field>
+            <field name="padding">5</field>
+        </record>
+        
+        <record id="sync_auto_send" model="ir.cron">
+            <field name="name">Obtención automática de datos de facturas para Facturación Electrónica</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="priority">2</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="fxo_sync_data_sunat.model_sync_data_in" />
+            <field name="code">model.select_automatic_in()</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="sync_auto_send_act" model="ir.cron">
+            <field name="name">Envio automático de datos para actualizar facturas para Facturación Electrónica</field>
+            <field name="interval_number">5</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="state">code</field>
+            <field name="priority">2</field>
+            <field name="model_id" ref="fxo_sync_data_sunat.model_sync_data_in" />
+            <field name="code">model.select_automatic_out()</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="sync_auto_send_annul" model="ir.cron">
+            <field name="name">Obtención automático de datos de facturas anuladas</field>
+            <field name="interval_number">5</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="state">code</field>
+            <field name="priority">2</field>
+            <field name="model_id" ref="fxo_sync_data_sunat.model_sync_data_in" />
+            <field name="code">model.select_automatic_annul()</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="sync_auto_send_invoice" model="ir.cron">
+            <field name="name">Enviar Facturas Sunat</field>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="state">code</field>
+            <field name="priority">2</field>
+            <field name="model_id" ref="fxo_sync_data_sunat.model_sync_data_in" />
+            <field name="code">model.sen_invoice_sunat()</field>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</openerp>

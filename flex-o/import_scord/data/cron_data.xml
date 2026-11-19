@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="model_import_account_move_cron" model="ir.cron">
+        <field name="name">Migracion Facturas Scord-Odoo</field>
+        <field name="model_id" ref="model_model_import"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="state">code</field>
+        <field name="code">model._cron_import_invoice()</field>
+    </record>
+    <record id="model_import_note_credit_cron" model="ir.cron">
+        <field name="name">Migracion Notas de Credito Scord-Odoo</field>
+        <field name="model_id" ref="model_model_import"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="state">code</field>
+        <field name="code">model._cron_import_credit_note()</field>
+    </record>
+    
+    <record id="model_import_purchase_cron" model="ir.cron">
+        <field name="name">Migracion Pagos Scord-Odoo</field>
+        <field name="model_id" ref="model_model_import"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="state">code</field>
+        <field name="code">model._cron_import_purchase()</field>
+    </record>
+
+</odoo>

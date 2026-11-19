@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="0">
+
+	<record model="ir.module.category" id="fxo_project_module_category">
+        <field name="name">Para Proyectos Ventas</field>
+        <field name="description">Para Proyectos de Ventas</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="group_fxo_project_user" model="res.groups">
+        <field name="name">Usuario: Solo Ver sus Propios Proyectos</field>
+        <field name="category_id" ref="fxo_project_module_category"/>
+    </record>
+
+    <record id="group_task_close" model="res.groups">
+        <field name="name">Permisos para Cierre de Proyecto</field>
+        <field name="category_id" ref="fxo_project_module_category"/>
+    </record>
+
+    <record id="group_fxo_project_manager" model="res.groups">
+        <field name="name">Usuario: Ver Proyectos de Todos</field>
+        <field name="category_id" ref="fxo_project_module_category"/>
+    </record>
+
+    <record id="group_fxo_project_administrator" model="res.groups">
+        <field name="name">Usuario: Administrador</field>
+        <field name="category_id" ref="fxo_project_module_category"/>
+    </record>
+
+
+
+    <record id="group_fxo_project_task_user" model="res.groups">
+        <field name="name">Usuario: Solo Ver sus Propias Tareas de Proyectos</field>
+        <field name="category_id" ref="fxo_project_module_category"/>
+    </record>
+
+    <record id="group_fxo_project_task_manager" model="res.groups">
+        <field name="name">Usuario: Ver las Tareas de Proyectos de Todos</field>
+        <field name="category_id" ref="fxo_project_module_category"/>
+    </record>
+</data>
+</odoo>

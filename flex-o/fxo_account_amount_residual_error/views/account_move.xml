@@ -1,0 +1,9 @@
+<odoo>
+	<record id="account_move_update_amount_residual_signed" model="ir.actions.server">
+		<field name="name">Consistencia de Saldo de Facturas</field>
+		<field name="model_id" ref="account.model_account_move"/>
+		<field name="binding_model_id" ref="account.model_account_move"/>
+		<field name="state">code</field>
+		<field name="code">action = records.update_amount_residual_signed()</field>
+	</record>
+</odoo>

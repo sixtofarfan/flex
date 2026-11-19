@@ -1,0 +1,52 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* jp_picking_location_guide
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-16 01:02+0000\n"
+"PO-Revision-Date: 2021-03-16 01:02+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: jp_picking_location_guide
+#: model:ir.model,name:jp_picking_location_guide.model_stock_location
+msgid "Inventory Locations"
+msgstr "Ubicaciones de inventario"
+
+#. module: jp_picking_location_guide
+#: model:ir.model.fields,field_description:jp_picking_location_guide.field_ir_sequence__is_guide
+msgid "Is guide?"
+msgstr "Es guía de remisión"
+
+#. module: jp_picking_location_guide
+#: code:addons/extra-addons/jp/jp_picking_location_guide/models/stock_picking.py:0
+#: code:addons/jp_picking_location_guide/models/stock_picking.py:0
+#, python-format
+msgid ""
+"The guide serie %s selected does not correspond to the location %s in "
+"product %s. Please check the location guide serie and try again."
+msgstr ""
+"La serie de guia seleccionada %s no corresponde a la ubicación %s en "
+"el producto %s. Por favor revise la serie en la ubicación e intente nuevamente."
+
+#. module: jp_picking_location_guide
+#: model:ir.model,name:jp_picking_location_guide.model_ir_sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: jp_picking_location_guide
+#: model:ir.model.fields,field_description:jp_picking_location_guide.field_stock_location__serie_guia_id
+msgid "Serie de guía"
+msgstr ""
+
+#. module: jp_picking_location_guide
+#: model:ir.model,name:jp_picking_location_guide.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"

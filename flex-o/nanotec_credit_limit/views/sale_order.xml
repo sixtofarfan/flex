@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="sale_order_approv_discounts_form">
+            <field name="name">sale_order_approv_discounts.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[last()]" position="after">
+                    <page string="Informacion de Retencion" >
+                        <group>
+                            <group>
+                                <field name="credit_status"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>              
+                        <field name="approval_line">
+                            <tree string="Sales Order Lines">
+                                <field name="reason"/>
+                                <field name="date"/>
+                                <field name="state"/>
+                                <field name="notes"/>
+                                <button name="approve_line" type="object" string="Aprobar" icon="fa-thumbs-o-up" states="detained" help="Aprobar" groups="nanotec_credit_limit.modifica_precios_especiales"/>
+                                <button name="deny_line" type="object" string="Rechazar" icon="fa-thumbs-o-down" states="detained" help="Rechazar" groups="nanotec_credit_limit.modifica_precios_especiales"/>
+                                <button name="cancel_line" type="object" string="Cancelar" icon="fa-times-circle" states="refused, approved" help="Cancelar" groups="nanotec_credit_limit.modifica_precios_especiales"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_order_approv_discounts_tree">
+            <field name="name">sale_order_approv_discounts.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                    <field name="approvement_required"/>
+                    <field name="credit_status"/>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="sale_view_quotation_tree_inherit">
+            <field name="name">sale_view_quotation_tree.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                    <field name="approvement_required"/>
+                    <field name="credit_status"/>                    
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_sales_order_filter_inherit">
+            <field name="name">view_sales_order_filter.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <filter name="customer" position="after">
+                    <filter name="approvement_required" string="Requiere Aprobacion" domain="[]" context="{'group_by': 'approvement_required'}"/>
+                    <filter name="credit_status" string="Estado de Credito" domain="[]" context="{'group_by': 'credit_status'}"/>
+                </filter>
+            </field>
+        </record>
+    </data>
+</odoo>

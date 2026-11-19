@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_fxo_payment_request_wizard_form">
+			<field name="name">fxo.payment.request.wizard.form</field>
+			<field name="model">fxo.payment.request.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<group>
+							<field name="journal_id" required="1"/>
+							<field name="catalog_payment_id"/>
+							<field name="manual_batch_payment_id"/>
+							<field name="cash_flow_id"/>
+						</group>
+						<group>
+							<field name="cash_nro_comp"/>
+							<field name="payment_date"/>
+							<field name="type_doc_cash_id"/>
+							<field name="communication"/>
+						</group>
+					</group>
+					<footer>
+						<button string="Registrar Pagos" name="create_payments" type="object" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

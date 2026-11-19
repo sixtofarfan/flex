@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="view_sync_data_server_tree">
+            <field name="name">sync.data.in.tree</field>
+            <field name="model">sync.data.in</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" readonly="1"/>
+                    <field name="fecha_proceso" readonly="1"/>
+                    <field name="tipo" readonly="1"/>
+                    <field name="invoice_id" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sync_data_in_from" model="ir.ui.view">
+            <field name="name">sync.data.in.form</field>
+            <field name="model">sync.data.in</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="Procesar" type="object" name="procesar" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="fecha_proceso" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="tipo" readonly="1"/>
+                        </group>
+                        <field name="datas_json" readonly="1"/>
+                    </group>
+                    <field name="invoice_id" readonly="1">
+                        <tree editable="bottom">
+                            <field name="partner_id" />
+                           <!-- <field name="date_invoice" />-->
+                            <field name="pe_sunat_transaction51"/>
+                            <field name="pe_response" />
+                        </tree>
+                    </field>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="action_sync_data_in">
+            <field name="name">Sync Data In</field>
+            <field name="res_model">sync.data.in</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_list_sync_data_in" name="Data Sync In" action="action_sync_data_in"
+                  parent="l10n_pe_cpe.pe_cpe_document_menu" sequence="99"/>
+
+    </data>
+</odoo>

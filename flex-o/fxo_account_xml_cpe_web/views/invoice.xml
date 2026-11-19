@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+
+        <template id="fxo_account_xml_cpe_web.portal_invoice_page_extend" inherit_id="account.portal_invoice_page" name="Sign in Login extend">
+            <xpath expr="//ul/li[1]" position="after">
+                <li class="list-group-item flex-grow-1">
+                    <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
+                        <div class="btn-group  flex-grow-1 mr-1 mb-1">
+                            <a class="btn btn-secondary btn-block o_download_btn" t-att-href="'/cpe/download_report/%s' % invoice.id " title="DESCARGAR XML"><i class="fa fa-download"/> DESCARGAR XML</a>
+                        </div>
+                    </div>
+                </li>
+            </xpath>
+        </template>
+
+        <template id="fxo_account_xml_cpe_web.portal_my_invoices" inherit_id="account.portal_my_invoices" name="My Invoices and Payments extend">
+            <xpath expr="//t[@t-esc='invoice.name']" position="replace">
+                <t t-esc="invoice.ref" t-if="invoice.ref != '/'"/>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1" >
+        <!-- Add you code here -->
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Avenida</field>
+            <field name='code'>01</field>
+            <field name='descriptio'>Av.</field>
+        </record>
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Jirón</field>
+            <field name='code'>02</field>
+            <field name='descriptio'>Jr.</field>
+        </record>
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Calle</field>
+            <field name='code'>03</field>
+            <field name='descriptio'>Cal.</field>
+        </record>
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Pasaje</field>
+            <field name='code'>04</field>
+            <field name='descriptio'>Psje.</field>
+        </record>
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Alameda</field>
+            <field name='code'>05</field>
+            <field name='descriptio'>Alameda</field>
+        </record>
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Malecón</field>
+            <field name='code'>06</field>
+            <field name='descriptio'>Malecón</field>
+        </record>
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Ovalo</field>
+            <field name='code'>07</field>
+            <field name='descriptio'>Ovalo</field>
+        </record>
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Parque</field>
+            <field name='code'>08</field>
+            <field name='descriptio'>Parque</field>
+        </record>
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Plaza</field>
+            <field name='code'>09</field>
+            <field name='descriptio'>Plza</field>
+        </record>
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Carretera</field>
+            <field name='code'>10</field>
+            <field name='descriptio'>Carretera</field>
+        </record>
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Block</field>
+            <field name='code'>11</field>
+            <field name='descriptio'>Blk</field>
+        </record>
+        <record model='einvoice.catalog.04'>
+            <field name='name'>Otros</field>
+            <field name='code'>12</field>
+            <field name='descriptio'>Otros</field>
+        </record>
+          
+    </data>
+</odoo>

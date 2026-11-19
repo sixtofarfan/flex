@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_main_parameter_form_inherit_period" model="ir.ui.view">
+        <field name="name">view.main.parameter.form.inherit.period</field>
+        <field name="model">main.parameter</field>
+        <field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+        <field name="arch" type="xml">
+            <field name="dir_download" position="after">
+                <field name="use_invoice_period"/>
+            </field>
+        </field>
+    </record>
+</odoo>

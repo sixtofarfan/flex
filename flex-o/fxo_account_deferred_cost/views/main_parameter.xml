@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_main_parameter_form_inherit_difered" model="ir.ui.view">
+		<field name="name">main.parameter.form.inherit.difered</field>
+		<field name="model">main.parameter</field>
+		<field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page name="difered_cost" string="Gastos Diferidos">
+					<group>
+						<group>
+							<field name="difered_cost_account"/>
+							<field name="difered_income_account"/>
+							<field name="difered_tax_journal"/>
+							<field name="difered_cost_journal"/>
+						</group>
+					</group>
+				</page>
+			</xpath>
+		</field>
+	</record>
+</odoo>

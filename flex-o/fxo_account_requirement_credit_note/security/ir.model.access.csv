@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_request_credit_note_root,request.credit.note.root,model_request_credit_note,group_request_credit_note,1,1,1,1
+access_request_credit_note_line_root,request.credit.note.line.root,model_request_credit_note_line,group_request_credit_note,1,1,1,1
+access_einvoice_catalog_09_internal_root,einvoice.catalog.09.internal.root,model_einvoice_catalog_09_internal,group_request_credit_note,1,1,1,1

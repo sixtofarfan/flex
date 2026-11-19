@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_auto_sale_line" model="ir.ui.view">
+            <field name="name">auto.sale.line.form</field>
+            <field name="model">auto.sale.line</field>
+            <field name="arch" type="xml">
+                <form>
+                    <h1>
+                        <strong>
+                            <p>Generar Lineas de Cotización por cada Contacto</p>
+                        </strong>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="product_id" required="1"/>
+                            <field name="item_origin" required="1"/>
+                        </group>
+                        <group>
+                            <field name="product_uom_qty" required="1"/>
+                        </group>
+                    </group>
+                    <group string="Contactos">
+                        <field name="partner_id" invisible="1" />
+                        <field name="contact_ids" domain="[('parent_id', '=', partner_id)]"/>
+                    </group>
+                    <footer>
+                        <button string="Generar Detalle" name="create_lines" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,5 @@
+Name,Customer,Source,Product,Description,Quantity,UOM,Date
+WH/IN/IP001,Wood Corner,PO/IP001,Acoustic Bloc Screens,Acoustic Bloc Screens[reff],10,Unit(s),2018-10-08
+WH/IN/IP001,Wood Corner,PO/IP001,Cabinet with Doors,Cabinet with Doors[reff],15,Unit(s),2018-10-09
+WH/IN/IP002,Wood Corner,PO/IP002,Chair floor protection,Chair floor protection[reff],2,Unit(s),2018-10-10
+WH/IN/IP002,Wood Corner,PO/IP002,Conference Chair,Conference Chair[reff],5,Unit(s),2018-10-11

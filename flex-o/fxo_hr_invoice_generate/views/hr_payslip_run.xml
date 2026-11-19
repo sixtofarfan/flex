@@ -1,0 +1,20 @@
+<odoo>
+	<record id="hr_payslip_run_form_inherit_voucher" model="ir.ui.view">
+		<field name="name">hr.payslip.run.form.inherit.voucher</field>
+		<field name="model">hr.payslip.run</field>
+		<field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//header" position="inside">
+				<button name="generate_voucher_moves" string="Generar Boletas de Pago" type="object" class="oe_highlight" states="verify" confirm="¿Esta seguro que desea generar Boletas de Pago en esta Planilla? Este proceso volvera a borrador las boletas y las eliminara si es que existieran"/>
+			</xpath>
+			<button name="action_open_payslips" position="after">
+				<button name="get_vouchers_view" class="oe_stat_button" icon="fa-dollar" type="object" attrs="{'invisible': [('voucher_count', '=', 0)]}">
+					<div class="o_field_widget o_stat_info">
+						<span class="o_stat_value"><field name="voucher_count"/></span>
+						<span class="o_stat_text">Boletas de Venta</span>
+					 </div>
+				</button>
+			</button>
+		</field>
+	</record>
+</odoo>

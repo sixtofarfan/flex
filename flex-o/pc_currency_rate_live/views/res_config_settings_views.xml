@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.currency.rate.live</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='update_currency_live']" position="after">
+                <div attrs="{'invisible': [('module_currency_rate_live', '=', False)]}">
+                    <div class="row mt16">
+                        <label string="Foreign currency rate" for="foreign_currency_id" class="col-lg-3 o_light_label"/>
+                        <field name="foreign_currency_id"/>
+                    </div>
+                    <div class="row mt16">
+                        <label for="json_pe_token" class="col-lg-3 o_light_label"/>
+                        <field name="json_pe_token"/>
+                        <div class="text-muted">
+                            Don't have a free token?: <a href="https://json-pe.com">Get it here</a><br/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

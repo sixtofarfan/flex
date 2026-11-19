@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_fxo_sale_main_parameter_form" model="ir.ui.view">
+            <field name="name">fxo.sale.main.parameter.form</field>
+            <field name="model">fxo.sale.main.parameter</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name" help="Parametros para la compañia" readonly="1" force_save="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Factibilidad" name="factibilidad">
+                            <group name="comisiones">
+                                <group>
+                                    <label for="expiration_type"
+                                           help="Indique el tiempo de vencimiento que van a tener los documentos por defecto "/>
+                                    <div class="o_row">
+                                        <field name="expiration_type"
+                                               help="Indique el tiempo de vencimiento que van a tener los documentos por defecto "
+                                               required="1"/>
+                                        <field name="expiration" class="field_rule_type" required="1"
+                                               help="Indique el tiempo de vencimiento que van a tener los documentos por defecto "/>
+                                    </div>
+                                </group>
+                                <group>
+                                    <field name="commission_percent_expenses"
+                                           help="% de comison sobre el monto total  "/>
+                                    <field name="gross_profit_percent" help="% de utilidad sobre el conto total  "/>
+                                    <field name="cant_commission"
+                                           help="Indique la cantidad de meses que se pagara la comision  "/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Ingreso" name="ingreso">
+                            <group>
+                                <field name="producto_renta_mensual" help="Producto por defecto para la renta mensual"/>
+                            </group>
+                            <notebook>
+                                <page string="Ingreso-Producto" name="ingreso_producto">
+                                    <field name="ingresos_id">
+                                        <tree string="Sales Order Lines" editable="bottom">
+                                            <field name="name" required="1"/>
+                                            <field name="parameter_id" invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </page>
+                        <page string="Egreso" name="egreso">
+                            <group>
+                                <field name="producto_comision" help="Producto por defecto para la renta mensual"/>
+                                <field name="producto_costo_instalacion"
+                                       help="Producto por defecto para la costo de Instalacion"/>
+                            </group>
+                            <notebook>
+                                <page string="Egreso-Producto" name="Egreso_producto">
+                                    <field name="egreso_id">
+                                        <tree editable="bottom">
+                                            <field name="name" required="1"/>
+                                            <field name="parameter_id" invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_fxo_sale_main_parameter_tree" model="ir.ui.view">
+            <field name="name">fxo.sale.main.parameter.tree</field>
+            <field name="model">fxo.sale.main.parameter</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_fxo_sale_main_parameter_form" model="ir.actions.act_window">
+            <field name="name">Parametros Factibilidad</field>
+            <field name="res_model">fxo.sale.main.parameter</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea tu primera tabla de Parametros Principales aqui
+                </p>
+            </field>
+        </record>
+        <menuitem action="action_fxo_sale_main_parameter_form"
+                  id="menu_action_fxo_sale_main_parameter_form"
+                  parent="sale.menu_sale_config"
+                  sequence="30"
+                  groups="group_fxo_parameter_feasibility"/>
+
+    </data>
+</odoo>

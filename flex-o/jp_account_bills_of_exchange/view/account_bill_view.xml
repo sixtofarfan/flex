@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_account_bill_form" model="ir.ui.view">
+        <field name="name">account.bill.form</field>
+        <field name="model">account.bill</field>
+        <field name="arch" type="xml">
+            <form string="Bill of Exchange" create="0">
+                <header>
+                    <button string="Cancel" type="object" name="cancel" confirm="Are you sure you want to unreconcile the conciliation and delete the accounting entries?" attrs="{'invisible':[('state_of_bill','in',['draft','to_accept','portfolio','collection','discount','to_renew','to_reconcile','renewed','disbursed']),('renew_bill_id','=',False)]}"/>
+                    <button string="Renew" type="object" name="get_renew_date" class="oe_highlight" attrs="{'invisible':[('state_of_bill','!=','to_renew')]}"/>
+                    <button string="Renew" type="object" name="renew_one_bill" class="oe_highlight" attrs="{'invisible':[('state_of_bill','not in',['collection','discount','guarantee','disbursed','accepted'])]}"/>
+                    <button string="Pay" type="object" name="pay_bill_wizard" class="oe_highlight" attrs="{'invisible':[('state_of_bill','not in',['portfolio','collection','discount','guarantee','disbursed','protested','accepted'])]}"/>
+                    <button string="Protest" type="object" name="protest_bill_wizard" class="oe_highlight" attrs="{'invisible':[('state_of_bill','not in',['portfolio','collection','discount','guarantee','disbursed','accepted'])]}"/>
+                    <button string="Debit Note" type="object" name="debit_note_wizard" class="oe_highlight" attrs="{'invisible':['|','|',('state_of_bill','!=','protested'),('protest_debit_note_id','!=',False),('type_bill','=','payable')]}"/>
+                    <field name="state_of_bill" widget="statusbar" statusbar_visible="draft,to_reconcile"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Draft"
+                        text_color="text-primary"
+                        bg_color="bg-secondary"
+                        attrs="{'invisible': [('state_of_bill','!=','draft')]}"/>
+                    <widget name="web_ribbon" title="To accept"
+                        bg_color="bg-secondary"
+                        attrs="{'invisible': [('state_of_bill','!=','to_accept')]}"/>
+                    <widget name="web_ribbon" title="To disburse"
+                        bg_color="bg-secondary"
+                        attrs="{'invisible': [('state_of_bill','!=','to_disburse')]}"/>
+                    <widget name="web_ribbon" title="To reconcile"
+                        bg_color="bg-secondary"
+                        attrs="{'invisible': [('state_of_bill','!=','to_reconcile')]}"/>
+                    <widget name="web_ribbon" title="Portfolio"
+                        bg_color="bg-dark"
+                        attrs="{'invisible': [('state_of_bill','!=','portfolio')]}"/>
+                    <widget name="web_ribbon" title="Accepted"
+                        bg_color="bg-primary"
+                        attrs="{'invisible': [('state_of_bill','!=','accepted')]}"/>
+                    <widget name="web_ribbon" title="Collection"
+                        bg_color="bg-primary"
+                        attrs="{'invisible': [('state_of_bill','!=','collection')]}"/>
+                    <widget name="web_ribbon" title="Discount"
+                        bg_color="bg-primary"
+                        attrs="{'invisible': [('state_of_bill','!=','discount')]}"/>
+                    <widget name="web_ribbon" title="Guarantee"
+                        bg_color="bg-primary"
+                        attrs="{'invisible': [('state_of_bill','!=','guarantee')]}"/>
+                    <widget name="web_ribbon" title="Disbursed"
+                        bg_color="bg-primary"
+                        attrs="{'invisible': [('state_of_bill','!=','disbursed')]}"/>
+                    <widget name="web_ribbon" title="Pending"
+                        bg_color="bg-warning"
+                        attrs="{'invisible': [('state_of_bill','!=','pending')]}"/>
+                    <widget name="web_ribbon" title="To Renew"
+                        bg_color="bg-warning"
+                        attrs="{'invisible': [('state_of_bill','!=','to_renew')]}"/>
+                    <widget name="web_ribbon" title="Renewed"
+                        bg_color="bg-info"
+                        attrs="{'invisible': [('state_of_bill','!=','renewed')]}"/>
+                    <widget name="web_ribbon" title="Refinanced"
+                        bg_color="bg-info"
+                        attrs="{'invisible': [('state_of_bill','!=','refinanced')]}"/>
+                    <widget name="web_ribbon" title="Paid"
+                        bg_color="bg-success"
+                        attrs="{'invisible': [('state_of_bill','!=','paid')]}"/>
+                    <widget name="web_ribbon" title="Protested"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('state_of_bill','!=','protested')]}"/>
+                    <group>
+                        <group>
+                            <field name="bill_form_id" readonly="1"/>
+                            <field name="bill_number" attrs="{'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="send_form_id" attrs="{'invisible':[('send_form_id','=', False)], 'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="renew_bill_id" attrs="{'invisible':[('renew_bill_id','=', False)], 'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="bank_number"/>
+                            <field name="account_id" attrs="{'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="responsable_id" attrs="{'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="acceptor_id" attrs="{'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="creditor_id" attrs="{'invisible':[('type_bill','=', 'receivable')]}"/>
+                            <field name="type_bill" invisible="1"/>
+                            <field name="guarantee_id" attrs="{'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="protest_payment_id" attrs="{'invisible':[('protest_payment_id','=', False)], 'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="protest_debit_note_id" readonly="1" attrs="{'invisible':[('protest_debit_note_id','=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="origin_bill_id" attrs="{'invisible':[('renew_bill_id','=', False)], 'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="bill_date_issue" attrs="{'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="bill_date_due" attrs="{'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="bill_currency_id" attrs="{'readonly':[('state_of_bill','!=', 'draft')]}" groups="base.group_multi_currency"/>
+                            <field name="bill_amount_total" attrs="{'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="exchange_rate" attrs="{'readonly':[('state_of_bill','!=', 'draft')]}" groups="base.group_multi_currency"/>
+                            <field name="bill_amount_total_signed" attrs="{'readonly':[('state_of_bill','!=', 'draft')]}" groups="base.group_multi_currency"/>
+                            <field name="bank_disbursement_id" readonly="1" attrs="{'invisible':[('bank_disbursement_id','=', False)]}"/>
+                            <field name="account_move_bank_interests_id" attrs="{'invisible':[('account_move_bank_interests_id','=', False)], 'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="renew_date" attrs="{'invisible':[('renew_bill_id','=', False)], 'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="payment_date" attrs="{'invisible':[('payment_date','=', False)], 'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                            <field name="renew_payment_id" attrs="{'invisible':[('renew_payment_id','=', False)], 'readonly':[('state_of_bill','!=', 'draft')]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Renewals" attrs="{'invisible':[('renewal_ids','=',[])]}">
+                            <group>
+                                <field name="renewal_ids" readonly="1" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Journal Items" attrs="{'invisible':[('account_move','=',False)]}">
+                            <group>
+                                <group>
+                                    <field name="account_move" invisible="1" readonly="1"/>
+                                </group>
+                                <field name="account_move_line_ids" readonly="1">
+                                    <tree>
+                                        <field name="date"/>
+                                        <field name="move_id"/>
+                                        <field name="account_id"/>
+                                        <field name="name"/>
+                                        <field name="full_reconcile_id"/>
+                                        <field name="debit" sum="Total"/>
+                                        <field name="credit" sum="Total"/>
+                                        <field name="amount_currency"/>
+                                        <field name="exchange_rate"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Partial Payments" attrs="{'invisible':[('partial_payment_ids','=',[])]}">
+                            <group>
+                                <field name="partial_payment_ids" nolabel="1" attrs="{'readonly':[('state_of_bill','=', 'paid')]}">
+                                    <tree create="0">
+                                        <!-- <field name="name"/> -->
+                                        <field name="payment_date"/>
+                                        <field name="journal_id"/>
+                                        <field name="operation_number"/>
+                                        <field name="currency_id"/>
+                                        <field name="payment_amount"/>
+                                        <field name="exchange_rate"/>
+                                        <field name="payment_amount_signed" sum="Total"/>
+                                        <!-- <field name="account_move"/> -->
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="account_bill_view_graph" model="ir.ui.view">
+        <field name="name">account.bill.graph</field>
+        <field name="model">account.bill</field>
+        <field name="arch" type="xml">
+            <graph string="Bills Analysis" stacked="True">
+                <field name="state_of_bill" type="col"/>
+                <field name="bill_date_due" interval="month" type="row"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="account_bill_view_pivot" model="ir.ui.view">
+        <field name="name">account.bill.pivot</field>
+        <field name="model">account.bill</field>
+        <field name="arch" type="xml">
+            <pivot string="Bills Analysis" disable_linking="True">
+                <field name="bill_date_due" interval="month" type="col"/>
+                <field name="state_of_bill" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_account_bill_tree" model="ir.ui.view">
+        <field name="name">account.bill.tree</field>
+        <field name="model">account.bill</field>
+        <field name="arch" type="xml">
+            <tree string="Bills of Exchange" decoration-danger="state_of_bill=='protested'" decoration-success="state_of_bill in ['paid','refinanced']" decoration-info="bill_date_due &lt;= current_date and state_of_bill not in ['draft','to_reconcile','renewed','refinanced','paid']" default_order='bill_date_due' create="0" edit="0">
+                <field name="bill_date_issue"/>
+                <field name="bill_date_due"/>
+                <field name="bill_number"/>
+                <field name="bank_number"/>
+                <field name="account_id"/>
+                <field name="responsable_id" optional="hide"/>
+                <field name="acceptor_id" invisible="context.get('type_bill_context') == 'payable'"/>
+                <field name="creditor_id" optional="hide" invisible="context.get('type_bill_context') == 'payable'"/>
+                <field name="acceptor_id" optional="hide" invisible="context.get('type_bill_context') == 'receivable'"/>
+                <field name="creditor_id" invisible="context.get('type_bill_context') == 'receivable'"/>
+                <field name="type_bill" invisible="1"/>
+                <field name="guarantee_id" optional="hide"/>
+                <field name="bill_currency_id"/>
+                <field name="bill_amount_total"/>
+                <field name="state_of_bill"/> 
+            </tree>
+        </field>
+    </record>
+
+    <record id="account_bill_search_view" model="ir.ui.view">
+        <field name="name">account.bill.search</field>
+        <field name="model">account.bill</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Bills">
+                <field name="bill_number"/>
+                <field name="bank_number"/>
+                <field name="acceptor_id"/>
+                <field name="creditor_id"/>
+                <field name="payment_date"/>
+                <group expand='0' string='Filters'>
+                    <filter name="unpaid" string="Bills Unpaid" domain="[('state_of_bill','in',['portfolio','collection','discount','guarantee','pending','disbursed','protested',])]"/>
+                    <filter name="overdue" string="Overdue Bills" domain="[('bill_date_due', '&lt;=', current_date),('state_of_bill', 'not in', ['draft','to_accept','to_reconcile','renewed','refinanced','paid','to_renew'])]"/>
+                    <filter name="overdue" string="Last day" domain="[('bill_date_due', '=', (context_today()-datetime.timedelta(days=8)).strftime('%Y-%m-%d')),('state_of_bill', 'not in', ['draft','to_accept','to_reconcile','renewed','refinanced','paid','to_renew'])]"/>
+                    <separator/>
+                    <filter name="to_accept" string="Bills to accept" domain="[('state_of_bill','=','to_accept')]"/>
+                    <filter name="disbursed" string="Bills Disbursed" domain="[('state_of_bill','=','disbursed')]"/>
+                    <filter name="collection" string="Bills in Collection" domain="[('state_of_bill','=','collection')]"/>
+                    <filter name="discount" string="Bills in Discount" domain="[('state_of_bill','=','discount')]"/>
+                    <filter name="guarantee" string="Bills in Guarantee" domain="[('state_of_bill','=','guarantee')]"/>
+                    <filter name="pending" string="Bills pending renew" domain="[('state_of_bill','=','pending')]"/>
+                    <filter name="torenew" string="Bills to renew" domain="[('state_of_bill','=','to_renew')]"/>
+                    <filter name="renewed" string="Renewed Bills" domain="[('state_of_bill','=','renewed')]"/>
+                    <filter name="protested" string="Protested Bills" domain="[('state_of_bill','=','protested')]"/>
+                    <filter name="refinanced" string="Refinanced Bills" domain="[('state_of_bill','=','refinanced')]"/>
+                    <filter name="paid" string="Paid Bills" domain="[('state_of_bill','=','paid')]"/>
+                </group>
+                <group expand='0' string='Group by...'>
+                    <filter string='Due Date' name="bill_date_due" context="{'group_by': 'bill_date_due'}"/>
+                    <filter string='Form' name="bill_form_id" context="{'group_by': 'bill_form_id'}"/>
+                    <filter string='State' name="state_of_bill" context="{'group_by': 'state_of_bill'}"/>
+                    <filter string='Acceptor' name="acceptor_id" domain="[]" context="{'group_by': 'acceptor_id'}"/>
+                    <filter string='Creditor' name="creditor_id" domain="[]" context="{'group_by': 'creditor_id'}"/>
+                    <filter string='Currency' name="currency_id" context="{'group_by': 'bill_currency_id'}" groups="base.group_multi_currency"/>
+                    <filter string='Account' name="account_id" domain="[]" context="{'group_by': 'account_id'}"/>
+                    <filter string='Company' name="company" domain="[]" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+               </group>
+            </search>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="account_bill_kanban_view">
+        <field name="name">account.bill.kanban</field>
+        <field name="model">account.bill</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" records_draggable="false">
+                <field name="bill_number"/>
+                <field name="acceptor_id"/>
+                <field name="bill_amount_total"/>
+                <field name="bill_date_issue"/>
+                <field name="bill_date_due"/>
+                <field name="state_of_bill"/>
+                <field name="bill_currency_id"/>
+                <field name="account_id"/>
+                <!-- <field name="activity_state"/>
+                <progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/> -->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <div class="o_kanban_record_top mb16">
+                                <div class="o_kanban_record_headings mt4">
+                                    <strong class="o_kanban_record_title"><span><t t-esc="record.acceptor_id.value"/></span></strong>
+                                </div>
+                                <strong><field name="bill_amount_total" widget="monetary"/></strong>
+                            </div>
+                            <div>
+                                <div class="o_kanban_record_headings mt4">
+                                    <span><t t-esc="record.account_id.value"/></span>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <div class="oe_kanban_bottom_left">
+                                    <span>Bill number: <t t-esc="record.bill_number.value"/></span>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <div class="oe_kanban_bottom_left">
+                                    <span>Issue date: <t t-esc="record.bill_date_issue.value"/></span>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <div class="oe_kanban_bottom_left">
+                                    <span>Due date: <t t-esc="record.bill_date_due.value"/></span>
+                                    <!-- <field name="activity_ids" widget="kanban_activity"/> -->
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <field name="state_of_bill" widget="label_selection" options="{'classes': {'portfolio': 'default', 'protested': 'danger', 'paid': 'success', 'refinanced': 'success'}}"/>
+                                </div>
+                            </div>
+                            <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu">
+                                <t t-call="JournalManage"/>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-name="JournalManage">
+                        <div t-if="state_of_bill == 'portfolio' || state_of_bill == 'disbursed'" class="row">
+                            <div class="col-4 o_kanban_card_manage_section o_kanban_manage_new">
+                                <t t-if="record.state_of_bill.value in ('portfolio','disbursed')">
+                                    <button type="object" name="pay_bill_wizard" class="btn btn-primary o_invoice_new">
+                                        <span>Pay</span>
+                                    </button>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_account_customer_bills" model="ir.actions.act_window">
+        <field name="name">Bills of Exchange</field>
+        <field name="res_model">account.bill</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_account_bill_tree')}),
+            (0, 0, {'view_mode': 'pivot', 'view_id': ref('account_bill_view_pivot')}),
+            (0, 0, {'view_mode': 'graph', 'view_id': ref('account_bill_view_graph')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_bill_form')})]"/>
+        <field name="view_mode">tree,form,pivot,graph</field>
+        <field name="domain">[('type_bill','=','receivable')]</field>
+        <field name="context">{'search_default_unpaid': '1', 'type_bill_context': 'receivable'}</field>
+    </record>
+    
+    <record id="action_account_supplier_bills" model="ir.actions.act_window">
+        <field name="name">Bills of Exchange</field>
+        <field name="res_model">account.bill</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_account_bill_tree')}),
+            (0, 0, {'view_mode': 'pivot', 'view_id': ref('account_bill_view_pivot')}),
+            (0, 0, {'view_mode': 'graph', 'view_id': ref('account_bill_view_graph')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_account_bill_form')})]"/>
+        <field name="view_mode">tree,form,pivot,graph</field>
+        <field name="domain">[('type_bill','=','payable')]</field>
+        <field name="context">{'search_default_unpaid': '1', 'type_bill_context': 'payable'}</field>
+    </record>
+
+    <menuitem id="menu_account_customer_bill_tree" name="Bills of Exchange"
+              parent="menu_bills_customer_title"
+              action="action_account_customer_bills" sequence="210"/>
+
+    <menuitem id="menu_account_supplier_bills_tree" name="Bills of Exchange"
+              parent="menu_bills_supplier_title"
+              action="action_account_supplier_bills" sequence="210"/>
+
+        <!-- Wizard para solicitar gastos administrativos -->
+        <record id="view_protest_admin_interest_wizard" model="ir.ui.view">
+            <field name="name">admin.interest.protest.form</field>
+            <field name="model">admin.interest.protest</field>
+            <field name="arch" type="xml">
+                <form string="Interest Administartive Wizard1">
+                    <group>
+                        <field name="interest_administrative" required="1"/>
+                    </group>
+                    <footer>
+                        <button string="Create Debit Note" name="create_debit_note_data" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+</odoo>

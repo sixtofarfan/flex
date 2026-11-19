@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_request_credit_note_form" model="ir.ui.view">
+		<field name="name">request.credit.note.form</field>
+		<field name="model">request.credit.note</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="set_draft" string="Volver a Borrador" type="object" class="oe_highlight" groups="fxo_account_requirement_credit_note.group_draft_request" states="confirmed,approved,done"/>
+					<button name="set_confirm" string="Confirmar" type="object" class="oe_highlight" groups="fxo_account_requirement_credit_note.group_confirm_request" states="draft"/>
+					<button name="set_approve" string="Aprobar" type="object" class="oe_highlight" states="confirmed" groups="fxo_account_requirement_credit_note.group_approved_request"/>
+					<button name="get_move_lines" string="Obtener Lineas" type="object" class="oe_highlight" states="draft"/>
+					<button name="generate_credit_note" string="Generar N/C" type="object" class="oe_highlight" states="approved"/>
+					<button name="get_cancel_wizard" string="Cancelar Solicitud" type="object" class="oe_highlight" states="done"/>
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+					<group>
+						<group>
+							<field name="partner_id"/>
+							<field name="date" readonly="1"/>
+							<field name="confirmation_date" readonly="1" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+							<field name="currency_id"/>
+							<field name="credit_note_type_id"/>
+							<field name="user_id" readonly="1"/>
+							<field name="team_id"/>
+						</group>
+						<group>
+							<field name="reason"/>
+							<field name="move_id" domain="[('partner_id', '=', partner_id)]" options="{'no_create': True}"/>
+							<field name="note"/>
+							<field name="internal_type_id"/>
+							<field name="discount_type" invisible="1"/>
+							<field name="discount"/>
+							<field name="credit_note_id"/>
+						</group>
+					</group>
+					<notebook>
+						<page name="line_ids" string="Lineas">
+							<field name="line_ids">
+								<tree editable="bottom" create="0">
+									<field name="move_line_id"/>
+									<field name="product_id"/>
+									<field name="product_uom_id"/>
+									<field name="account_id" optional="hide"/>
+									<field name="partner_street_destination" optional="show"/>
+									<field name="partner_street_destination_header" optional="hide"/>
+									<field name="service_id" optional="show"/>
+									<field name="quantity"/>
+									<field name="price_unit"/>
+									<field name="price_subtotal"/>
+									<field name="discount" optional="hide"/>
+								</tree>
+							</field>
+						</page>
+						<page name="approval_line_ids" string="Aprobaciones">
+							<field name="approval_line_ids"/>
+						</page>
+					</notebook>
+				</sheet>
+				<div class="o_attachment_preview"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+			</form>
+		</field>
+	</record>
+	<record id="view_request_credit_note_list" model="ir.ui.view">
+		<field name="name">request.credit.note.list</field>
+		<field name="model">request.credit.note</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" optional="show"/>
+				<field name="date" optional="show"/>
+				<field name="partner_id" optional="show"/>
+				<field name="user_id" optional="show"/>
+				<field name="team_id" optional="show"/>
+				<field name="move_id" optional="show"/>
+				<field name="discount" optional="show"/>
+				<field name="state" optional="show"/>
+			</tree>
+		</field>
+	</record>
+	<record id="view_request_credit_note_search" model="ir.ui.view">
+        <field name="model">request.credit.note</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="partner_id"/>
+    			<field name="user_id"/>
+				<field name="team_id"/>
+                <filter name="state_filter" string="Filtro por Estados" domain="[('state', 'in', ['confirmed', 'approved'])]"/>
+                <group expand="0" string="Group By">
+                    <filter name="name" string="Nombre" domain="[]" context="{'group_by':'name'}"/>
+                    <filter name="date" string="Fecha" domain="[]" context="{'group_by':'date'}"/>
+                    <filter name="partner_id" string="Cliente" domain="[]" context="{'group_by':'partner_id'}"/>
+                    <filter name="user_id" string="Solicitante" domain="[]" context="{'group_by':'user_id'}"/>
+                    <filter name="team_id" string="Equipo" domain="[]" context="{'group_by':'team_id'}"/>
+                    <filter name="state" string="Estado" domain="[]" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+	<record id="action_request_credit_note_form" model="ir.actions.act_window">
+		<field name="name">Solicitudes de Notas de Credito</field>
+		<field name="res_model">request.credit.note</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="view_request_credit_note_list"/>
+		<field name="context">{'search_default_state_filter': 1}</field>
+		<field name="help" type="html">
+		  <p class="o_view_nocontent_smiling_face">
+			Crea tu primera tabla de Solicitud de Nota de Credito aqui
+		  </p>
+		</field>
+	</record>
+	<record id="get_generate_credit_note" model="ir.actions.server">
+		<field name="name">Generar N/C</field>
+		<field name="model_id" ref="model_request_credit_note"/>
+		<field name="binding_model_id" ref="model_request_credit_note"/>
+		<field name="state">code</field>
+		<field name="code">action = records.generate_credit_note()</field>
+	</record>
+</odoo>

@@ -1,0 +1,1 @@
+from . import am_detraction_payment_wizard

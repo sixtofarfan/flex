@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="sale_order_bom_wizard_view" model="ir.ui.view">
+            <field name="name">sale.order.bom.wizard.form</field>
+            <field name="model">sale.order.bom.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Generate Router">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="date_to"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Generate" name="set_sale_order_bom" type="object" default_focus="1" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="sale_order_bom_wizard_action" model="ir.actions.act_window">
+            <field name="name">Generate BOM</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.bom.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="sale_order_bom_wizard_menu" name="Generate BOM" parent="stock.menu_stock_warehouse_mgmt" action="sale_order_bom_wizard_action" sequence="27"/>
+
+    </data>
+</odoo>

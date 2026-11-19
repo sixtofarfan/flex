@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="main_parameter_inherit_form_duplicator" model="ir.ui.view">
+		<field name="name">main.parameter.form.inherit.duplicator</field>
+		<field name="model">main.parameter</field>
+		<field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//sheet" position="before">
+				<header>
+					<button name="get_wizard" string="Duplicar" type="object" class="oe_highlight"/>
+				</header>
+			</xpath>
+		</field>
+	</record>
+</odoo>

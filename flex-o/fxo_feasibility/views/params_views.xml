@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="fxo_feasibility.params_list">
+            <field name="name">Cash Flow Feasibility Parameters List</field>
+            <field name="model">fxo_feasibility.params</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="company_id"/>
+                    <field name="name"/>
+                    <field name="gross_profit_percent"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="fxo_feasibility.params_form">
+            <field name="name">Cash Flow Feasibility Parameters</field>
+            <field name="model">fxo_feasibility.params</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="Post" name="action_post" states="draft" type="object" class="oe_highlight"/>
+                        <button string="Reset to Draft" name="action_draft" states="posted" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,posted"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="company_id" force_save="1"/>
+                            <field name="name"/>
+                            <field name="gross_profit_percent"/>
+                        </group>
+                        <group string="Incomes">
+                            <field name="incomes" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="name"/>
+                                    <field name="quantity"/>
+                                    <field name="additional_profit"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group string="Expenses">
+                            <field name="expenses" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="name"/>
+                                    <field name="quantity"/>
+                                    <field name="additional_profit" string="Additional Expense"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_maturity_analysis_dollars_book_tree" model="ir.ui.view">
+            <field name="name">maturity.analysis.dollars.book.tree</field>
+            <field name="model">maturity.analysis.dollars.book</field>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Analisis de Vencimiento" create="false">
+                    <field name="partner"/>
+                    <field name="collection"/>
+                    <field name="invoice_user_id"/>
+                    <field name="invoice_expo_user_id"/>
+                    <field name="payment_term_id"/>
+                    <field name="credit_limit2"/>
+                    <field name="total"/>
+                    <field name="whithout_debt"/>
+                    <field name="debt"/>
+                    <field name="between_1_7"/>
+                    <field name="between_8_15"/>
+                    <field name="between_16_30"/>
+                    <field name="between_31_60"/>
+                    <field name="between_61_90"/>
+                    <field name="between_91_more"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="maturity_analysis_dollars_book_search" model="ir.ui.view">
+            <field name="name">maturity.analysis.dollars.book.search</field>
+            <field name="model">maturity.analysis.dollars.book</field>
+            <field name="arch" type="xml">
+                <search string="Analisis de Vencimiento">
+                    <field name="partner"/>
+                    <field name="collection"/>
+                    <field name="invoice_user_id"/>
+                    <field name="invoice_expo_user_id"/>
+                    <separator/>
+                    <group expand="1" string="Group By...">
+                        <filter string="Partner" name="partner" icon="terp-partner" context="{'group_by':'partner'}"/>
+                        <filter string="Cobrador" name="collection" icon="terp-partner" domain="[]"
+                                context="{'group_by':'collection'}"/>
+                        <filter string="Invoice User" name="invoice_user_id" icon="terp-partner" domain="[]"
+                                context="{'group_by':'invoice_user_id'}"/>
+                        <filter string="Expo User" name="invoice_expo_user_id" icon="terp-partner" domain="[]"
+                                context="{'group_by':'invoice_expo_user_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="action_maturity_analysis_dollars_book_it" model="ir.actions.act_window">
+            <field name="name">Analisis de Vencimiento</field>
+            <field name="res_model">maturity.analysis.dollars.book</field>
+            <field name="view_id" ref="view_maturity_analysis_dollars_book_tree"/>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="maturity_analysis_dollars_book_search"/>
+        </record>
+
+    </data>
+</odoo>

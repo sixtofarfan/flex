@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_helpdesk_afection_type,helpdesk.afection.type,model_helpdesk_afection_type,,1,1,1,1
+access_helpdesk_problem,helpdesk.problem,model_helpdesk_problem,,1,1,1,1
+access_helpdesk_ticket,helpdesk.ticket,model_helpdesk_ticket,,1,1,1,1
+access_account_analytic_account,account.analytic.account,account.model_account_analytic_account,,1,1,1,
+
+access_helpdesk_motive,helpdesk.motive,model_helpdesk_motive,helpdesk.group_helpdesk_manager,1,1,1,1
+access_helpdesk_detail,helpdesk.detail,model_helpdesk_detail,helpdesk.group_helpdesk_manager,1,1,1,1
+access_helpdesk_cause,helpdesk.cause,model_helpdesk_cause,helpdesk.group_helpdesk_manager,1,1,1,1

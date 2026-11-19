@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template inherit_id="project.portal_my_projects" id="portal_my_projects_inherit">
+        <xpath expr="//td[@class='text-right']" position="after">
+            <td>
+                <t t-esc="project.location_id.name"/>
+            </td>
+            <td>
+                <t t-esc="project.user_id.name"/>
+            </td>
+            <td>
+                <t t-esc="project.service_id"/>
+            </td>
+            <td>
+                <t t-esc="project.partner_latitude"/>
+            </td>
+            <td>
+                <t t-esc="project.partner_longitude"/>
+            </td>
+            <td>
+                <t t-esc="project.contact_mobile"/>
+            </td>
+            <td>
+                <t t-esc="project.contact_email"/>
+            </td>
+        </xpath>
+    </template>
+    <template inherit_id="project.portal_my_tasks" id="portal_my_taks_inherit">
+        <xpath expr="//thead/tr" position="inside">
+            <th class="text-center">Partner</th>
+            <th class="text-center">Ubicacion</th>
+            <th class="text-center">Asignado a</th>
+            <th class="text-center">Service ID</th>
+            <th class="text-center">Latitud</th>
+            <th class="text-center">Longitud</th>
+            <th class="text-center">Contacto</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Telefono</th>
+        </xpath>
+        <xpath expr="//tbody/t/tr" position="inside">
+            <td>
+                <t t-esc="task.partner_id.name"/>
+            </td>
+            <td>
+                <t t-esc="task.project_id.location_id.street"/>
+            </td>
+            <td>
+                <t t-esc="task.user_id.name"/>
+            </td>
+            <td>
+                <t t-esc="task.project_id.service_id"/>
+            </td>
+            <td>
+                <t t-esc="task.project_id.partner_latitude"/>
+            </td>
+            <td>
+                <t t-esc="task.project_id.partner_longitude"/>
+            </td>
+            <td>
+                <t t-esc="task.project_id.partner_contact_id.name"/>
+            </td>
+            <td>
+                <t t-esc="task.project_id.contact_email"/>
+            </td>
+            <td>
+                <t t-esc="task.project_id.contact_mobile"/>
+            </td>
+        </xpath>
+    </template>
+    <!-- List View-->
+    <record id="view_project_dates" model="ir.ui.view">
+        <field name="name">project.date.tree</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project" />
+        <field name="type">tree</field>
+        <field name="field_parent">child_ids</field>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="project_date" />
+                <field name="date_end" />
+                <field name="project_state" />
+                <field name="date_state" />
+                <field name="partner_contact_id"/>
+                <field name="contact_email"/>
+                <field name="contact_mobile"/>
+            </field>
+        </field>
+    </record>
+    <!-- Form View-->
+    <record id="edit_project_inherit_geo" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <page name="construction_sites" position="inside">
+                <group>
+                    <group>
+                        <field name="state_id"/>
+                        <field name="province_id"/>
+                        <field name="district_id"/>
+                        <field name="country_id" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="partner_order_id"/>
+                        <field name="service_id" attrs="{'readonly': [('sale_line_id', '=', True)]}"/>
+                    </group>
+                </group>
+                <group colspan="2" col="2">
+                    <separator string="Geolocalizacion" colspan="2"/>
+                    <div>
+                        <span class="oe_inline"> ( On  </span>
+                        <field name="date_localization" nolabel="1" class="oe_inline"/>
+                        <span> : Lat : </span>
+                        <field name="partner_latitude" nolabel="1" class="oe_inline"/>
+                        <span> ;  Long:  </span>
+                        <field name="partner_longitude" nolabel="1" class="oe_inline"/>
+                        <span>) </span>
+                    </div>
+                </group>
+            </page>
+            <field name="partner_id" position="after">
+                <!--<field name="factibility_id" readonly="1"/>-->
+                <field name="project_state" readonly="1"/>
+                <field name="date_state"/>
+                <field name="salesman_id"/>
+                <field name="salesman_team_id"/>
+                <field name="partner_contact_id"/>
+                <field name="contact_email"/>
+                <field name="contact_mobile"/>
+            </field>
+            <field name="sale_line_id" position="after">
+                <field name="project_date"/>
+                <field name="date_end"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="project_project_generate_xls_template" model="ir.actions.server">
+        <field name="name">Exportar Datos de Diseño</field>
+        <field name="model_id" ref="project.model_project_project"/>
+        <field name="binding_model_id" ref="project.model_project_project"/>
+        <field name="state">code</field>
+        <field name="code">action = records.generate_xls_template()</field>
+    </record>
+
+    <record id="project_task_inherit_view_tree" model="ir.ui.view">
+        <field name="name">project.task.inherit.view.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="planned_date_begin"/>
+                <field name="planned_date_end"/>
+                <field name="partner_street"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="project_task_form2_inherit_factibility" model="ir.ui.view">
+        <field name="name">project.task.inherit.view.form2.factibility</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <!-- SFR se cambia partner_id, error con sale_line_id
+            <field name="sale_line_id" position="after"> -->
+            <button name="action_subtask" position="before">
+                <button name="open_other" type="object" class="oe_stat_button" icon="fa-tasks" >
+                    <field string="Tareas Projectos" name="othertask_count" widget="statinfo"/>
+                </button>
+            </button>
+            <!--<field name="partner_id" position="after"> 
+                <field name="factibility_id"/>
+                <field name="service_id" attrs="{'readonly': [('sale_line_id', '=', True)]}"/>
+                <field name="partner_contact_id"/>
+                <field name="contact_email"/>
+                <field name="contact_mobile"/>
+            </field>-->
+            <xpath expr="//field[@name='consumed_material_ids']/tree/field[@name='product_id']" position="after">
+                <field name="serie"/>
+                <field name="date_consumed"/>
+                <field name="partner_id"/>
+            </xpath>
+            <!-- Add your xpath here -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_materiales" type="object" class="oe_stat_button" icon="fa-dollar" attrs="{'invisible':[('type_task','not in',('1','2'))]}">
+                        <field string="Materiales" name="material_count" widget="statinfo"/>
+                    </button>
+                    <button name="action_attachments" type="object" class="oe_stat_button" icon="fa-file" attrs="{'invisible':[('attachment_count', '=', 0)]}">
+                        <field string="Documentos" name="attachment_count" widget="statinfo"/>
+                    </button>
+                    <button name="action_planes" type="object" class="oe_stat_button" icon="fa-file" attrs="{'invisible':[('plane_count', '=', 0)]}">
+                        <field string="Planos" name="plane_count" widget="statinfo"/>
+                    </button>
+                    <button name="action_subscription_state" string="Cierre de Proyecto" type="object" class="oe_stat_button" icon="fa-file" attrs="{'invisible':[('is_begin_end_task', '!=', 'end')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="after">
+               <field name="type_task"/>
+            </xpath>
+            <xpath expr="//page[@name='extra_info']" position="before">
+                <page string="Planos" name="plane_ids_page" attrs="{'invisible':[('type_task','=',False)]}">
+                    <group>
+                        <field name="plane_ids">                                            
+                          <tree string="Planos" editable="bottom">
+                              <field name="name" required="1"/>
+                              <field name="sequence" required="1"/>
+                              <field name="design_date" required="1"/>
+                              <field name="notes" required="1"/>
+                              <field name="filename" invisible="1"/>
+                              <field name="file" required="1"/>
+                              <field name="state" required="1"/>
+                          </tree>
+                        </field>
+                    </group>
+                </page>
+                <page string="Conformidad" name="conformity_ids_page">
+                    <group>
+                        <field name="conformity_ids">
+
+                          <tree string="Conformidad" editable="bottom">
+                              <field name="name" required="1"/>
+                              <field name="sequence" required="1"/>
+                              <field name="done_date" required="1"/>
+                              <field name="comment" required="1"/>
+                              <field name="partner_id" required="1"/>
+                              <field name="user_id" required="1"/>
+                              <field name="conformity_date" required="1"/>
+                              <field name="order_id" domain="[('partner_id', '=', partner_id)]"/>
+                              <field name="state" required="1"/>
+                          </tree>
+                        </field>
+                    </group>
+                </page>
+                <page string="Requisicion de Materiales" name="requisitions">
+                    <group>
+                        <field name="project_picking_ids" context="{'tree_view_ref': 'material_purchase_requisitions.material_purchase_requisition_tree_view'}">
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="plane_tree_view" model="ir.ui.view">
+        <field name="name">project.plane.tree</field>
+        <field name="model">project.plane</field>
+        <field name="arch" type="xml">
+            <tree string="Planos" editable="bottom">
+                <field name="name" required="1"/>
+                <field name="sequence" required="1"/>
+                <field name="design_date" required="1"/>
+                <field name="notes" required="1"/>
+                <field name="filename" readonly="1"/>
+                <field name="file" required="1" widget="binary"/>
+                <field name="project_task_id" required="1"/>
+                <field name="state" required="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="conformity_tree_view" model="ir.ui.view">
+        <field name="name">project.conformity.tree</field>
+        <field name="model">project.conformity</field>
+        <field name="arch" type="xml">
+            <tree string="Conformidad" editable="bottom">
+                <field name="name" required="1"/>
+                <field name="sequence" required="1"/>
+                <field name="done_date" required="1"/>
+                <field name="comment" required="1"/>
+                <field name="partner_id" required="1"/>
+                <field name="user_id" required="1"/>
+                <field name="conformity_date" required="1"/>
+                <field name="project_task_id" required="1"/>
+                <field name="state" required="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_type_inherit_design" model="ir.ui.view">
+        <field name="name">project.type.inherit.design</field>
+        <field name="model">project.type</field>
+        <field name="inherit_id" ref="project_category.project_type_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/div[@class='oe_title']" position="inside">
+                <div>
+                    <field name="is_design_project"/>
+                    <label for="is_design_project"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_project_plane" model="ir.actions.act_window">
+        <field name="name">Planos</field>
+        <field name="res_model">project.plane</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem id="menu_project_plane"
+        action="action_project_plane"
+        parent="project.menu_project_report"/>
+
+    <record id="action_project_conformity" model="ir.actions.act_window">
+        <field name="name">Conformidad</field>
+        <field name="res_model">project.conformity</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="odoo_job_costing_management.open_view_project_job_all_config" model="ir.actions.act_window">
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <menuitem id="menu_project_conformity"
+        action="action_project_conformity"
+        parent="project.menu_project_report"/>
+
+    <record id="view_project_project_filter" model="ir.ui.view">
+        <field name="name">project.project.select</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <filter string="Mis Proyectos" name="my_project_fxo" domain="[('user_id', '=', uid)]"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="open_view_project_all_fxo" model="ir.actions.server">
+        <field name="name">Proyectos</field>
+        <field name="model_id" ref="fxo_project_extended.model_project_project"/>
+        <field name="state">code</field>
+        <field name="code">action = model.get_data()</field>
+    </record>
+
+    <menuitem action="open_view_project_all_fxo" id="project.menu_projects" name="Projectos" parent="project.menu_main_pm" sequence="1"/>
+
+    <record id="action_view_task_mod" model="ir.actions.server">
+        <field name="name">Todas las Tareas</field>
+        <field name="model_id" ref="fxo_project_extended.model_project_task"/>
+        <field name="state">code</field>
+        <field name="code">action = model.get_data()</field>
+    </record>
+
+    <menuitem name="Todas las Tareas" id="project.menu_project_management" parent="project.menu_main_pm"
+        action="action_view_task_mod" sequence="2" groups="base.group_no_one,project.group_project_user"/>
+</odoo>

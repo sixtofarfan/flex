@@ -1,0 +1,768 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fxo_subscription_invoice_extend
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-04 16:38+0000\n"
+"PO-Revision-Date: 2021-11-04 12:48-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: fxo_subscription_invoice_extend
+#: code:addons/fxo_subscription_invoice_extend/models/account.py:0
+#, python-format
+msgid " E-mail sent to customer."
+msgstr "Correo electrónico enviado a la cliente."
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_account_move_line_custom
+msgid "Account Move Line Custom"
+msgstr "Línea de movimiento de cuenta personalizada"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_account_debit_note
+msgid "Add Debit Note wizard"
+msgstr "Asistente para agregar nota de débito "
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__partner_street_destination_header
+msgid "Address Header"
+msgstr "Encabezado de dirección"
+
+#. module: fxo_subscription_invoice_extend
+#: model_terms:ir.ui.view,arch_db:fxo_subscription_invoice_extend.sale_subscription_view_form
+msgid "Apuntes de asientos personalizados"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: code:addons/fxo_subscription_invoice_extend/models/account.py:0
+#, python-format
+msgid ""
+"Automatic payment failed after multiple attempts. Subscription closed "
+"automatically."
+msgstr ""
+"El pago automático falló después de varios intentos. La suscripción se "
+"cerró automáticamente."
+
+#. module: fxo_subscription_invoice_extend
+#: code:addons/fxo_subscription_invoice_extend/models/account.py:0
+#, python-format
+msgid "Automatic payment failed. Subscription set to \"To Renew\"."
+msgstr ""
+"Error en el pago automático. Suscripción establecida en \"Para renovar\". "
+
+#. module: fxo_subscription_invoice_extend
+#: code:addons/fxo_subscription_invoice_extend/models/account.py:0
+#, python-format
+msgid ""
+"Automatic payment succeeded. Payment reference: <a href=# data-oe-"
+"model=payment.transaction data-oe-id=%d>%s</a>; Amount: %s. Invoice <a "
+"href=# data-oe-model=account.move data-oe-id=%d>View Invoice</a>."
+msgstr ""
+"El pago automático se realizó correctamente. Referencia de pago: <a href=# "
+"data-oe-model=payment.transaction data-oe-id=%d>% s </a>; Cantidad:% s. "
+"Factura <a href=# data-oe-model=account.move data-oe-id=%d> Ver factura </"
+"a>. "
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields.selection,name:fxo_subscription_invoice_extend.selection__sale_subscription_time_line__state__draft
+msgid "Borrador"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_template__calculate_upsell
+msgid "Calcular Prorrateo"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,help:fxo_subscription_invoice_extend.field_main_parameter__first_day_sub
+msgid ""
+"Campo para definir si se quiere cambiar la fecha de renovacion de contrato "
+"cuando \t\t\tse crea la primera factura"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__quantity
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__qty
+msgid "Cantidad"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__product_uom_category_id
+msgid "Category"
+msgstr "Categoría"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,help:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
+msgstr ""
+"La conversión entre las unidades de medidas sólo pueden ocurrir si "
+"pertenecen a la misma categoría. La conversión se basará en los ratios "
+"establecidos."
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__create_uid
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__create_uid
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__create_uid
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log__create_uid
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__create_uid
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__create_date
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__create_date
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__create_date
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log__create_date
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__create_date
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__account_id
+msgid "Cuenta"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line__invoiced_fees
+msgid "Cuotas Facturadas"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line__fees_to_invoice
+msgid "Cuotas a Facturar"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription__custom_invoice_line_ids
+msgid "Custom Invoice Line"
+msgstr "Línea de factura personalizada"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move__custom_line_ids
+msgid "Custom Line"
+msgstr "Línea personalizada"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line__partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__discount
+msgid "Desc.%"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__name
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__name
+msgid "Descripcion"
+msgstr "Descripción"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_main_parameter__name_product_minutes
+msgid "Descripcion para Minutos Adicionales"
+msgstr "Descripción para Minutos Adicionales"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_main_parameter__name_product_invoices
+msgid "Descripcion para la Factura"
+msgstr "Descripción para la Factura"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_product_pricelist_item__discount_extra
+msgid "Descuento Extra"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields.selection,name:fxo_subscription_invoice_extend.selection__main_parameter__billing_method__first
+msgid "Desde el primer dia"
+msgstr "Desde el primer día"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__partner_street_destination
+msgid "Destination address"
+msgstr "Dirección de destino"
+
+#. module: fxo_subscription_invoice_extend
+#: model_terms:ir.ui.view,arch_db:fxo_subscription_invoice_extend.view_move_form_inherit
+msgid "Detalle Personalizado"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_main_parameter
+msgid "Detraction Limit Line"
+msgstr "Línea de límite de detracción"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription__journal_id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line__journal_id
+msgid "Diario"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line__partner_street_destination_header
+msgid "Direccion Cabecera"
+msgstr "Dirección Cabecera"
+
+#. module: fxo_subscription_invoice_extend
+#: model_terms:ir.ui.view,arch_db:fxo_subscription_invoice_extend.sale_subscription_view_form
+msgid "Disc.%"
+msgstr "Desc.%"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__discount
+msgid "Discount (%)"
+msgstr "Descuento (%)"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__display_name
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__display_name
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__display_name
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log__display_name
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__display_name
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line__display_name
+msgid "Display Name"
+msgstr "Nombre a Mostrar"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__display_type
+msgid "Display Type"
+msgstr "Tipo de pantalla"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription__client_order_ref
+msgid "Doc.Referencia"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__state
+msgid "Estado"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move__extra_lines_ids
+msgid "Extra"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__move_id
+msgid "Factura"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields.selection,name:fxo_subscription_invoice_extend.selection__sale_subscription_time_line__state__done
+msgid "Facturado"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log__date
+msgid "Fecha"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__invoice_date
+msgid "Fecha Facturación"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line__date_prom_stop
+msgid "Fecha Fin Promocion"
+msgstr "Fecha Fin Promoción"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line__stop_date
+msgid "Fecha Finalizacion"
+msgstr "Fecha Finalización"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log__invoice_date
+msgid "Fecha Proxima Facturacion"
+msgstr "Fecha Proxima Facturación"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription__date_due
+msgid "Fecha Vencimiento"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,help:fxo_subscription_invoice_extend.field_sale_subscription__date_due
+msgid ""
+"Fecha de vencimiento, dato referencial sólo informativo para contratos de "
+"tipo indefinido que se factuará por siempre aún esté vencido"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__fees_number
+msgid "Fees Number"
+msgstr "Número de tarifas"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__fees_to_invoice
+msgid "Fees To Invoice"
+msgstr "Tarifas para facturar"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_main_parameter__glosa
+msgid "Glosa"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log__id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line__id
+msgid "ID"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_l10n_latam_identification_type
+msgid "Identification Types"
+msgstr "Tipos de Identificación"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__tax_ids
+msgid "Impuestos"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__invoiced_fees
+msgid "Invoiced Fees"
+msgstr "Tarifas facturadas"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_account_move
+msgid "Journal Entries"
+msgstr "Asientos contables"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom____last_update
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra____last_update
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom____last_update
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log____last_update
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line____last_update
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line____last_update
+msgid "Last Modified on"
+msgstr "Ultima Modificación en"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__write_uid
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__write_uid
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__write_uid
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log__write_uid
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__write_uid
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado última vez por"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__write_date
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__write_date
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__write_date
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log__write_date
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__write_date
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.actions.act_window,name:fxo_subscription_invoice_extend.action_subscription_log
+#: model:ir.ui.menu,name:fxo_subscription_invoice_extend.menu_subscription_log
+msgid "Log de Errores Facturacion"
+msgstr "Log de Errores Facturación"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line__main_parameter_id
+msgid "Main Parameter"
+msgstr "Parámetro principal"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_product_pricelist_item__default_months
+msgid "Meses por defecto"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,help:fxo_subscription_invoice_extend.field_product_pricelist_item__default_months
+msgid ""
+"Meses por defecto que se utilizaran para el calculo de descuentos en "
+"suscripciones"
+msgstr ""
+"Meses por defecto que se utilizarán para el calculo de descuentos en "
+"suscripciones"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_main_parameter__billing_method
+msgid "Metodo de Facturacion"
+msgstr "Método de Facturación"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription__time_lines_ids
+#: model_terms:ir.ui.view,arch_db:fxo_subscription_invoice_extend.sale_subscription_view_form
+msgid "Minutos Adicionales"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__move_id
+msgid "Move"
+msgstr "Asiento"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line__move_line_ids
+msgid "Move Line"
+msgstr "Apunte"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__name
+msgid "Nombre"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields.selection,name:fxo_subscription_invoice_extend.selection__account_move_line_custom__display_type__line_note
+msgid "Note"
+msgstr "Nota"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line__circuit_number
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__circuit_number
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line__circuit_number
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__circuit_number
+msgid "Nro Circuito"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line__fees_number
+msgid "Numero de Cuotas"
+msgstr "Número de Cuotas"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_order_line__qty_months
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line__qty_months
+msgid "Numero de Meses"
+msgstr "Número de Meses"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__partner_street_destination
+msgid "Partner Street Destination"
+msgstr "Destino de la calle asociada"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__partner_street_destination_header
+msgid "Partner Street Destination Header"
+msgstr "Encabezado de destino de la calle del socio"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_template__custom_template
+msgid "Plantilla Personalizada"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log__template_id
+msgid "Plantilla de la Suscripcion"
+msgstr "Plantilla de la Suscripción"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription__user2_id
+msgid "Post-Venta"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__price_unit
+msgid "Precio"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__price_subtotal
+msgid "Precio SubTotal"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__price_unit
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__price_unit
+msgid "Precio Unitario"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_product_pricelist_item
+msgid "Pricelist Rule"
+msgstr "Regla de Tarifa"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_main_parameter__first_day_sub
+msgid "Primer dia del mes"
+msgstr "Primer día del mes"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__product_id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__product_id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__product_id
+msgid "Producto"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_main_parameter__product_minutes
+msgid "Producto para Minutos Adicionales"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_main_parameter__product_invoices
+msgid "Producto para facturacion"
+msgstr "Producto para facturación"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,help:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__quantity
+msgid "Quantity that will be invoiced."
+msgstr "Cantidad que se facturará."
+
+#. module: fxo_subscription_invoice_extend
+#: code:addons/fxo_subscription_invoice_extend/models/account.py:0
+#, python-format
+msgid ""
+"Referencia de cliente duplicada detectada. Probablemente registró dos "
+"veces la misma factura / factura rectificativa del cliente:\n"
+"%s"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_sale_subscription_log
+msgid "Sale Subscription Log"
+msgstr "Registro de suscripción de venta"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_sale_order
+msgid "Sales Order"
+msgstr "# Pedido"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields.selection,name:fxo_subscription_invoice_extend.selection__account_move_line_custom__display_type__line_section
+msgid "Section"
+msgstr "Sección"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields.selection,name:fxo_subscription_invoice_extend.selection__main_parameter__billing_method__period
+msgid "Segun periodo de facturacion"
+msgstr "Según período de facturación"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription__serie_id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line__serie_id
+msgid "Serie"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_l10n_latam_identification_type__serie_control_id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_main_parameter__serie_control_ids
+msgid "Serie Control"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_serie_control_line
+msgid "Serie Control Line"
+msgstr "Serie de línea de control"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_res_partner__serie_id_default
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_res_users__serie_id_default
+msgid "Serie para Facturacion"
+msgstr "Serie para Facturación"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__service_id
+msgid "Service"
+msgstr "Servicio"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line__service_id
+msgid "Service ID"
+msgstr "ID Servicio"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_sale_subscription
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__analytic_account_id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__subscription_id
+msgid "Subscription"
+msgstr "Suscripción"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_sale_subscription_line
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line__subscription_line_id
+msgid "Subscription Line"
+msgstr "Línea de suscripción"
+
+#. module: fxo_subscription_invoice_extend
+#: model_terms:ir.ui.view,arch_db:fxo_subscription_invoice_extend.sale_subscription_view_form
+msgid "Subscription Lines"
+msgstr "Apuntes de asientos periódicos"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_sale_subscription_template
+msgid "Subscription Template"
+msgstr "Plantilla de la suscripción"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__price_subtotal
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__price_subtotal
+msgid "Subtotal"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log__sale_subscription_id
+msgid "Suscripcion"
+msgstr "Suscripción"
+
+#. module: fxo_subscription_invoice_extend
+#: model_terms:ir.ui.view,arch_db:fxo_subscription_invoice_extend.main_parameter_form_inherit_subs
+msgid "Suscripciones"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,help:fxo_subscription_invoice_extend.field_account_move_line_custom__display_type
+msgid "Technical field for UX purpose."
+msgstr "Campo técnico para propósitos de usabilidad"
+
+#. module: fxo_subscription_invoice_extend
+#: code:addons/fxo_subscription_invoice_extend/models/account.py:0
+#, python-format
+msgid "There are no journal items in the draft state to post."
+msgstr "No hay elementos de diario en el estado de borrador para publicar."
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription__minutes_adds
+msgid "Tiene Minutos Adicionales"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_res_partner__type_document_default
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_res_users__type_document_default
+msgid "Tipo Documento para Facturacion"
+msgstr "Tipo Documento para Facturación"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription__type_document_id
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line__type_document_id
+msgid "Tipo de Documento"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_log__error
+msgid "Tipo de Error"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_serie_control_line__l10n_latam_identification_type_ids
+msgid "Tipos de Documento"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_extra__product_uom
+msgid "UM"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_account_move_line_custom__product_uom_id
+msgid "UdM"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__uom_id
+msgid "Unid. Medida"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__price_unit
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_line_custom__uom_id
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: fxo_subscription_invoice_extend
+#: model_terms:ir.ui.view,arch_db:fxo_subscription_invoice_extend.sale_subscription_view_form
+msgid "UoM"
+msgstr "UdM"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_validate_account_move
+msgid "Validate Account Move"
+msgstr "Validar movimiento contable"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__price_subtotal
+msgid "Valor Venta"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_account_move_line_extra
+msgid "account.move.line.extra"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model.fields,field_description:fxo_subscription_invoice_extend.field_sale_subscription_time_line__qty
+msgid "cantidad Minutos"
+msgstr "Cantidad minutos"
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_sale_subscription_line_custom
+msgid "sale.subscription.line.custom"
+msgstr ""
+
+#. module: fxo_subscription_invoice_extend
+#: model:ir.model,name:fxo_subscription_invoice_extend.model_sale_subscription_time_line
+msgid "sale.subscription.time.line"
+msgstr ""

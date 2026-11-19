@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="mailing_list_view_import_form">
+        <field name="name">mailing.list.form</field>
+        <field name="model">mailing.list</field>
+        <field name="inherit_id" ref="mass_mailing.mailing_list_view_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <field name="is_public" position="after">
+                    <field name="vat"/>
+                    <field name="category_id"/>
+                    <field name="state_partner"/>
+                </field>
+            </data>
+        </field>
+    </record>
+</odoo>

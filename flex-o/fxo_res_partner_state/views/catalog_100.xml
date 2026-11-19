@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+        <!-- Add you code here -->
+        <!-- catalog.100 form view -->
+        <record id="catalog_100_view_form" model="ir.ui.view">
+            <field name="name">catalog.100.view.form</field>
+            <field name="model">catalog.100</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here -->
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- einvoice.catalog.03 tree view -->
+        <record id="catalog_03_view_tree" model="ir.ui.view">
+            <field name="name">catalog.100.view.tree</field>
+            <field name="model">catalog.100</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="catalog_100_action" model="ir.actions.act_window">
+            <field name="name">Catalogo 100 -  Estados del Partner </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">catalog.100</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem   id="menu_catalog_100" 
+                    name="Catalogo 100 -  Estados del Partner" 
+                    parent="account_base_it.menu_account_base_it"
+                    action="catalog_100_action"/>
+    </data>
+</odoo>

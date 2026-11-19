@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+    <!-- Códigos de país SUNAT tabla 25 -->
+
+    <record model='table.25' id='00_id'><field name='code'>00</field><field name='description'>NINGUNO</field></record>
+    <record model='table.25' id='01_id'><field name='code'>01</field><field name='description'>CANADA</field></record>
+    <record model='table.25' id='02_id'><field name='code'>02</field><field name='description'>CHILE</field></record>
+    <record model='table.25' id='03_id'><field name='code'>03</field><field name='description'>COMUNIDAD ANDINA DE NACIONES (CAN)</field></record>
+    <record model='table.25' id='04_id'><field name='code'>04</field><field name='description'>BRASIL</field></record>
+    <record model='table.25' id='05_id'><field name='code'>05</field><field name='description'>ESTADOS UNIDOS MEXICANOS</field></record>
+    <record model='table.25' id='06_id'><field name='code'>06</field><field name='description'>REPUBLICA DE COREA</field></record>
+    <record model='table.25' id='07_id'><field name='code'>07</field><field name='description'>CONFEDERACIÓN SUIZA</field></record>
+    <record model='table.25' id='08_id'><field name='code'>08</field><field name='description'>PORTUGAL</field></record>
+    <record model='table.25' id='09_id'><field name='code'>09</field><field name='description'>OTROS</field></record>
+
+  </data>
+</odoo>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="uei_view_company_form" model="ir.ui.view">
+            <field name="name">res.company.inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[1]" position="after">
+                    <page groups="base.group_user" string="Integración Scotiabank">
+                        <group>
+                            <group string="Información servidor">
+                                <field name="stb_param_url"/>
+                                <field name="stb_param_db"/>
+                            </group>
+                            <group string="Información conexión">
+                                <field name="stb_param_username"/>
+                                <field name="stb_param_password" password="True"/>
+                            </group>
+
+                           
+                            <group>
+                            </group>
+
+                            <group col="2" colspan="2">
+                                <field name="stb_param_currency_usd"/>
+                                <field name="stb_param_currency_pen"/>
+
+                                <label for="stb_param_journal_usd"/>
+                                <div>
+                                    <field name="stb_param_journal_usd" class="oe_inline"/>
+                                    <field name="stb_journal_usd_name" class="oe_inline"/>
+                                </div>
+
+                                <label for="stb_param_journal_pen"/>
+                                <div>
+                                    <field name="stb_param_journal_pen" class="oe_inline"/>
+                                    <field name="stb_journal_pen_name" class="oe_inline"/>
+                                </div>
+
+                                <label for="stb_param_account_usd"/>
+                                <div>
+                                    <field name="stb_param_account_usd" class="oe_inline"/>
+                                    <field name="stb_account_usd_name" class="oe_inline"/>
+                                </div>
+
+                                <label for="stb_param_account_pen"/>
+                                <div>
+                                    <field name="stb_param_account_pen" class="oe_inline"/>
+                                    <field name="stb_account_pen_name" class="oe_inline"/>
+                                </div>
+
+                                <field name="stb_contract_usd"/>
+                                <field name="stb_contract_pen"/>
+                                
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

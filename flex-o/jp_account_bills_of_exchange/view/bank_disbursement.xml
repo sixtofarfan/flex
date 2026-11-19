@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_bank_disbursement_tree" model="ir.ui.view">
+            <field name="name">account.bank.disbursement.tree.view</field>
+            <field name="model">account.bank.disbursement</field>
+            <field name="arch" type="xml">
+                <tree string="Bank Disbursements" create="0" edit="0">
+                    <field name="name"/>
+                    <field name="disbursement_date"/>
+                    <field name="send_form_id"/>
+                    <field name="operation_number"/>
+                    <!-- <field name="interest_operation_number"/>
+                    <field name="expenses_operation_number"/> -->
+                    <field name="currency_id" groups="base.group_multi_currency"/>
+                    <field name="exchange_rate" groups="base.group_multi_currency"/>
+                    <field name="disbursement_amount"/>
+                    <field name="disbursement_interests"/>
+                    <field name="financial_expenses"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_bank_disbursement_tree_for_line" model="ir.ui.view">
+            <field name="name">account.bank.disbursement.tree.view.for.line</field>
+            <field name="model">account.move.line</field>
+            <field name="arch" type="xml">
+                <tree string="Journal Items">
+                    <field name="move_id"/>
+                    <field name="account_id"/>
+                    <field name="debit"/>
+                    <field name="credit"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_bank_disbursement_form" model="ir.ui.view">
+            <field name="name">account.bank.disbursement.form.view</field>
+            <field name="model">account.bank.disbursement</field>
+            <field name="arch" type="xml">
+                <form string="Bank Disbursement" create="0">
+                    <header>
+                        <!-- <button string="Advance" type="object" name="advance_payment" class="oe_highlight" attrs="{'invisible':['|',('is_advanced_payment','=',False),('state','!=','payment')]}"/> -->
+                        <button string="Delivery" type="object" name="money_delivery" class="oe_highlight" attrs="{'invisible':['|',('is_advanced_payment','=',False),('state','!=','payment')]}"/>
+                        <button string="Cancel" type="object" name="cancel" confirm="Are you sure you want to unreconcile the conciliation and delete the accounting entries?" attrs="{'invisible':['|',('is_advanced_payment','=',False),('state','=','payment')]}"/>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                        <field name="is_advanced_payment" invisible="1"/>
+                    </header>
+                    <sheet string="Bank Disbursement">
+                        <!-- <div class="oe_button_box" name="button_box">
+                            <field name="payment_ids" invisible="1"/>
+                            <button class="oe_stat_button" name="open_payments_view" string="Payments" type="object" groups="account.group_account_user" icon="fa-dollar" attrs="{'invisible':['|','|',('is_advanced_payment','=',False),('state','!=','payment'),('payment_ids','=',False)]}"/>
+                        </div> -->
+                        <h1 class="mt0">
+                            <field name="name" readonly="1" class="oe_inline"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="disbursement_date" readonly="1"/>
+                                <field name="journal_id" readonly="1"/>
+                                <field name="send_form_id" readonly="1"/>
+                                <field name="currency_id" readonly="1" groups="base.group_multi_currency"/>
+                                <field name="account_move" readonly="1"/>
+                                <field name="payment_id" readonly="1" attr="{invisible:[('payment_id','=',False)]}"/>
+                            </group>
+                            <group> 
+                                <field name="exchange_rate" readonly="1" groups="base.group_multi_currency"/>
+                                <field name="disbursement_amount" readonly="1"/>
+                                <field name="operation_number" readonly="1"/>
+                                <field name="disbursement_interests" readonly="1"/>
+                                <!-- <field name="interest_operation_number" readonly="1"/> -->
+                                <field name="financial_expenses" readonly="1"/>
+                                <field name="gloss"/>
+                                <!-- <field name="expenses_operation_number" readonly="1"/> -->
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Journal Items">
+                                <group>
+                                    <group>
+                                        <field name="account_move" invisible="1" readonly="1"/>
+                                    </group>    
+                                    <field name="account_move_line_ids">
+                                        <tree>
+                                            <field name="date"/>
+                                            <field name="move_id"/>
+                                            <field name="account_id"/>
+                                            <field name="name"/>
+                                            <field name="full_reconcile_id"/>
+                                            <field name="debit" sum="Total"/>
+                                            <field name="credit" sum="Total"/>
+                                            <field name="amount_currency"/>
+                                            <field name="exchange_rate"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_bank_disbursements" model="ir.actions.act_window">
+            <field name="name">Bank Disbursements</field>
+            <field name="res_model">account.bank.disbursement</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_bank_disbursement_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_bank_disbursement_form')})]"/>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_account_bank_disbursements" name="Bank Disbursements"
+                parent="menu_bills_customer_title"
+                action="action_bank_disbursements" sequence="250"/>
+
+    </data>
+</odoo>

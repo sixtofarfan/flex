@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_company_sync_form">
+            <field name="name">res.company.form.inherit.sync.data.server</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="l10n_pe_invoice.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='pe_cpe_server_id']" position="before">
+                    <field name="sync_data_server_id" options="{'no_create': True}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

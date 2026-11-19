@@ -1,0 +1,34 @@
+<odoo>
+	<record id="main_parameter_form_inherit_subs" model="ir.ui.view">
+		<field name="name">main.parameter.form.inherit.subs</field>
+		<field name="model">main.parameter</field>
+		<field name="inherit_id" ref="account_base_it.view_main_parameter_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page name="subs" string="Suscripciones">
+					<group>
+						<group>
+							<field name="product_invoices"/>
+							<field name="name_product_invoices"/>
+							<field name="product_minutes"/>
+							<field name="glosa"/>
+						</group>
+						<group>
+							<field name="name_product_minutes"/>
+							<field name="billing_method"/>
+							<field name="first_day_sub"/>
+						</group>
+					</group>
+					<field name="serie_control_ids">
+						<tree editable="bottom">
+							<field name="serie_id"/>
+							<field name="type_document_id"/>
+							<field name="journal_id"/>
+							<field name="l10n_latam_identification_type_ids" widget="many2many_tags"/>
+						</tree>
+					</field>
+				</page>
+			</xpath>
+		</field>
+	</record>
+</odoo>

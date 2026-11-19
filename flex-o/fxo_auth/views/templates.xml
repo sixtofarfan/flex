@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+       <template id="assets_frontend" inherit_id="web.assets_frontend" name=" signup extend views" priority="15">
+            <xpath expr="//script[last()]" position="after">
+                <script type="text/javascript" src="/fxo_auth/static/src/js/portal.js"></script>
+                <script type="text/javascript" src="/fxo_auth/static/src/js/auth_signup.js"></script>
+            </xpath>
+            
+        </template>
+
+        <template id="assets_custom_frontend" inherit_id="web.assets_frontend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/fxo_auth/static/src/css/from.scss"/>
+            </xpath>
+        </template>
+        
+        <record id="res_partner_registro_sequence" model="ir.sequence">
+            <field name="name">res.partner.registro</field>
+            <field name="code">res.partner.registro</field>
+            <field name="prefix">N/</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,12 @@
+<odoo>
+	<record id="view_move_form_inherit_trade_gamma" model="ir.ui.view">
+		<field name="name">view.move.form.inherit.trade.gamma</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="jp_foreign_trade_logistics.view_move_form_inherit_trade"/>
+		<field name="arch" type="xml">
+			<field name="import_number" position="attributes">
+				<attribute name="attrs">{'invisible': [('type', 'not in', ['in_invoice', 'in_refund', 'in_receipt', 'out_invoice', 'out_refund', 'out_receipt'])]}</attribute>
+			</field>
+		</field>
+	</record>
+</odoo>

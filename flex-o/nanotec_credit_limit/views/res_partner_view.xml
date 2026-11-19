@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--<record model="ir.ui.view" id="nano_res_partner_form_two">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <field name="credit" position="replace"/>
+            </field>
+        </record>-->
+
+        <record model="ir.ui.view" id="nano_res_partner_form_credit">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook[last()]" position="inside">
+                    <page string="Política de crédito" name ="politica_de_credito" groups="sales_team.group_sale_manager,sales_team.group_sale_salesman,account.group_account_manager,account.group_account_user">
+                        <field name="status_credit" widget="statusbar" class="oe_right"/>
+                        <group>
+                            <group>
+                                <field name="credit_limit2" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="currency_id" attrs="{'readonly': [('credit_limit2','>',0.0)]}" widget="selection"/>
+                            </group>
+                            <group>
+                                <field name="credit_balance" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="date_validity"/>
+                            </group>
+                        </group>
+                        <field name="credit_ids" readonly="1">
+                            <tree>
+                                <field name="process_type"/>
+                                <field name="process_date"/>
+                                <field name="currency_id"/>
+                                <field name="amount_application"/>
+                                <field name="amount_debit" sum="Total importe aprobado"/>
+                                <field name="amount_credit" sum="Total importe anulado"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_partner_tree_credit" model="ir.ui.view">
+            <field name="name">res.partner.tree.route</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='user_id']" position="before">
+                        <field name="credit_limit2"/>
+                        <field name="credit_balance"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</odoo>

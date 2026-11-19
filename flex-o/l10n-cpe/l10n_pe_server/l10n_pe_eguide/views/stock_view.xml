@@ -1,0 +1,218 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_warehouse">
+            <field name="name">stock.warehouse.form.inherit.l10n.pe.sunat.eguide</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="eguide_sequence_id" groups="l10n_pe_cpe.group_pe_cpe_manager"/>
+                </xpath>
+                <xpath expr="//field[@name='code']" position="after">
+                    <field name="establishment_code"/>
+                </xpath>
+
+            </field>
+        </record>
+        <record id="view_warehouse_establishment_code_tree" model="ir.ui.view">
+            <field name="name">warehouse.establishment.code.inherit.tree</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="establishment_code"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_company_form">
+            <field name="name">stock.picking.form.inherit.l10n.pe.sunat.eguide</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='button_scrap']" position="after">
+                    <button name="action_generate_eguide" string="Generate E-Guide" type="object"
+                            attrs="{'invisible':['|',('pe_is_eguide','=',False),('pe_guide_state', 'in', ['send','verify','done'])]}"
+                            groups="l10n_pe_cpe.group_pe_cpe_user"/>
+                    <button name="action_cancel_eguide" string="Cancel E-Guide" type="object"
+                            attrs="{'invisible':True}"/>
+                </xpath>
+                <xpath expr="//page[@name='extra']" position="after">
+                    <page string="Peruvian Customization" name="peruvian_customization"
+                          attrs="{'invisible':[('state','not in',('done'))]}">
+                        <group>
+                            <group>
+                                <field name="pe_is_eguide" attrs="{'readonly':[('pe_guide_number', '!=', '/')]}"/>
+                                <field name="pe_guide_id" groups="l10n_pe_cpe.group_pe_cpe_user"
+                                       attrs="{'invisible':[('pe_is_eguide', '!=', '/')], 'readonly':True}"/>
+                                <field name="pe_response"
+                                       attrs="{'invisible':[('pe_is_eguide','=',False)], 'readonly':True}"/>
+                                <field name="pe_note"
+                                       attrs="{'invisible':[('pe_is_eguide','=',False)], 'readonly':True}"/>
+                            </group>
+                            <group>
+                                <field name="pe_guide_number"
+                                       attrs="{'invisible':[('pe_is_eguide','=',False)], 'readonly':True}"/>
+                                <field name="pe_voided_id" groups="l10n_pe_cpe.group_pe_cpe_user"
+                                       attrs="{'invisible':True}"/>
+                                <field name="pe_error_code"
+                                       attrs="{'invisible':[('pe_is_eguide','=',False)], 'readonly':True}"/>
+                                <field name="pe_guide_state" attrs="{'invisible':True}"/>
+
+                            </group>
+                        </group>
+                        <group string="Electronic Guide Informations" attrs="{'invisible':[('pe_is_eguide','=',False)]}"
+                               groups="l10n_pe_cpe.group_pe_cpe_user">
+                            <group>
+                                <field name="pe_transfer_code"
+                                       attrs="{'required':[('pe_is_eguide','=',True)], 'readonly':[('pe_guide_number',  '!=', '/')]}"
+                                       groups="l10n_pe_cpe.group_pe_cpe_user"/>
+                                <field name="pe_gross_weight"
+                                       attrs="{'required':[('pe_is_eguide','=',True)], 'readonly':[('pe_guide_number',  '!=', '/')]}"
+                                       groups="l10n_pe_cpe.group_pe_cpe_user"/>
+                                <field name="uom_gross_weight"/>
+                                <field name="pe_unit_quantity" string="Nro de Bultos"
+                                       attrs="{'required':[('pe_transfer_code','=','08')], 'readonly':[('pe_guide_number',  '!=', '/')]}"
+                                       groups="l10n_pe_cpe.group_pe_cpe_user"/>
+                                <field name="supplier_id" domain="[ ('parent_id', '=', False)]"
+                                       attrs="{'readonly':[('pe_guide_number',  '!=', '/')]}"
+                                       groups="l10n_pe_cpe.group_pe_cpe_user"/>
+                            </group>
+                            <group>
+                                <field name="pe_is_realeted" attrs="{'readonly':[('pe_guide_number',  '!=', '/')]}"
+                                       groups="l10n_pe_cpe.group_pe_cpe_user"/>
+                                <field name="pe_related_number"
+                                       attrs="{'invisible':[('pe_is_realeted','=',False)], 'required':[('pe_is_realeted','=',True)], 'readonly':[('pe_guide_number',  '!=', '/')]}"
+                                       groups="l10n_pe_cpe.group_pe_cpe_user"/>
+                                <field name="pe_related_code"
+                                       attrs="{'invisible':[('pe_is_realeted','=',False)], 'required':[('pe_is_realeted','=',True)], 'readonly':[('pe_guide_number',  '!=', '/')]}"
+                                       groups="l10n_pe_cpe.group_pe_cpe_user"/>
+                                <field name="pe_is_programmed" attrs="{'readonly':[('pe_guide_number',  '!=', '/')]}"
+                                       groups="l10n_pe_cpe.group_pe_cpe_user"/>
+                                <field name="pe_transport_mode"
+                                       attrs="{'required':[('pe_is_eguide','=',True)], 'readonly':[('pe_guide_number',  '!=', '/')]}"
+                                       groups="l10n_pe_cpe.group_pe_cpe_user"/>
+                                <field name="pe_carrier_id"
+                                       attrs="{'invisible':[('pe_transport_mode','not in',['01'])], 'required':[('pe_transport_mode','=', '01')], 'readonly':[('pe_guide_number',  '!=', '/')]}"
+                                       groups="l10n_pe_cpe.group_pe_cpe_user"/>
+                            </group>
+                        </group>
+                        <field name="pe_fleet_ids" nolabel="1" widget="one2many_list" mode="tree"
+                               attrs="{'invisible':[('pe_transport_mode','not in',['02'])], 'readonly':[('pe_guide_number',  '!=', '/')]}"
+                               groups="l10n_pe_cpe.group_pe_cpe_user">
+                            <tree string="Invoice Lines" editable="bottom">
+                                <field name="fleet_id"/>
+                                <field name="name"/>
+                                <field name="driver_id"/>
+                                <field name="is_main"/>
+                            </tree>
+                        </field>
+                        <div>
+                            <label for="pe_digest" string="Digest value:"
+                                   attrs="{'invisible':[('pe_is_eguide','=',False)], 'readonly':True}"/>
+                            <field name="pe_digest"
+                                   attrs="{'invisible':[('pe_is_eguide','=',False)], 'readonly':True}"/>
+                        </div>
+                        <div>
+                            <label for="pe_signature" string="Signature value:"
+                                   attrs="{'invisible':[('pe_is_eguide','=',False)], 'readonly':True}"/>
+                        </div>
+                        <div>
+                            <field name="pe_signature"
+                                   attrs="{'invisible':[('pe_is_eguide','=',False)], 'readonly':True}"/>
+                        </div>
+                    </page>
+                </xpath>
+                <xpath expr="//notebook//page[3]//field[@name='move_ids_without_package']//tree//field[@name='product_uom']"
+                       position="before">
+                    <field name="reason_transfer" invisible="1"/>
+                    <field name="reason_transfer_code"/>
+                    <field name="indicator_dam"
+                           attrs="{'readonly':[('reason_transfer_code','not in', ['08', '09', False])]}"/>
+                </xpath>
+                <xpath expr="//notebook//page[3]//field[@name='move_ids_without_package']//form//group//field[@name='product_uom']"
+                       position="before">
+                    <field name="reason_transfer" invisible="1"/>
+                    <field name="reason_transfer_code"/>
+                    <field name="indicator_dam"
+                           attrs="{'readonly':[('reason_transfer_code','not in', ['08', '09', False])]}"/>
+                </xpath>
+                <xpath expr="//notebook//page[@name='transport']//group[1]//group[2]//field[@name='starting_point']"
+                       position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//notebook//page[@name='transport']//group[1]//group[2]//field[@name='ending_point']"
+                       position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//notebook//page[@name='transport']"
+                       position="inside">
+                    <group>
+                        <group>
+                            <field name="punto_partida_id" options='{"no_open": True, "no_create": True}'
+                                   attrs="{'readonly': [('state','in', ['cancel'])]}"/>
+                            <field name="starting_point" string="Calle"
+                                   attrs="{'readonly': [('state','in', ['cancel'])]}"/>
+                            <label for="partida_state_id" string="Ubigeo partida:"/>
+                            <div class="o_address_format">
+                                <field name="partida_state_id" class="o_address_street" placeholder="Departamento"
+                                       options='{"no_open": True, "no_create": True}'
+                                       attrs="{'readonly': [('state','in', ['cancel'])]}"
+                                       domain="[('country_id','=',partida_country_id),('state_id', '=', False),('province_id','=', False)]"/>
+                                <field name="partida_province_id" class="o_address_street" placeholder="Provincia"
+                                       options='{"no_open": True, "no_create": True}'
+                                       attrs="{'readonly': [('state','in', ['cancel'])]}"
+                                       domain="[('country_id','=',partida_country_id),('state_id', '=', partida_state_id),('province_id','=', False)]"/>
+                                <field name="partida_district_id" class="o_address_street" placeholder="Distrito"
+                                       options='{"no_open": True, "no_create": True}'
+                                       attrs="{'readonly': [('state','in', ['cancel'])]}"
+                                       domain="[('country_id','=',partida_country_id),('state_id', '=', partida_state_id),('province_id','=', partida_province_id)]"/>
+                                <field name="partida_country_id" placeholder="País" class="o_address_country"
+                                       attrs="{'readonly': [('state','in', ['cancel'])]}"
+                                       options='{"no_open": True, "no_create": True}'/>
+                            </div>
+                            <field name="partida_establishment_code"
+                                   attrs="{'readonly': [('state','in', ['cancel'])]}"/>
+                        </group>
+                        <group>
+                            <field name="punto_llegada_id" options='{"no_open": True, "no_create": True}'
+                                   attrs="{'readonly': [('state','in', ['cancel'])]}"/>
+                            <field name="ending_point" string="Calle"
+                                   attrs="{'readonly': [('state','in', ['cancel'])]}"/>
+                            <label for="llegada_state_id" string="Ubigeo llegada:"/>
+                            <div class="o_address_format">
+                                <field name="llegada_state_id" class="o_address_street" placeholder="Departamento"
+                                       options='{"no_open": True, "no_create": True}'
+                                       attrs="{'readonly': [('state','in', ['cancel'])]}"
+                                       domain="[('country_id','=',llegada_country_id),('state_id', '=', False),('province_id','=', False)]"/>
+                                <field name="llegada_province_id" class="o_address_street" placeholder="Provincia"
+                                       options='{"no_open": True, "no_create": True}'
+                                       attrs="{'readonly': [('state','in', ['cancel'])]}"
+                                       domain="[('country_id','=',llegada_country_id),('state_id', '=', llegada_state_id),('province_id','=', False)]"/>
+                                <field name="llegada_district_id" class="o_address_street" placeholder="Distrito"
+                                       options='{"no_open": True, "no_create": True}'
+                                       attrs="{'readonly': [('state','in', ['cancel'])]}"
+                                       domain="[('country_id','=',llegada_country_id),('state_id', '=', llegada_state_id),('province_id','=', llegada_province_id)]"/>
+                                <field name="llegada_country_id" placeholder="País" class="o_address_country"
+                                       attrs="{'readonly': [('state','in', ['cancel'])]}"
+                                       options='{"no_open": True, "no_create": True}'/>
+                            </div>
+                            <field name="llegada_establishment_code"
+                                   attrs="{'readonly': [('state','in', ['cancel'])]}"/>
+                        </group>
+                    </group>
+                </xpath>
+                <xpath expr="//notebook//page[@name='transport']//group[1]//group[1]//field[@name='vehicle_id']"
+                       position="after">
+                    <field name="license_plate" attrs="{'required':[('type_of_transport','=','02')]}"/>
+                </xpath>
+                <xpath expr="//notebook//page[@name='transport']//group[1]//group[1]//field[@name='driver_id']"
+                       position="after">
+                    <field name="number_driver_licence"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

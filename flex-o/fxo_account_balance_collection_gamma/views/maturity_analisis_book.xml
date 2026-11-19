@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+        <record id="view_maturity_analysis_book_tree_inherit_limit" model="ir.ui.view">
+            <field name="name">maturity.analysis.book.tree.inherit.limit</field>
+            <field name="model">maturity.analysis.book</field>
+            <field name="inherit_id" ref="maturity_analysis_rep_it.view_maturity_analysis_book_tree"/>
+            <field name="arch" type="xml">
+                <field name="partner" position="after">
+                    <field name="credit_limit"/>
+                    <field name="pay_term"/>
+                </field>
+            </field>
+        </record>
+        <record id="maturity_analysis_book_search_inherit_limit" model="ir.ui.view">
+            <field name="name">maturity.analysis.book.search.inherit.limit</field>
+            <field name="model">maturity.analysis.book</field>
+            <field name="inherit_id" ref="maturity_analysis_rep_it.maturity_analysis_book_search"/>
+            <field name="arch" type="xml">
+                <field name="partner" position="after">
+                    <field name="credit_limit"/>
+                    <field name="pay_term"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- REPORT -->
+        <report
+                id="action_sale_subscription_contract"
+                model="sale.subscription"
+                string="Impresión de Contrato"
+                report_type="qweb-pdf"
+                name="fxo_contract_print.report_sale_subscription_contract"
+                file="fxo_contract_print.report_sale_subscription_contract"
+        />
+
+    </data>
+</odoo>

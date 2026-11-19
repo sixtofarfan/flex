@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="integration_intiza_xlsx_cron" model="ir.cron">
+            <field name="name">Integracion con Intiza mediante ficheros Excel</field>
+            <field name="model_id" ref="model_res_company"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_generate_xslx_to_ftp_intiza()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="state">code</field>
+        </record>
+    </data>
+</odoo>

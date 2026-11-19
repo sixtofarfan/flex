@@ -1,0 +1,22 @@
+<odoo>
+	<record id="view_electronic_guide_wizard_form_inherit" model="ir.ui.view">
+        <field name="name">preview.remission.guide.wizard.form.inherit</field>
+        <field name="model">preview.remission.guide.wizard</field>
+        <field name="inherit_id" ref="remission_guide_it.view_electronic_guide_wizard_form"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//field[@name='line_ids']/tree/field[@name='product_id']" position="after">
+        		<field name="description"/>
+        	</xpath>
+        </field>
+    </record>
+    <record id="view_remission_guide_wizard_form_inherit" model="ir.ui.view">
+        <field name="name">preview.remission.guide.wizard.form.inherit</field>
+        <field name="model">preview.remission.guide.wizard</field>
+        <field name="inherit_id" ref="remission_guide_it.view_remission_guide_wizard_form"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//field[@name='line_ids']/tree/field[@name='product_id']" position="after">
+        		<field name="description"/>
+        	</xpath>
+        </field>
+    </record>
+</odoo>

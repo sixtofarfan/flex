@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- REPORT -->
+        <report
+                id="action_report_contract_employee"
+                model="hr.contract"
+                string="Contrato de Trabajo"
+                report_type="qweb-pdf"
+                name="fxo_hr_print_contract.report_contract_employee"
+                file="fxo_hr_print_contract.report_contract_employee"
+        />
+        <record id="action_report_contract_employee" model="ir.actions.report">
+            <field name="paperformat_id" ref="fxo_hr_print_contract.paperformat_contract_employee"/>
+        </record>
+    </data>
+</odoo>

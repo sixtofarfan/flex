@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_stock_move_operations_inherit" model="ir.ui.view">
+		<field name="name">view.stock.move.operations.inherit</field>
+		<field name="model">stock.move</field>
+		<field name="inherit_id" ref="stock.view_stock_move_operations"/>
+		<field name="arch" type="xml">
+			<field name="company_id" position="before">
+				<header>
+					<button name="get_stock_move_wizard" string="Importar Lineas" type="object" class="oe_highlight"/>
+				</header>
+			</field>
+		</field>
+	</record>
+</odoo>

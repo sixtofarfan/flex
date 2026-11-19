@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="credit_limit2_confirm_wizard">
+        <field name="name">Confirming Sale Order When Credit is Over Limit</field>
+        <field name="model">sale.control.limit.wizard</field>
+        <field name="arch" type="xml"> 
+            <form>
+                <group>
+                    <span>The following customer is about or exceeded their credit limit. You need to confirm their Sale Order or Increase their Credit Limit:</span>
+                </group>
+		<group>
+			<field name="debt" widget="monetary"/>
+			<field name="invoice_amount" widget="monetary"/>
+			<field name="due_not_invoiced" widget="monetary"/>
+			<field name="new_balance" widget="monetary"/>
+			<field name="credit_limit2" widget="monetary"/>
+		</group> 
+                <footer> 
+                    <button string="Cancel" special="cancel" class="oe_highlight"/>
+		    <button name="exceed_limit_approve" string="Approve Sale Order" type="object" class="oe_highlight" />                 
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
+

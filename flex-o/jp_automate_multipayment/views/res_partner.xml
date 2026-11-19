@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="res_partner_form_inherit_automate">
+            <field name="name">res.partner.form.inherit.automate</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account_fields_it.view_partner_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']//field[@name='property_account_position_id']" position="after">
+                    <field name="detraction_bool" invisible="1"/>
+                    <field name="type_operation" attrs="{'required': [('detraction_bool', '=', True)]}"/>
+                    <field name="type_good_service" attrs="{'required': [('detraction_bool', '=', True)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='bank_ids']/tree/field[@name='bank_id']" position="after">
+                    <field name="is_detraction_account" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

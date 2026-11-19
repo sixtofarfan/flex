@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="group_request_credit_note" model="res.groups">
+		<field name="name">Solicitudes de Notas de Credito</field>
+		<field name="category_id" ref="base.module_category_accounting_accounting"/>
+	</record>
+	<record id="group_approved_request" model="res.groups">
+		<field name="name">Aprobar Solicitudes de Notas de Credito</field>
+		<field name="category_id" ref="base.module_category_accounting_accounting"/>
+	</record>
+	<record id="group_confirm_request" model="res.groups">
+		<field name="name">Confirmar Solicitudes de Notas de Credito</field>
+		<field name="category_id" ref="base.module_category_accounting_accounting"/>
+	</record>
+	<record id="group_edit_request" model="res.groups">
+		<field name="name">Solo Editar Solicitudes de Notas de Credito</field>
+		<field name="category_id" ref="base.module_category_accounting_accounting"/>
+	</record>
+	<record id="group_draft_request" model="res.groups">
+		<field name="name">Volver a Borrador Solicitudes de Notas de Credito</field>
+		<field name="category_id" ref="base.module_category_accounting_accounting"/>
+	</record>
+</odoo>

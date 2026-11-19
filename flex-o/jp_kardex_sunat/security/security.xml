@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+	<record model="ir.rule" id="closing_period_not_shared_multi_company_rule">
+		<field name="name">Non Shared Records: Closing Period</field>
+		<field name="model_id" ref="model_closing_period"/>
+		<field name="global" eval="True"/>
+		<field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+	</record>
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_hr_utilities_it_form_send_email" model="ir.ui.view">
+            <field name="name">hr.utilities.it.form.send.email</field>
+            <field name="model">hr.utilities.it</field>
+            <field name="inherit_id" ref="hr_utilities_it.view_hr_utilities_it_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <header position="inside">
+                        <button string="Enviar por Correo" type="object" icon="fa-envelope" name="send_email_utilities"
+                                class="oe_highlight"/>
+                    </header>
+                    <field name="utilities_line_ids" position="replace">
+                        <field name="utilities_line_ids" nolabel="1">
+                            <tree editable="bottom" create="false" edit="false" delete="false">
+                                <field name="employee_document"/>
+                                <field name="employee"/>
+                                <field name="distribution_id"/>
+                                <field name="salary" sum="salary"/>
+                                <field name="number_of_days" sum="number_of_days"/>
+                                <field name="for_salary" sum="for_salary"/>
+                                <field name="for_number_of_days" sum="for_number_of_days"/>
+                                <field name="total_utilities" sum="total_utilities"/>
+                            <!--<button string="Enviar" type="object" icon="fa-envelope" name="send_email_utilities"
+                                />-->
+                            </tree>
+                        </field>
+                    </field>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>

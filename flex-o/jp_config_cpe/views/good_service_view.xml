@@ -1,0 +1,83 @@
+<odoo>
+  <data>
+
+        <record id="view_type_operation_form" model="ir.ui.view">
+            <field name="name">type.operation.form</field>
+            <field name="model">type.operation</field>
+            <field name="arch" type="xml">
+                <form string="Type operation">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_type_operation_tree" model="ir.ui.view">
+            <field name="name">type.operation.tree</field>
+            <field name="model">type.operation</field>
+            <field name="arch" type="xml">
+                <tree string="Types of Operations">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_good_service_form" model="ir.ui.view">
+            <field name="name">good.service.form</field>
+            <field name="model">good.service</field>
+            <field name="arch" type="xml">
+                <form string="Good or Service">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_good_service_tree" model="ir.ui.view">
+            <field name="name">good.service.tree</field>
+            <field name="model">good.service</field>
+            <field name="arch" type="xml">
+                <tree string="Goods and Services">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_type_operation_tree" model="ir.actions.act_window">
+            <field name="name">Types of Operation</field>
+            <field name="res_model">type.operation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_type_operation_tree"/>
+        </record>
+
+        <record id="action_good_service_tree" model="ir.actions.act_window">
+            <field name="name">Goods and Services</field>
+            <field name="res_model">good.service</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_good_service_tree"/>
+        </record>
+
+        <menuitem
+            name='Detraction Type of Operations'
+            action="action_type_operation_tree"
+            id="menu_action_type_operation_tree"
+            parent="l10n_pe_cpe.pe_cpe_configuration_menu" sequence="200"/>
+
+        <menuitem
+            name='Detraction Goods and Services'
+            action="action_good_service_tree"
+            id="menu_action_good_service_tree"
+            parent="l10n_pe_cpe.pe_cpe_configuration_menu" sequence="300"/>
+
+  </data>
+</odoo>

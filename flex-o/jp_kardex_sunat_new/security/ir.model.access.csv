@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_jp_kardex_sunat_closing_period,jp_kardex_sunat.closing_period,model_closing_period,,1,1,1,1
+access_jp_kardex_sunat_closing_period_line,jp_kardex_sunat.closing_period_line,model_closing_period_line,,1,1,1,1
+access_jp_kardex_sunat_svl,jp_kardex_sunat.svl,model_stock_valuation_layer,,1,1,1,1

@@ -1,0 +1,5 @@
+<odoo>
+	<data noupdate="1">
+		<record model='einvoice.catalog.01'><field name='code'>LE</field><field name='description'>Letras</field><field name='digits_serie'>0</field><field name='digits_number'>0</field></record>
+    </data>
+</odoo>
