@@ -10,6 +10,7 @@
                 <field name="period"/>
                 <field name="date"/>
                 <field name="journal_code"/>
+                <field name="journal_name" optional="show"/>
                 <field name="voucher" widget="fxo_move_link"/>
                 <field name="account_group"/>
                 <field name="account_code"/>
@@ -48,7 +49,7 @@
                 <field name="doc_number"/>
                 <field name="type_invoice"/>
                 <field name="voucher"/>
-                <field name="journal_code"/>
+                <field name="journal_code" filter_domain="['|', ('journal_code', 'ilike', self), ('journal_name', 'ilike', self)]"/>
                 <field name="period"/>
                 <field name="glosa" filter_domain="['|', ('glosa', 'ilike', self), ('line_name', 'ilike', self)]"/>
                 <filter string="Movements" name="movements" domain="[('is_opening', '=', False)]"/>
@@ -61,6 +62,7 @@
                     <filter string="Account" name="g_account" context="{'group_by': 'account_code'}"/>
                     <filter string="Cost Center" name="g_analytic" context="{'group_by': 'analytic_account_id'}"/>
                     <filter string="Invoice Type" name="g_type_invoice" context="{'group_by': 'type_invoice'}"/>
+                    <filter string="Journal Name" name="g_journal_name" context="{'group_by': 'journal_name'}"/>
                     <filter string="Period" name="g_period" context="{'group_by': 'period'}"/>
                     <filter string="Journal" name="g_journal" context="{'group_by': 'journal_code'}"/>
                     <filter string="Partner" name="g_partner" context="{'group_by': 'partner_id'}"/>

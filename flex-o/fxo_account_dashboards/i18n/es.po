@@ -1619,3 +1619,11 @@ msgstr "con movimiento o saldo"
 #, python-format
 msgid "Invoice Type"
 msgstr "Tipo de factura"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__journal_name
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+#, python-format
+msgid "Journal Name"
+msgstr "Diario"

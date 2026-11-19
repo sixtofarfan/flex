@@ -364,7 +364,7 @@ WITH x AS (
            CASE WHEN am.is_opening_close AND to_char(am.date, 'mmdd') = '0101' THEN to_char(am.date, 'yyyy') || '00'
                 WHEN am.is_opening_close AND to_char(am.date, 'mmdd') = '1231' THEN to_char(am.date, 'yyyy') || '13'
                 ELSE to_char(am.date, 'yyyymm') END AS period,
-           aj.code AS journal_code, am.name AS voucher, l.account_id,
+           aj.code AS journal_code, aj.name AS journal_name, am.name AS voucher, l.account_id,
            l.debit, l.credit, l.balance,
            CASE WHEN cur.name = 'USD' THEN CASE WHEN l.debit <> 0 THEN l.amount_currency END
                 ELSE round(l.debit / COALESCE(NULLIF(l.tc, 0), 1), 2) END AS debit_me,
@@ -391,7 +391,7 @@ WITH x AS (
     SELECT x.move_line_id, x.move_id, x.date, x.period, x.journal_code, x.voucher, x.account_id,
            {amounts}, x.currency_name, x.currency_rate, x.amount_currency, x.analytic_account_id,
            x.glosa, x.line_name, x.partner_id, x.partner_doc_type, x.partner_vat, x.partner_name,
-           x.doc_type, x.doc_number, x.invoice_date, x.date_maturity, x.type_invoice
+           x.doc_type, x.doc_number, x.invoice_date, x.date_maturity, x.type_invoice, x.journal_name
       FROM x
 ), rows AS (
     SELECT FALSE AS is_opening, y.* FROM y WHERE {movement}
@@ -400,7 +400,7 @@ WITH x AS (
            '', '', y.account_id,
            GREATEST(sum(y.balance), 0), GREATEST(-sum(y.balance), 0), sum(y.balance),
            '', 0, sum(y.amount_currency), NULL::int,
-           'SALDO INICIAL', NULL, NULL::int, '', '', '', '', '', NULL::date, NULL::date, NULL::varchar
+           'SALDO INICIAL', NULL, NULL::int, '', '', '', '', '', NULL::date, NULL::date, NULL::varchar, NULL::varchar
       FROM y
      WHERE {opening}
      GROUP BY y.account_id
@@ -413,7 +413,7 @@ SELECT r.is_opening, r.move_line_id, r.move_id, r.date, r.period, r.journal_code
        r.currency_name, r.currency_rate, r.amount_currency,
        r.analytic_account_id, an.code AS analytic_code, an.name AS analytic_name,
        r.glosa, r.line_name, r.partner_id, r.partner_doc_type, r.partner_vat, r.partner_name,
-       r.doc_type, r.doc_number, r.invoice_date, r.date_maturity, r.type_invoice,
+       r.doc_type, r.doc_number, r.invoice_date, r.date_maturity, r.type_invoice, r.journal_name,
        %(company_id)s AS company_id
   FROM rows r
   JOIN account_account a ON a.id = r.account_id

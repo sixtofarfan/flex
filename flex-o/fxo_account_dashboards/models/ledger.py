@@ -59,6 +59,7 @@ class FxoLedgerLine(models.Model):
     period = fields.Char(string='Period', index=True)
     date = fields.Date(string='Date')
     journal_code = fields.Char(string='Journal')
+    journal_name = fields.Char(string='Journal Name', index=True)
     voucher = fields.Char(string='Voucher')
     account_id = fields.Many2one('account.account', string='Account Record', index=True)
     account_code = fields.Char(string='Account', index=True)
@@ -95,6 +96,7 @@ class FxoLedgerLine(models.Model):
             col('period', _('Period'), width=9),
             col('date', _('Date'), 'date', 11),
             col('journal_code', _('Journal'), width=7),
+            col('journal_name', _('Journal Name'), width=24),
             col('voucher', _('Voucher'), width=12, link='move'),
             col('account_group', _('Ledger Acc.'), width=8, link='group'),
             col('account_code', _('Account'), width=10, link='account'),
@@ -130,6 +132,7 @@ class FxoLedgerLine(models.Model):
             {'name': 'doc_number', 'label': _('Doc. Number')},
             {'name': 'voucher', 'label': _('Voucher')},
             {'name': 'journal_code', 'label': _('Journal')},
+            {'name': 'journal_name', 'label': _('Journal Name')},
             {'name': 'glosa', 'label': _('Description')},
             {'name': 'line_name', 'label': _('Line Label')},
             {'name': 'type_invoice', 'label': _('Invoice Type')},
@@ -147,7 +150,7 @@ class FxoLedgerLine(models.Model):
                 'running_balance', 'currency_name', 'currency_rate', 'amount_currency', 'analytic_account_id',
                 'analytic_code', 'analytic_name', 'glosa', 'line_name', 'partner_id', 'partner_doc_type',
                 'partner_vat', 'partner_name', 'doc_type', 'doc_number', 'invoice_date', 'date_maturity',
-                'type_invoice', 'company_id']
+                'type_invoice', 'journal_name', 'company_id']
         cr = self.env.cr
         cr.execute("DELETE FROM fxo_ledger_line WHERE user_id = %s", (self.env.uid,))
         params['uid'] = self.env.uid
