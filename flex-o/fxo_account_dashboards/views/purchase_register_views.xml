@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fxo_purchase_register_line_tree" model="ir.ui.view">
+        <field name="name">fxo.purchase.register.line.tree</field>
+        <field name="model">fxo.purchase.register.line</field>
+        <field name="arch" type="xml">
+            <tree string="Purchase Register" create="false" edit="false" delete="false" js_class="fxo_move_link_list">
+                <field name="move_id" invisible="1"/>
+                <field name="period"/>
+                <field name="date"/>
+                <field name="journal_code"/>
+                <field name="voucher" widget="fxo_move_link"/>
+                <field name="account_codes"/>
+                <field name="account_names"/>
+                <field name="expense_codes" optional="hide"/>
+                <field name="invoice_date"/>
+                <field name="date_due" optional="show"/>
+                <field name="doc_type"/>
+                <field name="serie"/>
+                <field name="doc_year" optional="hide"/>
+                <field name="doc_number"/>
+                <field name="partner_doc_type" optional="hide"/>
+                <field name="partner_vat"/>
+                <field name="partner_name"/>
+                <field name="base1" sum="BIOGYE"/>
+                <field name="base2" sum="BIOGEYNG" optional="show"/>
+                <field name="base3" sum="BIONG" optional="show"/>
+                <field name="cng" sum="CNG"/>
+                <field name="isc" sum="ISC" optional="show"/>
+                <field name="icbper" sum="ICBPER" optional="show"/>
+                <field name="otros" sum="Others" optional="show"/>
+                <field name="igv1" sum="IGV 1"/>
+                <field name="igv2" sum="IGV 2" optional="show"/>
+                <field name="igv3" sum="IGV 3" optional="show"/>
+                <field name="total" sum="Total"/>
+                <field name="currency_name"/>
+                <field name="amount_me" sum="Foreign Amount"/>
+                <field name="currency_rate"/>
+                <field name="detraction_date" optional="show"/>
+                <field name="detraction_number" optional="show"/>
+                <field name="ref_doc_date" optional="hide"/>
+                <field name="ref_doc_type" optional="hide"/>
+                <field name="ref_serie" optional="hide"/>
+                <field name="ref_number" optional="hide"/>
+                <field name="glosa"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fxo_purchase_register_line_search" model="ir.ui.view">
+        <field name="name">fxo.purchase.register.line.search</field>
+        <field name="model">fxo.purchase.register.line</field>
+        <field name="arch" type="xml">
+            <search string="Purchase Register">
+                <field name="partner_name" filter_domain="['|', ('partner_name', 'ilike', self), ('partner_vat', 'ilike', self)]"/>
+                <field name="doc_number"/>
+                <field name="voucher"/>
+                <field name="account_codes" filter_domain="['|', ('account_codes', 'ilike', self), ('account_names', 'ilike', self)]"/>
+                <field name="expense_codes"/>
+                <field name="journal_code"/>
+                <field name="doc_type"/>
+                <field name="period"/>
+                <field name="glosa"/>
+                <filter string="Foreign Currency" name="foreign" domain="[('currency_name', '!=', 'PEN')]"/>
+                <filter string="With Detraction" name="detraction" domain="[('detraction_number', '!=', False)]"/>
+                <filter string="Credit Notes" name="credit_notes" domain="[('doc_type', '=', '07')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Period" name="g_period" context="{'group_by': 'period'}"/>
+                    <filter string="Journal" name="g_journal" context="{'group_by': 'journal_code'}"/>
+                    <filter string="Account" name="g_account" context="{'group_by': 'account_codes'}"/>
+                    <filter string="Expense Account" name="g_expense" context="{'group_by': 'expense_codes'}"/>
+                    <filter string="Partner" name="g_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Doc. Type" name="g_doc_type" context="{'group_by': 'doc_type'}"/>
+                    <filter string="Currency" name="g_currency" context="{'group_by': 'currency_name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_fxo_purchase_register_line_pivot" model="ir.ui.view">
+        <field name="name">fxo.purchase.register.line.pivot</field>
+        <field name="model">fxo.purchase.register.line</field>
+        <field name="arch" type="xml">
+            <pivot string="Purchase Register">
+                <field name="account_codes" type="row"/>
+                <field name="period" type="col"/>
+                <field name="total" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_fxo_purchase_register_line_graph" model="ir.ui.view">
+        <field name="name">fxo.purchase.register.line.graph</field>
+        <field name="model">fxo.purchase.register.line</field>
+        <field name="arch" type="xml">
+            <graph string="Purchase Register" type="bar">
+                <field name="period" type="row"/>
+                <field name="total" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_fxo_purchase_register_line" model="ir.actions.act_window">
+        <field name="name">Purchase Register</field>
+        <field name="res_model">fxo.purchase.register.line</field>
+        <field name="view_mode">tree,pivot,graph</field>
+        <field name="search_view_id" ref="view_fxo_purchase_register_line_search"/>
+    </record>
+
+    <record id="action_fxo_purchase_dashboard" model="ir.actions.client">
+        <field name="name">Purchase Register</field>
+        <field name="tag">fxo_purchase_dashboard</field>
+    </record>
+</odoo>

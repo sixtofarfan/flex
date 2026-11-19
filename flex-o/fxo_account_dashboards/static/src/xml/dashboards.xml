@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="fxo_dashboards.Root">
+        <div class="o_fxo_dash"/>
+    </t>
+
+    <t t-name="fxo_dashboards.Layout">
+        <div class="fxo-loading d-none"><div class="fxo-spinner"/><span>Loading…</span></div>
+
+        <div class="fxo-header">
+            <div class="fxo-title">
+                <span class="fxo-title-icon"><i t-attf-class="fa #{widget.dashIcon}"/></span>
+                <div>
+                    <h1><t t-esc="widget.dashTitle"/></h1>
+                    <div class="fxo-subtitle"/>
+                </div>
+            </div>
+            <div class="fxo-header-actions">
+                <button type="button" class="btn fxo-btn-ghost fxo-open-list" title="Open the rows in the list, pivot and graph views">
+                    <i class="fa fa-list"/> <span>List / Pivot</span>
+                </button>
+                <button type="button" class="btn fxo-btn-ghost fxo-export" data-fmt="xlsx" title="Excel with formulas">
+                    <i class="fa fa-file-excel-o"/> <span>Excel</span>
+                </button>
+                <button type="button" class="btn fxo-btn-ghost fxo-export" data-fmt="csv">
+                    <i class="fa fa-file-text-o"/> <span>CSV</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="fxo-filterbar">
+            <div class="fxo-field fxo-field-company">
+                <label>Company</label>
+                <select class="fxo-f-company">
+                    <t t-foreach="widget.options.companies" t-as="company">
+                        <option t-att-value="company.id"><t t-esc="company.name"/></option>
+                    </t>
+                </select>
+            </div>
+            <div class="fxo-field">
+                <label>Show based on</label>
+                <div class="fxo-seg fxo-mode">
+                    <button type="button" data-mode="period"><i class="fa fa-calendar-o"/> Periods</button>
+                    <button type="button" data-mode="date"><i class="fa fa-calendar"/> Dates</button>
+                </div>
+            </div>
+            <div class="fxo-field">
+                <label>Fiscal year</label>
+                <select class="fxo-f-year">
+                    <t t-foreach="widget.options.years" t-as="year">
+                        <option t-att-value="year"><t t-esc="year"/></option>
+                    </t>
+                </select>
+            </div>
+            <div class="fxo-field fxo-only-period">
+                <label>Initial period</label>
+                <select class="fxo-f-pfrom">
+                    <t t-foreach="widget.periodChoices()" t-as="period">
+                        <option t-att-value="period.code"><t t-esc="period.label"/></option>
+                    </t>
+                </select>
+            </div>
+            <div class="fxo-field fxo-only-period">
+                <label>Final period</label>
+                <select class="fxo-f-pto">
+                    <t t-foreach="widget.periodChoices()" t-as="period">
+                        <option t-att-value="period.code"><t t-esc="period.label"/></option>
+                    </t>
+                </select>
+            </div>
+            <div class="fxo-field fxo-only-period">
+                <label>Whole year</label>
+                <div class="fxo-seg fxo-range">
+                    <button type="button" data-range="01-12">01 – 12</button>
+                    <button type="button" data-range="00-12">00 – 12</button>
+                    <button type="button" data-range="00-13">00 – 13</button>
+                </div>
+            </div>
+            <div class="fxo-field fxo-only-date">
+                <label>Start date</label>
+                <input type="date" class="fxo-f-from"/>
+            </div>
+            <div class="fxo-field fxo-only-date">
+                <label>End date</label>
+                <input type="date" class="fxo-f-to"/>
+            </div>
+            <div class="fxo-field" t-if="widget.accountsFilter">
+                <label>Accounts</label>
+                <input type="text" class="fxo-f-accounts" placeholder="All · e.g. 60, 63, 4212"
+                       title="Account codes or prefixes separated by commas. Empty = all accounts."/>
+            </div>
+            <div class="fxo-field">
+                <label>Currency</label>
+                <div class="fxo-currency">
+                    <button type="button" data-currency="pen">PEN</button>
+                    <button type="button" data-currency="usd">USD</button>
+                </div>
+            </div>
+            <div class="fxo-field fxo-field-apply">
+                <button type="button" class="btn fxo-btn-primary fxo-apply"><i class="fa fa-refresh"/> <span>Apply</span></button>
+            </div>
+            <div class="fxo-months fxo-only-date">
+                <button type="button" class="fxo-month" data-month="0">Full year</button>
+                <t t-foreach="widget.monthNames()" t-as="month">
+                    <button type="button" class="fxo-month" t-att-data-month="month_index + 1"><t t-esc="month"/></button>
+                </t>
+            </div>
+        </div>
+
+        <div class="fxo-kpis"/>
+
+        <div class="fxo-charts">
+            <t t-foreach="widget.chartSpecs" t-as="spec">
+                <div t-attf-class="fxo-chart #{spec.size}" t-att-data-key="spec.key">
+                    <div class="fxo-card-title">
+                        <span><t t-esc="spec.title"/></span>
+                        <small>Click to filter</small>
+                    </div>
+                    <div class="fxo-chart-body"/>
+                </div>
+            </t>
+        </div>
+
+        <div class="fxo-table-card">
+            <div class="fxo-toolbar">
+                <div class="fxo-search">
+                    <select class="fxo-search-field">
+                        <option value="">All key fields</option>
+                        <t t-foreach="widget.options.search_fields" t-as="field">
+                            <option t-att-value="field.name"><t t-esc="field.label"/></option>
+                        </t>
+                    </select>
+                    <input type="text" class="fxo-search-input" placeholder="Search…"/>
+                    <button type="button" class="fxo-search-clear" title="Clear"><i class="fa fa-times"/></button>
+                    <button type="button" class="fxo-search-go" title="Search"><i class="fa fa-search"/></button>
+                </div>
+                <div class="fxo-chips"/>
+            </div>
+            <div class="fxo-table-zone"/>
+        </div>
+    </t>
+
+    <t t-name="fxo_dashboards.Kpis">
+        <t t-foreach="cards" t-as="card">
+            <div t-attf-class="fxo-kpi fxo-tone-#{card.tone}" t-att-data-chip="card.chip ? card.chip : undefined">
+                <div class="fxo-kpi-icon"><i t-attf-class="fa #{card.icon}"/></div>
+                <div class="fxo-kpi-body">
+                    <div class="fxo-kpi-label"><t t-esc="card.label"/></div>
+                    <div class="fxo-kpi-value"><t t-esc="card.value"/></div>
+                    <div class="fxo-kpi-sub"><t t-esc="card.sub"/></div>
+                </div>
+            </div>
+        </t>
+    </t>
+
+    <t t-name="fxo_dashboards.Chips">
+        <t t-foreach="widget.chips" t-as="chip">
+            <span class="fxo-chip">
+                <t t-esc="chip.label"/>
+                <i class="fa fa-times fxo-chip-remove" t-att-data-key="chip.key"/>
+            </span>
+        </t>
+        <t t-if="widget.search.text">
+            <span class="fxo-chip fxo-chip-search"><i class="fa fa-search"/> <t t-esc="widget.search.text"/></span>
+        </t>
+        <button type="button" class="fxo-chips-clear" t-if="widget.chips.length || widget.search.text">Clear filters</button>
+    </t>
+
+    <t t-name="fxo_dashboards.Table">
+        <div class="fxo-table-wrap">
+            <table class="fxo-table">
+                <thead>
+                    <tr>
+                        <t t-foreach="widget.options.columns" t-as="col">
+                            <th t-attf-class="fxo-sortable #{(col.type == 'number' || col.type == 'rate') ? 'fxo-num' : ''}"
+                                t-att-data-field="col.name">
+                                <t t-esc="col.label"/>
+                                <t t-if="widget.order &amp;&amp; widget.order.field == col.name">
+                                    <i t-attf-class="fa fa-caret-#{widget.order.dir == 'asc' ? 'up' : 'down'}"/>
+                                </t>
+                            </th>
+                        </t>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-if="!widget.rows.length">
+                        <tr><td class="fxo-empty" t-att-colspan="widget.options.columns.length">No records for the selected filters</td></tr>
+                    </t>
+                    <t t-foreach="widget.rows" t-as="row">
+                        <tr t-att-data-index="row_index" t-att-class="widget.rowClass(row)">
+                            <t t-foreach="widget.options.columns" t-as="col">
+                                <td t-att-class="widget.cellClass(col, row)">
+                                    <t t-set="links" t-value="widget.cellLinks(col, row)"/>
+                                    <t t-if="links">
+                                        <t t-foreach="links" t-as="link"><a href="#" class="fxo-link" t-att-data-link="col.link" t-att-data-value="link.value"><t t-esc="link.text"/></a><t t-if="!link_last">, </t></t>
+                                    </t>
+                                    <t t-if="!links"><t t-esc="widget.cell(col, row)"/></t>
+                                </td>
+                            </t>
+                        </tr>
+                    </t>
+                </tbody>
+                <tfoot t-if="widget.summary &amp;&amp; widget.rows.length">
+                    <tr>
+                        <t t-foreach="widget.options.columns" t-as="col">
+                            <td t-att-class="col.sum ? 'fxo-num' : ''">
+                                <t t-if="col.sum"><t t-esc="widget.fmt(widget.summary.totals[col.name])"/></t>
+                                <t t-if="col_index == 0">Total</t>
+                            </td>
+                        </t>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="fxo-pager">
+            <span class="fxo-pager-info">
+                <t t-if="widget.pager.total">
+                    <t t-esc="widget.fmtInt(widget.pager.offset + 1)"/>–<t t-esc="widget.fmtInt(Math.min(widget.pager.offset + widget.pager.limit, widget.pager.total))"/>
+                    / <t t-esc="widget.fmtInt(widget.pager.total)"/>
+                </t>
+            </span>
+            <select class="fxo-page-size">
+                <t t-foreach="[80, 200, 500]" t-as="size">
+                    <option t-att-value="size" t-att-selected="widget.pager.limit == size ? 'selected' : undefined"><t t-esc="size"/></option>
+                </t>
+            </select>
+            <button type="button" class="fxo-prev" t-att-disabled="widget.pager.offset == 0 ? 'disabled' : undefined"><i class="fa fa-chevron-left"/></button>
+            <button type="button" class="fxo-next" t-att-disabled="(widget.pager.offset + widget.pager.limit >= widget.pager.total) ? 'disabled' : undefined"><i class="fa fa-chevron-right"/></button>
+        </div>
+    </t>
+
+</templates>

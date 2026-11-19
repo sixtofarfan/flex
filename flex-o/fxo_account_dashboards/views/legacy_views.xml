@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Purchase Register (existing report): account among the first columns + link to the voucher -->
+    <record id="view_account_purchase_book_tree_fxo" model="ir.ui.view">
+        <field name="name">account.purchase.book.tree.fxo</field>
+        <field name="model">account.purchase.book</field>
+        <field name="inherit_id" ref="account_purchase_rep_it.view_account_purchase_book_tree"/>
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="js_class">fxo_move_link_list</attribute>
+            </tree>
+            <field name="periodo" position="before">
+                <field name="move_id" invisible="1"/>
+            </field>
+            <field name="voucher" position="attributes">
+                <attribute name="widget">fxo_move_link</attribute>
+            </field>
+            <field name="voucher" position="after">
+                <field name="account_codes"/>
+                <field name="account_names"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="account_purchase_book_search_fxo" model="ir.ui.view">
+        <field name="name">account.purchase.book.search.fxo</field>
+        <field name="model">account.purchase.book</field>
+        <field name="inherit_id" ref="account_purchase_rep_it.account_purchase_book_search"/>
+        <field name="arch" type="xml">
+            <field name="voucher" position="after">
+                <field name="account_codes"/>
+                <field name="glosa"/>
+            </field>
+            <filter name="libro" position="after">
+                <filter string="Account" name="account_codes" context="{'group_by': 'account_codes'}"/>
+            </filter>
+        </field>
+    </record>
+
+    <!-- Analytic Ledger (existing report): ledger account, account name, cost center, line label -->
+    <record id="view_account_higher_book_tree_fxo" model="ir.ui.view">
+        <field name="name">account.higher.book.tree.fxo</field>
+        <field name="model">account.higher.book</field>
+        <field name="inherit_id" ref="fxo_account_higher_rep_it2.view_account_higher_book_tree"/>
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="js_class">fxo_move_link_list</attribute>
+            </tree>
+            <field name="periodo" position="before">
+                <field name="move_id" invisible="1"/>
+            </field>
+            <field name="voucher" position="attributes">
+                <attribute name="widget">fxo_move_link</attribute>
+            </field>
+            <field name="cuenta" position="before">
+                <field name="ledger_account"/>
+            </field>
+            <field name="cuenta" position="after">
+                <field name="account_name"/>
+            </field>
+            <field name="code_cta_analitica" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="code_cta_analitica" position="after">
+                <field name="cost_center_code"/>
+                <field name="cost_center"/>
+            </field>
+            <field name="glosa" position="after">
+                <field name="line_label"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="account_higher_book_search_fxo" model="ir.ui.view">
+        <field name="name">account.higher.book.search.fxo</field>
+        <field name="model">account.higher.book</field>
+        <field name="inherit_id" ref="fxo_account_higher_rep_it2.account_higher_book_search"/>
+        <field name="arch" type="xml">
+            <field name="cuenta" position="after">
+                <field name="account_name"/>
+                <field name="ledger_account"/>
+                <field name="cost_center" filter_domain="['|', ('cost_center', 'ilike', self), ('cost_center_code', 'ilike', self)]"/>
+                <field name="glosa" filter_domain="['|', ('glosa', 'ilike', self), ('line_label', 'ilike', self)]"/>
+            </field>
+            <filter name="cuenta" position="after">
+                <filter string="Ledger Account" name="ledger_account" context="{'group_by': 'ledger_account'}"/>
+                <filter string="Cost Center" name="cost_center" context="{'group_by': 'cost_center'}"/>
+            </filter>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,1378 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fxo_account_dashboards
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 19:30+0000\n"
+"PO-Revision-Date: 2026-11-19 19:30+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#, python-format
+msgid "Acc. Date"
+msgstr "Fecha Cont"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_account_purchase_book__account_codes
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__account_code
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__account_codes
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.account_purchase_book_search_fxo
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+#, python-format
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_account_higher_book__account_name
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_account_purchase_book__account_names
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__account_name
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__account_names
+#, python-format
+msgid "Account Name"
+msgstr "Nombre de Cuenta"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__account_id
+msgid "Account Record"
+msgstr "Cuenta (registro)"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Account codes or prefixes separated by commas. Empty = all accounts."
+msgstr "Códigos o prefijos de cuenta separados por comas. Vacío = todas las cuentas."
+
+#. module: fxo_account_dashboards
+#: model:ir.ui.menu,name:fxo_account_dashboards.menu_fxo_dashboards_root
+msgid "Accounting Dashboards"
+msgstr "Tableros Contables"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__date
+msgid "Accounting Date"
+msgstr "Fecha Contable"
+
+#. module: fxo_account_dashboards
+#: model:ir.model,name:fxo_account_dashboards.model_fxo_dashboard_mixin
+msgid "Accounting dashboards helpers"
+msgstr "Utilitarios de tableros contables"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Accounts"
+msgstr "Cuentas"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "All key fields"
+msgstr "Todos los campos clave"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "All · e.g. 60, 63, 4212"
+msgstr "Todas · ej. 60, 63, 4212"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "Amount"
+msgstr "Importe"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#: model:ir.actions.act_window,name:fxo_account_dashboards.action_fxo_ledger_line
+#: model:ir.actions.client,name:fxo_account_dashboards.action_fxo_ledger_dashboard
+#: model:ir.model,name:fxo_account_dashboards.model_fxo_ledger_line
+#: model:ir.ui.menu,name:fxo_account_dashboards.menu_fxo_ledger_dashboard
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_graph
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_pivot
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_tree
+#, python-format
+msgid "Analytic Ledger"
+msgstr "Mayor Analítico"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Apply"
+msgstr "Aplicar"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Apr"
+msgstr "Abr"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "April"
+msgstr "Abril"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Aug"
+msgstr "Ago"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "August"
+msgstr "Agosto"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "Average per voucher"
+msgstr "Promedio por comprobante"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__base2
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+msgid "BIOGEYNG"
+msgstr "BIOGEYNG"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__base1
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+msgid "BIOGYE"
+msgstr "BIOGYE"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__base3
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+msgid "BIONG"
+msgstr "BIONG"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__balance
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_tree
+#, python-format
+msgid "Balance"
+msgstr "Balance"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "Balance by ledger account (2 digits)"
+msgstr "Balance por cuenta de mayor (2 dígitos)"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "Before the start date"
+msgstr "Antes de la fecha inicial"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "By document type"
+msgstr "Por tipo de documento"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "CC"
+msgstr "CC"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#, python-format
+msgid "CC Code"
+msgstr "Cód. CC"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__cng
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+msgid "CNG"
+msgstr "CNG"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "CSV"
+msgstr "CSV"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Clear"
+msgstr "Limpiar"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Clear filters"
+msgstr "Quitar filtros"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Click to filter"
+msgstr "Clic para filtrar"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Closing"
+msgstr "Cierre"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "Closing balance"
+msgstr "Saldo final"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__company_id
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__company_id
+#, python-format
+msgid "Company"
+msgstr "Compañía"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_account_higher_book__cost_center
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__analytic_name
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.account_higher_book_search_fxo
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+#, python-format
+msgid "Cost Center"
+msgstr "Centro de Costo"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_account_higher_book__cost_center_code
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__analytic_code
+msgid "Cost Center Code"
+msgstr "Código de Centro de Costo"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__analytic_account_id
+msgid "Cost Center Record"
+msgstr "Centro de Costo (registro)"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__create_uid
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__create_date
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__credit
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_tree
+#, python-format
+msgid "Credit"
+msgstr "Haber"
+
+#. module: fxo_account_dashboards
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+msgid "Credit Notes"
+msgstr "Notas de crédito"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#, python-format
+msgid "Cur."
+msgstr "Mon"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__currency_name
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__currency_name
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+#, python-format
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "DT"
+msgstr "TD"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__date
+#, python-format
+msgid "Date"
+msgstr "Fecha"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Dates"
+msgstr "Fechas"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__debit
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_tree
+#, python-format
+msgid "Debit"
+msgstr "Debe"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "Debit - Credit"
+msgstr "Debe - Haber"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "Debit and credit by month"
+msgstr "Debe y haber por mes"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Dec"
+msgstr "Dic"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "December"
+msgstr "Diciembre"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__glosa
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__glosa
+#, python-format
+msgid "Description"
+msgstr "Glosa"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#, python-format
+msgid "Detr. Date"
+msgstr "Fecha Det"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#, python-format
+msgid "Detr. Voucher"
+msgstr "Comp Det"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__detraction_date
+msgid "Detraction Date"
+msgstr "Fecha de Detracción"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__detraction_number
+msgid "Detraction Voucher"
+msgstr "Comprobante de Detracción"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_dashboard_mixin__display_name
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__display_name
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#, python-format
+msgid "Doc. Date"
+msgstr "Fecha Doc"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#, python-format
+msgid "Doc. Number"
+msgstr "Nro Comprobante"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__doc_type
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__doc_type
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+#, python-format
+msgid "Doc. Type"
+msgstr "Tipo Doc."
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__invoice_date
+msgid "Document Date"
+msgstr "Fecha del Documento"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__doc_number
+msgid "Document Number"
+msgstr "Nro Comprobante"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__date_maturity
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__date_due
+#, python-format
+msgid "Due Date"
+msgstr "Fecha Ven"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "End date"
+msgstr "Fecha Final"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Excel"
+msgstr "Excel"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Excel with formulas"
+msgstr "Excel con fórmulas"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__currency_rate
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__currency_rate
+msgid "Exchange Rate"
+msgstr "Tipo de Cambio"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__expense_codes
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+msgid "Expense Account"
+msgstr "Cuenta de gasto"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "Expense acc."
+msgstr "Cta gasto"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Feb"
+msgstr "Feb"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "February"
+msgstr "Febrero"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Final period"
+msgstr "Periodo final"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Fiscal year"
+msgstr "Ejercicio"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__amount_currency
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__amount_me
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+msgid "Foreign Amount"
+msgstr "Monto ME"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#, python-format
+msgid "Foreign Amt."
+msgstr "Monto ME"
+
+#. module: fxo_account_dashboards
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+msgid "Foreign Currency"
+msgstr "Moneda extranjera"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "Foreign currency"
+msgstr "Moneda extranjera"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Full year"
+msgstr "Todo el año"
+
+#. module: fxo_account_dashboards
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__icbper
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+msgid "ICBPER"
+msgstr "ICBPER"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_dashboard_mixin__id
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__id
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__id
+msgid "ID"
+msgstr "ID"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "IGV"
+msgstr "IGV"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__igv1
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+msgid "IGV 1"
+msgstr "IGV 1"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__igv2
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+msgid "IGV 2"
+msgstr "IGV 2"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__igv3
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+msgid "IGV 3"
+msgstr "IGV 3"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__isc
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+msgid "ISC"
+msgstr "ISC"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Initial period"
+msgstr "Periodo inicial"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__invoice_date
+#, python-format
+msgid "Issue Date"
+msgstr "Fecha Em"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Jan"
+msgstr "Ene"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "January"
+msgstr "Enero"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__journal_code
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__journal_code
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+#, python-format
+msgid "Journal"
+msgstr "Libro"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_account_higher_book__move_id
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_account_purchase_book__move_id
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__move_id
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__move_id
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__move_line_id
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Jul"
+msgstr "Jul"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "July"
+msgstr "Julio"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Jun"
+msgstr "Jun"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "June"
+msgstr "Junio"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_dashboard_mixin____last_update
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line____last_update
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__write_uid
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__write_date
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#, python-format
+msgid "Ledger Acc."
+msgstr "Cta Mayor"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_account_higher_book__ledger_account
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__account_group
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.account_higher_book_search_fxo
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+msgid "Ledger Account"
+msgstr "Cuenta de Mayor"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "Ledger acc."
+msgstr "Cta mayor"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_account_higher_book__line_label
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__line_name
+#, python-format
+msgid "Line Label"
+msgstr "Glosa línea"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "List / Pivot"
+msgstr "Lista / Tabla dinámica"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Loading…"
+msgstr "Cargando…"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Mar"
+msgstr "Mar"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "March"
+msgstr "Marzo"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "May"
+msgstr "Mayo"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "Monthly evolution"
+msgstr "Evolución mensual"
+
+#. module: fxo_account_dashboards
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+msgid "Movements"
+msgstr "Movimientos"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "Net movement"
+msgstr "Movimiento neto"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/dashboard_mixin.py:0
+#, python-format
+msgid "No account matches \"%s\"."
+msgstr "Ninguna cuenta coincide con \"%s\"."
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "No data for this selection"
+msgstr "Sin datos para esta selección"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "No partner"
+msgstr "Sin partner"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "No records for the selected filters"
+msgstr "No hay registros para los filtros seleccionados"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "Non-taxable"
+msgstr "No gravado"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Nov"
+msgstr "Nov"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "November"
+msgstr "Noviembre"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__doc_number
+#, python-format
+msgid "Number"
+msgstr "Número"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Oct"
+msgstr "Oct"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "October"
+msgstr "Octubre"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Open the rows in the list, pivot and graph views"
+msgstr "Abrir los registros en las vistas de lista, tabla dinámica y gráfico"
+
+#. module: fxo_account_dashboards
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_account_higher_book_tree_fxo
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_account_purchase_book_tree_fxo
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_tree
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+msgid "Open voucher"
+msgstr "Abrir voucher"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Opening"
+msgstr "Apertura"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "Opening + movement"
+msgstr "Saldo inicial + movimiento"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__is_opening
+msgid "Opening Balance"
+msgstr "Saldo inicial"
+
+#. module: fxo_account_dashboards
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+msgid "Opening Balances"
+msgstr "Saldos iniciales"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "Opening balance"
+msgstr "Saldo inicial"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__otros
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+#, python-format
+msgid "Others"
+msgstr "Otros"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#, python-format
+msgid "PDT"
+msgstr "TDP"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "PEN"
+msgstr "PEN"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__partner_name
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__partner_id
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+#, python-format
+msgid "Partner"
+msgstr "Partner"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__partner_doc_type
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__partner_doc_type
+msgid "Partner Doc. Type"
+msgstr "Tipo Doc. Partner"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__partner_name
+msgid "Partner Name"
+msgstr "Nombre del Partner"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__partner_id
+msgid "Partner Record"
+msgstr "Partner (registro)"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__account_id
+msgid "Payable Account"
+msgstr "Cuenta por pagar"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__period
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__period
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+#, python-format
+msgid "Period"
+msgstr "Periodo"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Periods"
+msgstr "Periodos"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#: model:ir.actions.act_window,name:fxo_account_dashboards.action_fxo_purchase_register_line
+#: model:ir.actions.client,name:fxo_account_dashboards.action_fxo_purchase_dashboard
+#: model:ir.model,name:fxo_account_dashboards.model_fxo_purchase_register_line
+#: model:ir.ui.menu,name:fxo_account_dashboards.menu_fxo_purchase_dashboard
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_graph
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_pivot
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+#, python-format
+msgid "Purchase Register"
+msgstr "Registro de Compras"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "Purchases by expense account"
+msgstr "Compras por cuenta de gasto"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#, python-format
+msgid "Rate"
+msgstr "TC"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#, python-format
+msgid "Ref. DT"
+msgstr "TD Doc M"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__ref_doc_date
+#, python-format
+msgid "Ref. Doc. Date"
+msgstr "Fecha Doc M"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__ref_doc_type
+msgid "Ref. Doc. Type"
+msgstr "TD Doc M"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__ref_number
+#, python-format
+msgid "Ref. Number"
+msgstr "Numero M"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__ref_serie
+#, python-format
+msgid "Ref. Series"
+msgstr "Serie M"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#, python-format
+msgid "Running Bal."
+msgstr "Saldo"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__running_balance
+msgid "Running Balance"
+msgstr "Saldo"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Search"
+msgstr "Buscar"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Search…"
+msgstr "Buscar…"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "Sep"
+msgstr "Sep"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/dashboard_base.js:0
+#, python-format
+msgid "September"
+msgstr "Septiembre"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__serie
+#, python-format
+msgid "Series"
+msgstr "Serie"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Show based on"
+msgstr "Mostrar en base a"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Start date"
+msgstr "Fecha Inicial"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "Suppliers"
+msgstr "Proveedores"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/dashboard_mixin.py:0
+#, python-format
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__partner_vat
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__partner_vat
+#, python-format
+msgid "Tax ID"
+msgstr "RUC"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "Taxable base"
+msgstr "Base imponible"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/dashboard_mixin.py:0
+#, python-format
+msgid "The end date cannot be earlier than the start date."
+msgstr "La fecha final no puede ser menor a la fecha inicial."
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/dashboard_mixin.py:0
+#, python-format
+msgid "The final period cannot be earlier than the initial period."
+msgstr "El periodo final no puede ser anterior al periodo inicial."
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/dashboard_mixin.py:0
+#, python-format
+msgid "The initial and final periods are required."
+msgstr "El periodo inicial y el periodo final son obligatorios."
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/dashboard_mixin.py:0
+#, python-format
+msgid "The initial and final periods must belong to the same fiscal year."
+msgstr "El periodo inicial y el periodo final deben pertenecer al mismo ejercicio."
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/dashboard_mixin.py:0
+#, python-format
+msgid "The start and end dates are required."
+msgstr "La fecha inicial y la fecha final son obligatorias."
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/dashboard_mixin.py:0
+#, python-format
+msgid "The start and end dates must belong to the same fiscal year."
+msgstr "La fecha inicial y la fecha final deben pertenecer al mismo ejercicio."
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "Top 10 accounts by movement"
+msgstr "Top 10 cuentas por movimiento"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "Top 10 cost centers"
+msgstr "Top 10 centros de costo"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "Top 10 suppliers"
+msgstr "Top 10 proveedores"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__total
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_tree
+#, python-format
+msgid "Total"
+msgstr "Total"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "Total purchases"
+msgstr "Total compras"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "USD"
+msgstr "USD"
+
+#. module: fxo_account_dashboards
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__user_id
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__user_id
+msgid "User"
+msgstr "Usuario"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/ledger.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_ledger_line__voucher
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__voucher
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+#, python-format
+msgid "Voucher"
+msgstr "Voucher"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/xml/dashboards.xml:0
+#, python-format
+msgid "Whole year"
+msgstr "Año completo"
+
+#. module: fxo_account_dashboards
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+msgid "With Cost Center"
+msgstr "Con centro de costo"
+
+#. module: fxo_account_dashboards
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_purchase_register_line_search
+msgid "With Detraction"
+msgstr "Con detracción"
+
+#. module: fxo_account_dashboards
+#: model_terms:ir.ui.view,arch_db:fxo_account_dashboards.view_fxo_ledger_line_search
+msgid "Without Cost Center"
+msgstr "Sin centro de costo"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/purchase_register.py:0
+#: model:ir.model.fields,field_description:fxo_account_dashboards.field_fxo_purchase_register_line__doc_year
+#, python-format
+msgid "Year"
+msgstr "Año"
+
+#. module: fxo_account_dashboards
+#: code:addons/fxo_account_dashboards/models/dashboard_mixin.py:0
+#, python-format
+msgid "You are not allowed to see the company \"%s\"."
+msgstr "No tiene acceso a la compañía \"%s\"."
+
+#. module: fxo_account_dashboards
+#: model:ir.model,name:fxo_account_dashboards.model_account_higher_book
+msgid "account.higher.book"
+msgstr ""
+
+#. module: fxo_account_dashboards
+#: model:ir.model,name:fxo_account_dashboards.model_account_higher_rep
+msgid "account.higher.rep"
+msgstr ""
+
+#. module: fxo_account_dashboards
+#: model:ir.model,name:fxo_account_dashboards.model_account_purchase_book
+msgid "account.purchase.book"
+msgstr ""
+
+#. module: fxo_account_dashboards
+#: model:ir.model,name:fxo_account_dashboards.model_account_purchase_rep
+msgid "account.purchase.rep"
+msgstr ""
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "journal items"
+msgstr "apuntes"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "of total"
+msgstr "del total"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#: code:addons/fxo_account_dashboards/static/src/js/purchase_dashboard.js:0
+#, python-format
+msgid "vouchers"
+msgstr "comprobantes"
+
+#. module: fxo_account_dashboards
+#. openerp-web
+#: code:addons/fxo_account_dashboards/static/src/js/ledger_dashboard.js:0
+#, python-format
+msgid "with movement or balance"
+msgstr "con movimiento o saldo"

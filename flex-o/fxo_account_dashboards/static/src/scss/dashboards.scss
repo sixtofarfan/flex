@@ -1,0 +1,356 @@
+// Accounting dashboards (Purchase Register / Analytic Ledger)
+$fxo-green: #1f6f54;
+$fxo-green-dark: #17523f;
+$fxo-ink: #1d2b32;
+$fxo-muted: #6b7a83;
+$fxo-line: #e3e8eb;
+$fxo-bg: #f3f5f6;
+
+.o_fxo_dash {
+    height: 100%;
+    overflow: auto;
+    background: $fxo-bg;
+    padding: 18px 22px 28px;
+    color: $fxo-ink;
+    font-size: 13px;
+    position: relative;
+
+    .fxo-loading {
+        position: fixed;
+        top: 58px;
+        right: 26px;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: $fxo-ink;
+        color: #fff;
+        padding: 7px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, .18);
+        &.d-none { display: none; }
+    }
+    .fxo-spinner {
+        width: 13px;
+        height: 13px;
+        border: 2px solid rgba(255, 255, 255, .35);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: fxo-spin .7s linear infinite;
+    }
+    @keyframes fxo-spin { to { transform: rotate(360deg); } }
+
+    // ---- header ----
+    .fxo-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+    .fxo-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        h1 { font-size: 21px; font-weight: 700; margin: 0; line-height: 1.15; letter-spacing: -.2px; }
+    }
+    .fxo-title-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 11px;
+        background: $fxo-green;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+    }
+    .fxo-subtitle { color: $fxo-muted; font-size: 12px; margin-top: 2px; }
+    .fxo-header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .fxo-btn-ghost {
+        background: #fff;
+        border: 1px solid $fxo-line;
+        color: $fxo-ink;
+        border-radius: 8px;
+        padding: 6px 12px;
+        font-size: 12.5px;
+        font-weight: 600;
+        &:hover { border-color: $fxo-green; color: $fxo-green; }
+        .fa { margin-right: 3px; }
+    }
+    .fxo-btn-primary {
+        background: $fxo-green;
+        border: 1px solid $fxo-green;
+        color: #fff;
+        border-radius: 8px;
+        padding: 6px 16px;
+        font-weight: 600;
+        font-size: 12.5px;
+        &:hover { background: $fxo-green-dark; color: #fff; }
+    }
+
+    // ---- filter bar ----
+    .fxo-filterbar {
+        background: #fff;
+        border: 1px solid $fxo-line;
+        border-radius: 12px;
+        padding: 12px 14px 10px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 10px 14px;
+        margin-bottom: 14px;
+    }
+    .fxo-field {
+        display: flex;
+        flex-direction: column;
+        min-width: 110px;
+        label {
+            font-size: 10.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            color: $fxo-muted;
+            margin: 0 0 3px;
+        }
+        select, input {
+            height: 32px;
+            width: 100%;
+            border: 1px solid $fxo-line;
+            border-radius: 8px;
+            padding: 0 9px;
+            background: #fff;
+            color: $fxo-ink;
+            font-size: 13px;
+            &:focus { outline: none; border-color: $fxo-green; box-shadow: 0 0 0 2px rgba(31, 111, 84, .15); }
+        }
+    }
+    .fxo-field-company { flex: 1 1 240px; max-width: 360px; }
+    .fxo-f-accounts { min-width: 200px; }
+    .fxo-only-period.d-none, .fxo-only-date.d-none { display: none !important; }
+    .fxo-seg .fa { margin-right: 3px; }
+    .fxo-currency, .fxo-seg {
+        display: inline-flex;
+        border: 1px solid $fxo-line;
+        border-radius: 8px;
+        overflow: hidden;
+        height: 32px;
+        button {
+            border: 0;
+            background: #fff;
+            padding: 0 13px;
+            font-weight: 700;
+            font-size: 12px;
+            color: $fxo-muted;
+            &.active { background: $fxo-green; color: #fff; }
+        }
+    }
+    .fxo-months {
+        flex-basis: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        padding-top: 8px;
+        border-top: 1px dashed $fxo-line;
+    }
+    .fxo-month {
+        border: 1px solid $fxo-line;
+        background: #fff;
+        border-radius: 14px;
+        padding: 2px 11px;
+        font-size: 11.5px;
+        font-weight: 600;
+        color: $fxo-muted;
+        &:hover { border-color: $fxo-green; color: $fxo-green; }
+        &.active { background: $fxo-green; border-color: $fxo-green; color: #fff; }
+    }
+
+    // ---- KPIs ----
+    .fxo-kpis {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+    .fxo-kpi {
+        background: #fff;
+        border: 1px solid $fxo-line;
+        border-radius: 12px;
+        padding: 12px 13px;
+        display: flex;
+        gap: 11px;
+        align-items: flex-start;
+        min-width: 0;
+        &[data-chip] { cursor: pointer; &:hover { border-color: $fxo-green; } }
+    }
+    .fxo-kpi-icon {
+        flex: 0 0 34px;
+        height: 34px;
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+    }
+    .fxo-kpi-body { min-width: 0; }
+    .fxo-kpi-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: $fxo-muted; }
+    .fxo-kpi-value { font-size: 17px; font-weight: 700; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
+    .fxo-kpi-sub { font-size: 11px; color: $fxo-muted; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    @each $tone, $color in (primary: #17523f, green: #2f9e77, amber: #d9952b, slate: #5f7d8c, blue: #3b82b8, violet: #7a5ea8) {
+        .fxo-tone-#{$tone} .fxo-kpi-icon { background: rgba($color, .13); color: $color; }
+    }
+    .fxo-tone-primary { background: $fxo-green; border-color: $fxo-green; color: #fff;
+        .fxo-kpi-label, .fxo-kpi-sub { color: rgba(255, 255, 255, .78); }
+        .fxo-kpi-icon { background: rgba(255, 255, 255, .16); color: #fff; }
+    }
+
+    // ---- charts ----
+    .fxo-charts {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+    .fxo-chart {
+        background: #fff;
+        border: 1px solid $fxo-line;
+        border-radius: 12px;
+        padding: 12px 14px 10px;
+        min-width: 0;
+    }
+    .fxo-w-5 { grid-column: span 5; }
+    .fxo-w-6 { grid-column: span 6; }
+    .fxo-w-7 { grid-column: span 7; }
+    .fxo-card-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-weight: 700;
+        font-size: 13px;
+        margin-bottom: 8px;
+        small { font-weight: 500; color: #a3aeb5; font-size: 10.5px; }
+    }
+    .fxo-chart-body { position: relative; height: 250px; }
+    .fxo-empty { color: #a3aeb5; text-align: center; padding: 34px 10px; font-size: 12.5px; }
+
+    // ---- table ----
+    .fxo-table-card {
+        background: #fff;
+        border: 1px solid $fxo-line;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .fxo-toolbar {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 12px;
+        border-bottom: 1px solid $fxo-line;
+    }
+    .fxo-search {
+        display: flex;
+        align-items: center;
+        border: 1px solid $fxo-line;
+        border-radius: 8px;
+        overflow: hidden;
+        height: 32px;
+        select { border: 0; border-right: 1px solid $fxo-line; height: 100%; padding: 0 6px; background: #f8fafb; font-size: 12px; color: $fxo-ink; max-width: 160px; }
+        input { border: 0; height: 100%; padding: 0 9px; width: 230px; font-size: 13px; &:focus { outline: none; } }
+        button { border: 0; background: #fff; height: 100%; padding: 0 9px; color: $fxo-muted; &:hover { color: $fxo-green; } }
+        .fxo-search-go { background: $fxo-green; color: #fff; &:hover { background: $fxo-green-dark; color: #fff; } }
+    }
+    .fxo-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .fxo-chip {
+        background: rgba(31, 111, 84, .1);
+        color: $fxo-green-dark;
+        border-radius: 14px;
+        padding: 3px 9px 3px 11px;
+        font-size: 11.5px;
+        font-weight: 600;
+        .fxo-chip-remove { margin-left: 5px; cursor: pointer; opacity: .6; &:hover { opacity: 1; } }
+    }
+    .fxo-chip-search { background: #eef1f3; color: $fxo-ink; padding-right: 11px; }
+    .fxo-chips-clear { border: 0; background: none; color: $fxo-muted; font-size: 11.5px; text-decoration: underline; padding: 0 4px; }
+
+    .fxo-table-wrap { overflow: auto; max-height: 62vh; }
+    .fxo-table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+        th, td { padding: 5px 9px; white-space: nowrap; border-bottom: 1px solid #eef1f3; }
+        thead th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: #17523f;
+            color: #fff;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .3px;
+            cursor: pointer;
+            user-select: none;
+            .fa { margin-left: 3px; }
+        }
+        tbody tr:nth-child(even) td { background: #f8faf9; }
+        tbody tr:hover td { background: #e9f3ee; }
+        td { max-width: 330px; overflow: hidden; text-overflow: ellipsis; }
+        tfoot td {
+            position: sticky;
+            bottom: 0;
+            background: #dcebe3;
+            font-weight: 700;
+            border-top: 2px solid $fxo-green;
+            border-bottom: 0;
+        }
+        .fxo-num { text-align: right; }
+        .fxo-neg { color: #c0392b; }
+        .fxo-row-opening td { font-weight: 700; background: #fff8e6 !important; }
+        a.fxo-link { color: $fxo-green; font-weight: 600; &:hover { text-decoration: underline; } }
+    }
+    .fxo-pager {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        padding: 8px 12px;
+        border-top: 1px solid $fxo-line;
+        color: $fxo-muted;
+        font-size: 12px;
+        .fxo-pager-info { white-space: nowrap; }
+        select { height: 26px; width: auto; flex: 0 0 auto; border: 1px solid $fxo-line; border-radius: 6px; background: #fff; font-size: 12px; }
+        button {
+            width: 28px;
+            height: 26px;
+            border: 1px solid $fxo-line;
+            border-radius: 6px;
+            background: #fff;
+            color: $fxo-ink;
+            &:disabled { opacity: .35; }
+            &:hover:not(:disabled) { border-color: $fxo-green; color: $fxo-green; }
+        }
+    }
+
+    @media (max-width: 1300px) {
+        .fxo-kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .fxo-w-5, .fxo-w-6, .fxo-w-7 { grid-column: span 12; }
+    }
+    @media (max-width: 700px) {
+        padding: 12px;
+        .fxo-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .fxo-search input { width: 130px; }
+    }
+}
+
+// Voucher shown as a link in the list views of the books (row click opens the entry)
+.o_list_view .fxo_move_link {
+    color: #1f6f54;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover { text-decoration: underline; }
+}

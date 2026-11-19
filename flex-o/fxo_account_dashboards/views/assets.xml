@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="fxo_account_dashboards assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/scss" href="/fxo_account_dashboards/static/src/scss/dashboards.scss"/>
+            <script type="text/javascript" src="/fxo_account_dashboards/static/src/js/move_link_list.js"/>
+            <script type="text/javascript" src="/fxo_account_dashboards/static/src/js/dashboard_base.js"/>
+            <script type="text/javascript" src="/fxo_account_dashboards/static/src/js/purchase_dashboard.js"/>
+            <script type="text/javascript" src="/fxo_account_dashboards/static/src/js/ledger_dashboard.js"/>
+        </xpath>
+    </template>
+</odoo>

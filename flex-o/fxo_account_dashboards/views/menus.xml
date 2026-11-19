@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_fxo_dashboards_root" name="Accounting Dashboards" sequence="39"
+              web_icon="fxo_account_dashboards,static/description/icon.png"
+              groups="account_base_it.group_account_tables_user"/>
+    <menuitem id="menu_fxo_purchase_dashboard" name="Purchase Register" parent="menu_fxo_dashboards_root"
+              action="action_fxo_purchase_dashboard" sequence="10"/>
+    <menuitem id="menu_fxo_ledger_dashboard" name="Analytic Ledger" parent="menu_fxo_dashboards_root"
+              action="action_fxo_ledger_dashboard" sequence="20"/>
+</odoo>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fxo_ledger_line_tree" model="ir.ui.view">
+        <field name="name">fxo.ledger.line.tree</field>
+        <field name="model">fxo.ledger.line</field>
+        <field name="arch" type="xml">
+            <tree string="Analytic Ledger" create="false" edit="false" delete="false" decoration-bf="is_opening" js_class="fxo_move_link_list">
+                <field name="is_opening" invisible="1"/>
+                <field name="move_id" invisible="1"/>
+                <field name="period"/>
+                <field name="date"/>
+                <field name="journal_code"/>
+                <field name="voucher" widget="fxo_move_link"/>
+                <field name="account_group"/>
+                <field name="account_code"/>
+                <field name="account_name"/>
+                <field name="debit" sum="Debit"/>
+                <field name="credit" sum="Credit"/>
+                <field name="balance" sum="Balance"/>
+                <field name="running_balance"/>
+                <field name="currency_name"/>
+                <field name="currency_rate"/>
+                <field name="analytic_code" optional="show"/>
+                <field name="analytic_name"/>
+                <field name="glosa"/>
+                <field name="line_name" optional="show"/>
+                <field name="partner_doc_type" optional="hide"/>
+                <field name="partner_vat" optional="show"/>
+                <field name="partner_name" optional="show"/>
+                <field name="doc_type" optional="show"/>
+                <field name="doc_number" optional="show"/>
+                <field name="invoice_date" optional="hide"/>
+                <field name="date_maturity" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fxo_ledger_line_search" model="ir.ui.view">
+        <field name="name">fxo.ledger.line.search</field>
+        <field name="model">fxo.ledger.line</field>
+        <field name="arch" type="xml">
+            <search string="Analytic Ledger">
+                <field name="account_code" filter_domain="['|', ('account_code', '=like', self + '%'), ('account_name', 'ilike', self)]"/>
+                <field name="account_group"/>
+                <field name="analytic_name" filter_domain="['|', ('analytic_name', 'ilike', self), ('analytic_code', 'ilike', self)]"/>
+                <field name="partner_name" filter_domain="['|', ('partner_name', 'ilike', self), ('partner_vat', 'ilike', self)]"/>
+                <field name="doc_number"/>
+                <field name="voucher"/>
+                <field name="journal_code"/>
+                <field name="period"/>
+                <field name="glosa" filter_domain="['|', ('glosa', 'ilike', self), ('line_name', 'ilike', self)]"/>
+                <filter string="Movements" name="movements" domain="[('is_opening', '=', False)]"/>
+                <filter string="Opening Balances" name="opening" domain="[('is_opening', '=', True)]"/>
+                <separator/>
+                <filter string="With Cost Center" name="with_cc" domain="[('analytic_account_id', '!=', False)]"/>
+                <filter string="Without Cost Center" name="without_cc" domain="[('analytic_account_id', '=', False), ('is_opening', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Ledger Account" name="g_group" context="{'group_by': 'account_group'}"/>
+                    <filter string="Account" name="g_account" context="{'group_by': 'account_code'}"/>
+                    <filter string="Cost Center" name="g_analytic" context="{'group_by': 'analytic_account_id'}"/>
+                    <filter string="Period" name="g_period" context="{'group_by': 'period'}"/>
+                    <filter string="Journal" name="g_journal" context="{'group_by': 'journal_code'}"/>
+                    <filter string="Partner" name="g_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Voucher" name="g_voucher" context="{'group_by': 'move_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_fxo_ledger_line_pivot" model="ir.ui.view">
+        <field name="name">fxo.ledger.line.pivot</field>
+        <field name="model">fxo.ledger.line</field>
+        <field name="arch" type="xml">
+            <pivot string="Analytic Ledger">
+                <field name="account_group" type="row"/>
+                <field name="account_code" type="row"/>
+                <field name="period" type="col"/>
+                <field name="balance" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_fxo_ledger_line_graph" model="ir.ui.view">
+        <field name="name">fxo.ledger.line.graph</field>
+        <field name="model">fxo.ledger.line</field>
+        <field name="arch" type="xml">
+            <graph string="Analytic Ledger" type="bar" stacked="1">
+                <field name="period" type="row"/>
+                <field name="debit" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_fxo_ledger_line" model="ir.actions.act_window">
+        <field name="name">Analytic Ledger</field>
+        <field name="res_model">fxo.ledger.line</field>
+        <field name="view_mode">tree,pivot,graph</field>
+        <field name="search_view_id" ref="view_fxo_ledger_line_search"/>
+    </record>
+
+    <record id="action_fxo_ledger_dashboard" model="ir.actions.client">
+        <field name="name">Analytic Ledger</field>
+        <field name="tag">fxo_ledger_dashboard</field>
+    </record>
+</odoo>
