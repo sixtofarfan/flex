@@ -1,0 +1,211 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fxo_account_letras_schedule
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 22:02+0000\n"
+"PO-Revision-Date: 2026-11-19 22:02+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "Bill"
+msgstr "Letra"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields,field_description:fxo_account_letras_schedule.field_account_letras_payment__days_between
+msgid "Days between Bills"
+msgstr "Días entre Letras"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields,field_description:fxo_account_letras_schedule.field_account_letras_payment__days_first_due
+msgid "Days to First Due Date"
+msgstr "Días al 1er Vencimiento"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields,field_description:fxo_account_letras_schedule.field_account_letras_payment__schedule_difference
+msgid "Difference"
+msgstr "Diferencia"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields,field_description:fxo_account_letras_schedule.field_account_letras_payment__first_letter_number
+msgid "First Bill Number"
+msgstr "Nro. de la primera letra"
+
+#. module: fxo_account_letras_schedule
+#: model_terms:ir.ui.view,arch_db:fxo_account_letras_schedule.view_account_letras_payment_form_fxo_schedule
+#: model_terms:ir.ui.view,arch_db:fxo_account_letras_schedule.view_account_letras_payment_form_receivables_fxo_schedule
+msgid "Generate Schedule"
+msgstr "Generar Cronograma"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields,field_description:fxo_account_letras_schedule.field_account_letras_payment__type_invoice
+#: model:ir.model.fields,field_description:fxo_account_letras_schedule.field_account_letras_payment_factura__type_invoice
+#: model:ir.model.fields,field_description:fxo_account_letras_schedule.field_account_letras_payment_manual__type_invoice
+msgid "Invoice Type"
+msgstr "Tipo de factura"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields,help:fxo_account_letras_schedule.field_account_letras_payment__type_invoice
+msgid "Invoice type of the first invoice of the exchange; it is copied to the bills."
+msgstr "Tipo de factura de la primera factura del canje; se copia a las letras."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "Invoices can only be loaded in draft."
+msgstr "Solo se pueden cargar facturas en borrador."
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model,name:fxo_account_letras_schedule.model_account_move
+msgid "Journal Entries"
+msgstr ""
+
+#. module: fxo_account_letras_schedule
+#: model_terms:ir.ui.view,arch_db:fxo_account_letras_schedule.view_account_letras_payment_form_fxo_schedule
+#: model_terms:ir.ui.view,arch_db:fxo_account_letras_schedule.view_account_letras_payment_form_receivables_fxo_schedule
+msgid "Load Pending Invoices"
+msgstr "Cargar facturas pendientes"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields.selection,name:fxo_account_letras_schedule.selection__account_move__type_invoice__c
+msgid "Monthly consumption"
+msgstr "Consumo mensual"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields.selection,name:fxo_account_letras_schedule.selection__account_move__type_invoice__n
+msgid "None"
+msgstr "Ninguno"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields,field_description:fxo_account_letras_schedule.field_account_letras_payment__letters_qty
+msgid "Number of Bills"
+msgstr "Cantidad de Letras"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields,help:fxo_account_letras_schedule.field_account_letras_payment__first_letter_number
+msgid "Number of the first bill; the following ones are consecutive. Empty: reference of the exchange plus the index."
+msgstr "Número de la primera letra; las siguientes son consecutivas. Vacío: referencia del canje más el índice."
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields.selection,name:fxo_account_letras_schedule.selection__account_move__type_invoice__p
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: fxo_account_letras_schedule
+#: model_terms:ir.ui.view,arch_db:fxo_account_letras_schedule.view_account_letras_payment_form_fxo_schedule
+#: model_terms:ir.ui.view,arch_db:fxo_account_letras_schedule.view_account_letras_payment_form_receivables_fxo_schedule
+msgid "Schedule of Bills"
+msgstr "Cronograma de Letras"
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "Select at least one invoice to exchange."
+msgstr "Seleccione al menos una factura a canjear."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "Select the partner first."
+msgstr "Seleccione primero el proveedor o cliente."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "Set the account of bills (%s) in the Main Accounting Parameters."
+msgstr "Configure la cuenta de letras (%s) en los Parámetros Principales de Contabilidad."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "Set the exchange date first."
+msgstr "Ingrese primero la fecha de canje."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "The days between bills must be greater than zero."
+msgstr "Los días entre letras deben ser mayores que cero."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "The days to the first due date must be greater than zero."
+msgstr "Los días al primer vencimiento deben ser mayores que cero."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "The invoices have different currencies (%s). Exchange one currency at a time."
+msgstr "Las facturas tienen monedas distintas (%s). Canjee una moneda a la vez."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "The number of bills must be greater than zero."
+msgstr "La cantidad de letras debe ser mayor que cero."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "The partner has no other pending invoices."
+msgstr "El partner no tiene más facturas pendientes."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "The schedule can only be generated in draft."
+msgstr "Solo se puede generar el cronograma en borrador."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "The total to exchange must be greater than zero. Check the column \"Importe Div\" of the invoices."
+msgstr "El total a canjear debe ser mayor que cero. Revise la columna \"Importe Div\" de las facturas."
+
+#. module: fxo_account_letras_schedule
+#: code:addons/fxo_account_letras_schedule/models/account_letras_payment.py:0
+#, python-format
+msgid "There are no Main Accounting Parameters for the company."
+msgstr "No existen Parámetros Principales de Contabilidad para la compañía."
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields,field_description:fxo_account_letras_schedule.field_account_move__type_invoice
+msgid "Tipo de factura"
+msgstr ""
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields,field_description:fxo_account_letras_schedule.field_account_letras_payment__total_letters
+msgid "Total Bills"
+msgstr "Total Letras"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields,field_description:fxo_account_letras_schedule.field_account_letras_payment__total_invoices
+msgid "Total Invoices"
+msgstr "Total Facturas"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model,name:fxo_account_letras_schedule.model_account_letras_payment
+msgid "account.letras.payment"
+msgstr ""
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model,name:fxo_account_letras_schedule.model_account_letras_payment_factura
+msgid "account.letras.payment.factura"
+msgstr ""
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model,name:fxo_account_letras_schedule.model_account_letras_payment_manual
+msgid "account.letras.payment.manual"
+msgstr ""

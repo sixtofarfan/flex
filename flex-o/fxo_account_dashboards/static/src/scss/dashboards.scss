@@ -80,6 +80,19 @@ $fxo-bg: #f3f5f6;
         &:hover { border-color: $fxo-green; color: $fxo-green; }
         .fa { margin-right: 3px; }
     }
+    .fxo-btn-accent {
+        background: rgba(31, 111, 84, .1);
+        border: 1px solid rgba(31, 111, 84, .35);
+        color: $fxo-green-dark;
+        border-radius: 8px;
+        padding: 6px 12px;
+        font-size: 12.5px;
+        font-weight: 700;
+        &:hover { background: $fxo-green; color: #fff; }
+        .fa { margin-right: 3px; }
+    }
+    .fxo-tone-ok .fxo-kpi-icon { background: rgba(47, 158, 119, .15); color: #2f9e77; }
+    .fxo-tone-bad { border-color: #c0392b; .fxo-kpi-icon { background: rgba(192, 57, 43, .13); color: #c0392b; } .fxo-kpi-value { color: #c0392b; } }
     .fxo-btn-primary {
         background: $fxo-green;
         border: 1px solid $fxo-green;

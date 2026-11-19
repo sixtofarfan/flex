@@ -6,6 +6,7 @@
             <script type="text/javascript" src="/fxo_account_dashboards/static/src/js/move_link_list.js"/>
             <script type="text/javascript" src="/fxo_account_dashboards/static/src/js/dashboard_base.js"/>
             <script type="text/javascript" src="/fxo_account_dashboards/static/src/js/purchase_dashboard.js"/>
+            <script type="text/javascript" src="/fxo_account_dashboards/static/src/js/expense_dashboard.js"/>
             <script type="text/javascript" src="/fxo_account_dashboards/static/src/js/ledger_dashboard.js"/>
         </xpath>
     </template>

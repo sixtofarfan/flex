@@ -29,6 +29,7 @@
                 <field name="partner_name" optional="show"/>
                 <field name="doc_type" optional="show"/>
                 <field name="doc_number" optional="show"/>
+                <field name="type_invoice" optional="show"/>
                 <field name="invoice_date" optional="hide"/>
                 <field name="date_maturity" optional="hide"/>
             </tree>
@@ -45,6 +46,7 @@
                 <field name="analytic_name" filter_domain="['|', ('analytic_name', 'ilike', self), ('analytic_code', 'ilike', self)]"/>
                 <field name="partner_name" filter_domain="['|', ('partner_name', 'ilike', self), ('partner_vat', 'ilike', self)]"/>
                 <field name="doc_number"/>
+                <field name="type_invoice"/>
                 <field name="voucher"/>
                 <field name="journal_code"/>
                 <field name="period"/>
@@ -58,6 +60,7 @@
                     <filter string="Ledger Account" name="g_group" context="{'group_by': 'account_group'}"/>
                     <filter string="Account" name="g_account" context="{'group_by': 'account_code'}"/>
                     <filter string="Cost Center" name="g_analytic" context="{'group_by': 'analytic_account_id'}"/>
+                    <filter string="Invoice Type" name="g_type_invoice" context="{'group_by': 'type_invoice'}"/>
                     <filter string="Period" name="g_period" context="{'group_by': 'period'}"/>
                     <filter string="Journal" name="g_journal" context="{'group_by': 'journal_code'}"/>
                     <filter string="Partner" name="g_partner" context="{'group_by': 'partner_id'}"/>

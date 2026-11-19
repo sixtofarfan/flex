@@ -17,6 +17,11 @@
                 </div>
             </div>
             <div class="fxo-header-actions">
+                <t t-foreach="widget.gotoLinks" t-as="goto">
+                    <button type="button" class="btn fxo-btn-accent fxo-goto" t-att-data-tag="goto.tag">
+                        <i t-attf-class="fa #{goto.icon}"/> <span><t t-esc="goto.label"/></span>
+                    </button>
+                </t>
                 <button type="button" class="btn fxo-btn-ghost fxo-open-list" title="Open the rows in the list, pivot and graph views">
                     <i class="fa fa-list"/> <span>List / Pivot</span>
                 </button>
@@ -148,7 +153,7 @@
                 <div class="fxo-kpi-body">
                     <div class="fxo-kpi-label"><t t-esc="card.label"/></div>
                     <div class="fxo-kpi-value"><t t-esc="card.value"/></div>
-                    <div class="fxo-kpi-sub"><t t-esc="card.sub"/></div>
+                    <div class="fxo-kpi-sub" t-att-title="card.sub"><t t-esc="card.sub"/></div>
                 </div>
             </div>
         </t>

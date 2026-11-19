@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_letras_payment_form_fxo_schedule" model="ir.ui.view">
+        <field name="name">account.letras.payment.form.fxo.schedule</field>
+        <field name="model">account.letras.payment</field>
+        <field name="inherit_id" ref="account_letras_it.view_account_letras_payment_form"/>
+        <field name="arch" type="xml">
+            <button name="state_check" position="before">
+                <button name="action_load_invoices" type="object" string="Load Pending Invoices" states="draft"/>
+                <button name="action_generate_schedule" type="object" string="Generate Schedule" states="draft"
+                        class="oe_highlight"/>
+            </button>
+            <field name="asiento_id" position="after">
+                <field name="type_invoice"/>
+            </field>
+            <xpath expr="//field[@name='factura_ids']/tree/field[@name='move_id']" position="attributes">
+                <attribute name="domain">[('partner_id', '=', parent.partner_id), ('state', '=', 'posted'), ('invoice_payment_state', '=', 'not_paid'), ('type', 'in', ('in_invoice', 'in_refund'))]</attribute>
+                <attribute name="options">{'no_create': True, 'no_quick_create': True}</attribute>
+                <attribute name="context">{'fxo_move_search': True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='factura_ids']/tree/field[@name='nro_comprobante']" position="after">
+                <field name="type_invoice"/>
+            </xpath>
+            <xpath expr="//field[@name='letras_manual_ids']/.." position="attributes">
+                <attribute name="string">Schedule of Bills</attribute>
+            </xpath>
+            <xpath expr="//field[@name='letras_manual_ids']" position="before">
+                <group>
+                    <group>
+                        <field name="letters_qty" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="days_first_due" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="days_between" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="first_letter_number" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    </group>
+                    <group>
+                        <field name="total_invoices"/>
+                        <field name="total_letters"/>
+                        <field name="schedule_difference"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='letras_manual_ids']" position="attributes">
+                <attribute name="context">{'default_type_invoice': type_invoice}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='letras_manual_ids']/tree/field[@name='nro_letra']" position="after">
+                <field name="type_invoice"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_letras_payment_form_receivables_fxo_schedule" model="ir.ui.view">
+        <field name="name">account.letras.payment.form.fxo.schedule</field>
+        <field name="model">account.letras.payment</field>
+        <field name="inherit_id" ref="account_letras_it.view_account_letras_payment_form_receivables"/>
+        <field name="arch" type="xml">
+            <button name="state_check" position="before">
+                <button name="action_load_invoices" type="object" string="Load Pending Invoices" states="draft"/>
+                <button name="action_generate_schedule" type="object" string="Generate Schedule" states="draft"
+                        class="oe_highlight"/>
+            </button>
+            <field name="asiento_id" position="after">
+                <field name="type_invoice"/>
+            </field>
+            <xpath expr="//field[@name='factura_ids']/tree/field[@name='move_id']" position="attributes">
+                <attribute name="domain">[('partner_id', '=', parent.partner_id), ('state', '=', 'posted'), ('invoice_payment_state', '=', 'not_paid'), ('type', 'in', ('out_invoice', 'out_refund'))]</attribute>
+                <attribute name="options">{'no_create': True, 'no_quick_create': True}</attribute>
+                <attribute name="context">{'fxo_move_search': True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='factura_ids']/tree/field[@name='nro_comprobante']" position="after">
+                <field name="type_invoice"/>
+            </xpath>
+            <xpath expr="//field[@name='letras_manual_ids']/.." position="attributes">
+                <attribute name="string">Schedule of Bills</attribute>
+            </xpath>
+            <xpath expr="//field[@name='letras_manual_ids']" position="before">
+                <group>
+                    <group>
+                        <field name="letters_qty" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="days_first_due" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="days_between" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="first_letter_number" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    </group>
+                    <group>
+                        <field name="total_invoices"/>
+                        <field name="total_letters"/>
+                        <field name="schedule_difference"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='letras_manual_ids']" position="attributes">
+                <attribute name="context">{'default_type_invoice': type_invoice}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='letras_manual_ids']/tree/field[@name='nro_letra']" position="after">
+                <field name="type_invoice"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_letras_payment_tree_fxo_schedule" model="ir.ui.view">
+        <field name="name">account.letras.payment.tree.fxo.schedule</field>
+        <field name="model">account.letras.payment</field>
+        <field name="inherit_id" ref="account_letras_it.view_account_letras_payment_tree"/>
+        <field name="arch" type="xml">
+            <field name="journal_id" position="after">
+                <field name="type_invoice" optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>

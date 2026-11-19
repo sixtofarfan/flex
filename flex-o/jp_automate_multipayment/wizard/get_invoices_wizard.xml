@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record id="view_letters_picker_tree" model="ir.ui.view">
+            <field name="name">account.move.line.letters.picker.tree</field>
+            <field name="model">account.move.line</field>
+            <field name="priority">99</field>
+            <field name="arch" type="xml">
+                <tree string="Letras">
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="type_document_id"/>
+                    <field name="nro_comp"/>
+                    <field name="type_invoice"/>
+                    <field name="move_id"/>
+                    <field name="account_id"/>
+                    <field name="date_maturity"/>
+                    <field name="currency_id"/>
+                    <field name="amount_residual_currency"/>
+                    <field name="amount_residual" sum="Saldo"/>
+                </tree>
+            </field>
+        </record>
         <record id="view_get_invoices_wizard" model="ir.ui.view">
             <field name="name">get.invoices.wizard.form</field>
             <field name="model">get.invoices.wizard</field>
@@ -9,6 +29,23 @@
                     <group>
                         <field name="invoices" nolabel="1" context="{'default_type': 'out_invoice'}"
                         domain="[('state','=','posted'),('type','=',context.get('invoice_type')),('amount_residual','!=', 0)]"/>
+                    </group>
+                    <separator string="Letras"/>
+                    <group>
+                        <field name="letters" nolabel="1" context="{'tree_view_ref': 'jp_automate_multipayment.view_letters_picker_tree'}">
+                            <tree>
+                                <field name="date"/>
+                                <field name="partner_id"/>
+                                <field name="type_document_id"/>
+                                <field name="nro_comp"/>
+                                <field name="type_invoice"/>
+                                <field name="account_id"/>
+                                <field name="date_maturity"/>
+                                <field name="currency_id"/>
+                                <field name="amount_residual" sum="Saldo"/>
+                                <field name="amount_residual_currency"/>
+                            </tree>
+                        </field>
                     </group>
                     <footer>
                         <button string="Get Invoices" name="insert" type="object" class="oe_highlight"/>

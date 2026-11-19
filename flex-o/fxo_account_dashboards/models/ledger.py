@@ -84,6 +84,7 @@ class FxoLedgerLine(models.Model):
     doc_number = fields.Char(string='Document Number')
     invoice_date = fields.Date(string='Document Date')
     date_maturity = fields.Date(string='Due Date')
+    type_invoice = fields.Char(string='Invoice Type', index=True)
 
     # ------------------------------------------------------------------
     @api.model
@@ -115,6 +116,7 @@ class FxoLedgerLine(models.Model):
             col('doc_number', _('Doc. Number'), width=16),
             col('invoice_date', _('Doc. Date'), 'date', 11),
             col('date_maturity', _('Due Date'), 'date', 11),
+            col('type_invoice', _('Invoice Type'), width=14),
         ]
 
     @api.model
@@ -130,6 +132,7 @@ class FxoLedgerLine(models.Model):
             {'name': 'journal_code', 'label': _('Journal')},
             {'name': 'glosa', 'label': _('Description')},
             {'name': 'line_name', 'label': _('Line Label')},
+            {'name': 'type_invoice', 'label': _('Invoice Type')},
         ]
 
     # ------------------------------------------------------------------
@@ -144,7 +147,7 @@ class FxoLedgerLine(models.Model):
                 'running_balance', 'currency_name', 'currency_rate', 'amount_currency', 'analytic_account_id',
                 'analytic_code', 'analytic_name', 'glosa', 'line_name', 'partner_id', 'partner_doc_type',
                 'partner_vat', 'partner_name', 'doc_type', 'doc_number', 'invoice_date', 'date_maturity',
-                'company_id']
+                'type_invoice', 'company_id']
         cr = self.env.cr
         cr.execute("DELETE FROM fxo_ledger_line WHERE user_id = %s", (self.env.uid,))
         params['uid'] = self.env.uid

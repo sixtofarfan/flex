@@ -89,17 +89,42 @@ class MultipaymentAdvanceIt(models.Model):
 
         self.asiento_id.currency_rate = self.tc
         self.asiento_id.invoice_date  = self.date if self.date else None
+        # El asiento del pago lleva el tipo de factura de los documentos pagados
+        # (si son de tipos distintos, el del primero, como el canje de letras)
+        types = [t for t in self.invoice_ids.mapped('type_invoice') if t]
+        if self.asiento_id and types:
+            self.asiento_id.type_invoice = types[0]
         return res
 
-    @api.onchange('invoice_ids')
-    def get_partner_cash(self):
-        MainParameter = self.env['main.parameter'].search([('company_id', '=', self.env.company.id)], limit=1)
+    def _fx_partner_varios(self):
+        """Socio VARIOS para cuando el detalle tiene documentos de varios socios."""
+        Partner = self.env['res.partner']
+        return Partner.search([('vat', '=', 'VARIOS')], limit=1) \
+            or Partner.search([('name', '=', 'VARIOS')], order='id', limit=1)
+
+    def _fx_partner_cash_target(self):
+        self.ensure_one()
+        partners = self.mapped('invoice_ids.partner_id.commercial_partner_id')
+        if len(partners) == 1:
+            return partners
+        if len(partners) > 1:
+            return self._fx_partner_varios() or self.partner_cash_id
+        return self.partner_cash_id
+
+    def _fx_set_partner_cash(self):
+        """Partner Caja: el socio de los documentos si es uno solo; VARIOS si son
+        varios. Se aplica al cambiar el detalle (no pisa un cambio manual
+        posterior)."""
         for rec in self:
-            Partners = rec.mapped('invoice_ids.partner_id')
-            if len(Partners) == 1:
-                rec.partner_cash_id = Partners.id
-            else:
-                rec.partner_cash_id = MainParameter.partner_cash_id.id
+            target = rec._fx_partner_cash_target()
+            if target and rec.partner_cash_id != target:
+                rec.partner_cash_id = target.id
+
+    # Antes este onchange se llamaba igual que el default (get_partner_cash) y
+    # quedaba anulado por el: nunca se ejecutaba.
+    @api.onchange('invoice_ids')
+    def _onchange_invoice_ids_partner_cash(self):
+        self._fx_set_partner_cash()
 
     @api.model
     def get_partner_cash(self):
@@ -763,30 +788,54 @@ class MultipaymentAdvanceIt(models.Model):
         f = open(doc_name, 'rb')
         return self.env['popup.it'].get_file('Scotiabank.txt', base64.encodestring(b''.join(f.readlines())))
 
+    def _fx_invoice_totals(self):
+        """Debe, Haber e Importe Divisa de las facturas/letras. Si el Debe/Haber
+        de una linea todavia no se calculo, se deduce de su Importe Divisa (en
+        pagos va al Debe, en cobros al Haber), asi la caja nunca sale del lado
+        equivocado."""
+        debe = haber = imp = 0.0
+        foreign = bool(self.journal_id.currency_id) and self.journal_id.currency_id != self.company_id.currency_id
+        for line in self.invoice_ids:
+            imp += line.importe_divisa
+            if line.debe or line.haber:
+                debe += line.debe
+                haber += line.haber
+            elif line.importe_divisa:
+                local = abs(line.importe_divisa) * (self.tc if foreign and self.tc else 1.0)
+                if line.importe_divisa > 0:
+                    debe += local
+                else:
+                    haber += local
+        return debe, haber, imp
+
     def _get_line_ids(self):
+        """Linea de caja: la contrapartida de las facturas (pago: Haber; cobro:
+        Debe). Se mantiene una sola y se quitan las que quedaron en cero."""
         if self.invoice_ids and self.journal_id:
-            haber = sum(self.invoice_ids.mapped('haber'))
-            debe = sum(self.invoice_ids.mapped('debe'))
-            importe_divisa = sum(self.invoice_ids.mapped('importe_divisa'))
-            importe_divisa = importe_divisa * -1 if debe > 0 else abs(importe_divisa)
+            debe, haber, imp = self._fx_invoice_totals()
+            net = round(debe - haber, 2)
+            vals = {
+                'account_id': self.journal_id.default_debit_account_id.id,
+                'currency_id': self.journal_id.currency_id.id if self.journal_id.currency_id else None,
+                'importe_divisa': round(-imp, 2),
+                'debe': -net if net < 0 else 0.0,
+                'haber': net if net > 0 else 0.0,
+            }
+            zero = self.lines_ids.filtered(lambda l: not l.debe and not l.haber and not l.importe_divisa)
+            if zero:
+                zero.unlink()
             if not self.lines_ids:
-                self.env['multipayment.advance.it.line2'].create({
-                    'main_id': self.id,
-                    'account_id': self.journal_id.default_debit_account_id.id,
-                    'currency_id': self.journal_id.currency_id.id if self.journal_id.currency_id else None,
-                    'importe_divisa': importe_divisa,
-                    'debe': haber,
-                    'haber': debe,
-                })
+                self.env['multipayment.advance.it.line2'].create(dict(vals, main_id=self.id))
             elif len(self.lines_ids) == 1:
-                line = self.lines_ids[0]
-                line.write({
-                    'account_id': self.journal_id.default_debit_account_id.id,
-                    'currency_id': self.journal_id.currency_id.id if self.journal_id.currency_id else None,
-                    'importe_divisa': importe_divisa,
-                    'debe': haber,
-                    'haber': debe,
-                })
+                self.lines_ids[0].write(vals)
+
+    def calculate_line(self):
+        """«Calcular» agrega una linea que cuadra el asiento: si ya cuadra, no
+        agrega nada (antes dejaba una linea en cero)."""
+        amount = sum(l.debe - l.haber for l in self.invoice_ids) + sum(l.debe - l.haber for l in self.lines_ids)
+        if abs(amount) < 0.005:
+            return True
+        return super(MultipaymentAdvanceIt, self).calculate_line()
 
     @api.model
     def create(self, vals):
@@ -814,6 +863,19 @@ class MultipaymentAdvanceItLine(models.Model):
     type_of_account = fields.Selection(string='Tipo', related='partner_bank_acc_id.type_of_account')
     bank_curr_id = fields.Many2one(string="Mon",  related='partner_bank_acc_id.currency_id')
     bank_id = fields.Many2one('res.bank', related='partner_bank_acc_id.bank_id')
+    # En Odoo 13 las lineas en soles no llevan moneda (solo las de moneda
+    # extranjera), asi que la columna Moneda salia vacia en facturas y letras en
+    # soles. currency_id NO se toca: el asiento la usa para decidir si la linea
+    # va en moneda extranjera. Esta es solo para mostrar.
+    currency_display_id = fields.Many2one('res.currency', string='Moneda', compute='_compute_currency_display_id')
+    # Tipo de factura del documento pagado (factura o letra)
+    type_invoice = fields.Selection(related='invoice_id.type_invoice', string='Tipo de factura', readonly=True)
+
+    @api.depends('invoice_id.currency_id', 'invoice_id.move_id.currency_id')
+    def _compute_currency_display_id(self):
+        for line in self:
+            line.currency_display_id = line.invoice_id.currency_id or line.invoice_id.move_id.currency_id \
+                or line.main_id.company_id.currency_id
 
     # @api.onchange('debe')
     # def _onchange_debe(self):

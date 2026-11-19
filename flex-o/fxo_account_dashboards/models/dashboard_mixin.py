@@ -15,6 +15,43 @@ REGISTER_TAGS = [('base1', '1'), ('base2', '2'), ('base3', '3'), ('cng', '4'), (
                  ('otros', '6'), ('igv1', '7'), ('igv2', '8'), ('igv3', '9'), ('icbper', '10')]
 
 
+# Vouchers of the purchase register (journals with register_sunat = '1')
+MV_CTE = """mv AS (
+    SELECT am.id, am.date, am.name, am.invoice_date, am.invoice_date_due, am.ref, am.partner_id,
+           am.type_document_id, am.currency_id, am.currency_rate, am.date_detraccion, am.voucher_number,
+           am.glosa, am.company_id, aj.code AS journal_code
+      FROM account_move am
+      JOIN account_journal aj ON aj.id = am.journal_id
+     WHERE aj.register_sunat = '1' AND am.state = 'posted'
+       AND am.company_id = %(company_id)s AND am.date BETWEEN %(date_from)s AND %(date_to)s
+)"""
+
+# Account of each voucher: payable (42...), else current assets. Never taxes.
+PAY_CTE = """ pay AS (
+    -- Account of the voucher: the one of type Payable (42...); if it has none
+    -- (e.g. IGV application entries), the one of type Current Assets. Never taxes.
+    SELECT d.move_id,
+           COALESCE(string_agg(d.code, ', ' ORDER BY d.code) FILTER (WHERE d.is_payable),
+                    string_agg(d.code, ', ' ORDER BY d.code) FILTER (WHERE NOT d.is_payable)) AS account_codes,
+           COALESCE(string_agg(d.name, ', ' ORDER BY d.code) FILTER (WHERE d.is_payable),
+                    string_agg(d.name, ', ' ORDER BY d.code) FILTER (WHERE NOT d.is_payable)) AS account_names,
+           COALESCE((array_agg(d.account_id ORDER BY d.amount DESC) FILTER (WHERE d.is_payable))[1],
+                    (array_agg(d.account_id ORDER BY d.amount DESC) FILTER (WHERE NOT d.is_payable))[1]) AS account_id
+      FROM (SELECT l.move_id, l.account_id, a.code, a.name, (a.internal_type = 'payable') AS is_payable,
+                   sum(abs(l.balance)) AS amount
+              FROM account_move_line l
+              JOIN mv ON mv.id = l.move_id
+              JOIN account_account a ON a.id = l.account_id
+             WHERE l.display_type IS NULL
+               AND (a.internal_type = 'payable' OR a.user_type_id = %(current_assets_type)s)
+             GROUP BY l.move_id, l.account_id, a.code, a.name, a.internal_type) d
+     GROUP BY d.move_id
+)"""
+
+REGISTER_LABELS = {'1': 'BIOGYE', '2': 'BIOGEYNG', '3': 'BIONG', '4': 'CNG', '5': 'ISC', '6': 'OTROS',
+                   '7': 'IGV 1', '8': 'IGV 2', '9': 'IGV 3', '10': 'ICBPER'}
+
+
 class FxoDashboardMixin(models.AbstractModel):
     """Shared helpers of the accounting dashboards: filter handling, the SQL of
     both reports (single source for dashboards and legacy wizards) and exports."""
@@ -138,15 +175,7 @@ class FxoDashboardMixin(models.AbstractModel):
         total = ' + '.join('COALESCE(amt.%s%s, 0)' % (c, suffix) for c in REGISTER_COLS)
         total_me = ' + '.join('COALESCE(amt.%s_me, 0)' % c for c in REGISTER_COLS)
         sql = """
-WITH mv AS (
-    SELECT am.id, am.date, am.name, am.invoice_date, am.invoice_date_due, am.ref, am.partner_id,
-           am.type_document_id, am.currency_id, am.currency_rate, am.date_detraccion, am.voucher_number,
-           am.glosa, am.company_id, aj.code AS journal_code
-      FROM account_move am
-      JOIN account_journal aj ON aj.id = am.journal_id
-     WHERE aj.register_sunat = '1' AND am.state = 'posted'
-       AND am.company_id = %(company_id)s AND am.date BETWEEN %(date_from)s AND %(date_to)s
-), amt AS (
+WITH {mv_cte}, amt AS (
     SELECT l.move_id, {mn}, {me}
       FROM account_move_line l
       JOIN mv ON mv.id = l.move_id
@@ -154,26 +183,7 @@ WITH mv AS (
       JOIN account_account_tag t ON t.id = r.account_account_tag_id
      WHERE l.display_type IS NULL AND l.account_id IS NOT NULL AND t.record_shop IS NOT NULL
      GROUP BY l.move_id
-), pay AS (
-    -- Account of the voucher: the one of type Payable (42...); if it has none
-    -- (e.g. IGV application entries), the one of type Current Assets. Never taxes.
-    SELECT d.move_id,
-           COALESCE(string_agg(d.code, ', ' ORDER BY d.code) FILTER (WHERE d.is_payable),
-                    string_agg(d.code, ', ' ORDER BY d.code) FILTER (WHERE NOT d.is_payable)) AS account_codes,
-           COALESCE(string_agg(d.name, ', ' ORDER BY d.code) FILTER (WHERE d.is_payable),
-                    string_agg(d.name, ', ' ORDER BY d.code) FILTER (WHERE NOT d.is_payable)) AS account_names,
-           COALESCE((array_agg(d.account_id ORDER BY d.amount DESC) FILTER (WHERE d.is_payable))[1],
-                    (array_agg(d.account_id ORDER BY d.amount DESC) FILTER (WHERE NOT d.is_payable))[1]) AS account_id
-      FROM (SELECT l.move_id, l.account_id, a.code, a.name, (a.internal_type = 'payable') AS is_payable,
-                   sum(abs(l.balance)) AS amount
-              FROM account_move_line l
-              JOIN mv ON mv.id = l.move_id
-              JOIN account_account a ON a.id = l.account_id
-             WHERE l.display_type IS NULL
-               AND (a.internal_type = 'payable' OR a.user_type_id = %(current_assets_type)s)
-             GROUP BY l.move_id, l.account_id, a.code, a.name, a.internal_type) d
-     GROUP BY d.move_id
-), exp AS (
+), {pay_cte}, exp AS (
     -- Expense / purchase accounts: journal items tagged with a base of the register
     SELECT l.move_id, string_agg(DISTINCT a.code, ', ') AS expense_codes
       FROM account_move_line l
@@ -235,7 +245,64 @@ SELECT to_char(mv.date, 'yyyymm') AS period,
                       ORDER BY d.id LIMIT 1) dr ON TRUE
   LEFT JOIN einvoice_catalog_01 ec2 ON ec2.id = dr.type_document_id
  ORDER BY 1, mv.journal_code, mv.name
-""".format(mn=mn, me=me, amounts=amounts, total=total, total_me=total_me)
+""".format(mn=mn, me=me, amounts=amounts, total=total, total_me=total_me, mv_cte=MV_CTE, pay_cte=PAY_CTE)
+        current_assets = self.env.ref('account.data_account_type_current_assets', raise_if_not_found=False)
+        return sql, {'company_id': company.id, 'date_from': date_from, 'date_to': date_to,
+                     'current_assets_type': current_assets.id if current_assets else 0}
+
+    @api.model
+    def _fxo_expense_sql(self, company, date_from, date_to, currency):
+        """SELECT of the Expense Analysis: the counterpart of the payable account,
+        one row per journal item (and register column) of the vouchers of the
+        purchase register. The sum of ``amount`` equals the total of the register."""
+        amount = 'COALESCE(l.tax_amount_me, 0)' if currency == 'usd' else 'COALESCE(l.tax_amount_it, 0)'
+        labels = ' '.join("WHEN '%s' THEN '%s'" % (k, v) for k, v in REGISTER_LABELS.items())
+        sql = """
+WITH {mv_cte}, {pay_cte}
+SELECT to_char(mv.date, 'yyyymm') AS period,
+       mv.date AS date,
+       mv.journal_code,
+       mv.name AS voucher,
+       left(a.code, 2) AS account_group,
+       a.code AS account_code,
+       a.name AS account_name,
+       an.code AS analytic_code,
+       an.name AS analytic_name,
+       CASE t.record_shop {labels} END AS register_column,
+       (t.record_shop IN ('7', '8', '9')) AS is_tax,
+       CASE WHEN t.record_shop IN ('7', '8', '9') THEN 0 ELSE {amount} END AS base_amount,
+       CASE WHEN t.record_shop IN ('7', '8', '9') THEN {amount} ELSE 0 END AS tax_amount,
+       {amount} AS amount,
+       pay.account_codes AS payable_codes,
+       ec1.code AS doc_type,
+       CASE WHEN split_part(mv.ref, '-', 2) <> '' THEN split_part(mv.ref, '-', 1) END AS serie,
+       CASE WHEN split_part(mv.ref, '-', 2) <> '' THEN split_part(mv.ref, '-', 2)
+            ELSE split_part(mv.ref, '-', 1) END AS doc_number,
+       rp.vat AS partner_vat,
+       rp.name AS partner_name,
+       mv.invoice_date,
+       rc.name AS currency_name,
+       mv.glosa,
+       l.name AS line_name,
+       mv.company_id,
+       mv.id AS move_id,
+       l.id AS move_line_id,
+       l.account_id,
+       l.analytic_account_id,
+       rp.id AS partner_id
+  FROM account_move_line l
+  JOIN mv ON mv.id = l.move_id
+  JOIN account_account_tag_account_move_line_rel r ON r.account_move_line_id = l.id
+  JOIN account_account_tag t ON t.id = r.account_account_tag_id AND t.record_shop IS NOT NULL
+  JOIN account_account a ON a.id = l.account_id
+  LEFT JOIN account_analytic_account an ON an.id = l.analytic_account_id
+  LEFT JOIN res_partner rp ON rp.id = mv.partner_id
+  LEFT JOIN einvoice_catalog_01 ec1 ON ec1.id = mv.type_document_id
+  LEFT JOIN res_currency rc ON rc.id = mv.currency_id
+  LEFT JOIN pay ON pay.move_id = mv.id
+ WHERE l.display_type IS NULL
+ ORDER BY 1, mv.journal_code, mv.name, a.code, l.id
+""".format(mv_cte=MV_CTE, pay_cte=PAY_CTE, amount=amount, labels=labels)
         current_assets = self.env.ref('account.data_account_type_current_assets', raise_if_not_found=False)
         return sql, {'company_id': company.id, 'date_from': date_from, 'date_to': date_to,
                      'current_assets_type': current_assets.id if current_assets else 0}
@@ -278,6 +345,14 @@ SELECT to_char(mv.date, 'yyyymm') AS period,
             movement = 'y.period BETWEEN %(period_from)s AND %(period_to)s'
             opening = 'y.period < %(period_from)s'
             opening_period = '%(opening_period)s'
+        type_invoice = "NULL::varchar"
+        Move = self.env['account.move']
+        if 'type_invoice' in Move._fields:
+            labels = dict(Move.fields_get(['type_invoice'])['type_invoice']['selection'])
+            if labels:
+                type_invoice = "CASE am.type_invoice %s ELSE am.type_invoice END" % ' '.join(
+                    "WHEN '%s' THEN '%s'" % (k.replace("'", "''"), (v or k).replace("'", "''").replace('%', '%%'))
+                    for k, v in labels.items())
         if currency == 'usd':
             amounts = "COALESCE(x.debit_me, 0) AS debit, COALESCE(x.credit_me, 0) AS credit, " \
                       "COALESCE(x.debit_me, 0) - COALESCE(x.credit_me, 0) AS balance"
@@ -300,7 +375,7 @@ WITH x AS (
            l.amount_currency, l.analytic_account_id, am.glosa, l.name AS line_name,
            l.partner_id, lit.code_sunat AS partner_doc_type, rp.vat AS partner_vat, rp.name AS partner_name,
            ec.code AS doc_type, replace(l.nro_comp, '/', '-') AS doc_number,
-           am.invoice_date, l.date_maturity
+           am.invoice_date, l.date_maturity, {type_invoice} AS type_invoice
       FROM account_move_line l
       JOIN account_move am ON am.id = l.move_id
       JOIN account_journal aj ON aj.id = am.journal_id
@@ -316,7 +391,7 @@ WITH x AS (
     SELECT x.move_line_id, x.move_id, x.date, x.period, x.journal_code, x.voucher, x.account_id,
            {amounts}, x.currency_name, x.currency_rate, x.amount_currency, x.analytic_account_id,
            x.glosa, x.line_name, x.partner_id, x.partner_doc_type, x.partner_vat, x.partner_name,
-           x.doc_type, x.doc_number, x.invoice_date, x.date_maturity
+           x.doc_type, x.doc_number, x.invoice_date, x.date_maturity, x.type_invoice
       FROM x
 ), rows AS (
     SELECT FALSE AS is_opening, y.* FROM y WHERE {movement}
@@ -325,7 +400,7 @@ WITH x AS (
            '', '', y.account_id,
            GREATEST(sum(y.balance), 0), GREATEST(-sum(y.balance), 0), sum(y.balance),
            '', 0, sum(y.amount_currency), NULL::int,
-           'SALDO INICIAL', NULL, NULL::int, '', '', '', '', '', NULL::date, NULL::date
+           'SALDO INICIAL', NULL, NULL::int, '', '', '', '', '', NULL::date, NULL::date, NULL::varchar
       FROM y
      WHERE {opening}
      GROUP BY y.account_id
@@ -338,14 +413,14 @@ SELECT r.is_opening, r.move_line_id, r.move_id, r.date, r.period, r.journal_code
        r.currency_name, r.currency_rate, r.amount_currency,
        r.analytic_account_id, an.code AS analytic_code, an.name AS analytic_name,
        r.glosa, r.line_name, r.partner_id, r.partner_doc_type, r.partner_vat, r.partner_name,
-       r.doc_type, r.doc_number, r.invoice_date, r.date_maturity,
+       r.doc_type, r.doc_number, r.invoice_date, r.date_maturity, r.type_invoice,
        %(company_id)s AS company_id
   FROM rows r
   JOIN account_account a ON a.id = r.account_id
   LEFT JOIN account_analytic_account an ON an.id = r.analytic_account_id
  ORDER BY a.code, r.is_opening DESC, r.period, r.date, r.voucher, r.move_line_id
 """.format(account_filter=account_filter, amounts=amounts, movement=movement, opening=opening,
-           opening_period=opening_period)
+           opening_period=opening_period, type_invoice=type_invoice)
         return sql, params
 
     # ------------------------------------------------------------------

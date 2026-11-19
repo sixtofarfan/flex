@@ -12,6 +12,7 @@ var PurchaseDashboard = DashboardBase.extend({
     dashTitle: _lt('Purchase Register'),
     dashIcon: 'fa-shopping-basket',
     extraFields: ['move_id', 'partner_id'],
+    gotoLinks: [{tag: 'fxo_expense_dashboard', label: _lt('Expense Analysis'), icon: 'fa-pie-chart'}],
     chartSpecs: [
         {key: 'monthly', title: _lt('Monthly evolution'), size: 'fxo-w-7'},
         {key: 'partners', title: _lt('Top 10 suppliers'), size: 'fxo-w-5'},
@@ -111,14 +112,9 @@ var PurchaseDashboard = DashboardBase.extend({
     _followLink: function (kind, row, value) {
         if (kind === 'account') {
             // The account opens the Analytic Ledger with the same period
-            var f = this.filters;
             this.do_action({
                 type: 'ir.actions.client', tag: 'fxo_ledger_dashboard', name: _t('Analytic Ledger'),
-                params: {
-                    company_id: f.company_id, year: f.year, mode: f.mode, date_from: f.date_from,
-                    date_to: f.date_to, period_from: f.period_from, period_to: f.period_to,
-                    currency: f.currency, accounts: value,
-                },
+                params: this._gotoParams({accounts: value}),
             });
             return;
         }

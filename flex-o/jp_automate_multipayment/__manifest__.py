@@ -24,6 +24,7 @@
         'base', 
         'account_fields_it',
         'account_multipayment_advance_it',
+        'fields_gamma',
         'account_invoice_detracciones_it',
         'account_massive_payment_detractions_it',
         'fxo_account_bank_extend',

@@ -44,6 +44,7 @@ var DashboardBase = AbstractAction.extend({
         'change .fxo-page-size': '_onPageSize',
         'click .fxo-open-list': '_onOpenList',
         'click .fxo-export': '_onExport',
+        'click .fxo-goto': '_onGoto',
         'click .fxo-kpi[data-chip]': '_onKpiChip',
     },
 
@@ -55,6 +56,7 @@ var DashboardBase = AbstractAction.extend({
     accountsFilter: false,      // show the "accounts" input in the filter bar
     extraFields: [],            // fields read besides the visible columns
     chartSpecs: [],             // [{key, title, size}]
+    gotoLinks: [],              // other dashboards: [{tag, label, icon}] (same filters)
 
     init: function (parent, action) {
         this._super.apply(this, arguments);
@@ -290,8 +292,9 @@ var DashboardBase = AbstractAction.extend({
         this.$('.fxo-search-input').val('');
         this.pager.offset = 0;
         var filters = _.extend({}, this.filters, {by_period: this.filters.mode === 'period'});
-        return this._rpc({model: this.model, method: 'fxo_load', args: [filters]}).then(function () {
+        return this._rpc({model: this.model, method: 'fxo_load', args: [filters]}).then(function (result) {
             self.loaded = true;
+            self.loadInfo = result || {};
             self._syncFilterBar();
             return self._refresh();
         }).guardedCatch(function () {
@@ -663,6 +666,23 @@ var DashboardBase = AbstractAction.extend({
         this.do_action({
             type: 'ir.actions.act_window', res_model: model, res_id: id,
             views: [[false, 'form']], target: 'current',
+        });
+    },
+
+    /** Params to open another dashboard with the same company / period / currency. */
+    _gotoParams: function (extra) {
+        var f = this.filters;
+        return _.extend({
+            company_id: f.company_id, year: f.year, mode: f.mode, date_from: f.date_from, date_to: f.date_to,
+            period_from: f.period_from, period_to: f.period_to, currency: f.currency,
+        }, extra || {});
+    },
+
+    _onGoto: function (ev) {
+        var $btn = $(ev.currentTarget);
+        this.do_action({
+            type: 'ir.actions.client', tag: $btn.data('tag'), name: $btn.text().trim(),
+            params: this._gotoParams(),
         });
     },
 

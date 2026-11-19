@@ -4,7 +4,7 @@ import json
 from odoo import http
 from odoo.http import content_disposition, request
 
-MODELS = ('fxo.purchase.register.line', 'fxo.ledger.line')
+MODELS = ('fxo.purchase.register.line', 'fxo.ledger.line', 'fxo.expense.analysis.line')
 
 
 class FxoDashboardExport(http.Controller):

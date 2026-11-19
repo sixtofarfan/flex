@@ -4,7 +4,7 @@
     'category': 'account',
     'author': 'Flexxoone',
     'version': '1.0',
-    'depends': ['account_purchase_rep_it', 'fxo_account_higher_rep_it2'],
+    'depends': ['account_purchase_rep_it', 'fxo_account_higher_rep_it2', 'fields_gamma'],
     'description': """
 Accounting dashboards: Purchase Register and Analytic Ledger
 =============================================================
@@ -25,6 +25,7 @@ Accounting dashboards: Purchase Register and Analytic Ledger
         'views/assets.xml',
         'views/purchase_register_views.xml',
         'views/ledger_views.xml',
+        'views/expense_analysis_views.xml',
         'views/legacy_views.xml',
         'views/menus.xml',
     ],

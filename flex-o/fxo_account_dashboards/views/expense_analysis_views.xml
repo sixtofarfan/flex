@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fxo_expense_analysis_line_tree" model="ir.ui.view">
+        <field name="name">fxo.expense.analysis.line.tree</field>
+        <field name="model">fxo.expense.analysis.line</field>
+        <field name="arch" type="xml">
+            <tree string="Expense Analysis" create="false" edit="false" delete="false" js_class="fxo_move_link_list">
+                <field name="move_id" invisible="1"/>
+                <field name="period"/>
+                <field name="date"/>
+                <field name="journal_code"/>
+                <field name="voucher" widget="fxo_move_link"/>
+                <field name="account_group"/>
+                <field name="account_code"/>
+                <field name="account_name"/>
+                <field name="analytic_code" optional="show"/>
+                <field name="analytic_name"/>
+                <field name="register_column"/>
+                <field name="base_amount" sum="Expense"/>
+                <field name="tax_amount" sum="IGV"/>
+                <field name="amount" sum="Total"/>
+                <field name="payable_codes"/>
+                <field name="doc_type"/>
+                <field name="serie"/>
+                <field name="doc_number"/>
+                <field name="partner_vat"/>
+                <field name="partner_name"/>
+                <field name="invoice_date" optional="show"/>
+                <field name="currency_name" optional="show"/>
+                <field name="glosa"/>
+                <field name="line_name" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fxo_expense_analysis_line_search" model="ir.ui.view">
+        <field name="name">fxo.expense.analysis.line.search</field>
+        <field name="model">fxo.expense.analysis.line</field>
+        <field name="arch" type="xml">
+            <search string="Expense Analysis">
+                <field name="account_code" filter_domain="['|', ('account_code', '=like', self + '%'), ('account_name', 'ilike', self)]"/>
+                <field name="account_group"/>
+                <field name="analytic_name" filter_domain="['|', ('analytic_name', 'ilike', self), ('analytic_code', 'ilike', self)]"/>
+                <field name="partner_name" filter_domain="['|', ('partner_name', 'ilike', self), ('partner_vat', 'ilike', self)]"/>
+                <field name="doc_number"/>
+                <field name="voucher"/>
+                <field name="journal_code"/>
+                <field name="period"/>
+                <field name="glosa" filter_domain="['|', ('glosa', 'ilike', self), ('line_name', 'ilike', self)]"/>
+                <filter string="Expenses only (no IGV)" name="expenses" domain="[('is_tax', '=', False)]"/>
+                <filter string="IGV only" name="igv" domain="[('is_tax', '=', True)]"/>
+                <separator/>
+                <filter string="With Cost Center" name="with_cc" domain="[('analytic_account_id', '!=', False)]"/>
+                <filter string="Without Cost Center" name="without_cc" domain="[('analytic_account_id', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Ledger Account" name="g_group" context="{'group_by': 'account_group'}"/>
+                    <filter string="Account" name="g_account" context="{'group_by': 'account_code'}"/>
+                    <filter string="Cost Center" name="g_analytic" context="{'group_by': 'analytic_account_id'}"/>
+                    <filter string="Register Column" name="g_column" context="{'group_by': 'register_column'}"/>
+                    <filter string="Period" name="g_period" context="{'group_by': 'period'}"/>
+                    <filter string="Journal" name="g_journal" context="{'group_by': 'journal_code'}"/>
+                    <filter string="Partner" name="g_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Voucher" name="g_voucher" context="{'group_by': 'move_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_fxo_expense_analysis_line_pivot" model="ir.ui.view">
+        <field name="name">fxo.expense.analysis.line.pivot</field>
+        <field name="model">fxo.expense.analysis.line</field>
+        <field name="arch" type="xml">
+            <pivot string="Expense Analysis">
+                <field name="account_group" type="row"/>
+                <field name="account_code" type="row"/>
+                <field name="period" type="col"/>
+                <field name="base_amount" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_fxo_expense_analysis_line_graph" model="ir.ui.view">
+        <field name="name">fxo.expense.analysis.line.graph</field>
+        <field name="model">fxo.expense.analysis.line</field>
+        <field name="arch" type="xml">
+            <graph string="Expense Analysis" type="bar">
+                <field name="account_group" type="row"/>
+                <field name="base_amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_fxo_expense_analysis_line" model="ir.actions.act_window">
+        <field name="name">Expense Analysis</field>
+        <field name="res_model">fxo.expense.analysis.line</field>
+        <field name="view_mode">tree,pivot,graph</field>
+        <field name="search_view_id" ref="view_fxo_expense_analysis_line_search"/>
+    </record>
+
+    <record id="action_fxo_expense_dashboard" model="ir.actions.client">
+        <field name="name">Expense Analysis</field>
+        <field name="tag">fxo_expense_dashboard</field>
+    </record>
+</odoo>
