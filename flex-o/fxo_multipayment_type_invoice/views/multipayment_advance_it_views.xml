@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="multipayment_advance_it_form_view_type_invoice" model="ir.ui.view">
+        <field name="name">multipayment.advance.it.form.type.invoice</field>
+        <field name="model">multipayment.advance.it</field>
+        <field name="inherit_id" ref="account_multipayment_advance_it.multipayment_advance_it_form_view"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@id='invoice_tab']/field[@name='invoice_ids']/tree/field[@name='invoice_id']" position="after">
+                <field name="type_invoice"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_letters_picker_tree_type_invoice" model="ir.ui.view">
+        <field name="name">account.move.line.letters.picker.tree.type.invoice</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="jp_automate_multipayment.view_letters_picker_tree"/>
+        <field name="arch" type="xml">
+            <field name="nro_comp" position="after">
+                <field name="type_invoice"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_get_invoices_wizard_type_invoice" model="ir.ui.view">
+        <field name="name">get.invoices.wizard.form.type.invoice</field>
+        <field name="model">get.invoices.wizard</field>
+        <field name="inherit_id" ref="jp_automate_multipayment.view_get_invoices_wizard"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='letters']/tree/field[@name='nro_comp']" position="after">
+                <field name="type_invoice"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

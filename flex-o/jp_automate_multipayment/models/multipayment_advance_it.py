@@ -89,11 +89,8 @@ class MultipaymentAdvanceIt(models.Model):
 
         self.asiento_id.currency_rate = self.tc
         self.asiento_id.invoice_date  = self.date if self.date else None
-        # El asiento del pago lleva el tipo de factura de los documentos pagados
-        # (si son de tipos distintos, el del primero, como el canje de letras)
-        types = [t for t in self.invoice_ids.mapped('type_invoice') if t]
-        if self.asiento_id and types:
-            self.asiento_id.type_invoice = types[0]
+        # El tipo de factura del asiento lo pone el modulo puente
+        # fxo_multipayment_type_invoice (solo donde esta instalado fields_gamma)
         return res
 
     def _fx_partner_varios(self):
@@ -868,8 +865,6 @@ class MultipaymentAdvanceItLine(models.Model):
     # soles. currency_id NO se toca: el asiento la usa para decidir si la linea
     # va en moneda extranjera. Esta es solo para mostrar.
     currency_display_id = fields.Many2one('res.currency', string='Moneda', compute='_compute_currency_display_id')
-    # Tipo de factura del documento pagado (factura o letra)
-    type_invoice = fields.Selection(related='invoice_id.type_invoice', string='Tipo de factura', readonly=True)
 
     @api.depends('invoice_id.currency_id', 'invoice_id.move_id.currency_id')
     def _compute_currency_display_id(self):

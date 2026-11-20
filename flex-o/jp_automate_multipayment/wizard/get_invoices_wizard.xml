@@ -11,7 +11,6 @@
                     <field name="partner_id"/>
                     <field name="type_document_id"/>
                     <field name="nro_comp"/>
-                    <field name="type_invoice"/>
                     <field name="move_id"/>
                     <field name="account_id"/>
                     <field name="date_maturity"/>
@@ -38,7 +37,6 @@
                                 <field name="partner_id"/>
                                 <field name="type_document_id"/>
                                 <field name="nro_comp"/>
-                                <field name="type_invoice"/>
                                 <field name="account_id"/>
                                 <field name="date_maturity"/>
                                 <field name="currency_id"/>
