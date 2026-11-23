@@ -9,7 +9,9 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     type_invoice = fields.Selection(
-        selection_add=[('C', 'Monthly consumption'), ('P', 'Project'), ('N', 'None')], default='N')
+        selection_add=[('C', 'Monthly consumption'), ('P', 'Project'), ('N', 'None'),
+                       ('M', 'Maintenance'), ('MR', 'Network maintenance'), ('CA', 'Headend'), ('H', 'Tools')],
+        default='N')
 
     def init(self):
         res = super(AccountMove, self).init()

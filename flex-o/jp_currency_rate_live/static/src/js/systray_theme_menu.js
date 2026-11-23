@@ -1,3 +1,7 @@
+// Varios modulos de tipo de cambio (fx_/jp_/pc_currency_rate_live) registran este mismo
+// servicio. Definirlo dos veces lanza un error que corta la carga del resto del JavaScript
+// del backend (lo que viene despues deja de funcionar). Si ya existe, esta copia se omite.
+try {
 odoo.define('odoo13.CurrencyRate', function (require) {
     'use strict';
 
@@ -106,3 +110,6 @@ odoo.define('odoo13.CurrencyRate', function (require) {
 
     return CurrencyRate;
 });
+} catch (e) {
+    console.warn('odoo13.CurrencyRate: ' + e.message);
+}

@@ -209,3 +209,23 @@ msgstr ""
 #: model:ir.model,name:fxo_account_letras_schedule.model_account_letras_payment_manual
 msgid "account.letras.payment.manual"
 msgstr ""
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields.selection,name:fxo_account_letras_schedule.selection__account_move__type_invoice__m
+msgid "Maintenance"
+msgstr "Mantenimiento"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields.selection,name:fxo_account_letras_schedule.selection__account_move__type_invoice__mr
+msgid "Network maintenance"
+msgstr "Mantenimiento de red"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields.selection,name:fxo_account_letras_schedule.selection__account_move__type_invoice__ca
+msgid "Headend"
+msgstr "Cabecera"
+
+#. module: fxo_account_letras_schedule
+#: model:ir.model.fields.selection,name:fxo_account_letras_schedule.selection__account_move__type_invoice__h
+msgid "Tools"
+msgstr "Herramientas"
